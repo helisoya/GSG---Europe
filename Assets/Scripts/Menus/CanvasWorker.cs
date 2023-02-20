@@ -6,7 +6,7 @@ using TMPro;
 
 public class CanvasWorker : MonoBehaviour
 {
-    private Manager manager;
+    [HideInInspector] public Manager manager;
 
     private string current_countryinfo = "000";
 
@@ -85,7 +85,6 @@ public class CanvasWorker : MonoBehaviour
     void Start()
     {
         instance = this;
-        manager = Manager.instance;
     }
 
     public void UpdateSpeedText(int speed)

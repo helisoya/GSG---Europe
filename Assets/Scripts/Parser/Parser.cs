@@ -7,7 +7,6 @@ using Leguar.TotalJSON;
 public class Parser : MonoBehaviour
 {
 
-
     public static Dictionary<string, Vector3> ParsePoints()
     {
 

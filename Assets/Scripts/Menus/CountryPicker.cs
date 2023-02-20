@@ -12,7 +12,7 @@ public class CountryPicker : MonoBehaviour
     [SerializeField] private Image flag;
     [SerializeField] private Text text;
 
-    void Start()
+    public void Init()
     {
         manager = Manager.instance;
         UpdateCountry(current);

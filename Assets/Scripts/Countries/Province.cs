@@ -48,9 +48,9 @@ public class Province : MonoBehaviour
         hover = false;
         ComputeCenter(vecs);
 
-        manager = GameObject.Find("Manager").GetComponent<Manager>();
+        manager = Manager.instance;
 
-        canvas = GameObject.Find("Canvas").GetComponent<CanvasWorker>();
+        canvas = CanvasWorker.instance;
 
         if (owner == "")
         {
@@ -209,7 +209,7 @@ public class Province : MonoBehaviour
     void OnMouseEnter()
     {
 
-        if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (manager.isLoading || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
@@ -220,6 +220,7 @@ public class Province : MonoBehaviour
 
     void OnMouseExit()
     {
+        if (manager.isLoading) return;
         hover = false;
         RefreshColor();
     }

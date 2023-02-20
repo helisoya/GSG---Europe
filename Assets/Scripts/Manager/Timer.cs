@@ -5,8 +5,6 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
 
-    private Manager manager;
-
     public float time = 10;
 
     private float time_default;
@@ -20,14 +18,13 @@ public class Timer : MonoBehaviour
     void Start()
     {
         instance = this;
-        manager = Manager.instance;
         time_default = time;
     }
 
 
     void Update()
     {
-        if (!manager.picked)
+        if (!Manager.instance.picked)
         {
             return;
         }
@@ -35,7 +32,7 @@ public class Timer : MonoBehaviour
         if (time <= 0)
         {
             time = time_default;
-            manager.NextTurn();
+            Manager.instance.NextTurn();
         }
 
         if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.P))

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -53,22 +55,23 @@ public class Manager : MonoBehaviour
     [Header("Parser")]
     public GameObject prefabProvince;
     public Transform provinceParent;
+    [SerializeField] private GameObject loadingRoot;
+    [SerializeField] private TextMeshProUGUI loadingText;
+    [SerializeField] private Image loadingImg;
+    [SerializeField] private CountryPicker picker;
+    private Coroutine loading;
 
-
-    void Awake()
+    public bool isLoading
     {
+        get { return loading != null; }
+    }
+
+    void Start()
+    {
+        loading = null;
         instance = this;
 
-        provinces = Parser.ParseProvinces();
-
-        focus = Parser.ParseFocus();
-        gouvs_data = GetComponent<Gouvernements>();
-        pays = Parser.ParsePays();
-        cultures = GetComponent<CulturesWorker>();
-        formables = GetComponent<FormableWorker>();
-        formables.SetFormables(Parser.ParseFormables(provinces));
-
-        Parser.ParseHistory(provinces, pays, "history");
+        loading = StartCoroutine(LoadFiles());
 
         if (PlayerPrefs.HasKey("clouds"))
         {
@@ -88,6 +91,50 @@ public class Manager : MonoBehaviour
             PlayerPrefs.SetString("sun", "false");
             GameObject.Find("Directional Light").GetComponent<Sun>().enabled = false;
         }
+    }
+
+
+    IEnumerator LoadFiles()
+    {
+
+        loadingImg.fillAmount = 0;
+        loadingText.text = "Loading Provinces";
+        yield return new WaitForEndOfFrame();
+        provinces = Parser.ParseProvinces();
+
+
+        loadingImg.fillAmount = 1f / 5f;
+        loadingText.text = "Loading Focus";
+        yield return new WaitForEndOfFrame();
+        focus = Parser.ParseFocus();
+
+
+        loadingImg.fillAmount = 2f / 5f;
+        loadingText.text = "Loading Countries";
+        yield return new WaitForEndOfFrame();
+        gouvs_data = GetComponent<Gouvernements>();
+        pays = Parser.ParsePays();
+        cultures = GetComponent<CulturesWorker>();
+
+        loadingImg.fillAmount = 3f / 5f;
+        loadingText.text = "Loading Formables";
+        yield return new WaitForEndOfFrame();
+        formables = GetComponent<FormableWorker>();
+        formables.SetFormables(Parser.ParseFormables(provinces));
+
+
+        loadingImg.fillAmount = 4f / 5f;
+        loadingText.text = "Loading History";
+        yield return new WaitForEndOfFrame();
+        Parser.ParseHistory(provinces, pays, "history");
+
+        Destroy(loadingRoot);
+
+        CanvasWorker.instance.manager = this;
+
+        picker.Init();
+
+        loading = null;
     }
 
     public void EndPeaceDeal(bool vassalizeB)

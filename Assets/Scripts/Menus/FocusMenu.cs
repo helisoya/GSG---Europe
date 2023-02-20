@@ -10,16 +10,10 @@ public class FocusMenu : MonoBehaviour
     public Transform buttonParent;
     public GameObject prefabButton;
 
-    public Manager manager;
-
-
-    void Start()
-    {
-        manager = Manager.instance;
-    }
 
     public void ShowFocusMenu()
     {
+        Manager manager = Manager.instance;
         Pays country = manager.GetCountry(manager.player);
         foreach (Transform child in buttonParent)
         {
@@ -43,6 +37,7 @@ public class FocusMenu : MonoBehaviour
 
     public void SelectFocus(string focus)
     {
+        Manager manager = Manager.instance;
         Pays country = manager.GetCountry(manager.player);
         country.ChangeFocus(focus);
         ShowFocusMenu();
