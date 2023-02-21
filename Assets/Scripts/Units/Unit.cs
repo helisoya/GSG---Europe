@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
 
     public Vector3 target;
 
-    public string country = "000";
+    public Pays country = null;
 
     public float HP = 100;
 
@@ -34,8 +34,6 @@ public class Unit : MonoBehaviour
     bool disabled = false;
 
     List<MeshRenderer> renderers = new List<MeshRenderer>();
-
-    private Pays pays;
 
 
     void Start()
@@ -67,14 +65,13 @@ public class Unit : MonoBehaviour
         HP_Bar = transform.Find("Bar").gameObject;
 
         UpdateFlag();
-        pays = manager.GetCountry(country);
 
         if (manager.player == country)
         {
             HP_Bar.GetComponent<Renderer>().material.color = new Color32(0, 255, 0, 255);
         }
 
-        HP = pays.unit_hp;
+        HP = country.unit_hp;
         Max = ((int)HP);
 
         RefreshHp();
@@ -112,8 +109,8 @@ public class Unit : MonoBehaviour
 
     public int GetDmg()
     {
-        if (isOnWater) return pays.unit_navalDamage;
-        return pays.unit_damage;
+        if (isOnWater) return country.unit_navalDamage;
+        return country.unit_damage;
     }
 
     public bool IsOnCountryTerritory(string id)
@@ -131,7 +128,7 @@ public class Unit : MonoBehaviour
 
 
 
-        if (manager.GetCountry(country).provinces.Count <= 0)
+        if (country.provinces.Count <= 0)
         {
             TakeDamage(Max + 1);
         }
@@ -139,7 +136,7 @@ public class Unit : MonoBehaviour
         Vector3 lastPos = transform.position;
         if (!(target == transform.position))
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, pays.unit_speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target, country.unit_speed * Time.deltaTime);
         }
 
         transform.LookAt(target);
@@ -166,21 +163,21 @@ public class Unit : MonoBehaviour
 
                 if (prov.controller == country) return;
 
-                if (pays.atWarWith.ContainsKey(prov.controller)
+                if (country.atWarWith.ContainsKey(prov.controller.ID)
                     && (prov.owner == prov.controller || prov.owner == country))
                 {
 
-                    prov.controller = country;
+                    prov.SetController(country);
                     prov.RefreshColor();
 
 
-                    if (prov.owner != manager.player && manager.GetCountry(prov.owner).units.Count > 0)
+                    if (prov.owner != manager.player && prov.owner.units.Count > 0)
                     {
-                        manager.GetCountry(prov.owner).units[Random.Range(0, manager.GetCountry(prov.owner).units.Count)].GetComponent<Unit>().target = transform.position;
+                        prov.owner.units[Random.Range(0, prov.owner.units.Count)].GetComponent<Unit>().target = transform.position;
                     }
 
                 }
-                else if (prov.owner != country && !(pays.relations[prov.owner] >= 2))
+                else if (prov.owner != country && !(country.relations[prov.owner.ID] >= 2))
                 {
                     if (country == manager.player)
                     {
@@ -188,9 +185,9 @@ public class Unit : MonoBehaviour
                     }
                     else
                     {
-                        prov.controller = country;
+                        prov.SetController(country);
                         prov.RefreshColor();
-                        pays.DeclareWarOnCountry(prov.owner);
+                        country.DeclareWarOnCountry(prov.owner);
                     }
                     target = transform.position;
                 }
@@ -202,13 +199,13 @@ public class Unit : MonoBehaviour
             }
             else
             { // Cas hors province (Sur mer)
-                if (hit.transform.gameObject.tag == "Map" && sea_part.activeInHierarchy == false && pays.hasTech_Naval)
+                if (hit.transform.gameObject.tag == "Map" && sea_part.activeInHierarchy == false && country.hasTech_Naval)
                 {
                     sea_part.SetActive(true);
                     land_part.SetActive(false);
                     isOnWater = true;
                 }
-                else if (hit.transform.gameObject.tag == "Map" && !pays.hasTech_Naval)
+                else if (hit.transform.gameObject.tag == "Map" && !country.hasTech_Naval)
                 {
                     target = lastPos;
                     transform.position = lastPos;
@@ -228,7 +225,7 @@ public class Unit : MonoBehaviour
 
         bool canRegen = true;
 
-        foreach (string key in pays.atWarWith.Keys)
+        foreach (string key in country.atWarWith.Keys)
         {
             foreach (GameObject unit in manager.GetCountry(key).units)
             {
@@ -293,7 +290,7 @@ public class Unit : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        if (dmg < 0 || Random.Range(0, 101) > pays.unit_evasion)
+        if (dmg < 0 || Random.Range(0, 101) > country.unit_evasion)
         {
             HP = Mathf.Clamp(HP - dmg, 0, Max);
         }
@@ -306,7 +303,7 @@ public class Unit : MonoBehaviour
 
         if (HP <= 0)
         {
-            manager.GetCountry(country).RemoveUnit(gameObject);
+            country.RemoveUnit(gameObject);
             Destroy(gameObject);
         }
         else
@@ -329,7 +326,7 @@ public class Unit : MonoBehaviour
     {
         if (flag != null)
         {
-            flag.GetComponent<Renderer>().material.mainTexture = manager.GetCountry(country).currentFlag.texture;
+            flag.GetComponent<Renderer>().material.mainTexture = country.currentFlag.texture;
         }
 
     }

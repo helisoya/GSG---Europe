@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Selection : MonoBehaviour
 {
-    private Manager manager;
 
     RaycastHit hit;
 
@@ -30,7 +29,6 @@ public class Selection : MonoBehaviour
     void Start()
     {
         dragSelect = false;
-        manager = GameObject.Find("Manager").GetComponent<Manager>();
     }
 
     // Update is called once per frame
@@ -70,7 +68,7 @@ public class Selection : MonoBehaviour
                     }
                     else //exclusive selected
                     {
-                        foreach (GameObject unit in manager.selected_unit)
+                        foreach (GameObject unit in Manager.instance.selected_unit)
                         {
                             if (unit != null)
                             {
@@ -78,7 +76,7 @@ public class Selection : MonoBehaviour
                             }
                         }
 
-                        manager.selected_unit = new List<GameObject>();
+                        Manager.instance.selected_unit = new List<GameObject>();
 
                         if (hit.transform.gameObject.tag == "Unit")
                         {
@@ -99,7 +97,7 @@ public class Selection : MonoBehaviour
                     else
                     {
 
-                        foreach (GameObject unit in manager.selected_unit)
+                        foreach (GameObject unit in Manager.instance.selected_unit)
                         {
                             if (unit != null)
                             {
@@ -107,7 +105,7 @@ public class Selection : MonoBehaviour
                             }
                         }
 
-                        manager.selected_unit = new List<GameObject>();
+                        Manager.instance.selected_unit = new List<GameObject>();
                     }
                 }
             }
@@ -122,7 +120,7 @@ public class Selection : MonoBehaviour
 
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
-                    foreach (GameObject unit in manager.selected_unit)
+                    foreach (GameObject unit in Manager.instance.selected_unit)
                     {
                         if (unit != null)
                         {
@@ -130,10 +128,10 @@ public class Selection : MonoBehaviour
                         }
                     }
 
-                    manager.selected_unit = new List<GameObject>();
+                    Manager.instance.selected_unit = new List<GameObject>();
                 }
 
-                foreach (GameObject unit in manager.GetCountry(manager.player).units)
+                foreach (GameObject unit in Manager.instance.player.units)
                 {
                     Vector3 pos = GetComponent<Camera>().WorldToScreenPoint(unit.transform.position);
                     if (corners[0].x <= pos.x && pos.x <= corners[3].x &&
@@ -163,10 +161,10 @@ public class Selection : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (manager.selected_unit != null)
+                if (Manager.instance.selected_unit != null)
                 {
                     Vector3 pos = new Vector3(hit.point.x, 0.3f, hit.point.z);
-                    foreach (GameObject unit in manager.selected_unit)
+                    foreach (GameObject unit in Manager.instance.selected_unit)
                     {
                         unit.GetComponent<Unit>().target = pos;
                     }

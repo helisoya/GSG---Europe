@@ -3693,7 +3693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38bf6107df79ca40a135555dfee5247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 000
   an: 2030
   cultures: {fileID: 0}
   selected_unit: []
@@ -6680,7 +6679,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Rendre
+  m_Text: Restitute
 --- !u!222 &993081623
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7821,18 +7820,6 @@ MonoBehaviour:
     rgba: 4294933046
   piechart_prefab: {fileID: 7116107645431108405, guid: 1dbcd8b72cf1ab6469a1b6b42d5c6c97,
     type: 3}
-  focus_names:
-  - Effort Politique
-  - Infrastructures
-  - Effort Offensif
-  - Tactique Blitz
-  - "Marine Coti\xE8re"
-  - "Neutralit\xE9"
-  - Etoile Rouge
-  - Socialisme
-  - Centrisme
-  - Ordre Moral
-  - Aigle Marron
   holder_CountryInfo: {fileID: 313059314}
   infoName: {fileID: 1421134400}
   infoGovernement: {fileID: 1124176855}
@@ -7952,7 +7939,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Achat Troupe  100 PP
+  m_Text: Buy Troops (100 AP)
 --- !u!222 &1169458963
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11775,7 +11762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d3fc2418ff62a42a10b488dac15458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current: FRA
   flag: {fileID: 1423332992}
   text: {fileID: 557870174}
 --- !u!1 &1651961192

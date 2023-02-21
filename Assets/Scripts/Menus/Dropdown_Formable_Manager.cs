@@ -44,7 +44,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     {
         manager.currentFormable = current[transform.Find("List").GetComponent<UnityEngine.UI.Dropdown>().value];
 
-        if (manager.currentFormable.CountryHasAllRequirement(manager.GetCountry(manager.player)))
+        if (manager.currentFormable.CountryHasAllRequirement(manager.player))
         {
             transform.Find("Form").gameObject.SetActive(true);
         }
@@ -66,7 +66,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
 
     public void FormShortcut()
     {
-        manager.formables.FormNation(manager.GetCountry(manager.player), manager.currentFormable);
+        manager.formables.FormNation(manager.player, manager.currentFormable);
         canvas.ClosePolitique();
         canvas.Show_CountryInfo(manager.player);
     }

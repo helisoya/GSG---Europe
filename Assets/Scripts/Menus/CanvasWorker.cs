@@ -8,7 +8,7 @@ public class CanvasWorker : MonoBehaviour
 {
     [HideInInspector] public Manager manager;
 
-    private string current_countryinfo = "000";
+    private Pays current_countryinfo = null;
 
 
     private Province current_city;
@@ -19,7 +19,6 @@ public class CanvasWorker : MonoBehaviour
 
     private List<string> current_cores;
 
-    public List<string> focus_names;
 
     public static CanvasWorker instance;
 
@@ -94,7 +93,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void UpdateUtilityUnitCap()
     {
-        utilityUC.text = manager.GetCountry(manager.player).units.Count + "/" + manager.GetCountry(manager.player).unitCap;
+        utilityUC.text = manager.player.units.Count + "/" + manager.player.unitCap;
     }
 
     public void OpenSettingsMenu()
@@ -132,10 +131,10 @@ public class CanvasWorker : MonoBehaviour
     }
 
 
-    public void Show_CountryInfo(string NEW)
+    public void Show_CountryInfo(Pays NEW)
     {
         current_countryinfo = NEW;
-        UpdateInfo(manager.GetCountry(NEW));
+        UpdateInfo(NEW);
 
         infoDiploRoot.SetActive(false);
 
@@ -148,7 +147,7 @@ public class CanvasWorker : MonoBehaviour
 
             infoDiploPeace.onClick.AddListener(() =>
             {
-                OpenPeaceDealTab(manager.player, NEW);
+                OpenPeaceDealTab(manager.player.ID, NEW.ID);
                 //UpdateRelations_ShortCut(manager.player, NEW, 0);
                 //Show_CountryInfo(NEW);
             });
@@ -159,20 +158,20 @@ public class CanvasWorker : MonoBehaviour
             });
             infoDiploVassal.onClick.AddListener(() =>
             {
-                string old = manager.player;
+                Pays old = manager.player;
                 manager.player = NEW;
-                manager.GetCountry(old).RefreshProvinces();
-                manager.GetCountry(NEW).RefreshProvinces();
+                old.RefreshProvinces();
+                NEW.RefreshProvinces();
                 Show_CountryInfo(NEW);
             });
 
-            if (manager.GetCountry(manager.player).relations[NEW] == 1)
+            if (manager.player.relations[NEW.ID] == 1)
             { // Pays en guerre
                 infoDiploPeace.gameObject.SetActive(true);
                 infoDiploWar.gameObject.SetActive(false);
                 infoDiploVassal.gameObject.SetActive(false);
             }
-            else if (manager.GetCountry(manager.player).relations[NEW] == 2)
+            else if (manager.player.relations[NEW.ID] == 2)
             { // Cas Vassal
                 infoDiploPeace.gameObject.SetActive(false);
                 infoDiploWar.gameObject.SetActive(false);
@@ -189,7 +188,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void UpdateInfo()
     {
-        UpdateInfo(manager.GetCountry(current_countryinfo));
+        UpdateInfo(current_countryinfo);
     }
 
     public void UpdateInfo(Pays country)
@@ -240,26 +239,26 @@ public class CanvasWorker : MonoBehaviour
             Destroy(politicalGraph.GetChild(i).gameObject);
         }
 
-        MakeGraph(manager.GetCountry(manager.player).parties);
+        MakeGraph(manager.player.parties);
 
         for (int i = 0; i < piechart_colors.Length; i++)
         {
             politicalPartiesGUI[i].image.color = piechart_colors[i];
-            politicalPartiesGUI[i].text.text = manager.GetCountry(manager.player).parties[i].partyName;
+            politicalPartiesGUI[i].text.text = manager.player.parties[i].partyName;
         }
 
-        if (manager.GetCountry(manager.player).date_elections == -1)
+        if (manager.player.date_elections == -1)
         {
             politicalElections.text = "Next Elections : Never";
         }
         else
         {
-            politicalElections.text = "Next Elections : " + manager.GetCountry(manager.player).date_elections.ToString();
+            politicalElections.text = "Next Elections : " + manager.player.date_elections.ToString();
         }
-        politicalAP.text = "Admin Power : " + manager.GetCountry(manager.player).AP.ToString();
-        politicalGovernement.text = manager.GetGovernementName(manager.GetCountry(manager.player).Government_Form);
-        politicalGovernementDesc.text = manager.GetGovernementDesc(manager.GetCountry(manager.player).Government_Form);
-        politicalFormables.RefreshDropdown(manager.GetCountry(manager.player));
+        politicalAP.text = "Admin Power : " + manager.player.AP.ToString();
+        politicalGovernement.text = manager.GetGovernementName(manager.player.Government_Form);
+        politicalGovernementDesc.text = manager.GetGovernementDesc(manager.player.Government_Form);
+        politicalFormables.RefreshDropdown(manager.player);
     }
 
     public void ClosePolitique()
@@ -284,7 +283,8 @@ public class CanvasWorker : MonoBehaviour
     public void Hide_Event()
     {
         manager.GetComponent<Timer>().ResumeTime();
-        manager.GetCountry(manager.player).Reset_Flag();
+
+        manager.player.Reset_Flag();
         Show_CountryInfo(manager.player);
         eventsRoot.SetActive(false);
         ShowDefault();
@@ -303,68 +303,68 @@ public class CanvasWorker : MonoBehaviour
     public void Add_Popularity_ShortCut(int index)
     {
 
-        if (manager.GetCountry(manager.player).AP < 10)
+        if (manager.player.AP < 10)
         {
             return;
         }
-        manager.GetCountry(manager.player).AP -= 10;
-        politicalAP.text = "Admin Power : " + manager.GetCountry(manager.player).AP.ToString();
+        manager.player.AP -= 10;
+        politicalAP.text = "Admin Power : " + manager.player.AP.ToString();
         UpdatePPBar();
 
-        manager.GetCountry(manager.player).Add_Popularity(index, 5);
+        manager.player.Add_Popularity(index, 5);
 
         for (int i = 0; i < politicalGraph.childCount; i++)
         {
             Destroy(politicalGraph.GetChild(i).gameObject);
         }
-        MakeGraph(manager.GetCountry(manager.player).parties);
+        MakeGraph(manager.player.parties);
     }
 
-    public void UpdateRelations_ShortCut(string A, string B, int st)
+    public void UpdateRelations_ShortCut(Pays A, Pays B, int st)
     { //Met a jour A selon st, puis B en logique
+
+        List<string> keys;
         switch (st)
         {
             case 0:
-                manager.GetCountry(A).MakePeaceWithCountry(B);
-                if (manager.GetCountry(B).provinces.Count == 0)
+                A.MakePeaceWithCountry(B);
+                if (B.provinces.Count == 0)
                 {
                     Show_CountryInfo(A);
                 }
                 break;
 
             case 1:
-                manager.GetCountry(A).DeclareWarOnCountry(B);
+                A.DeclareWarOnCountry(B);
                 break;
 
             case 2:
-                List<string> keys = new List<string>();
-                foreach (string key in manager.GetCountry(B).relations.Keys)
+
+                keys = new List<string>(B.relations.Keys);
+                foreach (string key in keys)
                 {
-                    keys.Add(key);
-                }
-                foreach (string pays in keys)
-                {
-                    manager.GetCountry(B).relations[pays] = 0;
+                    B.relations[key] = 0;
                 }
 
-                manager.GetCountry(A).relations[B] = st;
-                manager.GetCountry(B).relations[A] = 3;
-                manager.GetCountry(B).CopyCat(A);
-                manager.GetCountry(B).MimicColor(A);
-                manager.GetCountry(B).vassal = true;
+                A.relations[B.ID] = st;
+                B.relations[A.ID] = 3;
+                B.CopyCat(A);
+                B.MimicColor(A);
+                B.vassal = true;
                 break;
 
             case 3:
-                foreach (string pays in manager.GetCountry(A).relations.Keys)
+                keys = new List<string>(A.relations.Keys);
+                foreach (string pays in keys)
                 {
-                    manager.GetCountry(A).relations[pays] = 0;
+                    A.relations[pays] = 0;
                 }
 
-                manager.GetCountry(A).relations[B] = st;
-                manager.GetCountry(B).relations[A] = 2;
-                manager.GetCountry(A).CopyCat(B);
-                manager.GetCountry(A).MimicColor(B);
-                manager.GetCountry(A).vassal = true;
+                A.relations[B.ID] = st;
+                B.relations[A.ID] = 2;
+                A.CopyCat(B);
+                A.MimicColor(B);
+                A.vassal = true;
                 break;
         }
 
@@ -397,12 +397,15 @@ public class CanvasWorker : MonoBehaviour
         }
         string released = current_cores[provinceDetailsDropdown.value];
 
-        manager.GetCountry(manager.player).RemoveProvince(current_city);
-        manager.GetCountry(released).AddProvince(current_city);
+        manager.player.RemoveProvince(current_city);
 
-        if (manager.GetCountry(released).provinces.Count == 1)
+        Pays releasedP = manager.GetCountry(released);
+
+        releasedP.AddProvince(current_city);
+
+        if (releasedP.provinces.Count == 1)
         {
-            UpdateRelations_ShortCut(manager.player, released, 2);
+            UpdateRelations_ShortCut(manager.player, releasedP, 2);
         }
         provinceDetailsRoot.SetActive(false);
     }
@@ -414,7 +417,7 @@ public class CanvasWorker : MonoBehaviour
 
         foreach (string key in manager.pays.Keys)
         {
-            if (key != manager.player)
+            if (key != manager.player.ID)
             {
                 if (manager.GetCountry(key).cores.Contains(prov))
                 {
@@ -427,10 +430,10 @@ public class CanvasWorker : MonoBehaviour
 
     public void BuyUnit()
     {
-        if (manager.GetCountry(manager.player).canBuyUnit && current_city.owner == manager.player
-         && current_city.controller == manager.player && manager.GetCountry(manager.player).AP >= 100)
+        if (manager.player.canBuyUnit && current_city.owner == manager.player
+         && current_city.controller == manager.player && manager.player.AP >= 100)
         {
-            manager.GetCountry(manager.player).AP -= 100;
+            manager.player.AP -= 100;
             current_city.SpawnUnitAtCity();
             UpdatePPBar();
         }
@@ -462,7 +465,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void UpdatePPBar()
     {
-        utilityAP.text = "AP : " + manager.GetCountry(manager.player).AP.ToString();
+        utilityAP.text = "AP : " + manager.player.AP.ToString();
     }
 
 }

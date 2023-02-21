@@ -17,7 +17,7 @@ public class MusicManager : MonoBehaviour
     {
         if (!source.isPlaying && Manager.instance.picked)
         {
-            source.clip = Manager.instance.cultures.GetRandom_Musique(Manager.instance.GetCountry(Manager.instance.player).culture);
+            source.clip = Manager.instance.cultures.GetRandom_Musique(Manager.instance.player.culture);
             if (source.clip != null)
             {
                 source.Play();

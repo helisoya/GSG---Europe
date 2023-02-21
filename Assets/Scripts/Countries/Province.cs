@@ -5,18 +5,26 @@ using UnityEngine;
 public class Province : MonoBehaviour
 {
 
-    public string controller = "000";
-    public string owner = "000";
+    public Pays controller = null;
+    public Pays owner = null;
     public string Province_Name;
 
 
     private CanvasWorker canvas;
 
-    private Manager manager;
-
     public Vector3 center;
 
     private bool hover;
+
+    public void SetOwner(Pays pays)
+    {
+        owner = pays;
+    }
+
+    public void SetController(Pays pays)
+    {
+        controller = pays;
+    }
 
     public void ComputeCenter(Vector3[] vecs)
     {
@@ -32,12 +40,12 @@ public class Province : MonoBehaviour
     {
         Vector3 pos = (Vector3)Random.insideUnitCircle * 2;
         pos.z = pos.y;
-        manager.GetCountry(owner).CreateUnit(pos + center);
+        owner.CreateUnit(pos + center);
     }
 
     public void Click_Event()
     {
-        if (owner == manager.player && manager.picked)
+        if (owner == Manager.instance.player && Manager.instance.picked)
         {
             GameObject.Find("Canvas").GetComponent<CanvasWorker>().ShowBuyUnit(this);
         }
@@ -48,14 +56,8 @@ public class Province : MonoBehaviour
         hover = false;
         ComputeCenter(vecs);
 
-        manager = Manager.instance;
 
         canvas = CanvasWorker.instance;
-
-        if (owner == "")
-        {
-            owner = "000";
-        }
 
         // Initialise la creation de la province en polygone
 
@@ -87,22 +89,20 @@ public class Province : MonoBehaviour
 
     public void RefreshColor()
     {
-        Pays cOwner = Manager.instance.GetCountry(owner);
-        Pays cController = Manager.instance.GetCountry(controller);
-
-        if (manager.inPeaceDeal)
+        Manager manager = Manager.instance;
+        if (Manager.instance.inPeaceDeal)
         {
-            if (cOwner.ID != manager.peaceDealSide1 && cOwner.ID != manager.peaceDealSide2)
+            if (owner.ID != manager.peaceDealSide1 && owner.ID != manager.peaceDealSide2)
             {
                 SetColor(manager.colors_formable[2], manager.colors_formable[2]);
             }
             else if (manager.provincesToBeTakenInPeaceDeal.Contains(this))
             {
-                SetColor(cController.color, cController.color);
+                SetColor(controller.color, controller.color);
             }
             else
             {
-                SetColor(cOwner.color, cController.color);
+                SetColor(owner.color, controller.color);
             }
             return;
         }
@@ -111,7 +111,7 @@ public class Province : MonoBehaviour
 
         if (manager.currentMapMode == Manager.MAPMODE.POLITICAL)
         {
-            SetColor(cOwner.color, cController.color);
+            SetColor(owner.color, controller.color);
             return;
         }
 
@@ -121,8 +121,8 @@ public class Province : MonoBehaviour
 
         if (manager.currentMapMode == Manager.MAPMODE.IDEOLOGICAL)
         {
-            indexOwner = cOwner.Ideologie();
-            indexController = cController.Ideologie();
+            indexOwner = owner.Ideologie();
+            indexController = controller.Ideologie();
             SetColor(manager.colors_ideologie[indexOwner], manager.colors_ideologie[indexController]);
         }
         else if (manager.currentMapMode == Manager.MAPMODE.DIPLOMATIC)
@@ -133,7 +133,7 @@ public class Province : MonoBehaviour
             }
             else
             {
-                indexOwner = cOwner.relations[manager.player];
+                indexOwner = owner.relations[manager.player.ID];
                 if (indexOwner == 3)
                 {
                     indexOwner = 2;
@@ -150,7 +150,7 @@ public class Province : MonoBehaviour
             }
             else
             {
-                indexController = cController.relations[manager.player];
+                indexController = controller.relations[manager.player.ID];
                 if (indexController == 3)
                 {
                     indexController = 2;
@@ -181,14 +181,14 @@ public class Province : MonoBehaviour
     {
         if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            if (manager.inPeaceDeal && manager.peaceDealSide2 == owner && manager.player == controller)
+            if (Manager.instance.inPeaceDeal && Manager.instance.peaceDealSide2 == owner.ID && Manager.instance.player == controller)
             {
                 CanvasWorker.instance.PeaceDealProvinceSelection(this);
                 return;
             }
 
 
-            if (manager.picked)
+            if (Manager.instance.picked)
             {
                 canvas.Show_CountryInfo(owner);
             }
@@ -197,7 +197,7 @@ public class Province : MonoBehaviour
                 canvas.transform.Find("Picker").GetComponent<CountryPicker>().UpdateCountry(owner);
             }
 
-            if (owner == manager.player)
+            if (owner == Manager.instance.player)
             {
                 GameObject.Find("Canvas").GetComponent<CanvasWorker>().ShowBuyUnit(this);
             }
@@ -209,7 +209,7 @@ public class Province : MonoBehaviour
     void OnMouseEnter()
     {
 
-        if (manager.isLoading || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        if (Manager.instance.isLoading || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
@@ -220,7 +220,7 @@ public class Province : MonoBehaviour
 
     void OnMouseExit()
     {
-        if (manager.isLoading) return;
+        if (Manager.instance.isLoading) return;
         hover = false;
         RefreshColor();
     }

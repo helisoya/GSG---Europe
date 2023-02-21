@@ -42,7 +42,7 @@ public class AI : MonoBehaviour
         }
         foreach (Province prov in country.provinces)
         {
-            if (prov.controller == country.ID && Random.Range(0, 50) == 0 && country.AP >= 100)
+            if (prov.controller == country && Random.Range(0, 50) == 0 && country.AP >= 100)
             {
                 country.AP -= 100;
                 prov.GetComponent<Province>().SpawnUnitAtCity();
@@ -57,17 +57,20 @@ public class AI : MonoBehaviour
         {
             return;
         }
-        foreach (string pays in country.relations.Keys)
+
+        Pays pays;
+        foreach (string key in country.relations.Keys)
         {
-            if (pays != country.ID && manager.GetCountry(pays).provinces.Count != 0 && country.relations[pays] < 2)
+            pays = manager.GetCountry(key);
+            if (pays != country && pays.provinces.Count != 0 && country.relations[key] < 2)
             {
-                if (country.relations[pays] == 0 &&
+                if (country.relations[key] == 0 &&
                 Random.Range(0, 100) < (manager.player == pays ? 1 : 3))
                 {
                     country.DeclareWarOnCountry(pays);
                     return;
                 }
-                else if (pays != manager.player && country.relations[pays] == 1 && Random.Range(0, 100) < 10)
+                else if (pays != manager.player && country.relations[key] == 1 && Random.Range(0, 100) < 10)
                 {
                     country.MakePeaceWithCountry(pays);
                     return;
@@ -78,7 +81,7 @@ public class AI : MonoBehaviour
 
     Vector3 GetRandomPosInsideCountry(Pays country)
     {
-        Vector3 pos = country.provinces[Random.Range(0, country.provinces.Count)].GetComponent<Province>().center;
+        Vector3 pos = country.provinces[Random.Range(0, country.provinces.Count)].center;
         pos.y = 0.3f;
         return pos;
     }
@@ -101,7 +104,7 @@ public class AI : MonoBehaviour
                     Pays p = manager.GetCountry(new List<string>(country.atWarWith.Keys)[Random.Range(0, country.atWarWith.Keys.Count)]);
                     if (p.provinces.Count <= 0)
                     {
-                        country.MakePeaceWithCountry(p.ID);
+                        country.MakePeaceWithCountry(p);
                     }
                     else
                     {

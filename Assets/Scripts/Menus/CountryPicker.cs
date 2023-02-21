@@ -5,31 +5,27 @@ using UnityEngine.UI;
 
 public class CountryPicker : MonoBehaviour
 {
-    public string current = "FRA";
-
-    private Manager manager;
+    public Pays current = null;
 
     [SerializeField] private Image flag;
     [SerializeField] private Text text;
 
     public void Init()
     {
-        manager = Manager.instance;
-        UpdateCountry(current);
+        UpdateCountry(Manager.instance.GetCountry("FRA"));
     }
 
 
-    public void UpdateCountry(string c)
+    public void UpdateCountry(Pays c)
     {
         current = c;
-        flag.sprite = manager.GetCountry(c).currentFlag;
-        text.text = manager.GetCountry(c).nom;
+        flag.sprite = c.currentFlag;
+        text.text = c.nom;
     }
 
     public void LaunchGame()
     {
-        manager.player = current;
-        manager.StartGame();
+        Manager.instance.StartGame(current);
         gameObject.SetActive(false);
     }
 

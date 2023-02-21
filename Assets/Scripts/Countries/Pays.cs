@@ -177,7 +177,7 @@ public class Pays
             }
             currentFocus = "NONE";
 
-            if (ID == manager.player)
+            if (this == manager.player)
             {
                 CanvasWorker.instance.UpdateFocus();
             }
@@ -244,37 +244,37 @@ public class Pays
         currentFocusTime = maxFocusTime;
     }
 
-    public void DeclareWarOnCountry(string country)
+    public void DeclareWarOnCountry(Pays country)
     {
-        if (relations[country] == 1)
+        if (relations[country.ID] == 1)
         {
             return;
         }
-        relations[country] = 1;
-        manager.GetCountry(country).relations[ID] = 1;
+        relations[country.ID] = 1;
+        country.relations[ID] = 1;
 
-        atWarWith.Add(country, 0);
-        manager.GetCountry(country).atWarWith.Add(ID, 0);
+        atWarWith.Add(country.ID, 0);
+        country.atWarWith.Add(ID, 0);
     }
 
-    public void MakePeaceWithCountry(string country)
+    public void MakePeaceWithCountry(Pays other)
     {
-        if (relations[country] == 0)
+        if (relations[other.ID] == 0)
         {
             return;
         }
-        Pays other = manager.GetCountry(country);
-        relations[country] = 0;
+
+        relations[other.ID] = 0;
         other.relations[ID] = 0;
 
-        atWarWith.Remove(country);
+        atWarWith.Remove(other.ID);
         other.atWarWith.Remove(ID);
 
         Province[] copy = other.provinces.ToArray();
 
         foreach (Province p in copy)
         {
-            if (p.controller == ID)
+            if (p.controller.ID == ID)
             {
                 AddProvince(p);
                 other.RemoveProvince(p);
@@ -283,7 +283,7 @@ public class Pays
         other.CutDownArmy();
         CutDownArmy();
 
-        if (ID == manager.player)
+        if (this == manager.player)
         {
             CanvasWorker.instance.UpdateUtilityUnitCap();
         }
@@ -328,7 +328,7 @@ public class Pays
             if (3 == Government_Form || Government_Form == 5)
             { // Monarchie
                 SameFamilyLeader();
-                if (manager.player == ID)
+                if (manager.player == this)
                 {
                     events.DeathLeader_Monarchy(ID);
                 }
@@ -336,7 +336,7 @@ public class Pays
             else
             { // Le Reste + Monarchie Elective
                 RandomizeLeader();
-                if (manager.player == ID)
+                if (manager.player == this)
                 {
                     events.DeathLeader_Normal(ID);
                 }
@@ -422,7 +422,7 @@ public class Pays
         }
         Add_Popularity(index, 5);
 
-        if (manager.player == ID)
+        if (manager.player == this)
         {
             events.Elections(ID, index);
         }
@@ -553,7 +553,7 @@ public class Pays
     public void Choix_Type(int groupe)
     {
 
-        if (ID == manager.player)
+        if (this == manager.player)
         {
             if (groupe == 1)
             { // Republique
@@ -594,7 +594,7 @@ public class Pays
         GameObject obj = Manager.Instantiate(manager.cultures.GetCulture(culture).prefabTank, GameObject.Find("Units").transform);
         pos.y = 0.3f;
         obj.transform.position = pos;
-        obj.GetComponent<Unit>().country = ID;
+        obj.GetComponent<Unit>().country = this;
         units.Add(obj);
         CanvasWorker.instance.UpdateUtilityUnitCap();
     }
@@ -617,8 +617,8 @@ public class Pays
     public void AddProvince(Province prov, bool refresh = true)
     {
         provinces.Add(prov);
-        prov.owner = ID;
-        prov.controller = ID;
+        prov.SetOwner(this);
+        prov.SetController(this);
         if (refresh)
         {
             prov.RefreshColor();
@@ -632,17 +632,17 @@ public class Pays
 
 
 
-    public void CopyCat(string c)
+    public void CopyCat(Pays c)
     {
-        Government_Form = manager.GetCountry(c).Government_Form;
+        Government_Form = c.Government_Form;
         Reset_Elections();
         Reset_Flag();
         RandomizeLeader();
     }
 
-    public void MimicColor(string c)
+    public void MimicColor(Pays c)
     {
-        color = Color32.Lerp(color, manager.GetCountry(c).color, 0.6f);
+        color = Color32.Lerp(color, c.color, 0.6f);
         RefreshProvinces();
     }
 

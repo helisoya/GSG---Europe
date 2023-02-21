@@ -14,7 +14,7 @@ public class FocusMenu : MonoBehaviour
     public void ShowFocusMenu()
     {
         Manager manager = Manager.instance;
-        Pays country = manager.GetCountry(manager.player);
+        Pays country = manager.player;
         foreach (Transform child in buttonParent)
         {
             Destroy(child.gameObject);
@@ -38,7 +38,7 @@ public class FocusMenu : MonoBehaviour
     public void SelectFocus(string focus)
     {
         Manager manager = Manager.instance;
-        Pays country = manager.GetCountry(manager.player);
+        Pays country = manager.player;
         country.ChangeFocus(focus);
         ShowFocusMenu();
     }

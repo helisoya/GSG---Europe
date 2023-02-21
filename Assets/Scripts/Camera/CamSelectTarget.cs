@@ -90,7 +90,7 @@ public class CamSelectTarget : MonoBehaviour
 
             manager.selected_unit = new List<GameObject>();
 
-            foreach (GameObject unit in manager.GetCountry(manager.player).units)
+            foreach (GameObject unit in manager.player.units)
             {
                 Vector3 pos = cam.WorldToScreenPoint(unit.transform.position);
                 Vector2 min = selectionbox.anchoredPosition - (selectionbox.sizeDelta / 2);

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    public string player = "000";
+    public Pays player = null;
 
     private Gouvernements gouvs_data;
 
@@ -150,12 +150,12 @@ public class Manager : MonoBehaviour
 
         foreach (Province province in A.provinces)
         {
-            if (province.controller == B.ID) province.controller = A.ID;
+            if (province.controller == B) province.controller = A;
         }
 
         foreach (Province province in B.provinces)
         {
-            if (province.controller == A.ID) province.controller = B.ID;
+            if (province.controller == A) province.controller = B;
         }
 
 
@@ -177,11 +177,11 @@ public class Manager : MonoBehaviour
         }
 
 
-        A.MakePeaceWithCountry(B.ID);
+        A.MakePeaceWithCountry(B);
 
         if (vassalizeB)
         {
-            CanvasWorker.instance.UpdateRelations_ShortCut(A.ID, B.ID, 2);
+            CanvasWorker.instance.UpdateRelations_ShortCut(A, B, 2);
         }
 
         RefreshMap();
@@ -202,8 +202,9 @@ public class Manager : MonoBehaviour
     }
 
 
-    public void StartGame()
+    public void StartGame(Pays chosenCountry)
     {
+        player = chosenCountry;
         picked = true;
         CanvasWorker.instance.ShowDefault();
         CanvasWorker.instance.Show_CountryInfo(player);
@@ -212,7 +213,7 @@ public class Manager : MonoBehaviour
 
         foreach (Pays p in pays.Values)
         {
-            if (!p.DestroyIfNotSelected || p.ID == player)
+            if (!p.DestroyIfNotSelected || p.ID == player.ID)
             {
                 p.Refresh_Relations();
                 p.RandomizeLeader();
@@ -283,7 +284,7 @@ public class Manager : MonoBehaviour
                 country.AP += country.AP_PerMonth;
                 country.IncrementFocus();
 
-                if (country.ID != player)
+                if (country != player)
                 {
                     GetComponent<AI>().IA(country);
                 }
