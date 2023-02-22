@@ -21,20 +21,7 @@ public class Manager : MonoBehaviour
 
     public List<GameObject> selected_unit = new List<GameObject>();
 
-    public enum MAPMODE
-    {
-        POLITICAL,
-        IDEOLOGICAL,
-        DIPLOMATIC,
-        FORMABLE
-    }
-    public MAPMODE currentMapMode = MAPMODE.POLITICAL;
 
-    public Color32[] colors_ideologie;
-
-    public Color32[] colors_relations;
-
-    public Color32[] colors_formable;
 
     public FormableWorker formables;
 
@@ -66,10 +53,14 @@ public class Manager : MonoBehaviour
         get { return loading != null; }
     }
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         loading = null;
-        instance = this;
 
         loading = StartCoroutine(LoadFiles());
 
@@ -317,27 +308,7 @@ public class Manager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1) && currentMapMode != 0)
-        {
-            currentMapMode = MAPMODE.POLITICAL;
-            RefreshMap();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentMapMode = MAPMODE.IDEOLOGICAL;
-            RefreshMap();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentMapMode = MAPMODE.DIPLOMATIC;
-            RefreshMap();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && currentFormable != null)
-        {
-            currentMapMode = MAPMODE.FORMABLE;
-            RefreshMap();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             GetComponent<Timer>().StopTime();
             CanvasWorker.instance.OpenSettingsMenu();

@@ -3613,6 +3613,7 @@ GameObject:
   - component: {fileID: 500958221}
   - component: {fileID: 500958229}
   - component: {fileID: 500958222}
+  - component: {fileID: 500958230}
   - component: {fileID: 500958223}
   - component: {fileID: 500958224}
   - component: {fileID: 500958225}
@@ -3696,34 +3697,6 @@ MonoBehaviour:
   an: 2030
   cultures: {fileID: 0}
   selected_unit: []
-  currentMapMode: 0
-  colors_ideologie:
-  - serializedVersion: 2
-    rgba: 4292121639
-  - serializedVersion: 2
-    rgba: 4290784936
-  - serializedVersion: 2
-    rgba: 4281940445
-  - serializedVersion: 2
-    rgba: 4282612622
-  colors_relations:
-  - serializedVersion: 2
-    rgba: 4286179114
-  - serializedVersion: 2
-    rgba: 4283914225
-  - serializedVersion: 2
-    rgba: 4291352107
-  - serializedVersion: 2
-    rgba: 4288184654
-  - serializedVersion: 2
-    rgba: 4292111131
-  colors_formable:
-  - serializedVersion: 2
-    rgba: 4293830720
-  - serializedVersion: 2
-    rgba: 4287652128
-  - serializedVersion: 2
-    rgba: 4283387727
   formables: {fileID: 500958228}
   currentFormable:
     Name: 
@@ -4062,6 +4035,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb328c00f666b548ba0020ab78fcbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &500958230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500958220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27201ceb3aa49a04fa3d61d8fee094dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colors_ideologie:
+  - serializedVersion: 2
+    rgba: 4292121639
+  - serializedVersion: 2
+    rgba: 4290784936
+  - serializedVersion: 2
+    rgba: 4281940445
+  - serializedVersion: 2
+    rgba: 4282612622
+  _colors_relations:
+  - serializedVersion: 2
+    rgba: 4286179114
+  - serializedVersion: 2
+    rgba: 4283914225
+  - serializedVersion: 2
+    rgba: 4291352107
+  - serializedVersion: 2
+    rgba: 4288184654
+  - serializedVersion: 2
+    rgba: 4292111131
+  _colors_formable:
+  - serializedVersion: 2
+    rgba: 4293830720
+  - serializedVersion: 2
+    rgba: 4287652128
+  _colors_grayed:
+    serializedVersion: 2
+    rgba: 4283387727
 --- !u!1 &503867834
 GameObject:
   m_ObjectHideFlags: 0

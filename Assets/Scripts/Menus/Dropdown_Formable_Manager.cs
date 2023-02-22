@@ -19,9 +19,9 @@ public class Dropdown_Formable_Manager : MonoBehaviour
 
         if (current.Count <= 0)
         {
-            if (manager.currentMapMode == Manager.MAPMODE.FORMABLE)
+            if (MapModes.currentMapMode == MapModes.MAPMODE.FORMABLE)
             {
-                manager.currentMapMode = Manager.MAPMODE.POLITICAL;
+                MapModes.currentMapMode = MapModes.MAPMODE.POLITICAL;
                 manager.currentFormable = null;
             }
             gameObject.SetActive(false);
@@ -56,7 +56,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
 
     public void ShowMap()
     {
-        manager.currentMapMode = Manager.MAPMODE.FORMABLE;
+        MapModes.currentMapMode = MapModes.MAPMODE.FORMABLE;
         foreach (string key in manager.pays.Keys)
         {
             manager.GetCountry(key).RefreshProvinces();

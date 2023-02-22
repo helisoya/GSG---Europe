@@ -105,11 +105,11 @@ public class Province : MonoBehaviour
     public void RefreshColor()
     {
         Manager manager = Manager.instance;
-        if (Manager.instance.inPeaceDeal)
+        if (manager.inPeaceDeal)
         {
             if (owner.ID != manager.peaceDealSide1 && owner.ID != manager.peaceDealSide2)
             {
-                SetColor(manager.colors_formable[2], manager.colors_formable[2]);
+                SetColor(MapModes.colors_grayed, MapModes.colors_grayed);
             }
             else if (manager.provincesToBeTakenInPeaceDeal.Contains(this))
             {
@@ -124,7 +124,7 @@ public class Province : MonoBehaviour
 
 
 
-        if (manager.currentMapMode == Manager.MAPMODE.POLITICAL)
+        if (MapModes.currentMapMode == MapModes.MAPMODE.POLITICAL)
         {
             SetColor(owner.color, controller.color);
             return;
@@ -134,13 +134,11 @@ public class Province : MonoBehaviour
         int indexOwner = 0;
         int indexController = 0;
 
-        if (manager.currentMapMode == Manager.MAPMODE.IDEOLOGICAL)
+        if (MapModes.currentMapMode == MapModes.MAPMODE.IDEOLOGICAL)
         {
-            indexOwner = owner.Ideologie();
-            indexController = controller.Ideologie();
-            SetColor(manager.colors_ideologie[indexOwner], manager.colors_ideologie[indexController]);
+            SetColor(MapModes.colors_ideologie[owner.Ideologie()], MapModes.colors_ideologie[controller.Ideologie()]);
         }
-        else if (manager.currentMapMode == Manager.MAPMODE.DIPLOMATIC)
+        else if (MapModes.currentMapMode == MapModes.MAPMODE.DIPLOMATIC)
         {
             if (owner == manager.player)
             {
@@ -175,20 +173,20 @@ public class Province : MonoBehaviour
                     indexController = 3;
                 }
             }
-            SetColor(manager.colors_relations[indexOwner], manager.colors_relations[indexController]);
+            SetColor(MapModes.colors_relations[indexOwner], MapModes.colors_relations[indexController]);
 
         }
-        else if (manager.currentMapMode == Manager.MAPMODE.FORMABLE)
+        else if (MapModes.currentMapMode == MapModes.MAPMODE.FORMABLE)
         {
             if (!manager.currentFormable.required.Contains(this))
             {
-                SetColor(manager.colors_formable[2], manager.colors_formable[2]);
+                SetColor(MapModes.colors_grayed, MapModes.colors_grayed);
                 return;
             }
 
             indexOwner = owner == manager.player ? 0 : 1;
             indexController = controller == manager.player ? 0 : 1;
-            SetColor(manager.colors_formable[indexOwner], manager.colors_formable[indexController]);
+            SetColor(MapModes.colors_formable[indexOwner], MapModes.colors_formable[indexController]);
         }
     }
 
