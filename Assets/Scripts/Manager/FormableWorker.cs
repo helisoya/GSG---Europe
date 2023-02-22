@@ -39,9 +39,9 @@ public class FormableWorker : MonoBehaviour
         country.cosmeticID = formable.id;
         manager.currentFormable = null;
 
-        foreach (GameObject unit in country.units)
+        foreach (Unit unit in country.units)
         {
-            unit.GetComponent<Unit>().UpdateFlag();
+            unit.UpdateFlag();
         }
         foreach (Province prov in formable.required)
         {

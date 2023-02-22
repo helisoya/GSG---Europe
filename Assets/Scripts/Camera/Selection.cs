@@ -131,13 +131,13 @@ public class Selection : MonoBehaviour
                     Manager.instance.selected_unit = new List<GameObject>();
                 }
 
-                foreach (GameObject unit in Manager.instance.player.units)
+                foreach (Unit unit in Manager.instance.player.units)
                 {
-                    Vector3 pos = GetComponent<Camera>().WorldToScreenPoint(unit.transform.position);
+                    Vector3 pos = Camera.main.WorldToScreenPoint(unit.transform.position);
                     if (corners[0].x <= pos.x && pos.x <= corners[3].x &&
                     corners[0].y >= pos.y && pos.y >= corners[3].y)
                     {
-                        unit.GetComponent<Unit>().Click_Event();
+                        unit.Click_Event();
                     }
                 }
 

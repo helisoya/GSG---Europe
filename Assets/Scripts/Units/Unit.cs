@@ -227,7 +227,7 @@ public class Unit : MonoBehaviour
 
         foreach (string key in country.atWarWith.Keys)
         {
-            foreach (GameObject unit in manager.GetCountry(key).units)
+            foreach (Unit unit in manager.GetCountry(key).units)
             {
                 float dist = Mathf.Sqrt(
                     Mathf.Pow((transform.position.x - unit.transform.position.x), 2) +
@@ -239,8 +239,8 @@ public class Unit : MonoBehaviour
                 {
                     canRegen = false;
                     target = transform.position;
-                    unit.GetComponent<Unit>().target = unit.transform.position;
-                    float dmg_b = unit.GetComponent<Unit>().GetDmg() * Time.deltaTime * 10;
+                    unit.target = unit.transform.position;
+                    float dmg_b = unit.GetDmg() * Time.deltaTime * 10;
                     TakeDamage(dmg_b);
                     if (HP <= 0)
                     {
@@ -303,7 +303,7 @@ public class Unit : MonoBehaviour
 
         if (HP <= 0)
         {
-            country.RemoveUnit(gameObject);
+            country.RemoveUnit(this);
             Destroy(gameObject);
         }
         else

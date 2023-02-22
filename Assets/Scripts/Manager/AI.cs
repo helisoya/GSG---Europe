@@ -88,16 +88,13 @@ public class AI : MonoBehaviour
 
     void UnitMovement(Pays country)
     {
-        Unit u;
-        foreach (GameObject unit in country.units)
+        foreach (Unit unit in country.units)
         {
-            u = unit.GetComponent<Unit>();
-            if (u.target == unit.transform.position)
+            if (unit.target == unit.transform.position)
             {
                 if (Random.Range(0, 50) == 0 && country.provinces.Count != 0)
                 {
-                    ;
-                    u.target = GetRandomPosInsideCountry(country);
+                    unit.target = GetRandomPosInsideCountry(country);
                 }
                 else if (Random.Range(0, 30) == 0 && country.atWarWith.Count != 0)
                 {
@@ -108,7 +105,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        u.target = GetRandomPosInsideCountry(p);
+                        unit.target = GetRandomPosInsideCountry(p);
                     }
 
                 }

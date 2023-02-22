@@ -64,7 +64,7 @@ public class Pays
     public bool reelected = false;
 
     [HideInInspector]
-    public List<GameObject> units;
+    public List<Unit> units;
 
     public int unit_damage { get { return 10 + bonusDamage; } }
 
@@ -123,10 +123,10 @@ public class Pays
         currentFocus = "NONE";
         focusDone = new List<string>();
         atWarWith = new Dictionary<string, int>();
-        units = new List<GameObject>();
+        units = new List<Unit>();
         leader = new Leader();
-        manager = GameObject.Find("Manager").GetComponent<Manager>();
-        events = GameObject.Find("Manager").GetComponent<Events>();
+        manager = Manager.instance;
+        events = manager.GetComponent<Events>();
 
         Reset_Elections();
         Reset_Flag();
@@ -209,7 +209,7 @@ public class Pays
     {
         if (units.Count <= unitCap) return;
 
-        List<GameObject> correctList = new List<GameObject>();
+        List<Unit> correctList = new List<Unit>();
         for (int i = 0; i < units.Count && i < unitCap; i++)
         {
             correctList.Add(units[i]);
@@ -217,7 +217,7 @@ public class Pays
 
         for (int i = unitCap; i < units.Count; i++)
         {
-            Manager.Destroy(units[i]);
+            Manager.Destroy(units[i].gameObject);
         }
 
         units = correctList;
@@ -232,9 +232,9 @@ public class Pays
 
     public void CheckCitiesUnits()
     {
-        foreach (GameObject obj in units)
+        foreach (Unit obj in units)
         {
-            obj.GetComponent<Unit>().Check();
+            obj.Check();
         }
     }
 
@@ -292,9 +292,9 @@ public class Pays
 
     public void RemoveUnitsFromCountry(Province placeTo, string country)
     {
-        foreach (GameObject unit in units)
+        foreach (Unit unit in units)
         {
-            if (unit.GetComponent<Unit>().IsOnCountryTerritory(country))
+            if (unit.IsOnCountryTerritory(country))
             {
                 unit.transform.position = placeTo.center;
             }
@@ -526,9 +526,9 @@ public class Pays
         {
             current_flag = 3;
         }
-        foreach (GameObject unit in units)
+        foreach (Unit unit in units)
         {
-            unit.GetComponent<Unit>().UpdateFlag();
+            unit.UpdateFlag();
         }
     }
 
@@ -584,17 +584,17 @@ public class Pays
     }
 
 
-    public void RemoveUnit(GameObject unit)
+    public void RemoveUnit(Unit unit)
     {
         units.Remove(unit);
     }
 
     public void CreateUnit(Vector3 pos)
     {
-        GameObject obj = Manager.Instantiate(manager.cultures.GetCulture(culture).prefabTank, GameObject.Find("Units").transform);
+        Unit obj = Manager.Instantiate(manager.cultures.GetCulture(culture).prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
         pos.y = 0.3f;
         obj.transform.position = pos;
-        obj.GetComponent<Unit>().country = this;
+        obj.country = this;
         units.Add(obj);
         CanvasWorker.instance.UpdateUtilityUnitCap();
     }
