@@ -10,6 +10,13 @@ public class CountryPicker : MonoBehaviour
     [SerializeField] private Image flag;
     [SerializeField] private Text text;
 
+    public static CountryPicker instance;
+
+    void Awake()
+    {
+        instance = this;
+    }
+
     public void Init()
     {
         UpdateCountry(Manager.instance.GetCountry("FRA"));

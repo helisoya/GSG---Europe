@@ -28,12 +28,27 @@ public class Province : MonoBehaviour
 
     public void ComputeCenter(Vector3[] vecs)
     {
-        Vector3 pos = Vector3.zero;
-        foreach (Vector3 t in vecs)
+        center = Vector3.zero;
+        center.y = vecs[0].y;
+
+        float x = 0, y = 0, area = 0, k;
+        Vector3 a, b = vecs[vecs.Length - 1];
+
+        for (int i = 0; i < vecs.Length; i++)
         {
-            pos += new Vector3(t.x, t.y, t.z);
+            a = vecs[i];
+
+            k = a.z * b.x - a.x * b.z;
+            area += k;
+            x += (a.x + b.x) * k;
+            y += (a.z + b.z) * k;
+
+            b = a;
         }
-        center = pos / vecs.Length;
+        area *= 3;
+
+        center.x = x / area;
+        center.z = y / area;
     }
 
     public void SpawnUnitAtCity()
@@ -194,12 +209,12 @@ public class Province : MonoBehaviour
             }
             else
             {
-                canvas.transform.Find("Picker").GetComponent<CountryPicker>().UpdateCountry(owner);
+                CountryPicker.instance.UpdateCountry(owner);
             }
 
             if (owner == Manager.instance.player)
             {
-                GameObject.Find("Canvas").GetComponent<CanvasWorker>().ShowBuyUnit(this);
+                CanvasWorker.instance.ShowBuyUnit(this);
             }
 
         }
