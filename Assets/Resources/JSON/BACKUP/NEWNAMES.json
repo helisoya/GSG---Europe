@@ -1,7 +1,6 @@
 {
 	"provinces":[
 		{
-			"id":"1",
 			"name":"Plovdiv",
 			"vertices":[
 				"1410",
@@ -12,7 +11,6 @@
 			]
 		},
 		{
-			"id":"2",
 			"name":"Banat",
 			"vertices":[
 				"1314",
@@ -28,7 +26,6 @@
 			]
 		},
 		{
-			"id":"3",
 			"name":"Abruzzes",
 			"vertices":[
 				"977",
@@ -42,7 +39,6 @@
 			]
 		},
 		{
-			"id":"4",
 			"name":"Armagh",
 			"vertices":[
 				"566",
@@ -63,7 +59,6 @@
 			]
 		},
 		{
-			"id":"5",
 			"name":"Aveyron",
 			"vertices":[
 				"272",
@@ -74,7 +69,6 @@
 			]
 		},
 		{
-			"id":"6",
 			"name":"Khmelnytskyi",
 			"vertices":[
 				"2080",
@@ -86,8 +80,7 @@
 			]
 		},
 		{
-			"id":"7",
-			"name":"Sarre",
+			"name":"Saarland",
 			"vertices":[
 				"4",
 				"5",
@@ -108,8 +101,7 @@
 			]
 		},
 		{
-			"id":"8",
-			"name":"Crisana-Nord",
+			"name":"Crisana-North",
 			"vertices":[
 				"1461",
 				"1460",
@@ -119,7 +111,6 @@
 			]
 		},
 		{
-			"id":"9",
 			"name":"Moldova",
 			"vertices":[
 				"1434",
@@ -131,7 +122,6 @@
 			]
 		},
 		{
-			"id":"10",
 			"name":"Bafra",
 			"vertices":[
 				"2599",
@@ -145,7 +135,6 @@
 			]
 		},
 		{
-			"id":"11",
 			"name":"LincolnShire",
 			"vertices":[
 				"392",
@@ -161,8 +150,7 @@
 			]
 		},
 		{
-			"id":"12",
-			"name":"Odessa-Nord",
+			"name":"Odessa-North",
 			"vertices":[
 				"1554",
 				"1553",
@@ -179,7 +167,6 @@
 			]
 		},
 		{
-			"id":"13",
 			"name":"Ruwaished ",
 			"vertices":[
 				"2636",
@@ -190,7 +177,6 @@
 			]
 		},
 		{
-			"id":"14",
 			"name":"Mantua",
 			"vertices":[
 				"932",
@@ -204,7 +190,6 @@
 			]
 		},
 		{
-			"id":"15",
 			"name":"Luneburg",
 			"vertices":[
 				"1093",
@@ -216,7 +201,6 @@
 			]
 		},
 		{
-			"id":"16",
 			"name":"Argyll",
 			"vertices":[
 				"496",
@@ -245,8 +229,7 @@
 			]
 		},
 		{
-			"id":"17",
-			"name":"Londres",
+			"name":"London",
 			"vertices":[
 				"341",
 				"342",
@@ -262,7 +245,6 @@
 			]
 		},
 		{
-			"id":"18",
 			"name":"Olomouc",
 			"vertices":[
 				"1199",
@@ -280,7 +262,6 @@
 			]
 		},
 		{
-			"id":"19",
 			"name":"Hanover",
 			"vertices":[
 				"1090",
@@ -292,7 +273,6 @@
 			]
 		},
 		{
-			"id":"20",
 			"name":"Allier",
 			"vertices":[
 				"213",
@@ -306,8 +286,7 @@
 			]
 		},
 		{
-			"id":"21",
-			"name":"Baleares",
+			"name":"Balears",
 			"vertices":[
 				"870",
 				"871",
@@ -318,7 +297,6 @@
 			]
 		},
 		{
-			"id":"22",
 			"name":"Lodz",
 			"vertices":[
 				"1533",
@@ -331,7 +309,6 @@
 			]
 		},
 		{
-			"id":"23",
 			"name":"Goubkine",
 			"vertices":[
 				"2065",
@@ -346,7 +323,6 @@
 			]
 		},
 		{
-			"id":"24",
 			"name":"Munster",
 			"vertices":[
 				"634",
@@ -371,7 +347,6 @@
 			]
 		},
 		{
-			"id":"25",
 			"name":"Rabat",
 			"vertices":[
 				"2734",
@@ -383,7 +358,6 @@
 			]
 		},
 		{
-			"id":"26",
 			"name":"Cagliari",
 			"vertices":[
 				"1065",
@@ -397,8 +371,7 @@
 			]
 		},
 		{
-			"id":"27",
-			"name":"Laponie-Est",
+			"name":"Sapmi-East",
 			"vertices":[
 				"1792",
 				"1793",
@@ -412,8 +385,7 @@
 			]
 		},
 		{
-			"id":"28",
-			"name":"Ostrobotnie-Nord",
+			"name":"Ostrobotnia-North",
 			"vertices":[
 				"1823",
 				"1822",
@@ -427,7 +399,6 @@
 			]
 		},
 		{
-			"id":"29",
 			"name":"Lugo",
 			"vertices":[
 				"789",
@@ -441,7 +412,6 @@
 			]
 		},
 		{
-			"id":"30",
 			"name":"Tbilissi ",
 			"vertices":[
 				"2349",
@@ -462,7 +432,6 @@
 			]
 		},
 		{
-			"id":"31",
 			"name":"Sodermanland",
 			"vertices":[
 				"1630",
@@ -476,7 +445,6 @@
 			]
 		},
 		{
-			"id":"32",
 			"name":"Thuringe",
 			"vertices":[
 				"1124",
@@ -490,7 +458,6 @@
 			]
 		},
 		{
-			"id":"33",
 			"name":"Morguilev",
 			"vertices":[
 				"1985",
@@ -513,7 +480,6 @@
 			]
 		},
 		{
-			"id":"34",
 			"name":"Opole",
 			"vertices":[
 				"1508",
@@ -531,8 +497,7 @@
 			]
 		},
 		{
-			"id":"35",
-			"name":"Jamtland-Nord",
+			"name":"Jamtland-North",
 			"vertices":[
 				"1688",
 				"1689",
@@ -546,7 +511,6 @@
 			]
 		},
 		{
-			"id":"36",
 			"name":"Suffolk",
 			"vertices":[
 				"343",
@@ -562,7 +526,6 @@
 			]
 		},
 		{
-			"id":"37",
 			"name":"Baden",
 			"vertices":[
 				"105",
@@ -581,7 +544,6 @@
 			]
 		},
 		{
-			"id":"38",
 			"name":"Briansk",
 			"vertices":[
 				"1978",
@@ -611,7 +573,6 @@
 			]
 		},
 		{
-			"id":"39",
 			"name":"Grisons",
 			"vertices":[
 				"906",
@@ -630,7 +591,6 @@
 			]
 		},
 		{
-			"id":"40",
 			"name":"Nisava",
 			"vertices":[
 				"1287",
@@ -647,7 +607,6 @@
 			]
 		},
 		{
-			"id":"41",
 			"name":"Inderbor",
 			"vertices":[
 				"2401",
@@ -661,7 +620,6 @@
 			]
 		},
 		{
-			"id":"42",
 			"name":"Lappeenranta",
 			"vertices":[
 				"1847",
@@ -674,7 +632,6 @@
 			]
 		},
 		{
-			"id":"43",
 			"name":"Montenegro",
 			"vertices":[
 				"1270",
@@ -693,7 +650,6 @@
 			]
 		},
 		{
-			"id":"44",
 			"name":"Bourgas",
 			"vertices":[
 				"1414",
@@ -709,7 +665,6 @@
 			]
 		},
 		{
-			"id":"45",
 			"name":"Brabant",
 			"vertices":[
 				"15",
@@ -740,7 +695,6 @@
 			]
 		},
 		{
-			"id":"46",
 			"name":"Salzbourg",
 			"vertices":[
 				"1106",
@@ -756,7 +710,6 @@
 			]
 		},
 		{
-			"id":"47",
 			"name":"Luxembourg",
 			"vertices":[
 				"1",
@@ -771,7 +724,6 @@
 			]
 		},
 		{
-			"id":"48",
 			"name":"Finnmark",
 			"vertices":[
 				"1798",
@@ -798,7 +750,6 @@
 			]
 		},
 		{
-			"id":"49",
 			"name":"Harjedalen",
 			"vertices":[
 				"1658",
@@ -812,7 +763,6 @@
 			]
 		},
 		{
-			"id":"50",
 			"name":"Bursa",
 			"vertices":[
 				"2580",
@@ -829,7 +779,6 @@
 			]
 		},
 		{
-			"id":"51",
 			"name":"Shaki",
 			"vertices":[
 				"2447",
@@ -848,7 +797,6 @@
 			]
 		},
 		{
-			"id":"52",
 			"name":"Ingolstadt",
 			"vertices":[
 				"1111",
@@ -860,8 +808,7 @@
 			]
 		},
 		{
-			"id":"53",
-			"name":"Ouest",
+			"name":"WEast",
 			"vertices":[
 				"1926",
 				"1927",
@@ -880,7 +827,6 @@
 			]
 		},
 		{
-			"id":"54",
 			"name":"Zamora",
 			"vertices":[
 				"790",
@@ -896,7 +842,6 @@
 			]
 		},
 		{
-			"id":"55",
 			"name":"Homiel",
 			"vertices":[
 				"1965",
@@ -917,7 +862,6 @@
 			]
 		},
 		{
-			"id":"56",
 			"name":"Batman",
 			"vertices":[
 				"2592",
@@ -929,7 +873,6 @@
 			]
 		},
 		{
-			"id":"57",
 			"name":"Burli",
 			"vertices":[
 				"2268",
@@ -951,7 +894,6 @@
 			]
 		},
 		{
-			"id":"58",
 			"name":"Tchernivtsi",
 			"vertices":[
 				"1458",
@@ -966,7 +908,6 @@
 			]
 		},
 		{
-			"id":"59",
 			"name":"Sussex",
 			"vertices":[
 				"333",
@@ -981,7 +922,6 @@
 			]
 		},
 		{
-			"id":"60",
 			"name":"Ardennes",
 			"vertices":[
 				"91",
@@ -1002,7 +942,6 @@
 			]
 		},
 		{
-			"id":"61",
 			"name":"Cajanie",
 			"vertices":[
 				"1828",
@@ -1016,7 +955,6 @@
 			]
 		},
 		{
-			"id":"62",
 			"name":"Leningrad",
 			"vertices":[
 				"1850",
@@ -1038,7 +976,6 @@
 			]
 		},
 		{
-			"id":"63",
 			"name":"Pilsen",
 			"vertices":[
 				"1115",
@@ -1055,7 +992,6 @@
 			]
 		},
 		{
-			"id":"64",
 			"name":"Tolva",
 			"vertices":[
 				"1815",
@@ -1069,8 +1005,7 @@
 			]
 		},
 		{
-			"id":"65",
-			"name":"Crisana-Sud",
+			"name":"Crisana-South",
 			"vertices":[
 				"1461",
 				"1452",
@@ -1080,7 +1015,6 @@
 			]
 		},
 		{
-			"id":"66",
 			"name":"Tartu",
 			"vertices":[
 				"1905",
@@ -1097,7 +1031,6 @@
 			]
 		},
 		{
-			"id":"67",
 			"name":"Pskov",
 			"vertices":[
 				"1918",
@@ -1119,7 +1052,6 @@
 			]
 		},
 		{
-			"id":"68",
 			"name":"Oster Gotland",
 			"vertices":[
 				"1612",
@@ -1132,7 +1064,6 @@
 			]
 		},
 		{
-			"id":"69",
 			"name":"Pyrenées",
 			"vertices":[
 				"264",
@@ -1147,8 +1078,7 @@
 			]
 		},
 		{
-			"id":"70",
-			"name":"Rhenanie",
+			"name":"Rheinland",
 			"vertices":[
 				"51",
 				"50",
@@ -1165,7 +1095,6 @@
 			]
 		},
 		{
-			"id":"71",
 			"name":"Huesca",
 			"vertices":[
 				"758",
@@ -1182,7 +1111,6 @@
 			]
 		},
 		{
-			"id":"72",
 			"name":"Berezino",
 			"vertices":[
 				"2280",
@@ -1198,7 +1126,6 @@
 			]
 		},
 		{
-			"id":"73",
 			"name":"CambrisgeShire",
 			"vertices":[
 				"379",
@@ -1212,7 +1139,6 @@
 			]
 		},
 		{
-			"id":"74",
 			"name":"Aples",
 			"vertices":[
 				"243",
@@ -1226,7 +1152,6 @@
 			]
 		},
 		{
-			"id":"75",
 			"name":"Valencia",
 			"vertices":[
 				"775",
@@ -1242,8 +1167,7 @@
 			]
 		},
 		{
-			"id":"76",
-			"name":"Bas-Palatinat",
+			"name":"Lower Palatinate",
 			"vertices":[
 				"1111",
 				"1117",
@@ -1254,7 +1178,6 @@
 			]
 		},
 		{
-			"id":"77",
 			"name":"Homs",
 			"vertices":[
 				"2644",
@@ -1272,8 +1195,7 @@
 			]
 		},
 		{
-			"id":"78",
-			"name":"Mourmansk-Est",
+			"name":"Mourmansk-East",
 			"vertices":[
 				"2208",
 				"2209",
@@ -1298,7 +1220,6 @@
 			]
 		},
 		{
-			"id":"79",
 			"name":"Atyraou ",
 			"vertices":[
 				"2394",
@@ -1312,7 +1233,6 @@
 			]
 		},
 		{
-			"id":"80",
 			"name":"Waterford",
 			"vertices":[
 				"624",
@@ -1329,7 +1249,6 @@
 			]
 		},
 		{
-			"id":"81",
 			"name":"Bereznik ",
 			"vertices":[
 				"2365",
@@ -1341,7 +1260,6 @@
 			]
 		},
 		{
-			"id":"82",
 			"name":"Gandja",
 			"vertices":[
 				"2417",
@@ -1361,7 +1279,6 @@
 			]
 		},
 		{
-			"id":"83",
 			"name":"Jytomyr",
 			"vertices":[
 				"1961",
@@ -1381,7 +1298,6 @@
 			]
 		},
 		{
-			"id":"84",
 			"name":"Oujda",
 			"vertices":[
 				"2715",
@@ -1396,7 +1312,6 @@
 			]
 		},
 		{
-			"id":"85",
 			"name":"Jutland",
 			"vertices":[
 				"1561",
@@ -1416,7 +1331,6 @@
 			]
 		},
 		{
-			"id":"86",
 			"name":"Khoy",
 			"vertices":[
 				"2612",
@@ -1434,8 +1348,7 @@
 			]
 		},
 		{
-			"id":"87",
-			"name":"Mutenie-Nord",
+			"name":"Muntenia-North",
 			"vertices":[
 				"1454",
 				"1453",
@@ -1445,8 +1358,7 @@
 			]
 		},
 		{
-			"id":"88",
-			"name":"Laponie-Sud",
+			"name":"Sapmi-South",
 			"vertices":[
 				"1678",
 				"1677",
@@ -1459,8 +1371,7 @@
 			]
 		},
 		{
-			"id":"89",
-			"name":"Astrakhan ",
+			"name":"Astrakhan",
 			"vertices":[
 				"2308",
 				"2310",
@@ -1478,8 +1389,7 @@
 			]
 		},
 		{
-			"id":"90",
-			"name":"Slavonie",
+			"name":"Slavonia",
 			"vertices":[
 				"1241",
 				"1242",
@@ -1498,7 +1408,6 @@
 			]
 		},
 		{
-			"id":"91",
 			"name":"Heves",
 			"vertices":[
 				"1482",
@@ -1511,8 +1420,7 @@
 			]
 		},
 		{
-			"id":"92",
-			"name":"Thessalie",
+			"name":"Thessalia",
 			"vertices":[
 				"1338",
 				"1339",
@@ -1525,8 +1433,7 @@
 			]
 		},
 		{
-			"id":"93",
-			"name":"Mutenie-Sud",
+			"name":"Muntenia-South",
 			"vertices":[
 				"1445",
 				"1446",
@@ -1539,8 +1446,7 @@
 			]
 		},
 		{
-			"id":"94",
-			"name":"Sudovie",
+			"name":"Southovia",
 			"vertices":[
 				"1891",
 				"1889",
@@ -1553,7 +1459,6 @@
 			]
 		},
 		{
-			"id":"95",
 			"name":"Sotchi",
 			"vertices":[
 				"2360",
@@ -1569,8 +1474,7 @@
 			]
 		},
 		{
-			"id":"96",
-			"name":"Petite Pologne",
+			"name":"Little Poland",
 			"vertices":[
 				"1492",
 				"1493",
@@ -1585,7 +1489,6 @@
 			]
 		},
 		{
-			"id":"97",
 			"name":"Gwynedd",
 			"vertices":[
 				"411",
@@ -1604,7 +1507,6 @@
 			]
 		},
 		{
-			"id":"98",
 			"name":"Latgale",
 			"vertices":[
 				"1880",
@@ -1619,7 +1521,6 @@
 			]
 		},
 		{
-			"id":"99",
 			"name":"Seine Maritime",
 			"vertices":[
 				"89",
@@ -1633,7 +1534,6 @@
 			]
 		},
 		{
-			"id":"100",
 			"name":"Aveiro",
 			"vertices":[
 				"888",
@@ -1647,7 +1547,6 @@
 			]
 		},
 		{
-			"id":"101",
 			"name":"Kent",
 			"vertices":[
 				"324",
@@ -1664,8 +1563,7 @@
 			]
 		},
 		{
-			"id":"102",
-			"name":"Voivodine-Nord",
+			"name":"Voivodina-North",
 			"vertices":[
 				"1312",
 				"1311",
@@ -1677,7 +1575,6 @@
 			]
 		},
 		{
-			"id":"103",
 			"name":"Vosges",
 			"vertices":[
 				"99",
@@ -1691,7 +1588,6 @@
 			]
 		},
 		{
-			"id":"104",
 			"name":"Sousse",
 			"vertices":[
 				"2684",
@@ -1703,7 +1599,6 @@
 			]
 		},
 		{
-			"id":"105",
 			"name":"AberdeenShire",
 			"vertices":[
 				"522",
@@ -1721,8 +1616,7 @@
 			]
 		},
 		{
-			"id":"106",
-			"name":"Silesie",
+			"name":"Silesia",
 			"vertices":[
 				"1211",
 				"1212",
@@ -1738,7 +1632,6 @@
 			]
 		},
 		{
-			"id":"107",
 			"name":"Coruna",
 			"vertices":[
 				"788",
@@ -1757,8 +1650,7 @@
 			]
 		},
 		{
-			"id":"108",
-			"name":"Laponie-Ouest",
+			"name":"Sapmi-West",
 			"vertices":[
 				"1712",
 				"1808",
@@ -1775,8 +1667,7 @@
 			]
 		},
 		{
-			"id":"109",
-			"name":"Lisbonne",
+			"name":"Lisbon",
 			"vertices":[
 				"884",
 				"885",
@@ -1790,7 +1681,6 @@
 			]
 		},
 		{
-			"id":"110",
 			"name":"Smaland",
 			"vertices":[
 				"1604",
@@ -1802,7 +1692,6 @@
 			]
 		},
 		{
-			"id":"111",
 			"name":"Clumberland",
 			"vertices":[
 				"453",
@@ -1821,8 +1710,7 @@
 			]
 		},
 		{
-			"id":"112",
-			"name":"Macedoine",
+			"name":"Macedonia",
 			"vertices":[
 				"1326",
 				"1317",
@@ -1841,8 +1729,7 @@
 			]
 		},
 		{
-			"id":"113",
-			"name":"Petrozavodsk ",
+			"name":"Petrozavodsk",
 			"vertices":[
 				"1843",
 				"1844",
@@ -1867,7 +1754,6 @@
 			]
 		},
 		{
-			"id":"114",
 			"name":"Var",
 			"vertices":[
 				"290",
@@ -1884,7 +1770,6 @@
 			]
 		},
 		{
-			"id":"115",
 			"name":"Silvas",
 			"vertices":[
 				"2597",
@@ -1897,7 +1782,6 @@
 			]
 		},
 		{
-			"id":"116",
 			"name":"Rize",
 			"vertices":[
 				"2595",
@@ -1913,7 +1797,6 @@
 			]
 		},
 		{
-			"id":"117",
 			"name":"Bologna",
 			"vertices":[
 				"962",
@@ -1927,7 +1810,6 @@
 			]
 		},
 		{
-			"id":"118",
 			"name":"Annaba",
 			"vertices":[
 				"2698",
@@ -1943,8 +1825,7 @@
 			]
 		},
 		{
-			"id":"119",
-			"name":"Makhatchkala ",
+			"name":"Makhatchkala",
 			"vertices":[
 				"2320",
 				"2319",
@@ -1959,7 +1840,6 @@
 			]
 		},
 		{
-			"id":"120",
 			"name":"Sisian",
 			"vertices":[
 				"2457",
@@ -1983,8 +1863,7 @@
 			]
 		},
 		{
-			"id":"121",
-			"name":"Asturien",
+			"name":"Asturian",
 			"vertices":[
 				"785",
 				"784",
@@ -1994,7 +1873,6 @@
 			]
 		},
 		{
-			"id":"122",
 			"name":"Turaif",
 			"vertices":[
 				"2669",
@@ -2007,8 +1885,7 @@
 			]
 		},
 		{
-			"id":"123",
-			"name":"Haute-Baviere",
+			"name":"High-Bavaria",
 			"vertices":[
 				"1102",
 				"1103",
@@ -2024,7 +1901,6 @@
 			]
 		},
 		{
-			"id":"124",
 			"name":"Turin",
 			"vertices":[
 				"245",
@@ -2040,7 +1916,6 @@
 			]
 		},
 		{
-			"id":"125",
 			"name":"Donegal",
 			"vertices":[
 				"574",
@@ -2064,7 +1939,6 @@
 			]
 		},
 		{
-			"id":"126",
 			"name":"Calvados",
 			"vertices":[
 				"142",
@@ -2082,7 +1956,6 @@
 			]
 		},
 		{
-			"id":"127",
 			"name":"Aksai",
 			"vertices":[
 				"2403",
@@ -2100,7 +1973,6 @@
 			]
 		},
 		{
-			"id":"128",
 			"name":"Gaziantep",
 			"vertices":[
 				"2534",
@@ -2120,7 +1992,6 @@
 			]
 		},
 		{
-			"id":"129",
 			"name":"Halsingland",
 			"vertices":[
 				"1665",
@@ -2132,7 +2003,6 @@
 			]
 		},
 		{
-			"id":"130",
 			"name":"Stuttgart",
 			"vertices":[
 				"105",
@@ -2145,7 +2015,6 @@
 			]
 		},
 		{
-			"id":"131",
 			"name":"Fife",
 			"vertices":[
 				"474",
@@ -2159,7 +2028,6 @@
 			]
 		},
 		{
-			"id":"132",
 			"name":"Isatay",
 			"vertices":[
 				"2264",
@@ -2176,7 +2044,6 @@
 			]
 		},
 		{
-			"id":"133",
 			"name":"Piedmont",
 			"vertices":[
 				"937",
@@ -2188,7 +2055,6 @@
 			]
 		},
 		{
-			"id":"134",
 			"name":"Molise",
 			"vertices":[
 				"992",
@@ -2204,7 +2070,6 @@
 			]
 		},
 		{
-			"id":"135",
 			"name":"Alep",
 			"vertices":[
 				"2654",
@@ -2223,7 +2088,6 @@
 			]
 		},
 		{
-			"id":"136",
 			"name":"Centre",
 			"vertices":[
 				"666",
@@ -2240,7 +2104,6 @@
 			]
 		},
 		{
-			"id":"137",
 			"name":"Amman",
 			"vertices":[
 				"2666",
@@ -2253,8 +2116,7 @@
 			]
 		},
 		{
-			"id":"138",
-			"name":"Athique",
+			"name":"Attica",
 			"vertices":[
 				"1359",
 				"1363",
@@ -2274,7 +2136,6 @@
 			]
 		},
 		{
-			"id":"139",
 			"name":"Vas",
 			"vertices":[
 				"1186",
@@ -2290,7 +2151,6 @@
 			]
 		},
 		{
-			"id":"140",
 			"name":"Hesse",
 			"vertices":[
 				"1119",
@@ -2303,7 +2163,6 @@
 			]
 		},
 		{
-			"id":"141",
 			"name":"Aube",
 			"vertices":[
 				"98",
@@ -2317,7 +2176,6 @@
 			]
 		},
 		{
-			"id":"142",
 			"name":"Orenburg",
 			"vertices":[
 				"2368",
@@ -2339,7 +2197,6 @@
 			]
 		},
 		{
-			"id":"143",
 			"name":"Ile de France",
 			"vertices":[
 				"93",
@@ -2353,7 +2210,6 @@
 			]
 		},
 		{
-			"id":"144",
 			"name":"Kemer",
 			"vertices":[
 				"2515",
@@ -2370,7 +2226,6 @@
 			]
 		},
 		{
-			"id":"145",
 			"name":"Meath",
 			"vertices":[
 				"588",
@@ -2389,7 +2244,6 @@
 			]
 		},
 		{
-			"id":"146",
 			"name":"Kherson",
 			"vertices":[
 				"2016",
@@ -2410,7 +2264,6 @@
 			]
 		},
 		{
-			"id":"147",
 			"name":"Nievre",
 			"vertices":[
 				"204",
@@ -2426,7 +2279,6 @@
 			]
 		},
 		{
-			"id":"148",
 			"name":"Indre et Loire",
 			"vertices":[
 				"197",
@@ -2439,7 +2291,6 @@
 			]
 		},
 		{
-			"id":"149",
 			"name":"Mazyr",
 			"vertices":[
 				"1960",
@@ -2457,8 +2308,7 @@
 			]
 		},
 		{
-			"id":"150",
-			"name":"Westphalie",
+			"name":"Westphalia",
 			"vertices":[
 				"51",
 				"64",
@@ -2478,7 +2328,6 @@
 			]
 		},
 		{
-			"id":"151",
 			"name":"Vinnytsia",
 			"vertices":[
 				"1557",
@@ -2493,8 +2342,7 @@
 			]
 		},
 		{
-			"id":"152",
-			"name":"Riazan ",
+			"name":"Riazan",
 			"vertices":[
 				"2263",
 				"2256",
@@ -2503,7 +2351,6 @@
 			]
 		},
 		{
-			"id":"153",
 			"name":"Haute Vienne",
 			"vertices":[
 				"213",
@@ -2514,7 +2361,6 @@
 			]
 		},
 		{
-			"id":"154",
 			"name":"Crete",
 			"vertices":[
 				"1396",
@@ -2532,8 +2378,7 @@
 			]
 		},
 		{
-			"id":"155",
-			"name":"Flandre-Ouest",
+			"name":"Flanders-West",
 			"vertices":[
 				"24",
 				"25",
@@ -2552,7 +2397,6 @@
 			]
 		},
 		{
-			"id":"156",
 			"name":"Carniole",
 			"vertices":[
 				"947",
@@ -2570,7 +2414,6 @@
 			]
 		},
 		{
-			"id":"157",
 			"name":"Gironde",
 			"vertices":[
 				"210",
@@ -2588,7 +2431,6 @@
 			]
 		},
 		{
-			"id":"158",
 			"name":"Bern",
 			"vertices":[
 				"906",
@@ -2600,7 +2442,6 @@
 			]
 		},
 		{
-			"id":"159",
 			"name":"Ariege",
 			"vertices":[
 				"256",
@@ -2615,7 +2456,6 @@
 			]
 		},
 		{
-			"id":"160",
 			"name":"Garonne",
 			"vertices":[
 				"255",
@@ -2626,8 +2466,7 @@
 			]
 		},
 		{
-			"id":"161",
-			"name":"Nord-Trondelag",
+			"name":"North-Trondelag",
 			"vertices":[
 				"1685",
 				"1687",
@@ -2649,7 +2488,6 @@
 			]
 		},
 		{
-			"id":"162",
 			"name":"CheShire",
 			"vertices":[
 				"401",
@@ -2667,8 +2505,7 @@
 			]
 		},
 		{
-			"id":"163",
-			"name":"Haut-Palatinat",
+			"name":"High-Palatinate",
 			"vertices":[
 				"1112",
 				"1113",
@@ -2681,7 +2518,6 @@
 			]
 		},
 		{
-			"id":"164",
 			"name":"Louhansk",
 			"vertices":[
 				"2051",
@@ -2704,7 +2540,6 @@
 			]
 		},
 		{
-			"id":"165",
 			"name":"Hordaland",
 			"vertices":[
 				"1732",
@@ -2717,7 +2552,6 @@
 			]
 		},
 		{
-			"id":"166",
 			"name":"Volkhov",
 			"vertices":[
 				"2189",
@@ -2737,7 +2571,6 @@
 			]
 		},
 		{
-			"id":"167",
 			"name":"Zurich",
 			"vertices":[
 				"920",
@@ -2752,7 +2585,6 @@
 			]
 		},
 		{
-			"id":"168",
 			"name":"Karabuk",
 			"vertices":[
 				"2600",
@@ -2764,7 +2596,6 @@
 			]
 		},
 		{
-			"id":"169",
 			"name":"Thrace",
 			"vertices":[
 				"1321",
@@ -2783,7 +2614,6 @@
 			]
 		},
 		{
-			"id":"170",
 			"name":"Ostfold",
 			"vertices":[
 				"1660",
@@ -2800,8 +2630,7 @@
 			]
 		},
 		{
-			"id":"171",
-			"name":"Brandebourg",
+			"name":"Brandeburg",
 			"vertices":[
 				"1137",
 				"1138",
@@ -2813,7 +2642,6 @@
 			]
 		},
 		{
-			"id":"172",
 			"name":"Latium",
 			"vertices":[
 				"970",
@@ -2829,7 +2657,6 @@
 			]
 		},
 		{
-			"id":"173",
 			"name":"Sofia",
 			"vertices":[
 				"1296",
@@ -2842,8 +2669,7 @@
 			]
 		},
 		{
-			"id":"174",
-			"name":"Oltenie",
+			"name":"Oltenia",
 			"vertices":[
 				"1305",
 				"1307",
@@ -2858,7 +2684,6 @@
 			]
 		},
 		{
-			"id":"175",
 			"name":"Oukhta",
 			"vertices":[
 				"2385",
@@ -2871,7 +2696,6 @@
 			]
 		},
 		{
-			"id":"176",
 			"name":"Morbihan",
 			"vertices":[
 				"164",
@@ -2891,7 +2715,6 @@
 			]
 		},
 		{
-			"id":"177",
 			"name":"Wurtemberg",
 			"vertices":[
 				"924",
@@ -2907,7 +2730,6 @@
 			]
 		},
 		{
-			"id":"178",
 			"name":"Deva",
 			"vertices":[
 				"1451",
@@ -2918,8 +2740,7 @@
 			]
 		},
 		{
-			"id":"179",
-			"name":"Frise",
+			"name":"Frisia",
 			"vertices":[
 				"59",
 				"60",
@@ -2938,7 +2759,6 @@
 			]
 		},
 		{
-			"id":"180",
 			"name":"Oma",
 			"vertices":[
 				"2160",
@@ -2971,7 +2791,6 @@
 			]
 		},
 		{
-			"id":"181",
 			"name":"Satakunta",
 			"vertices":[
 				"1852",
@@ -2986,7 +2805,6 @@
 			]
 		},
 		{
-			"id":"182",
 			"name":"Skopje",
 			"vertices":[
 				"1287",
@@ -3002,7 +2820,6 @@
 			]
 		},
 		{
-			"id":"183",
 			"name":"Medelpad",
 			"vertices":[
 				"1665",
@@ -3014,7 +2831,6 @@
 			]
 		},
 		{
-			"id":"184",
 			"name":"Brest",
 			"vertices":[
 				"1539",
@@ -3031,7 +2847,6 @@
 			]
 		},
 		{
-			"id":"185",
 			"name":"Erevan",
 			"vertices":[
 				"2422",
@@ -3051,7 +2866,6 @@
 			]
 		},
 		{
-			"id":"186",
 			"name":"Sligo",
 			"vertices":[
 				"572",
@@ -3066,7 +2880,6 @@
 			]
 		},
 		{
-			"id":"187",
 			"name":"Istanbul",
 			"vertices":[
 				"1349",
@@ -3089,8 +2902,7 @@
 			]
 		},
 		{
-			"id":"188",
-			"name":"Fionie",
+			"name":"Fionia",
 			"vertices":[
 				"1577",
 				"1578",
@@ -3100,8 +2912,7 @@
 			]
 		},
 		{
-			"id":"189",
-			"name":"Kinguissepp ",
+			"name":"Kinguissepp",
 			"vertices":[
 				"1918",
 				"1919",
@@ -3119,7 +2930,6 @@
 			]
 		},
 		{
-			"id":"190",
 			"name":"Hajdu",
 			"vertices":[
 				"1452",
@@ -3133,7 +2943,6 @@
 			]
 		},
 		{
-			"id":"191",
 			"name":"Angus",
 			"vertices":[
 				"490",
@@ -3149,8 +2958,7 @@
 			]
 		},
 		{
-			"id":"192",
-			"name":"Transilvanie-Sud",
+			"name":"Transilvania-South",
 			"vertices":[
 				"1460",
 				"1456",
@@ -3161,7 +2969,6 @@
 			]
 		},
 		{
-			"id":"193",
 			"name":"Navarre",
 			"vertices":[
 				"261",
@@ -3177,8 +2984,7 @@
 			]
 		},
 		{
-			"id":"194",
-			"name":"Ostrobotnie",
+			"name":"Ostrobotnia",
 			"vertices":[
 				"1832",
 				"1833",
@@ -3192,7 +2998,6 @@
 			]
 		},
 		{
-			"id":"195",
 			"name":"Inverclyde",
 			"vertices":[
 				"470",
@@ -3209,7 +3014,6 @@
 			]
 		},
 		{
-			"id":"196",
 			"name":"Gard",
 			"vertices":[
 				"293",
@@ -3222,7 +3026,6 @@
 			]
 		},
 		{
-			"id":"197",
 			"name":"Agden",
 			"vertices":[
 				"1733",
@@ -3236,7 +3039,6 @@
 			]
 		},
 		{
-			"id":"198",
 			"name":"Ankara",
 			"vertices":[
 				"2578",
@@ -3248,7 +3050,6 @@
 			]
 		},
 		{
-			"id":"199",
 			"name":"Peloponnese",
 			"vertices":[
 				"1386",
@@ -3263,7 +3064,6 @@
 			]
 		},
 		{
-			"id":"200",
 			"name":"Brcko",
 			"vertices":[
 				"1243",
@@ -3280,8 +3080,7 @@
 			]
 		},
 		{
-			"id":"201",
-			"name":"Lombardie",
+			"name":"Lombard",
 			"vertices":[
 				"911",
 				"912",
@@ -3295,7 +3094,6 @@
 			]
 		},
 		{
-			"id":"202",
 			"name":"Vestfiroir",
 			"vertices":[
 				"724",
@@ -3314,7 +3112,6 @@
 			]
 		},
 		{
-			"id":"203",
 			"name":"Granada",
 			"vertices":[
 				"850",
@@ -3332,7 +3129,6 @@
 			]
 		},
 		{
-			"id":"204",
 			"name":"Manche",
 			"vertices":[
 				"153",
@@ -3347,7 +3143,6 @@
 			]
 		},
 		{
-			"id":"205",
 			"name":"Riding",
 			"vertices":[
 				"434",
@@ -3364,7 +3159,6 @@
 			]
 		},
 		{
-			"id":"206",
 			"name":"Tchernihiv",
 			"vertices":[
 				"1969",
@@ -3385,7 +3179,6 @@
 			]
 		},
 		{
-			"id":"207",
 			"name":"Frioul",
 			"vertices":[
 				"944",
@@ -3400,7 +3193,6 @@
 			]
 		},
 		{
-			"id":"208",
 			"name":"Israel",
 			"vertices":[
 				"2659",
@@ -3416,7 +3208,6 @@
 			]
 		},
 		{
-			"id":"209",
 			"name":"Akhisar",
 			"vertices":[
 				"2580",
@@ -3430,7 +3221,6 @@
 			]
 		},
 		{
-			"id":"210",
 			"name":"Cuenca",
 			"vertices":[
 				"778",
@@ -3443,8 +3233,7 @@
 			]
 		},
 		{
-			"id":"211",
-			"name":"Hollande",
+			"name":"Holland",
 			"vertices":[
 				"52",
 				"53",
@@ -3458,8 +3247,7 @@
 			]
 		},
 		{
-			"id":"212",
-			"name":"Moscou",
+			"name":"Moscow",
 			"vertices":[
 				"2252",
 				"2253",
@@ -3469,7 +3257,6 @@
 			]
 		},
 		{
-			"id":"213",
 			"name":"Murcia",
 			"vertices":[
 				"840",
@@ -3484,7 +3271,6 @@
 			]
 		},
 		{
-			"id":"214",
 			"name":"Kiev",
 			"vertices":[
 				"1969",
@@ -3496,7 +3282,6 @@
 			]
 		},
 		{
-			"id":"215",
 			"name":"Eure",
 			"vertices":[
 				"133",
@@ -3516,7 +3301,6 @@
 			]
 		},
 		{
-			"id":"216",
 			"name":"Zilina",
 			"vertices":[
 				"1209",
@@ -3533,7 +3317,6 @@
 			]
 		},
 		{
-			"id":"217",
 			"name":"Chypre",
 			"vertices":[
 				"2614",
@@ -3556,7 +3339,6 @@
 			]
 		},
 		{
-			"id":"218",
 			"name":"Lubusz",
 			"vertices":[
 				"1137",
@@ -3569,7 +3351,6 @@
 			]
 		},
 		{
-			"id":"219",
 			"name":"Vendée",
 			"vertices":[
 				"193",
@@ -3585,7 +3366,6 @@
 			]
 		},
 		{
-			"id":"220",
 			"name":"Catania",
 			"vertices":[
 				"1045",
@@ -3602,7 +3382,6 @@
 			]
 		},
 		{
-			"id":"221",
 			"name":"Troms",
 			"vertices":[
 				"1720",
@@ -3625,8 +3404,7 @@
 			]
 		},
 		{
-			"id":"222",
-			"name":"Basse-Baviere",
+			"name":"Lower-Bavaria",
 			"vertices":[
 				"1109",
 				"1110",
@@ -3639,8 +3417,7 @@
 			]
 		},
 		{
-			"id":"223",
-			"name":"Arkhangelsk-Sud",
+			"name":"Arkhangelsk-South",
 			"vertices":[
 				"2144",
 				"2145",
@@ -3659,7 +3436,6 @@
 			]
 		},
 		{
-			"id":"224",
 			"name":"Basilicate",
 			"vertices":[
 				"1002",
@@ -3677,8 +3453,7 @@
 			]
 		},
 		{
-			"id":"225",
-			"name":"Podlachie-Nord",
+			"name":"Podlachia-North",
 			"vertices":[
 				"1530",
 				"1531",
@@ -3690,7 +3465,6 @@
 			]
 		},
 		{
-			"id":"226",
 			"name":"Tirana",
 			"vertices":[
 				"1276",
@@ -3707,7 +3481,6 @@
 			]
 		},
 		{
-			"id":"227",
 			"name":"Komi",
 			"vertices":[
 				"2382",
@@ -3719,7 +3492,6 @@
 			]
 		},
 		{
-			"id":"228",
 			"name":"Bucovina",
 			"vertices":[
 				"1457",
@@ -3731,7 +3503,6 @@
 			]
 		},
 		{
-			"id":"229",
 			"name":"Elbistan",
 			"vertices":[
 				"2588",
@@ -3743,7 +3514,6 @@
 			]
 		},
 		{
-			"id":"230",
 			"name":"Kuusamo",
 			"vertices":[
 				"1830",
@@ -3757,7 +3527,6 @@
 			]
 		},
 		{
-			"id":"231",
 			"name":"Ourmia",
 			"vertices":[
 				"2610",
@@ -3772,7 +3541,6 @@
 			]
 		},
 		{
-			"id":"232",
 			"name":"Cujavie",
 			"vertices":[
 				"1517",
@@ -3784,7 +3552,6 @@
 			]
 		},
 		{
-			"id":"233",
 			"name":"Sarthe",
 			"vertices":[
 				"149",
@@ -3797,7 +3564,6 @@
 			]
 		},
 		{
-			"id":"234",
 			"name":"Viljandi",
 			"vertices":[
 				"1904",
@@ -3812,7 +3578,6 @@
 			]
 		},
 		{
-			"id":"235",
 			"name":"Vidzeme",
 			"vertices":[
 				"1903",
@@ -3828,7 +3593,6 @@
 			]
 		},
 		{
-			"id":"236",
 			"name":"Dobrogea",
 			"vertices":[
 				"1423",
@@ -3850,7 +3614,6 @@
 			]
 		},
 		{
-			"id":"237",
 			"name":"Izmit",
 			"vertices":[
 				"2477",
@@ -3866,7 +3629,6 @@
 			]
 		},
 		{
-			"id":"238",
 			"name":"Grozny",
 			"vertices":[
 				"2359",
@@ -3879,7 +3641,6 @@
 			]
 		},
 		{
-			"id":"239",
 			"name":"Varmland",
 			"vertices":[
 				"1648",
@@ -3894,7 +3655,6 @@
 			]
 		},
 		{
-			"id":"240",
 			"name":"LancaShire",
 			"vertices":[
 				"422",
@@ -3912,8 +3672,7 @@
 			]
 		},
 		{
-			"id":"241",
-			"name":"Arkhangelsk-Nord",
+			"name":"Arkhangelsk-North",
 			"vertices":[
 				"2154",
 				"2155",
@@ -3929,7 +3688,6 @@
 			]
 		},
 		{
-			"id":"242",
 			"name":"Penza",
 			"vertices":[
 				"2363",
@@ -3941,7 +3699,6 @@
 			]
 		},
 		{
-			"id":"243",
 			"name":"Isere",
 			"vertices":[
 				"213",
@@ -3952,7 +3709,6 @@
 			]
 		},
 		{
-			"id":"244",
 			"name":"Norfolk",
 			"vertices":[
 				"385",
@@ -3967,7 +3723,6 @@
 			]
 		},
 		{
-			"id":"245",
 			"name":"Tunis",
 			"vertices":[
 				"2687",
@@ -3984,7 +3739,6 @@
 			]
 		},
 		{
-			"id":"246",
 			"name":"Lyon",
 			"vertices":[
 				"225",
@@ -3995,7 +3749,6 @@
 			]
 		},
 		{
-			"id":"247",
 			"name":"Joensuu",
 			"vertices":[
 				"1842",
@@ -4009,8 +3762,7 @@
 			]
 		},
 		{
-			"id":"248",
-			"name":"Nordland",
+			"name":"Northland",
 			"vertices":[
 				"1694",
 				"1695",
@@ -4029,7 +3781,6 @@
 			]
 		},
 		{
-			"id":"249",
 			"name":"Uusimaa",
 			"vertices":[
 				"1852",
@@ -4043,7 +3794,6 @@
 			]
 		},
 		{
-			"id":"250",
 			"name":"Kirov",
 			"vertices":[
 				"2364",
@@ -4056,7 +3806,6 @@
 			]
 		},
 		{
-			"id":"251",
 			"name":"Gori",
 			"vertices":[
 				"2348",
@@ -4072,8 +3821,7 @@
 			]
 		},
 		{
-			"id":"252",
-			"name":"Vienne",
+			"name":"Vienna",
 			"vertices":[
 				"1171",
 				"1173",
@@ -4089,7 +3837,6 @@
 			]
 		},
 		{
-			"id":"253",
 			"name":"Campanie",
 			"vertices":[
 				"989",
@@ -4105,7 +3852,6 @@
 			]
 		},
 		{
-			"id":"254",
 			"name":"Magdebourg",
 			"vertices":[
 				"1139",
@@ -4116,7 +3862,6 @@
 			]
 		},
 		{
-			"id":"255",
 			"name":"Varna",
 			"vertices":[
 				"1428",
@@ -4135,7 +3880,6 @@
 			]
 		},
 		{
-			"id":"256",
 			"name":"Kardjali",
 			"vertices":[
 				"1356",
@@ -4147,7 +3891,6 @@
 			]
 		},
 		{
-			"id":"257",
 			"name":"Sanliurfa",
 			"vertices":[
 				"2589",
@@ -4160,7 +3903,6 @@
 			]
 		},
 		{
-			"id":"258",
 			"name":"Palermo",
 			"vertices":[
 				"1052",
@@ -4178,7 +3920,6 @@
 			]
 		},
 		{
-			"id":"259",
 			"name":"Montana",
 			"vertices":[
 				"1308",
@@ -4192,7 +3933,6 @@
 			]
 		},
 		{
-			"id":"260",
 			"name":"Narke",
 			"vertices":[
 				"1631",
@@ -4211,8 +3951,7 @@
 			]
 		},
 		{
-			"id":"261",
-			"name":"Carelie-Sud",
+			"name":"Carelia-South",
 			"vertices":[
 				"1845",
 				"1846",
@@ -4234,7 +3973,6 @@
 			]
 		},
 		{
-			"id":"262",
 			"name":"Tyrol",
 			"vertices":[
 				"923",
@@ -4255,8 +3993,7 @@
 			]
 		},
 		{
-			"id":"263",
-			"name":"Dalecarlie",
+			"name":"Dalecarlia",
 			"vertices":[
 				"1651",
 				"1650",
@@ -4274,7 +4011,6 @@
 			]
 		},
 		{
-			"id":"264",
 			"name":"Kosice",
 			"vertices":[
 				"1483",
@@ -4291,7 +4027,6 @@
 			]
 		},
 		{
-			"id":"265",
 			"name":"Zemgale",
 			"vertices":[
 				"1881",
@@ -4307,7 +4042,6 @@
 			]
 		},
 		{
-			"id":"266",
 			"name":"Finistere",
 			"vertices":[
 				"166",
@@ -4330,7 +4064,6 @@
 			]
 		},
 		{
-			"id":"267",
 			"name":"Norrbotten",
 			"vertices":[
 				"1699",
@@ -4346,8 +4079,7 @@
 			]
 		},
 		{
-			"id":"268",
-			"name":"Catalogne",
+			"name":"Catalonia",
 			"vertices":[
 				"758",
 				"759",
@@ -4369,8 +4101,7 @@
 			]
 		},
 		{
-			"id":"269",
-			"name":"Pomeranie Occidentale",
+			"name":"West Pomerania",
 			"vertices":[
 				"1143",
 				"1168",
@@ -4381,7 +4112,6 @@
 			]
 		},
 		{
-			"id":"270",
 			"name":"Mersin",
 			"vertices":[
 				"2528",
@@ -4398,7 +4128,6 @@
 			]
 		},
 		{
-			"id":"271",
 			"name":"Kaliningrad",
 			"vertices":[
 				"1520",
@@ -4414,7 +4143,6 @@
 			]
 		},
 		{
-			"id":"272",
 			"name":"Mazurie",
 			"vertices":[
 				"1518",
@@ -4426,7 +4154,6 @@
 			]
 		},
 		{
-			"id":"273",
 			"name":"Kemi",
 			"vertices":[
 				"1701",
@@ -4441,7 +4168,6 @@
 			]
 		},
 		{
-			"id":"274",
 			"name":"Constantine",
 			"vertices":[
 				"2720",
@@ -4457,7 +4183,6 @@
 			]
 		},
 		{
-			"id":"275",
 			"name":"Smarhon",
 			"vertices":[
 				"2008",
@@ -4476,7 +4201,6 @@
 			]
 		},
 		{
-			"id":"276",
 			"name":"Mayadin",
 			"vertices":[
 				"2633",
@@ -4489,7 +4213,6 @@
 			]
 		},
 		{
-			"id":"277",
 			"name":"Charente Maritime",
 			"vertices":[
 				"199",
@@ -4503,7 +4226,6 @@
 			]
 		},
 		{
-			"id":"278",
 			"name":"Dnipropetrovsk",
 			"vertices":[
 				"2098",
@@ -4519,7 +4241,6 @@
 			]
 		},
 		{
-			"id":"279",
 			"name":"Pouilles",
 			"vertices":[
 				"997",
@@ -4540,7 +4261,6 @@
 			]
 		},
 		{
-			"id":"280",
 			"name":"Tver",
 			"vertices":[
 				"2249",
@@ -4550,7 +4270,6 @@
 			]
 		},
 		{
-			"id":"281",
 			"name":"Vitebsk",
 			"vertices":[
 				"1878",
@@ -4575,7 +4294,6 @@
 			]
 		},
 		{
-			"id":"282",
 			"name":"Arar",
 			"vertices":[
 				"2673",
@@ -4587,7 +4305,6 @@
 			]
 		},
 		{
-			"id":"283",
 			"name":"Kharkiv",
 			"vertices":[
 				"2068",
@@ -4602,8 +4319,7 @@
 			]
 		},
 		{
-			"id":"284",
-			"name":"Wallonie-Ouest",
+			"name":"Wallonia-OuEast",
 			"vertices":[
 				"12",
 				"13",
@@ -4621,7 +4337,6 @@
 			]
 		},
 		{
-			"id":"285",
 			"name":"Aostadal",
 			"vertices":[
 				"245",
@@ -4639,7 +4354,6 @@
 			]
 		},
 		{
-			"id":"286",
 			"name":"Saratov",
 			"vertices":[
 				"2285",
@@ -4659,7 +4373,6 @@
 			]
 		},
 		{
-			"id":"287",
 			"name":"Hrodna",
 			"vertices":[
 				"2009",
@@ -4674,7 +4387,6 @@
 			]
 		},
 		{
-			"id":"288",
 			"name":"Guarda",
 			"vertices":[
 				"810",
@@ -4693,7 +4405,6 @@
 			]
 		},
 		{
-			"id":"289",
 			"name":"Rutba ",
 			"vertices":[
 				"2634",
@@ -4705,7 +4416,6 @@
 			]
 		},
 		{
-			"id":"290",
 			"name":"Jura",
 			"vertices":[
 				"126",
@@ -4721,7 +4431,6 @@
 			]
 		},
 		{
-			"id":"291",
 			"name":"Bas-Rhin",
 			"vertices":[
 				"8",
@@ -4740,7 +4449,6 @@
 			]
 		},
 		{
-			"id":"292",
 			"name":"Puy Du Dome",
 			"vertices":[
 				"225",
@@ -4752,7 +4460,6 @@
 			]
 		},
 		{
-			"id":"293",
 			"name":"Vaster Gotland",
 			"vertices":[
 				"1613",
@@ -4765,8 +4472,7 @@
 			]
 		},
 		{
-			"id":"294",
-			"name":"Podlachie-Sud",
+			"name":"Podlachia-South",
 			"vertices":[
 				"1536",
 				"1537",
@@ -4778,8 +4484,7 @@
 			]
 		},
 		{
-			"id":"295",
-			"name":"Haditha ",
+			"name":"Haditha",
 			"vertices":[
 				"2633",
 				"2634",
@@ -4790,7 +4495,6 @@
 			]
 		},
 		{
-			"id":"296",
 			"name":"Rostov",
 			"vertices":[
 				"2060",
@@ -4813,7 +4517,6 @@
 			]
 		},
 		{
-			"id":"297",
 			"name":"Tanger",
 			"vertices":[
 				"2725",
@@ -4828,7 +4531,6 @@
 			]
 		},
 		{
-			"id":"298",
 			"name":"Caceres",
 			"vertices":[
 				"830",
@@ -4843,7 +4545,6 @@
 			]
 		},
 		{
-			"id":"299",
 			"name":"Koslan",
 			"vertices":[
 				"2229",
@@ -4857,7 +4558,6 @@
 			]
 		},
 		{
-			"id":"300",
 			"name":"Suournes",
 			"vertices":[
 				"655",
@@ -4877,8 +4577,7 @@
 			]
 		},
 		{
-			"id":"301",
-			"name":"Volhynie",
+			"name":"Volhynia",
 			"vertices":[
 				"1502",
 				"1542",
@@ -4896,7 +4595,6 @@
 			]
 		},
 		{
-			"id":"302",
 			"name":"Samsun",
 			"vertices":[
 				"2598",
@@ -4908,7 +4606,6 @@
 			]
 		},
 		{
-			"id":"303",
 			"name":"Van",
 			"vertices":[
 				"2593",
@@ -4919,7 +4616,6 @@
 			]
 		},
 		{
-			"id":"304",
 			"name":"Izmir",
 			"vertices":[
 				"2494",
@@ -4949,7 +4645,6 @@
 			]
 		},
 		{
-			"id":"305",
 			"name":"Poltava",
 			"vertices":[
 				"2095",
@@ -4965,7 +4660,6 @@
 			]
 		},
 		{
-			"id":"306",
 			"name":"Mossoul",
 			"vertices":[
 				"2611",
@@ -4985,7 +4679,6 @@
 			]
 		},
 		{
-			"id":"307",
 			"name":"Anhalt",
 			"vertices":[
 				"1129",
@@ -4998,7 +4691,6 @@
 			]
 		},
 		{
-			"id":"308",
 			"name":"Suourland",
 			"vertices":[
 				"655",
@@ -5016,7 +4708,6 @@
 			]
 		},
 		{
-			"id":"309",
 			"name":"Volgodonsk ",
 			"vertices":[
 				"2309",
@@ -5026,7 +4717,6 @@
 			]
 		},
 		{
-			"id":"310",
 			"name":"Bragance",
 			"vertices":[
 				"897",
@@ -5044,7 +4734,6 @@
 			]
 		},
 		{
-			"id":"311",
 			"name":"Maramures",
 			"vertices":[
 				"1464",
@@ -5056,8 +4745,7 @@
 			]
 		},
 		{
-			"id":"312",
-			"name":"Nord",
+			"name":"North",
 			"vertices":[
 				"43",
 				"44",
@@ -5075,7 +4763,6 @@
 			]
 		},
 		{
-			"id":"313",
 			"name":"Vallais",
 			"vertices":[
 				"250",
@@ -5090,7 +4777,6 @@
 			]
 		},
 		{
-			"id":"314",
 			"name":"Saare",
 			"vertices":[
 				"1944",
@@ -5103,7 +4789,6 @@
 			]
 		},
 		{
-			"id":"315",
 			"name":"Epire",
 			"vertices":[
 				"1326",
@@ -5117,8 +4802,7 @@
 			]
 		},
 		{
-			"id":"316",
-			"name":"Styrie",
+			"name":"Styria",
 			"vertices":[
 				"1170",
 				"1169",
@@ -5132,8 +4816,7 @@
 			]
 		},
 		{
-			"id":"317",
-			"name":"Grande Pologne",
+			"name":"Greater Poland",
 			"vertices":[
 				"1509",
 				"1510",
@@ -5145,8 +4828,7 @@
 			]
 		},
 		{
-			"id":"318",
-			"name":"Varmie",
+			"name":"Varmia",
 			"vertices":[
 				"1516",
 				"1517",
@@ -5157,7 +4839,6 @@
 			]
 		},
 		{
-			"id":"319",
 			"name":"Balti",
 			"vertices":[
 				"1468",
@@ -5172,7 +4853,6 @@
 			]
 		},
 		{
-			"id":"320",
 			"name":"Austurland",
 			"vertices":[
 				"676",
@@ -5193,7 +4873,6 @@
 			]
 		},
 		{
-			"id":"321",
 			"name":"Usak",
 			"vertices":[
 				"2578",
@@ -5205,7 +4884,6 @@
 			]
 		},
 		{
-			"id":"322",
 			"name":"Meuse",
 			"vertices":[
 				"95",
@@ -5221,8 +4899,7 @@
 			]
 		},
 		{
-			"id":"323",
-			"name":"Ionie",
+			"name":"Ionia",
 			"vertices":[
 				"1337",
 				"1338",
@@ -5234,7 +4911,6 @@
 			]
 		},
 		{
-			"id":"324",
 			"name":"Smolensk",
 			"vertices":[
 				"1989",
@@ -5258,8 +4934,7 @@
 			]
 		},
 		{
-			"id":"325",
-			"name":"Transcarpatie",
+			"name":"Transcarpatia",
 			"vertices":[
 				"1488",
 				"1481",
@@ -5272,7 +4947,6 @@
 			]
 		},
 		{
-			"id":"326",
 			"name":"Hakkiari",
 			"vertices":[
 				"2593",
@@ -5289,7 +4963,6 @@
 			]
 		},
 		{
-			"id":"327",
 			"name":"Kinros",
 			"vertices":[
 				"533",
@@ -5308,7 +4981,6 @@
 			]
 		},
 		{
-			"id":"328",
 			"name":"Gueldre",
 			"vertices":[
 				"51",
@@ -5331,7 +5003,6 @@
 			]
 		},
 		{
-			"id":"329",
 			"name":"Evora",
 			"vertices":[
 				"833",
@@ -5348,7 +5019,6 @@
 			]
 		},
 		{
-			"id":"330",
 			"name":"Bor",
 			"vertices":[
 				"1303",
@@ -5363,8 +5033,7 @@
 			]
 		},
 		{
-			"id":"331",
-			"name":"Basse Silesie",
+			"name":"Lower Silesia",
 			"vertices":[
 				"1506",
 				"1507",
@@ -5375,7 +5044,6 @@
 			]
 		},
 		{
-			"id":"332",
 			"name":"Badajoz",
 			"vertices":[
 				"835",
@@ -5391,7 +5059,6 @@
 			]
 		},
 		{
-			"id":"333",
 			"name":"Antalya",
 			"vertices":[
 				"2523",
@@ -5407,8 +5074,7 @@
 			]
 		},
 		{
-			"id":"334",
-			"name":"Hambourg",
+			"name":"Hamburg",
 			"vertices":[
 				"1147",
 				"1141",
@@ -5421,7 +5087,6 @@
 			]
 		},
 		{
-			"id":"335",
 			"name":"Agri",
 			"vertices":[
 				"2595",
@@ -5437,8 +5102,7 @@
 			]
 		},
 		{
-			"id":"336",
-			"name":"Berdysh ",
+			"name":"Berdysh",
 			"vertices":[
 				"2386",
 				"2387",
@@ -5449,7 +5113,6 @@
 			]
 		},
 		{
-			"id":"337",
 			"name":"Dzukija",
 			"vertices":[
 				"1526",
@@ -5465,8 +5128,7 @@
 			]
 		},
 		{
-			"id":"338",
-			"name":"Carinthie",
+			"name":"Carinthia",
 			"vertices":[
 				"944",
 				"947",
@@ -5479,7 +5141,6 @@
 			]
 		},
 		{
-			"id":"339",
 			"name":"Uppland",
 			"vertices":[
 				"1635",
@@ -5495,7 +5156,6 @@
 			]
 		},
 		{
-			"id":"340",
 			"name":"Trondelag",
 			"vertices":[
 				"1669",
@@ -5512,7 +5172,6 @@
 			]
 		},
 		{
-			"id":"341",
 			"name":"Trentin",
 			"vertices":[
 				"915",
@@ -5530,7 +5189,6 @@
 			]
 		},
 		{
-			"id":"342",
 			"name":"Dordogne",
 			"vertices":[
 				"207",
@@ -5542,7 +5200,6 @@
 			]
 		},
 		{
-			"id":"343",
 			"name":"Avila",
 			"vertices":[
 				"811",
@@ -5557,8 +5214,7 @@
 			]
 		},
 		{
-			"id":"344",
-			"name":"Bosnie",
+			"name":"Bosnia",
 			"vertices":[
 				"1257",
 				"1256",
@@ -5575,7 +5231,6 @@
 			]
 		},
 		{
-			"id":"345",
 			"name":"Pest",
 			"vertices":[
 				"1478",
@@ -5587,8 +5242,7 @@
 			]
 		},
 		{
-			"id":"346",
-			"name":"Crimee-Sud",
+			"name":"Crimea-South",
 			"vertices":[
 				"2027",
 				"2029",
@@ -5607,7 +5261,6 @@
 			]
 		},
 		{
-			"id":"347",
 			"name":"Oran",
 			"vertices":[
 				"2715",
@@ -5621,7 +5274,6 @@
 			]
 		},
 		{
-			"id":"348",
 			"name":"Hampshire",
 			"vertices":[
 				"340",
@@ -5642,7 +5294,6 @@
 			]
 		},
 		{
-			"id":"349",
 			"name":"Herault",
 			"vertices":[
 				"271",
@@ -5654,7 +5305,6 @@
 			]
 		},
 		{
-			"id":"350",
 			"name":"Alger",
 			"vertices":[
 				"2721",
@@ -5668,7 +5318,6 @@
 			]
 		},
 		{
-			"id":"351",
 			"name":"Kosovo",
 			"vertices":[
 				"1280",
@@ -5686,7 +5335,6 @@
 			]
 		},
 		{
-			"id":"352",
 			"name":"Doubs",
 			"vertices":[
 				"120",
@@ -5702,8 +5350,7 @@
 			]
 		},
 		{
-			"id":"353",
-			"name":"Ostrobotnie-Sud",
+			"name":"Ostrobotnia-South",
 			"vertices":[
 				"1869",
 				"1871",
@@ -5716,7 +5363,6 @@
 			]
 		},
 		{
-			"id":"354",
 			"name":"Syddanmark",
 			"vertices":[
 				"1154",
@@ -5731,7 +5377,6 @@
 			]
 		},
 		{
-			"id":"355",
 			"name":"Vesturland",
 			"vertices":[
 				"666",
@@ -5786,7 +5431,6 @@
 			]
 		},
 		{
-			"id":"356",
 			"name":"Iaroslav",
 			"vertices":[
 				"2250",
@@ -5798,7 +5442,6 @@
 			]
 		},
 		{
-			"id":"357",
 			"name":"Alava",
 			"vertices":[
 				"771",
@@ -5812,7 +5455,6 @@
 			]
 		},
 		{
-			"id":"358",
 			"name":"Huelva",
 			"vertices":[
 				"849",
@@ -5828,7 +5470,6 @@
 			]
 		},
 		{
-			"id":"359",
 			"name":"Minsk",
 			"vertices":[
 				"1999",
@@ -5843,7 +5484,6 @@
 			]
 		},
 		{
-			"id":"360",
 			"name":"Ulster",
 			"vertices":[
 				"564",
@@ -5865,7 +5505,6 @@
 			]
 		},
 		{
-			"id":"361",
 			"name":"Kurzeme",
 			"vertices":[
 				"1884",
@@ -5879,7 +5518,6 @@
 			]
 		},
 		{
-			"id":"362",
 			"name":"GloucesterShire",
 			"vertices":[
 				"358",
@@ -5895,7 +5533,6 @@
 			]
 		},
 		{
-			"id":"363",
 			"name":"Kostroma",
 			"vertices":[
 				"2259",
@@ -5907,7 +5544,6 @@
 			]
 		},
 		{
-			"id":"364",
 			"name":"Kazan",
 			"vertices":[
 				"2363",
@@ -5920,8 +5556,7 @@
 			]
 		},
 		{
-			"id":"365",
-			"name":"Moravie",
+			"name":"Moravia",
 			"vertices":[
 				"1174",
 				"1175",
@@ -5938,7 +5573,6 @@
 			]
 		},
 		{
-			"id":"366",
 			"name":"Palmyre",
 			"vertices":[
 				"2634",
@@ -5949,7 +5583,6 @@
 			]
 		},
 		{
-			"id":"367",
 			"name":"AyrShire",
 			"vertices":[
 				"468",
@@ -5964,7 +5597,6 @@
 			]
 		},
 		{
-			"id":"368",
 			"name":"Xakendi",
 			"vertices":[
 				"2436",
@@ -5981,7 +5613,6 @@
 			]
 		},
 		{
-			"id":"369",
 			"name":"Belgrade",
 			"vertices":[
 				"1301",
@@ -5994,7 +5625,6 @@
 			]
 		},
 		{
-			"id":"370",
 			"name":"Sjælland",
 			"vertices":[
 				"1582",
@@ -6016,7 +5646,6 @@
 			]
 		},
 		{
-			"id":"371",
 			"name":"Dalmatie",
 			"vertices":[
 				"1234",
@@ -6034,7 +5663,6 @@
 			]
 		},
 		{
-			"id":"372",
 			"name":"Castellon",
 			"vertices":[
 				"765",
@@ -6047,8 +5675,7 @@
 			]
 		},
 		{
-			"id":"373",
-			"name":"Saxe",
+			"name":"Saxony",
 			"vertices":[
 				"1131",
 				"1132",
@@ -6061,7 +5688,6 @@
 			]
 		},
 		{
-			"id":"374",
 			"name":"Velsk",
 			"vertices":[
 				"2236",
@@ -6074,7 +5700,6 @@
 			]
 		},
 		{
-			"id":"375",
 			"name":"Kayseri",
 			"vertices":[
 				"2586",
@@ -6088,7 +5713,6 @@
 			]
 		},
 		{
-			"id":"376",
 			"name":"Mayo",
 			"vertices":[
 				"604",
@@ -6105,7 +5729,6 @@
 			]
 		},
 		{
-			"id":"377",
 			"name":"Batoumi",
 			"vertices":[
 				"2344",
@@ -6126,7 +5749,6 @@
 			]
 		},
 		{
-			"id":"378",
 			"name":"Hiiu",
 			"vertices":[
 				"1951",
@@ -6139,7 +5761,6 @@
 			]
 		},
 		{
-			"id":"379",
 			"name":"South Highlands",
 			"vertices":[
 				"535",
@@ -6161,7 +5782,6 @@
 			]
 		},
 		{
-			"id":"380",
 			"name":"Roscommon",
 			"vertices":[
 				"605",
@@ -6177,7 +5797,6 @@
 			]
 		},
 		{
-			"id":"381",
 			"name":"Damas",
 			"vertices":[
 				"2635",
@@ -6194,7 +5813,6 @@
 			]
 		},
 		{
-			"id":"382",
 			"name":"Loiret",
 			"vertices":[
 				"140",
@@ -6211,7 +5829,6 @@
 			]
 		},
 		{
-			"id":"383",
 			"name":"Lothian",
 			"vertices":[
 				"464",
@@ -6227,7 +5844,6 @@
 			]
 		},
 		{
-			"id":"384",
 			"name":"Krasnodar",
 			"vertices":[
 				"2360",
@@ -6251,7 +5867,6 @@
 			]
 		},
 		{
-			"id":"385",
 			"name":"Oppland",
 			"vertices":[
 				"1744",
@@ -6263,7 +5878,6 @@
 			]
 		},
 		{
-			"id":"386",
 			"name":"Toscane",
 			"vertices":[
 				"966",
@@ -6277,7 +5891,6 @@
 			]
 		},
 		{
-			"id":"387",
 			"name":"Dumfries",
 			"vertices":[
 				"460",
@@ -6292,7 +5905,6 @@
 			]
 		},
 		{
-			"id":"388",
 			"name":"NewPort",
 			"vertices":[
 				"401",
@@ -6311,7 +5923,6 @@
 			]
 		},
 		{
-			"id":"389",
 			"name":"Clare",
 			"vertices":[
 				"625",
@@ -6329,7 +5940,6 @@
 			]
 		},
 		{
-			"id":"390",
 			"name":"Liberec",
 			"vertices":[
 				"1197",
@@ -6344,7 +5954,6 @@
 			]
 		},
 		{
-			"id":"391",
 			"name":"Zaragossa",
 			"vertices":[
 				"765",
@@ -6360,7 +5969,6 @@
 			]
 		},
 		{
-			"id":"392",
 			"name":"Voronej",
 			"vertices":[
 				"2060",
@@ -6371,7 +5979,6 @@
 			]
 		},
 		{
-			"id":"393",
 			"name":"Gibraltar",
 			"vertices":[
 				"854",
@@ -6387,7 +5994,6 @@
 			]
 		},
 		{
-			"id":"394",
 			"name":"Achaie",
 			"vertices":[
 				"1368",
@@ -6405,7 +6011,6 @@
 			]
 		},
 		{
-			"id":"395",
 			"name":"Marche",
 			"vertices":[
 				"968",
@@ -6420,7 +6025,6 @@
 			]
 		},
 		{
-			"id":"396",
 			"name":"Hame",
 			"vertices":[
 				"1847",
@@ -6433,7 +6037,6 @@
 			]
 		},
 		{
-			"id":"397",
 			"name":"Angermanland",
 			"vertices":[
 				"1676",
@@ -6448,7 +6051,6 @@
 			]
 		},
 		{
-			"id":"398",
 			"name":"Verona",
 			"vertices":[
 				"915",
@@ -6461,7 +6063,6 @@
 			]
 		},
 		{
-			"id":"399",
 			"name":"Ceredigion",
 			"vertices":[
 				"410",
@@ -6480,7 +6081,6 @@
 			]
 		},
 		{
-			"id":"400",
 			"name":"Salavat",
 			"vertices":[
 				"2367",
@@ -6494,7 +6094,6 @@
 			]
 		},
 		{
-			"id":"401",
 			"name":"Hedmark",
 			"vertices":[
 				"1660",
@@ -6509,7 +6108,6 @@
 			]
 		},
 		{
-			"id":"402",
 			"name":"Weser-Ems",
 			"vertices":[
 				"72",
@@ -6522,7 +6120,6 @@
 			]
 		},
 		{
-			"id":"403",
 			"name":"Quarner",
 			"vertices":[
 				"1226",
@@ -6551,7 +6148,6 @@
 			]
 		},
 		{
-			"id":"404",
 			"name":"Nakhitchevan",
 			"vertices":[
 				"2451",
@@ -6566,8 +6162,7 @@
 			]
 		},
 		{
-			"id":"405",
-			"name":"Voivodine-Sud",
+			"name":"Voivodina-South",
 			"vertices":[
 				"1249",
 				"1248",
@@ -6582,7 +6177,6 @@
 			]
 		},
 		{
-			"id":"406",
 			"name":"Toledo",
 			"vertices":[
 				"815",
@@ -6594,7 +6188,6 @@
 			]
 		},
 		{
-			"id":"407",
 			"name":"Derbent",
 			"vertices":[
 				"2312",
@@ -6611,7 +6204,6 @@
 			]
 		},
 		{
-			"id":"408",
 			"name":"Blagoevgrad",
 			"vertices":[
 				"1299",
@@ -6625,8 +6217,7 @@
 			]
 		},
 		{
-			"id":"409",
-			"name":"Flandre-Est",
+			"name":"Flanders-East",
 			"vertices":[
 				"25",
 				"26",
@@ -6645,7 +6236,6 @@
 			]
 		},
 		{
-			"id":"410",
 			"name":"Usti",
 			"vertices":[
 				"1122",
@@ -6660,7 +6250,6 @@
 			]
 		},
 		{
-			"id":"411",
 			"name":"Tolna",
 			"vertices":[
 				"1472",
@@ -6673,7 +6262,6 @@
 			]
 		},
 		{
-			"id":"412",
 			"name":"Tcherkassy",
 			"vertices":[
 				"2091",
@@ -6687,7 +6275,6 @@
 			]
 		},
 		{
-			"id":"413",
 			"name":"Bucarest",
 			"vertices":[
 				"1419",
@@ -6699,7 +6286,6 @@
 			]
 		},
 		{
-			"id":"414",
 			"name":"Scanie",
 			"vertices":[
 				"1598",
@@ -6717,7 +6303,6 @@
 			]
 		},
 		{
-			"id":"415",
 			"name":"Halland",
 			"vertices":[
 				"1604",
@@ -6731,8 +6316,7 @@
 			]
 		},
 		{
-			"id":"416",
-			"name":"Haute-Lithuanie",
+			"name":"High-Lithuania",
 			"vertices":[
 				"1894",
 				"1893",
@@ -6749,8 +6333,7 @@
 			]
 		},
 		{
-			"id":"417",
-			"name":"Pomeranie",
+			"name":"Pomerania",
 			"vertices":[
 				"1511",
 				"1512",
@@ -6761,7 +6344,6 @@
 			]
 		},
 		{
-			"id":"418",
 			"name":"Samara",
 			"vertices":[
 				"2293",
@@ -6781,8 +6363,7 @@
 			]
 		},
 		{
-			"id":"419",
-			"name":"Mourmansk-Ouest",
+			"name":"Mourmansk-West",
 			"vertices":[
 				"1790",
 				"1791",
@@ -6803,8 +6384,7 @@
 			]
 		},
 		{
-			"id":"420",
-			"name":"Crimee-Nord",
+			"name":"Crimea-North",
 			"vertices":[
 				"2023",
 				"2024",
@@ -6818,8 +6398,7 @@
 			]
 		},
 		{
-			"id":"421",
-			"name":"Carelie-Nord",
+			"name":"Carelia-North",
 			"vertices":[
 				"1831",
 				"1825",
@@ -6837,7 +6416,6 @@
 			]
 		},
 		{
-			"id":"422",
 			"name":"Sassari",
 			"vertices":[
 				"1072",
@@ -6854,7 +6432,6 @@
 			]
 		},
 		{
-			"id":"423",
 			"name":"Rostock",
 			"vertices":[
 				"1161",
@@ -6870,8 +6447,7 @@
 			]
 		},
 		{
-			"id":"424",
-			"name":"Corse",
+			"name":"Corsica",
 			"vertices":[
 				"306",
 				"307",
@@ -6894,7 +6470,6 @@
 			]
 		},
 		{
-			"id":"425",
 			"name":"Harju",
 			"vertices":[
 				"1921",
@@ -6910,8 +6485,7 @@
 			]
 		},
 		{
-			"id":"426",
-			"name":"Mazovie",
+			"name":"Mazovia",
 			"vertices":[
 				"1533",
 				"1534",
@@ -6924,7 +6498,6 @@
 			]
 		},
 		{
-			"id":"427",
 			"name":"Donetsk",
 			"vertices":[
 				"2045",
@@ -6941,7 +6514,6 @@
 			]
 		},
 		{
-			"id":"428",
 			"name":"Lublin",
 			"vertices":[
 				"1502",
@@ -6955,7 +6527,6 @@
 			]
 		},
 		{
-			"id":"429",
 			"name":"Lot",
 			"vertices":[
 				"237",
@@ -6970,7 +6541,6 @@
 			]
 		},
 		{
-			"id":"430",
 			"name":"Porto",
 			"vertices":[
 				"898",
@@ -6985,8 +6555,7 @@
 			]
 		},
 		{
-			"id":"431",
-			"name":"Nukhayb ",
+			"name":"Nukhayb",
 			"vertices":[
 				"2677",
 				"2676",
@@ -6997,7 +6566,6 @@
 			]
 		},
 		{
-			"id":"432",
 			"name":"Pleven",
 			"vertices":[
 				"1410",
@@ -7009,7 +6577,6 @@
 			]
 		},
 		{
-			"id":"433",
 			"name":"Fjordane",
 			"vertices":[
 				"1743",
@@ -7022,7 +6589,6 @@
 			]
 		},
 		{
-			"id":"434",
 			"name":"Landes",
 			"vertices":[
 				"234",
@@ -7037,7 +6603,6 @@
 			]
 		},
 		{
-			"id":"435",
 			"name":"Helysyum",
 			"vertices":[
 				"1802",
@@ -7049,7 +6614,6 @@
 			]
 		},
 		{
-			"id":"436",
 			"name":"Solovki",
 			"vertices":[
 				"2241",
@@ -7060,7 +6624,6 @@
 			]
 		},
 		{
-			"id":"437",
 			"name":"Ardeche",
 			"vertices":[
 				"242",
@@ -7075,7 +6638,6 @@
 			]
 		},
 		{
-			"id":"438",
 			"name":"Perpignan",
 			"vertices":[
 				"281",
@@ -7090,7 +6652,6 @@
 			]
 		},
 		{
-			"id":"439",
 			"name":"Savoie",
 			"vertices":[
 				"219",
@@ -7111,8 +6672,7 @@
 			]
 		},
 		{
-			"id":"440",
-			"name":"Jamtland-Sud",
+			"name":"Jamtland-South",
 			"vertices":[
 				"1664",
 				"1667",
@@ -7127,7 +6687,6 @@
 			]
 		},
 		{
-			"id":"441",
 			"name":"Romagne",
 			"vertices":[
 				"960",
@@ -7140,7 +6699,6 @@
 			]
 		},
 		{
-			"id":"442",
 			"name":"Vologda",
 			"vertices":[
 				"2217",
@@ -7155,7 +6713,6 @@
 			]
 		},
 		{
-			"id":"443",
 			"name":"Mus",
 			"vertices":[
 				"2591",
@@ -7167,7 +6724,6 @@
 			]
 		},
 		{
-			"id":"444",
 			"name":"Hassake",
 			"vertices":[
 				"2633",
@@ -7183,7 +6739,6 @@
 			]
 		},
 		{
-			"id":"445",
 			"name":"Gastrikland",
 			"vertices":[
 				"1648",
@@ -7198,7 +6753,6 @@
 			]
 		},
 		{
-			"id":"446",
 			"name":"Kassel",
 			"vertices":[
 				"1086",
@@ -7212,7 +6766,6 @@
 			]
 		},
 		{
-			"id":"447",
 			"name":"Romande",
 			"vertices":[
 				"116",
@@ -7238,7 +6791,6 @@
 			]
 		},
 		{
-			"id":"448",
 			"name":"North Highlands",
 			"vertices":[
 				"547",
@@ -7260,7 +6812,6 @@
 			]
 		},
 		{
-			"id":"449",
 			"name":"Norourland",
 			"vertices":[
 				"729",
@@ -7278,7 +6829,6 @@
 			]
 		},
 		{
-			"id":"450",
 			"name":"Bratislava",
 			"vertices":[
 				"1182",
@@ -7294,7 +6844,6 @@
 			]
 		},
 		{
-			"id":"451",
 			"name":"Erzurum",
 			"vertices":[
 				"2594",
@@ -7306,7 +6855,6 @@
 			]
 		},
 		{
-			"id":"452",
 			"name":"Faro",
 			"vertices":[
 				"848",
@@ -7324,7 +6872,6 @@
 			]
 		},
 		{
-			"id":"453",
 			"name":"Sumadija",
 			"vertices":[
 				"1266",
@@ -7341,7 +6888,6 @@
 			]
 		},
 		{
-			"id":"454",
 			"name":"Latina",
 			"vertices":[
 				"986",
@@ -7353,7 +6899,6 @@
 			]
 		},
 		{
-			"id":"455",
 			"name":"Korce",
 			"vertices":[
 				"1316",
@@ -7369,7 +6914,6 @@
 			]
 		},
 		{
-			"id":"456",
 			"name":"Bohuslan",
 			"vertices":[
 				"1623",
@@ -7383,8 +6927,7 @@
 			]
 		},
 		{
-			"id":"457",
-			"name":"Odessa-Sud",
+			"name":"Odessa-South",
 			"vertices":[
 				"1550",
 				"1549",
@@ -7407,7 +6950,6 @@
 			]
 		},
 		{
-			"id":"458",
 			"name":"Burgenland",
 			"vertices":[
 				"1179",
@@ -7423,7 +6965,6 @@
 			]
 		},
 		{
-			"id":"459",
 			"name":"Chiavari",
 			"vertices":[
 				"933",
@@ -7437,7 +6978,6 @@
 			]
 		},
 		{
-			"id":"460",
 			"name":"Chisinau",
 			"vertices":[
 				"1434",
@@ -7457,7 +6997,6 @@
 			]
 		},
 		{
-			"id":"461",
 			"name":"Salamanca",
 			"vertices":[
 				"806",
@@ -7472,7 +7011,6 @@
 			]
 		},
 		{
-			"id":"462",
 			"name":"Albacete",
 			"vertices":[
 				"838",
@@ -7486,7 +7024,6 @@
 			]
 		},
 		{
-			"id":"463",
 			"name":"Iekaterinbourg ",
 			"vertices":[
 				"2378",
@@ -7499,8 +7036,7 @@
 			]
 		},
 		{
-			"id":"464",
-			"name":"Basses Carpates",
+			"name":"Lower Carpates",
 			"vertices":[
 				"1492",
 				"1491",
@@ -7515,7 +7051,6 @@
 			]
 		},
 		{
-			"id":"465",
 			"name":"Lviv",
 			"vertices":[
 				"1488",
@@ -7530,7 +7065,6 @@
 			]
 		},
 		{
-			"id":"466",
 			"name":"Isparta",
 			"vertices":[
 				"2582",
@@ -7545,8 +7079,7 @@
 			]
 		},
 		{
-			"id":"467",
-			"name":"Boheme",
+			"name":"Bohemia",
 			"vertices":[
 				"1193",
 				"1194",
@@ -7559,7 +7092,6 @@
 			]
 		},
 		{
-			"id":"468",
 			"name":"Baranya",
 			"vertices":[
 				"1250",
@@ -7574,8 +7106,7 @@
 			]
 		},
 		{
-			"id":"469",
-			"name":"Samogitie",
+			"name":"Samogitia",
 			"vertices":[
 				"1883",
 				"1884",
@@ -7589,8 +7120,7 @@
 			]
 		},
 		{
-			"id":"470",
-			"name":"Savonie",
+			"name":"Savonia",
 			"vertices":[
 				"1837",
 				"1838",
@@ -7604,7 +7134,6 @@
 			]
 		},
 		{
-			"id":"471",
 			"name":"Vasterbotten",
 			"vertices":[
 				"1679",
@@ -7620,7 +7149,6 @@
 			]
 		},
 		{
-			"id":"472",
 			"name":"Haut-Rhin",
 			"vertices":[
 				"102",
@@ -7637,7 +7165,6 @@
 			]
 		},
 		{
-			"id":"473",
 			"name":"Gotland",
 			"vertices":[
 				"1721",
@@ -7652,7 +7179,6 @@
 			]
 		},
 		{
-			"id":"474",
 			"name":"Kolari",
 			"vertices":[
 				"1700",
@@ -7666,7 +7192,6 @@
 			]
 		},
 		{
-			"id":"475",
 			"name":"Venetie",
 			"vertices":[
 				"956",
@@ -7680,7 +7205,6 @@
 			]
 		},
 		{
-			"id":"476",
 			"name":"Liban",
 			"vertices":[
 				"2637",
@@ -7701,7 +7225,6 @@
 			]
 		},
 		{
-			"id":"477",
 			"name":"Volgograd",
 			"vertices":[
 				"2262",
@@ -7721,8 +7244,7 @@
 			]
 		},
 		{
-			"id":"478",
-			"name":"Oural",
+			"name":"Ural",
 			"vertices":[
 				"2284",
 				"2285",
@@ -7743,7 +7265,6 @@
 			]
 		},
 		{
-			"id":"479",
 			"name":"Bekes",
 			"vertices":[
 				"1315",
@@ -7754,7 +7275,6 @@
 			]
 		},
 		{
-			"id":"480",
 			"name":"Prekmurje",
 			"vertices":[
 				"1189",
@@ -7768,7 +7288,6 @@
 			]
 		},
 		{
-			"id":"481",
 			"name":"Kemihaara",
 			"vertices":[
 				"1809",
@@ -7781,7 +7300,6 @@
 			]
 		},
 		{
-			"id":"482",
 			"name":"Durham",
 			"vertices":[
 				"453",
@@ -7797,7 +7315,6 @@
 			]
 		},
 		{
-			"id":"483",
 			"name":"Madrid",
 			"vertices":[
 				"778",
@@ -7811,7 +7328,6 @@
 			]
 		},
 		{
-			"id":"484",
 			"name":"Novgorod",
 			"vertices":[
 				"2240",
@@ -7826,8 +7342,7 @@
 			]
 		},
 		{
-			"id":"485",
-			"name":"Laponie-Nord",
+			"name":"Sapmi-North",
 			"vertices":[
 				"1699",
 				"1698",
@@ -7848,8 +7363,7 @@
 			]
 		},
 		{
-			"id":"486",
-			"name":"Transilvanie-Nord",
+			"name":"Transilvania-North",
 			"vertices":[
 				"1454",
 				"1455",
@@ -7859,8 +7373,7 @@
 			]
 		},
 		{
-			"id":"487",
-			"name":"Ligurie",
+			"name":"Liguria",
 			"vertices":[
 				"301",
 				"300",
@@ -7876,7 +7389,6 @@
 			]
 		},
 		{
-			"id":"488",
 			"name":"Calabre",
 			"vertices":[
 				"1027",
@@ -7901,7 +7413,6 @@
 			]
 		},
 		{
-			"id":"489",
 			"name":"Ille et Vilaine",
 			"vertices":[
 				"151",
@@ -7917,8 +7428,7 @@
 			]
 		},
 		{
-			"id":"490",
-			"name":"Stavropol ",
+			"name":"Stavropol",
 			"vertices":[
 				"2310",
 				"2311",
@@ -7929,7 +7439,6 @@
 			]
 		},
 		{
-			"id":"491",
 			"name":"Trabzon",
 			"vertices":[
 				"2597",
@@ -7941,7 +7450,6 @@
 			]
 		},
 		{
-			"id":"492",
 			"name":"Bitola",
 			"vertices":[
 				"1316",
@@ -7957,7 +7465,6 @@
 			]
 		},
 		{
-			"id":"493",
 			"name":"Cornwall",
 			"vertices":[
 				"356",
@@ -7982,7 +7489,6 @@
 			]
 		},
 		{
-			"id":"494",
 			"name":"Oslo",
 			"vertices":[
 				"1730",
@@ -7995,7 +7501,6 @@
 			]
 		},
 		{
-			"id":"495",
 			"name":"Kotlas",
 			"vertices":[
 				"2365",
@@ -8007,8 +7512,7 @@
 			]
 		},
 		{
-			"id":"496",
-			"name":"Wallonie-Est",
+			"name":"Wallonia-East",
 			"vertices":[
 				"1",
 				"2",
@@ -8027,7 +7531,6 @@
 			]
 		},
 		{
-			"id":"497",
 			"name":"Herzegovine",
 			"vertices":[
 				"1258",
@@ -8045,7 +7548,6 @@
 			]
 		},
 		{
-			"id":"498",
 			"name":"Romsdal",
 			"vertices":[
 				"1752",
@@ -8058,7 +7560,6 @@
 			]
 		},
 		{
-			"id":"499",
 			"name":"Serov",
 			"vertices":[
 				"2390",
@@ -8071,7 +7572,6 @@
 			]
 		},
 		{
-			"id":"500",
 			"name":"OxfordShire",
 			"vertices":[
 				"340",
@@ -8085,7 +7585,6 @@
 			]
 		},
 		{
-			"id":"501",
 			"name":"Holstein",
 			"vertices":[
 				"1150",
@@ -8103,4 +7602,4 @@
 			]
 		}
 	]
-}
+}	

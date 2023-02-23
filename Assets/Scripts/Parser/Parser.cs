@@ -47,6 +47,7 @@ public class Parser : MonoBehaviour
             province = Instantiate(Manager.instance.prefabProvince, Manager.instance.provinceParent).GetComponent<Province>();
             province.gameObject.name = jsonProv.GetString("name");
             province.Province_Name = jsonProv.GetString("name");
+            province.id = jsonProv.GetString("id");
             arrayVertices = jsonProv.GetJArray("vertices");
 
             vecs = new Vector3[arrayVertices.Length];
@@ -56,7 +57,7 @@ public class Parser : MonoBehaviour
                 vecs[j] = points[arrayVertices.GetString(j)];
             }
             province.Init(vecs);
-            list.Add(province.Province_Name, province);
+            list.Add(province.id, province);
         }
         return list;
     }

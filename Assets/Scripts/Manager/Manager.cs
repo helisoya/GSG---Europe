@@ -87,7 +87,7 @@ public class Manager : MonoBehaviour
 
     IEnumerator LoadFiles()
     {
-
+        loadingRoot.SetActive(true);
         loadingImg.fillAmount = 0;
         loadingText.text = "Loading Provinces";
         yield return new WaitForEndOfFrame();
