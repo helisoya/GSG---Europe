@@ -17,6 +17,7 @@ public class Province : MonoBehaviour
 
     private bool hover;
 
+
     public void SetOwner(Pays pays)
     {
         owner = pays;

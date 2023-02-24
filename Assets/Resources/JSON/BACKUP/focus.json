@@ -1,0 +1,136 @@
+{
+	"focus":[
+		{
+			"id":"EXPAND_ADMIN",
+			"name":"Expand Administration",
+			"desc":"Gives +100 AP",
+			"required":"NONE",
+			"exclusive":[],
+			"effect":"AP(100)"
+		},
+		{
+			"id":"EXPAND_MILITARY",
+			"name":"Expand the Military",
+			"desc":"Gives +5 Military Cap",
+			"required":"EXPAND_ADMIN",
+			"exclusive":[],
+			"effect":"MILCAP(5)"
+		},
+		{
+			"id":"NAVAL_RESEARCH",
+			"name":"Naval Research",
+			"desc":"Permit the use of boats",
+			"required":"EXPAND_MILITARY",
+			"exclusive":[],
+			"effect":"ENABLE_NAVAL(true)"
+		},
+		{
+			"id":"NAVAL_TRAINING",
+			"name":"Naval Training",
+			"desc":"Gives a 30% atk. boost on sea",
+			"required":"NAVAL_RESEARCH",
+			"exclusive":[],
+			"effect":"NAVALBOOST(30)"
+		},
+		{
+			"id":"MILITARY_DRAFT",
+			"name":"Military draft",
+			"desc":"Gives +200 AP",
+			"required":"EXPAND_MILITARY",
+			"exclusive":[],
+			"effect":"AP(200)"
+		},
+		{
+			"id":"HP_INCREASE",
+			"name":"First Aid Kits",
+			"desc":"Gives +50 HP to units",
+			"required":"MILITARY_DRAFT",
+			"exclusive":[],
+			"effect":"HP(50)"
+		},
+		{
+			"id":"EVASION_INCREASE",
+			"name":"Better training",
+			"desc":"Gives +5% Evasion to units",
+			"required":"MILITARY_DRAFT",
+			"exclusive":[],
+			"effect":"EVASION(5)"
+		},
+		{
+			"id":"DAMAGE_INCREASE",
+			"name":"Better weapons",
+			"desc":"Gives +50% Attack to units",
+			"required":"MILITARY_DRAFT",
+			"exclusive":[],
+			"effect":"Attack(5)"
+		},
+		
+		{
+			"id":"EXPAND_RAILWAYS",
+			"name":"Expand the railways",
+			"desc":"Gives +30% Unit Speed",
+			"required":"EXPAND_ADMIN",
+			"exclusive":[],
+			"effect":"SPEED(2)"
+		},
+		
+		
+		{
+			"id":"PREPARE_ELECTIONS",
+			"name":"Prepare the elections",
+			"desc":"Gives +50 AP",
+			"required":"EXPAND_ADMIN",
+			"exclusive":[],
+			"effect":"AP(50)"
+		},
+		{
+			"id":"ELECTION_COMMUNIST",
+			"name":"Support the communists",
+			"desc":"Gives +20 support for the communists",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":["ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
+			"effect":"PARTYPOP(0,20)"
+		},
+		{
+			"id":"ELECTION_SOCIALIST",
+			"name":"Support the socialists",
+			"desc":"Gives +20 support for the socialists",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":["ELECTION_COMMUNIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
+			"effect":"PARTYPOP(1,20)"
+		},
+		{
+			"id":"ELECTION_CENTRIST",
+			"name":"Support the centrists",
+			"desc":"Gives +20 support for the centrists",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
+			"effect":"PARTYPOP(2,20)"
+		},
+		{
+			"id":"ELECTION_CONSERVATIVE",
+			"name":"Support the conservatives",
+			"desc":"Gives +20 support for the conservatives",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_FASCIST"],
+			"effect":"PARTYPOP(3,20)"
+		},
+		{
+			"id":"ELECTION_FASCIST",
+			"name":"Support the fascists",
+			"desc":"Gives +20 support for the fascists",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE"],
+			"effect":"PARTYPOP(4,20)"
+		},
+		{
+			"id":"REINFORCE_GOVERNMENT",
+			"name":"Reinforce the governement",
+			"desc":"Gives +10 AP per turn",
+			"required":"PREPARE_ELECTIONS",
+			"exclusive":[],
+			"effect":"APTURN(50)"
+		}
+	]
+
+}
