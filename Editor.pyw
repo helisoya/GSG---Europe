@@ -201,7 +201,7 @@ def SaveJSON():
             j+=1
         jsonp_file.write("\t]\n}")
 
-    with io.open("EditorOutput/pays.json","w",encoding="utf8") as jsonp_file:
+    with io.open(path+"pays.json","w",encoding="utf8") as jsonp_file:
         
         jsonp_file.write("{\n\t\"pays\":[\n")
         i = 1
@@ -221,7 +221,7 @@ def SaveJSON():
             i+=1
         jsonp_file.write("\t]\n}")
 
-    with io.open("EditorOutput/history.json","w",encoding="utf8") as jsonp_file:
+    with io.open(path+"history.json","w",encoding="utf8") as jsonp_file:
         
         jsonp_file.write("{\n\t\"pays\":[\n")
         j = 1
@@ -266,7 +266,7 @@ def SaveJSON():
         jsonp_file.write("\t]\n}")
 
 
-    with io.open("EditorOutput/formables.json","w",encoding="utf8") as jsonp_file:
+    with io.open(path+"formables.json","w",encoding="utf8") as jsonp_file:
         
         jsonp_file.write("{\n\t\"formables\":[\n")
         j = 1
