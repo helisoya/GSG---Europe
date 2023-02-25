@@ -78,6 +78,12 @@ def redrawMap():
                 canvasmap.itemconfigure(prov,fill='blue')
             else:
                 canvasmap.itemconfigure(prov,fill='gray')
+    elif currentMOD == MODE_FORMABLE:
+        for prov in D_Provinces:
+            if prov in D_Formables[currentFORMABLEID]["required"]:
+                canvasmap.itemconfigure(prov,fill='blue')
+            else:
+                canvasmap.itemconfigure(prov,fill='gray')
             
 
 
@@ -89,6 +95,7 @@ def setMODE_DRAWING():
 
 def setMODE_PROVINCE():
     global currentMOD
+    SetProvinceMODE()
     currentMOD = MODE_PROVINCE
     redrawMap()
 
@@ -107,6 +114,7 @@ def setMODE_MERGE():
 def setMODE_FORMABLE():
     global currentMOD
     currentMOD = MODE_FORMABLE
+    SetFormableMODE()
     redrawMap()
 
 def saveSafe():
@@ -347,15 +355,6 @@ def LoadJSONs():
                 D_Provinces["p"+pays["provinces"][i]]["owner"] = pays["id"]
                 canvasmap.itemconfigure("p"+pays["provinces"][i],fill='#%02x%02x%02x' % tuple(D_Pays[pays["id"]]["color"]))
 
-    for Pays in D_Pays:
-        D_Drapeaux[Pays] = {}
-        for Parti in ["republic","monarchy","communism","fascism"]:
-            Path = "Assets/Resources/Flags/"+Pays+"_"+Parti+".png"
-            if not os.path.exists(Path):
-                Path = Path = "Assets/Resources/Flags/"+Pays+".png"
-            D_Drapeaux[Pays][Parti] = ImageTk.PhotoImage(Image.open(Path).resize((200, 150)))
-
-
     with io.open("Assets/Resources/JSON/formables.json","r",encoding="utf8") as jsonp_file:
         json = eval(jsonp_file.read())["formables"]
         for formable in json:
@@ -365,8 +364,27 @@ def LoadJSONs():
             D_Formables[formable["id"]]["required"] = ["p"+province for province in formable["required"]]
 
 
+    for Pays in D_Pays:
+        D_Drapeaux[Pays] = {}
+        for Parti in ["republic","monarchy","communism","fascism"]:
+            Path = "Assets/Resources/Flags/"+Pays+"_"+Parti+".png"
+            if not os.path.exists(Path):
+                Path = Path = "Assets/Resources/Flags/"+Pays+".png"
+            D_Drapeaux[Pays][Parti] = ImageTk.PhotoImage(Image.open(Path).resize((200, 150)))
+
+
+    for Pays in D_Formables:
+        D_Drapeaux[Pays] = {}
+        for Parti in ["republic","monarchy","communism","fascism"]:
+            Path = "Assets/Resources/Flags/"+Pays+"_"+Parti+".png"
+            if not os.path.exists(Path):
+                Path = Path = "Assets/Resources/Flags/"+Pays+".png"
+            D_Drapeaux[Pays][Parti] = ImageTk.PhotoImage(Image.open(Path).resize((200, 150)))
+
+
+
 def RightClick(event):
-    global D_Pays,D_Provinces,currentMOD
+    global D_Pays,D_Provinces,D_Formables,currentMOD,currentFORMABLEID
     idNum = event.widget.gettags('current')[0]
 
     if currentMOD == MODE_DRAWING:
@@ -393,6 +411,13 @@ def RightClick(event):
             canvasmap.itemconfigure(idNum,fill='#%02x%02x%02x' % tuple(D_Pays[currentID]["color"]))
     elif currentMOD == MODE_MERGE:
         FusePolygons(currentPROVID,idNum)
+    elif currentMOD == MODE_FORMABLE:
+        if idNum in D_Formables[currentFORMABLEID]["required"]:
+            D_Formables[currentFORMABLEID]["required"].remove(idNum)
+            canvasmap.itemconfigure(idNum,fill='gray')
+        else:
+            D_Formables[currentFORMABLEID]["required"].append(idNum)
+            canvasmap.itemconfigure(idNum,fill='blue')
 
             
 def LeftClick(event):
@@ -401,6 +426,9 @@ def LeftClick(event):
 
     if currentMOD in [MODE_PROVINCE,MODE_MERGE]:
         currentPROVID = idNum
+
+        if currentMOD == MODE_PROVINCE:
+            SetProvinceMODE()
         redrawMap()
 
 def WipeInfo():
@@ -592,14 +620,94 @@ def SetCountryMODE():
     buttonColor.pack()
 
 
-    
     secretNationBox = Checkbutton(Frame_Info, text='Secret Nation',variable=varCheckBox, onvalue=1, offvalue=0)
     secretNationBox.pack()
 
+
+    boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeCountryInfos)
+    boutonGov.pack()
+
+
+
+def SetProvinceMODE():
+    WipeInfo() 
+
+    provName = StringVar()
+    
+            
+
+    def ChangeProvinceInfos():
+        global D_Provinces
+
+        D_Provinces[currentPROVID]["name"] = provName.get()
+
+
+
+    provName.set(D_Provinces[currentPROVID]["name"])
+    entryName = Entry(Frame_Info,textvariable=provName)
+    entryName.pack()
+
+    boutonValid = Button(Frame_Info,text="Valid Changes",command=ChangeProvinceInfos)
+    boutonValid.pack()
+
+
+def SetFormableMODE():
+    WipeInfo()
+      
+
+    idPays = StringVar()
+    countryName = StringVar()
+
+    def ChangeCurrentID(newVal):
+        global currentFORMABLEID
+
+        for key in D_Formables:
+            if newVal == D_Formables[key]["name"]:
+                currentFORMABLEID = key
+
+                countryName.set(D_Formables[key]["name"])
+
+                Pays_Flag.configure(image=D_Drapeaux[currentFORMABLEID]["republic"])
+                Pays_Flag.image = D_Drapeaux[currentFORMABLEID]["republic"]
+                redrawMap()
+                return
+            
+
+    def ChangeFormableInfos():
+        global D_Formables
+
+        D_Formables[currentFORMABLEID]["name"] = countryName.get()
+        
+        SetFormableMODE()
+        redrawMap()
+
+
     
 
 
-    boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeCountryInfos)
+    liste = []
+    for key in D_Formables:
+        liste.append(D_Formables[key]["name"])
+
+    liste.sort()
+
+        
+    idPays.set(D_Formables[currentFORMABLEID]["name"])
+    
+    optionsPays = OptionMenu(Frame_Info, idPays, *liste,command=ChangeCurrentID)
+    optionsPays.pack()
+
+    Pays_Flag = Label(Frame_Info,image=D_Drapeaux[currentFORMABLEID]["republic"]) #Info Pays
+    Pays_Flag.pack()
+
+    countryName.set(D_Formables[currentFORMABLEID]["name"])
+    entryName = Entry(Frame_Info,textvariable=countryName)
+    entryName.pack()
+
+
+
+
+    boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeFormableInfos)
     boutonGov.pack()
 
 

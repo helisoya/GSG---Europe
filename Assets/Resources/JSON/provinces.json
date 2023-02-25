@@ -56,7 +56,7 @@
 		},
 		{
 			"id":"7",
-			"name":"Sarre",
+			"name":"Rheinland",
 			"adjacencies":[
 				"130",
 				"47",
@@ -201,7 +201,7 @@
 		},
 		{
 			"id":"17",
-			"name":"Londres",
+			"name":"London",
 			"adjacencies":[
 				"101",
 				"17",
@@ -437,7 +437,7 @@
 		},
 		{
 			"id":"34",
-			"name":"Opole",
+			"name":"Silesia",
 			"adjacencies":[
 				"373",
 				"390",
@@ -821,7 +821,7 @@
 		},
 		{
 			"id":"53",
-			"name":"Ouest",
+			"name":"Talinn",
 			"adjacencies":[
 				"234",
 				"189",
@@ -1255,7 +1255,7 @@
 		},
 		{
 			"id":"80",
-			"name":"Waterford",
+			"name":"Dublin",
 			"adjacencies":[
 				"24",
 				"360",
@@ -1361,7 +1361,7 @@
 		},
 		{
 			"id":"87",
-			"name":"Mutenie-Nord",
+			"name":"Mutenia",
 			"adjacencies":[
 				"174",
 				"486",
@@ -1511,7 +1511,7 @@
 		},
 		{
 			"id":"94",
-			"name":"Sudovie",
+			"name":"Sudovia",
 			"adjacencies":[
 				"337",
 				"271",
@@ -1565,7 +1565,7 @@
 		},
 		{
 			"id":"96",
-			"name":"Petite Pologne",
+			"name":"Krakow",
 			"adjacencies":[
 				"264",
 				"390",
@@ -1598,7 +1598,7 @@
 		},
 		{
 			"id":"99",
-			"name":"Seine Maritime",
+			"name":"Normandy",
 			"adjacencies":[
 				"312",
 				"60",
@@ -1704,7 +1704,7 @@
 		},
 		{
 			"id":"102",
-			"name":"Voivodine-Nord",
+			"name":"Voivodina",
 			"adjacencies":[
 				"90",
 				"2",
@@ -1753,7 +1753,7 @@
 		},
 		{
 			"id":"105",
-			"name":"AberdeenShire",
+			"name":"Aberdeenshire",
 			"adjacencies":[
 				"16",
 				"105",
@@ -1889,7 +1889,7 @@
 		},
 		{
 			"id":"112",
-			"name":"Macedoine",
+			"name":"Macedonia",
 			"adjacencies":[
 				"315",
 				"455",
@@ -2089,7 +2089,7 @@
 		},
 		{
 			"id":"123",
-			"name":"Haute-Baviere",
+			"name":"Munich",
 			"adjacencies":[
 				"46",
 				"262",
@@ -2312,7 +2312,7 @@
 		},
 		{
 			"id":"138",
-			"name":"Athique",
+			"name":"Athens",
 			"adjacencies":[
 				"323",
 				"199"
@@ -2552,7 +2552,7 @@
 		},
 		{
 			"id":"155",
-			"name":"Flandre-Ouest",
+			"name":"Flanders",
 			"adjacencies":[
 				"45",
 				"284",
@@ -2588,7 +2588,7 @@
 		},
 		{
 			"id":"156",
-			"name":"Carniole",
+			"name":"Slovenia",
 			"adjacencies":[
 				"403",
 				"316",
@@ -2648,7 +2648,7 @@
 		},
 		{
 			"id":"162",
-			"name":"CheShire",
+			"name":"Cheshire",
 			"adjacencies":[
 				"240",
 				"162",
@@ -2690,7 +2690,7 @@
 		},
 		{
 			"id":"163",
-			"name":"Haut-Palatinat",
+			"name":"Palatinate",
 			"adjacencies":[
 				"410",
 				"32",
@@ -2870,7 +2870,7 @@
 		},
 		{
 			"id":"174",
-			"name":"Oltenie",
+			"name":"Bucarest",
 			"adjacencies":[
 				"259",
 				"40",
@@ -2954,7 +2954,7 @@
 		},
 		{
 			"id":"179",
-			"name":"Frise",
+			"name":"Holland",
 			"adjacencies":[
 				"179",
 				"45",
@@ -3664,7 +3664,7 @@
 		},
 		{
 			"id":"232",
-			"name":"Cujavie",
+			"name":"Warsaw",
 			"adjacencies":[
 				"331",
 				"272",
@@ -3783,7 +3783,7 @@
 		},
 		{
 			"id":"240",
-			"name":"LancaShire",
+			"name":"Lancashire",
 			"adjacencies":[
 				"111",
 				"162",
@@ -4168,7 +4168,7 @@
 		},
 		{
 			"id":"266",
-			"name":"Finistere",
+			"name":"Britany",
 			"adjacencies":[
 				"266",
 				"219",
@@ -4268,7 +4268,7 @@
 		},
 		{
 			"id":"272",
-			"name":"Mazurie",
+			"name":"Mazuria",
 			"adjacencies":[
 				"271",
 				"417",
@@ -4477,7 +4477,7 @@
 		},
 		{
 			"id":"284",
-			"name":"Wallonie-Ouest",
+			"name":"Wallonia",
 			"adjacencies":[
 				"60",
 				"155",
@@ -4937,7 +4937,7 @@
 		},
 		{
 			"id":"316",
-			"name":"Styrie",
+			"name":"Wien",
 			"adjacencies":[
 				"46",
 				"468",
@@ -5029,7 +5029,7 @@
 		},
 		{
 			"id":"323",
-			"name":"Ionie",
+			"name":"Ionia",
 			"adjacencies":[
 				"315",
 				"138",
@@ -5129,7 +5129,7 @@
 		},
 		{
 			"id":"331",
-			"name":"Basse Silesie",
+			"name":"Opole",
 			"adjacencies":[
 				"34",
 				"232",
@@ -5330,7 +5330,7 @@
 		},
 		{
 			"id":"344",
-			"name":"Bosnie",
+			"name":"Bosnia",
 			"adjacencies":[
 				"403",
 				"90",
@@ -5682,7 +5682,7 @@
 		},
 		{
 			"id":"367",
-			"name":"AyrShire",
+			"name":"Ayrshire",
 			"adjacencies":[
 				"387",
 				"16",
@@ -5758,7 +5758,7 @@
 		},
 		{
 			"id":"373",
-			"name":"Saxe",
+			"name":"Brandeburg",
 			"adjacencies":[
 				"410",
 				"32",
@@ -6217,7 +6217,7 @@
 		},
 		{
 			"id":"399",
-			"name":"Ceredigion",
+			"name":"Wales",
 			"adjacencies":[
 				"162",
 				"399"
@@ -6277,7 +6277,7 @@
 		},
 		{
 			"id":"402",
-			"name":"Weser-Ems",
+			"name":"Hanover",
 			"adjacencies":[
 				"179",
 				"446",
@@ -6475,7 +6475,7 @@
 		},
 		{
 			"id":"414",
-			"name":"Scanie",
+			"name":"Scania",
 			"adjacencies":[
 				"110"
 			],
@@ -6496,7 +6496,7 @@
 		},
 		{
 			"id":"417",
-			"name":"Pomeranie",
+			"name":"Pomerania",
 			"adjacencies":[
 				"272",
 				"423",
@@ -7083,7 +7083,7 @@
 		},
 		{
 			"id":"448",
-			"name":"North Highlands",
+			"name":"Highlands",
 			"adjacencies":[
 				"448",
 				"105",
@@ -7218,7 +7218,7 @@
 		},
 		{
 			"id":"453",
-			"name":"Sumadija",
+			"name":"Belgrade",
 			"adjacencies":[
 				"43",
 				"351",
@@ -7274,7 +7274,7 @@
 		},
 		{
 			"id":"455",
-			"name":"Korce",
+			"name":"Albania",
 			"adjacencies":[
 				"112",
 				"315",
@@ -7427,7 +7427,7 @@
 		},
 		{
 			"id":"467",
-			"name":"Boheme",
+			"name":"Bohemia",
 			"adjacencies":[
 				"410",
 				"390",
@@ -7486,7 +7486,7 @@
 		},
 		{
 			"id":"472",
-			"name":"Haut-Rhin",
+			"name":"Alsace",
 			"adjacencies":[
 				"167",
 				"447",
@@ -7799,7 +7799,7 @@
 		},
 		{
 			"id":"486",
-			"name":"Transilvanie-Nord",
+			"name":"Transilvania",
 			"adjacencies":[
 				"325",
 				"486",
