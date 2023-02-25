@@ -2,6 +2,7 @@ from tkinter import *
 from random import *
 from tkinter import simpledialog
 from tkinter import messagebox
+from tkinter import colorchooser
 import os
 import io
 from PIL import Image, ImageTk
@@ -16,7 +17,7 @@ D_Drapeaux = {}
 D_Formables = {}
 
 currentID = "FRA"
-currentPROVID = "p1"
+currentPROVID = "p2"
 currentFORMABLEID = "BEN"
 
 
@@ -83,6 +84,7 @@ def redrawMap():
 def setMODE_DRAWING():
     global currentMOD
     currentMOD = MODE_DRAWING
+    SetCountryMODE()
     redrawMap()
 
 def setMODE_PROVINCE():
@@ -93,11 +95,13 @@ def setMODE_PROVINCE():
 def setMODE_COUNTRY():
     global currentMOD
     currentMOD = MODE_COUNTRY
+    SetCountryMODE()
     redrawMap()
 
 def setMODE_MERGE():
     global currentMOD
     currentMOD = MODE_MERGE
+    WipeInfo()
     redrawMap()
 
 def setMODE_FORMABLE():
@@ -321,6 +325,7 @@ def LoadJSONs():
             canvasmap.tag_bind("p"+province["id"],"<Button-3>",RightClick)
             canvasmap.tag_bind("p"+province["id"],"<Button-1>",LeftClick)
 
+
     with io.open("Assets/Resources/JSON/pays.json","r",encoding="utf8") as jsonp_file:
         json = eval(jsonp_file.read())["pays"]
         for pays in json:
@@ -370,6 +375,9 @@ def RightClick(event):
         D_Provinces[idNum]["owner"] = currentID
         canvasmap.itemconfigure(idNum,fill='#%02x%02x%02x' % tuple(D_Pays[currentID]["color"]))
     elif currentMOD == MODE_PROVINCE and idNum != currentPROVID:
+        if idNum == currentPROVID:
+            return
+        
         if idNum in D_Provinces[currentPROVID]["adjacencies"]:
             D_Provinces[currentPROVID]["adjacencies"].remove(idNum)
             canvasmap.itemconfigure(idNum,fill='gray')
@@ -401,6 +409,9 @@ def WipeInfo():
         
         
 def FusePolygons(poly1,poly2):
+    if poly1 == poly2:
+        return
+    
     global D_Provinces,D_Pays,D_Formables
     pos1 = [ D_Points[point] for point in D_Provinces[poly1]["points"]]
     pos2 = [ D_Points[point] for point in D_Provinces[poly2]["points"]]
@@ -429,6 +440,11 @@ def FusePolygons(poly1,poly2):
         D_Provinces[poly1]["adjacencies"].remove(poly2)
 
     for adjacent in D_Provinces[poly2]["adjacencies"]:
+        if poly2 in D_Provinces[adjacent]["adjacencies"]:
+            D_Provinces[adjacent]["adjacencies"].remove(poly2)
+        if not poly1 in D_Provinces[adjacent]["adjacencies"]:
+            D_Provinces[adjacent]["adjacencies"].append(poly1)
+            
         if not adjacent in D_Provinces[poly1]["adjacencies"]:
             D_Provinces[poly1]["adjacencies"].append(adjacent)
 
@@ -483,50 +499,112 @@ LoadJSONs()
 
 # ------------------------ GUI -------------------------------
 
-def ChangeCurrentID(newVal):
-    global currentID,Pays_Flag,governement
 
+
+
+def SetCountryMODE():
+    WipeInfo()
+
+    listeGov = ["Parlimentary Rep.","Mixed Rep.","Presidential Rep.","Absolute Mon.","Elective Mon.","Parlimentary Mon.","Soviet Rep.","People's Rep.","Popular Union","New Reich","Social Republic","Military Junta"]
+            
+
+    idPays = StringVar()
+    countryName = StringVar()
+    cultureName = StringVar()
+    governement = StringVar()
+    varCheckBox = IntVar()
+
+    def ChangeCurrentID(newVal):
+        global currentID
+
+        for key in D_Pays:
+            if newVal == D_Pays[key]["name"]:
+                currentID = key
+
+                if D_Pays[currentID]["secretNation"] == "False":
+                    varCheckBox.set(0)
+                else:
+                    varCheckBox.set(1)
+                
+                governement.set(listeGov[D_Pays[currentID]["governement"]])
+                countryName.set(D_Pays[key]["name"])
+                cultureName.set(D_Pays[key]["culture"])
+                Pays_Flag.configure(image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])])
+                Pays_Flag.image = D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]
+                redrawMap()
+                return
+            
+
+    def ChangeCountryInfos():
+        global D_Pays
+
+        D_Pays[currentID]["governement"] = listeGov.index(governement.get())
+        D_Pays[currentID]["secretNation"] = ["False","True"][varCheckBox.get()]
+        D_Pays[currentID]["name"] = countryName.get()
+        D_Pays[currentID]["culture"] = cultureName.get()
+        
+        Pays_Flag.configure(image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])])
+        Pays_Flag.image = D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]
+        SetCountryMODE()
+        
+        redrawMap()
+
+
+    
+
+
+    liste = []
     for key in D_Pays:
-        if newVal == D_Pays[key]["name"]:
-            currentID = key
-            governement.set(D_Pays[currentID]["governement"])
-            Pays_Flag.configure(image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])])
-            Pays_Flag.image = D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]
-            redrawMap()
-            return
+        liste.append(D_Pays[key]["name"])
 
-def ChangeCountryInfos():
-    global Pays_Flag, D_Pays
+    liste.sort()
 
-    D_Pays[currentID]["governement"] = governement.get()
-    Pays_Flag.configure(image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])])
-    Pays_Flag.image = D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]
+        
+    idPays.set(D_Pays[currentID]["name"])
+    
+    optionsPays = OptionMenu(Frame_Info, idPays, *liste,command=ChangeCurrentID)
+    optionsPays.pack()
 
-idPays = StringVar()
-governement = IntVar()
+    Pays_Flag = Label(Frame_Info,image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]) #Info Pays
+    Pays_Flag.pack()
 
-liste = []
-for key in D_Pays:
-    liste.append(D_Pays[key]["name"])
+    countryName.set(D_Pays[currentID]["name"])
+    entryName = Entry(Frame_Info,textvariable=countryName)
+    entryName.pack()
 
-liste.sort()
+    cultureName.set(D_Pays[currentID]["culture"])
+    entryCulture = Entry(Frame_Info,textvariable=cultureName)
+    entryCulture.pack()
 
-for key in D_Pays:
-    if D_Pays[key]["name"] == liste[0]:
-        currentID = key
-        break
-idPays.set(liste[0])
-options = OptionMenu(Frame_Info, idPays, *liste,command=ChangeCurrentID)
-options.pack()
+    governement.set(listeGov[D_Pays[currentID]["governement"]])
+    optionGov = OptionMenu(Frame_Info, governement, *listeGov)
+    optionGov.pack()
 
-Pays_Flag = Label(Frame_Info,image=D_Drapeaux[currentID][convertIntToGovernement(D_Pays[currentID]["governement"])]) #Info Pays
-Pays_Flag.pack()
+    def choose_color():
+        global D_Pays
+        color = colorchooser.askcolor(title ="Choose color")[0]
+        D_Pays[currentID]["color"] = list(color)
+        
+        redrawMap()
 
-governement.set(D_Pays[currentID]["governement"])
-entryGov = Entry(Frame_Info,textvariable=governement)
-entryGov.pack()
+    buttonColor = Button(Frame_Info, text = "Change color",
+                   command = choose_color)
+    buttonColor.pack()
 
-boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeCountryInfos)
-boutonGov.pack()
+
+    
+    secretNationBox = Checkbutton(Frame_Info, text='Secret Nation',variable=varCheckBox, onvalue=1, offvalue=0)
+    secretNationBox.pack()
+
+    
+
+
+    boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeCountryInfos)
+    boutonGov.pack()
+
+
+SetCountryMODE()
+
+
 
 fenmap.mainloop()
