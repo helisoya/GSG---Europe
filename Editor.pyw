@@ -656,6 +656,8 @@ def SetFormableMODE():
       
 
     idPays = StringVar()
+    idRemove = StringVar()
+    newTag = StringVar()
     countryName = StringVar()
 
     def ChangeCurrentID(newVal):
@@ -704,8 +706,44 @@ def SetFormableMODE():
     entryName = Entry(Frame_Info,textvariable=countryName)
     entryName.pack()
 
+    
+    def addNewContestant():
+        global D_Formables
+        
+        if not newTag.get() in D_Formables[currentFORMABLEID]["contestants"]:
+            D_Formables[currentFORMABLEID]["contestants"].append(newTag.get())
+            SetFormableMODE()
+            
+            
+    def removeContestant():
+        global D_Formables
+        
+        for key in D_Formables[currentFORMABLEID]["contestants"]:
+            if D_Pays[key]["name"] == idRemove.get():
+                D_Formables[currentFORMABLEID]["contestants"].remove(key)
+                SetFormableMODE()
+                return
 
 
+            
+    listeC = [ D_Pays[key]["name"] for key in D_Formables[currentFORMABLEID]["contestants"] ]
+
+    listeC.sort()
+
+    idRemove.set(listeC[0])
+    
+    optionsRemove = OptionMenu(Frame_Info, idRemove, *listeC)
+    optionsRemove.pack()
+    
+    boutonRemove = Button(Frame_Info,text="Remove Contestant",command=removeContestant)
+    boutonRemove.pack()
+    
+    newTag.set("")
+    entryNewTag = Entry(Frame_Info,textvariable=newTag)
+    entryNewTag.pack()
+    
+    boutonNew = Button(Frame_Info,text="Add Contestant",command=addNewContestant)
+    boutonNew.pack()
 
     boutonGov = Button(Frame_Info,text="Valid Changes",command=ChangeFormableInfos)
     boutonGov.pack()

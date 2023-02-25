@@ -238,6 +238,11 @@ public class Manager : MonoBehaviour
         return pays[ID];
     }
 
+    public Province GetProvince(string ID)
+    {
+        return provinces[ID];
+    }
+
     public string GetGovernementDesc(int ID)
     {
         return gouvs_data.descs[ID];

@@ -358,7 +358,7 @@
 		},
 		{
 			"id":"28",
-			"name":"Ostrobotnie-Nord",
+			"name":"Ostrobotnia-North",
 			"adjacencies":[
 				"61",
 				"474",
@@ -1160,7 +1160,7 @@
 		},
 		{
 			"id":"71",
-			"name":"Huesca",
+			"name":"Navarre",
 			"adjacencies":[
 				"69",
 				"268",
@@ -1395,7 +1395,7 @@
 		},
 		{
 			"id":"88",
-			"name":"Laponie-Sud",
+			"name":"Sampi-South",
 			"adjacencies":[
 				"485",
 				"248",
@@ -1453,7 +1453,7 @@
 		},
 		{
 			"id":"90",
-			"name":"Slavonie",
+			"name":"Slavonia",
 			"adjacencies":[
 				"403",
 				"344",
@@ -1819,7 +1819,7 @@
 		},
 		{
 			"id":"109",
-			"name":"Lisbonne",
+			"name":"Lisbon",
 			"adjacencies":[
 				"100",
 				"329"
@@ -2816,7 +2816,7 @@
 		},
 		{
 			"id":"170",
-			"name":"Ostfold",
+			"name":"Oslo",
 			"adjacencies":[
 				"263",
 				"456",
@@ -3165,7 +3165,7 @@
 		},
 		{
 			"id":"188",
-			"name":"Fionie",
+			"name":"Fionia",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -3454,7 +3454,7 @@
 		},
 		{
 			"id":"212",
-			"name":"Moscou",
+			"name":"Moscow",
 			"adjacencies":[
 				"324",
 				"38",
@@ -3812,7 +3812,7 @@
 		},
 		{
 			"id":"241",
-			"name":"Arkhangelsk-Nord",
+			"name":"Arkhangelsk",
 			"adjacencies":[
 				"299",
 				"180",
@@ -4022,7 +4022,7 @@
 		},
 		{
 			"id":"258",
-			"name":"Palermo",
+			"name":"Sicily",
 			"adjacencies":[
 				"258"
 			],
@@ -4118,7 +4118,7 @@
 		},
 		{
 			"id":"263",
-			"name":"Dalecarlie",
+			"name":"Dalecarlia",
 			"adjacencies":[
 				"445",
 				"170",
@@ -4211,7 +4211,7 @@
 		},
 		{
 			"id":"268",
-			"name":"Catalogne",
+			"name":"Catalonia",
 			"adjacencies":[
 				"71",
 				"69",
@@ -4321,7 +4321,7 @@
 		},
 		{
 			"id":"275",
-			"name":"Smarhon",
+			"name":"Minsk",
 			"adjacencies":[
 				"337",
 				"281",
@@ -5129,7 +5129,7 @@
 		},
 		{
 			"id":"331",
-			"name":"Opole",
+			"name":"High Silesia",
 			"adjacencies":[
 				"34",
 				"232",
@@ -5422,7 +5422,7 @@
 		},
 		{
 			"id":"353",
-			"name":"Ostrobotnie-Sud",
+			"name":"Ostrobotnia-South",
 			"adjacencies":[
 				"396",
 				"353",
@@ -5606,7 +5606,7 @@
 		},
 		{
 			"id":"361",
-			"name":"Kurzeme",
+			"name":"Riga",
 			"adjacencies":[
 				"94",
 				"235",
@@ -5736,7 +5736,7 @@
 		},
 		{
 			"id":"371",
-			"name":"Dalmatie",
+			"name":"Dalmatia",
 			"adjacencies":[
 				"403",
 				"344"
@@ -6547,7 +6547,7 @@
 		},
 		{
 			"id":"419",
-			"name":"Mourmansk-Ouest",
+			"name":"Mourmansk",
 			"adjacencies":[
 				"48",
 				"419",
@@ -6591,7 +6591,7 @@
 		},
 		{
 			"id":"420",
-			"name":"Crimee-Nord",
+			"name":"Crimea",
 			"adjacencies":[
 				"146",
 				"420"
@@ -6622,7 +6622,7 @@
 		},
 		{
 			"id":"421",
-			"name":"Carelie-Nord",
+			"name":"Carelia",
 			"adjacencies":[
 				"64",
 				"419",
@@ -6910,7 +6910,7 @@
 		},
 		{
 			"id":"440",
-			"name":"Jamtland-Sud",
+			"name":"Jamtland",
 			"adjacencies":[
 				"340",
 				"183",
@@ -7247,7 +7247,7 @@
 		},
 		{
 			"id":"454",
-			"name":"Latina",
+			"name":"Rome",
 			"adjacencies":[
 				"395",
 				"454",
@@ -7339,7 +7339,7 @@
 		},
 		{
 			"id":"457",
-			"name":"Odessa-Sud",
+			"name":"Odessa",
 			"adjacencies":[
 				"319",
 				"87",
@@ -7583,7 +7583,7 @@
 		},
 		{
 			"id":"475",
-			"name":"Venetie",
+			"name":"Venise",
 			"adjacencies":[
 				"341",
 				"156",
@@ -7760,7 +7760,7 @@
 		},
 		{
 			"id":"485",
-			"name":"Laponie-Nord",
+			"name":"Sampi-North",
 			"adjacencies":[
 				"88",
 				"248",
@@ -7827,7 +7827,7 @@
 		},
 		{
 			"id":"487",
-			"name":"Ligurie",
+			"name":"Piedmont",
 			"adjacencies":[
 				"114",
 				"487",
