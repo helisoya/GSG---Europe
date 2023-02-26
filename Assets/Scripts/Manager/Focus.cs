@@ -7,7 +7,10 @@ public class Focus
     public string id;
     public string focusName;
     public string desc;
-    public string required;
+    public List<string> required;
+    public bool requireAll;
     public List<string> exclusive;
     public string effect;
+    public int x;
+    public int y;
 }

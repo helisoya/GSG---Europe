@@ -184,13 +184,28 @@ public class Pays
         }
     }
 
+
+
+    public bool PrerequistDone(Focus focus)
+    {
+        if (focus.required.Count == 0) return true;
+
+        foreach (string prerequist in focus.required)
+        {
+            if (!focusDone.Contains(prerequist) && focus.requireAll) return false;
+            if (focusDone.Contains(prerequist) && !focus.requireAll) return true;
+        }
+
+        return true;
+    }
+
     public List<Focus> GetAvailableFocus()
     {
         List<Focus> list = new List<Focus>();
         foreach (Focus focus in manager.focus.Values)
         {
             if (focusDone.Contains(focus.id)) continue;
-            if (!focus.required.Equals("NONE") && !focusDone.Contains(focus.required)) continue;
+            if (!PrerequistDone(focus)) continue;
             bool ok = true;
             foreach (string exclusive in focus.exclusive)
             {

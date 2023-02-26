@@ -186,6 +186,7 @@ public class Parser : MonoBehaviour
         JArray array = obj.GetJArray("focus");
         JSON focusJSON;
         JArray arrayExclusive;
+        JArray arrayRequired;
         for (int i = 0; i < array.Length; i++)
         {
             focusJSON = array.GetJSON(i);
@@ -193,8 +194,17 @@ public class Parser : MonoBehaviour
             focus.id = focusJSON.GetString("id");
             focus.focusName = focusJSON.GetString("name");
             focus.desc = focusJSON.GetString("desc");
-            focus.required = focusJSON.GetString("required");
+            focus.requireAll = focusJSON.GetString("requireAll").Equals("False");
             focus.effect = focusJSON.GetString("effect");
+            focus.x = focusJSON.GetInt("x");
+            focus.y = focusJSON.GetInt("y");
+
+            arrayRequired = focusJSON.GetJArray("required");
+            focus.required = new List<string>();
+            for (int j = 0; j < arrayRequired.Length; j++)
+            {
+                focus.required.Add(arrayRequired.GetString(j));
+            }
 
             arrayExclusive = focusJSON.GetJArray("exclusive");
             focus.exclusive = new List<string>();
