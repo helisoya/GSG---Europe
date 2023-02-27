@@ -133,6 +133,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void Show_CountryInfo(Pays NEW)
     {
+        infoFlag.transform.parent.gameObject.SetActive(true);
         current_countryinfo = NEW;
         UpdateInfo(NEW);
 
