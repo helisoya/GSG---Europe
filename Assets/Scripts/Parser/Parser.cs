@@ -194,7 +194,7 @@ public class Parser : MonoBehaviour
             focus.id = focusJSON.GetString("id");
             focus.focusName = focusJSON.GetString("name");
             focus.desc = focusJSON.GetString("desc");
-            focus.requireAll = focusJSON.GetString("requireAll").Equals("False");
+            focus.requireAll = focusJSON.GetString("requireAll").Equals("True");
             focus.effect = focusJSON.GetString("effect");
             focus.x = focusJSON.GetInt("x");
             focus.y = focusJSON.GetInt("y");

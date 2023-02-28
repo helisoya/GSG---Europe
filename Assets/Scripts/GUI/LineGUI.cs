@@ -10,7 +10,7 @@ public class LineGUI : MonoBehaviour
     private Image image;
     private RectTransform rectTransform;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         image = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
@@ -28,9 +28,10 @@ public class LineGUI : MonoBehaviour
             object1 = object2;
             object2 = aux;
         }
+        Init();
     }
     // Update is called once per frame
-    void Update()
+    void Init()
     {
         if (object1.gameObject.activeSelf && object2.gameObject.activeSelf)
         {

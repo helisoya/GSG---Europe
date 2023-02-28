@@ -34,14 +34,15 @@ public class Selection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Manager.instance.picked) return;
         //1. when left mouse button clicked (but not released)
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             p1 = Input.mousePosition;
         }
 
         //2. while left mouse button held
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
             if ((p1 - Input.mousePosition).magnitude > 40)
             {

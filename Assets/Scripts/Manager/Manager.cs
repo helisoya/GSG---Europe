@@ -272,7 +272,7 @@ public class Manager : MonoBehaviour
     {
         Ajout_Mois();
         CanvasWorker.instance.Update_Date();
-        CanvasWorker.instance.UpdateInfo();
+
         foreach (Pays country in pays.Values)
         {
             if (country.provinces.Count > 0)
@@ -288,6 +288,7 @@ public class Manager : MonoBehaviour
         }
         CanvasWorker.instance.UpdatePPBar();
         CanvasWorker.instance.UpdateUtilityUnitCap();
+        CanvasWorker.instance.UpdateInfo();
     }
 
     public string GetDate()

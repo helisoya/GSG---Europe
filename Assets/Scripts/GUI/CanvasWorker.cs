@@ -29,7 +29,8 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private Text infoName;
     [SerializeField] private Text infoGovernement;
     [SerializeField] private Text infoLeader;
-    [SerializeField] private Text infoFocus;
+    [SerializeField] private TextMeshProUGUI infoFocus;
+    [SerializeField] private Image infoFocusFill;
     [SerializeField] private Image infoFlag;
     [SerializeField] private GameObject infoDiploRoot;
     [SerializeField] private Button infoDiploWar;
@@ -199,6 +200,7 @@ public class CanvasWorker : MonoBehaviour
         infoLeader.text = country.leader.prenom + " " + country.leader.nom + "\n" + country.leader.age.ToString() + " years old";
         infoFocus.text = "National Focus : \n" +
             (country.currentFocus.Equals("NONE") ? "None" : manager.focus[country.currentFocus].focusName);
+        infoFocusFill.fillAmount = (country.currentFocus.Equals("NONE") ? 0 : country.currentFocusTime / (float)country.maxFocusTime);
         infoFlag.GetComponent<Image>().sprite = country.currentFlag;
     }
 

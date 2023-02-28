@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class FocusMenu : MonoBehaviour
 {
+    public GameObject focusMenuRoot;
     public Text focusText;
-
     public Transform graphParent;
     public Transform lineParent;
     public GameObject prefabButton;
@@ -18,6 +18,8 @@ public class FocusMenu : MonoBehaviour
 
     public void ShowFocusMenu()
     {
+        if (!focusMenuRoot.activeInHierarchy) return;
+
         Manager manager = Manager.instance;
         Pays country = manager.player;
 
@@ -29,6 +31,12 @@ public class FocusMenu : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        foreach (Transform child in lineParent)
+        {
+            Destroy(child.gameObject);
+        }
+
 
         if (country.currentFocus != "NONE")
         {

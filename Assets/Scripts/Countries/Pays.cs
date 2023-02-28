@@ -195,8 +195,11 @@ public class Pays
             if (!focusDone.Contains(prerequist) && focus.requireAll) return false;
             if (focusDone.Contains(prerequist) && !focus.requireAll) return true;
         }
-
-        return true;
+        foreach (string exlcusive in focus.exclusive)
+        {
+            if (focusDone.Contains(exlcusive)) return false;
+        }
+        return focus.requireAll;
     }
 
     public List<Focus> GetAvailableFocus()
@@ -206,16 +209,7 @@ public class Pays
         {
             if (focusDone.Contains(focus.id)) continue;
             if (!PrerequistDone(focus)) continue;
-            bool ok = true;
-            foreach (string exclusive in focus.exclusive)
-            {
-                if (focusDone.Contains(exclusive))
-                {
-                    ok = false;
-                    continue;
-                }
-            }
-            if (ok) list.Add(focus);
+            list.Add(focus);
         }
         return list;
     }

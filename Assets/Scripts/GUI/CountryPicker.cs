@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CountryPicker : MonoBehaviour
 {
     public Pays current = null;
 
     [SerializeField] private Image flag;
-    [SerializeField] private Text text;
+    [SerializeField] private TextMeshProUGUI text;
 
     public static CountryPicker instance;
 
