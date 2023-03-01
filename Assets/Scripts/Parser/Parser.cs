@@ -97,13 +97,6 @@ public class Parser : MonoBehaviour
                 culture.noms[j] = arrayIn.GetString(j);
             }
 
-            arrayIn = jsonCulture.GetJArray("musics");
-            culture.audios = new string[arrayIn.Length];
-            for (int j = 0; j < arrayIn.Length; j++)
-            {
-                culture.audios[j] = arrayIn.GetString(j);
-            }
-
             list.Add(culture.id, culture);
         }
         return list;

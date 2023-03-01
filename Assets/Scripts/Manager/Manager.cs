@@ -101,7 +101,7 @@ public class Manager : MonoBehaviour
         focuses = Parser.ParseFocus();
 
         loadingImg.fillAmount = 1f / 6f;
-        loadingText.text = "Loading Focus";
+        loadingText.text = "Loading Cultures";
         yield return new WaitForEndOfFrame();
         cultures = Parser.ParseCultures(focuses);
 

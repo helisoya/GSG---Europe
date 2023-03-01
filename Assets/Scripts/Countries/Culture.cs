@@ -9,7 +9,6 @@ public class Culture
     public string[] noms;
 
     public string[] prenoms;
-    public string[] audios;
 
     public GameObject prefabTank;
     public Dictionary<string, Focus> focusTree;
@@ -25,9 +24,5 @@ public class Culture
         return prenoms[Random.Range(0, prenoms.Length)];
     }
 
-    public string GetRandom_Musique()
-    {
-        return audios[Random.Range(0, audios.Length)];
-    }
 
 }

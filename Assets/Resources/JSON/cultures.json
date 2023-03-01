@@ -38,20 +38,6 @@
 				"Karls",
 				"Svetlana"
 			],
-			"musics":[
-				"british1",
-				"british2",
-				"british3",
-				"french1",
-				"french2",
-				"french3",
-				"russian1",
-				"russian2",
-				"russian3",
-				"german1",
-				"german2",
-				"german3"
-			],
 			"focus":"Generic"
 		},
 		{
@@ -91,18 +77,6 @@
 				"Maximilien",
 				"Jaures",
 				"Macron"
-			],
-			"musics":[
-				"french1",
-				"french2",
-				"french3",
-				"french4",
-				"french5",
-				"french6",
-				"french7",
-				"french8",
-				"french9",
-				"french10"
 			],
 			"focus":"Generic"
 		},
@@ -144,18 +118,6 @@
 				"Robinson",
 				"Thompson"
 			],
-			"musics":[
-				"british1",
-				"british2",
-				"british3",
-				"british4",
-				"british5",
-				"british6",
-				"british7",
-				"british8",
-				"british9",
-				"british10"
-			],
 			"focus":"Generic"
 		},
 		{
@@ -196,18 +158,6 @@
 				"Stein",
 				"Konig"
 			],
-			"musics":[
-				"german1",
-				"german2",
-				"german3",
-				"german4",
-				"german5",
-				"german6",
-				"german7",
-				"german8",
-				"german9",
-				"german10"
-			],
 			"focus":"Generic"
 		},
 		{
@@ -247,18 +197,6 @@
 				"Sedova",
 				"Sokolovskaia",
 				"Terechtchenko"
-			],
-			"musics":[
-				"russian1",
-				"russian2",
-				"russian3",
-				"russian4",
-				"russian5",
-				"russian6",
-				"russian7",
-				"russian8",
-				"russian9",
-				"russian10"
 			],
 			"focus":"Generic"
 		}
