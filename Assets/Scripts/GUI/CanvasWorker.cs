@@ -26,9 +26,9 @@ public class CanvasWorker : MonoBehaviour
     [Space]
     [Header("Country Infos")]
     [SerializeField] private GameObject holder_CountryInfo;
-    [SerializeField] private Text infoName;
-    [SerializeField] private Text infoGovernement;
-    [SerializeField] private Text infoLeader;
+    [SerializeField] private TextMeshProUGUI infoName;
+    [SerializeField] private TextMeshProUGUI infoGovernement;
+    [SerializeField] private TextMeshProUGUI infoLeader;
     [SerializeField] private TextMeshProUGUI infoFocus;
     [SerializeField] private Image infoFocusFill;
     [SerializeField] private Image infoFlag;
