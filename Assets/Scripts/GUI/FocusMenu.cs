@@ -58,14 +58,34 @@ public class FocusMenu : MonoBehaviour
             dic.Add(focus.id, obj);
         }
 
+        List<Focus> exclusiveDone = new List<Focus>();
+
         foreach (Focus focus in manager.focus.Values)
         {
             foreach (string requirement in focus.required)
             {
-                // Draw Line between the two
+                Instantiate(linePrefab, lineParent).GetComponent<LineGUI>().SetObjects(dic[focus.id], dic[requirement], Color.white);
+            }
+            if (focus.exclusive.Count > 0 && !exclusiveDone.Contains(focus))
+            {
+                List<Focus> workWith = new List<Focus>();
+                workWith.Add(focus);
+                exclusiveDone.Add(focus);
+                foreach (string exlcusive in focus.exclusive)
+                {
+                    workWith.Add(manager.focus[exlcusive]);
+                    exclusiveDone.Add(manager.focus[exlcusive]);
+                }
 
-                Instantiate(linePrefab, lineParent).GetComponent<LineGUI>().SetObjects(dic[focus.id], dic[requirement]);
+                workWith.Sort((e1, e2) =>
+                {
+                    return e1.x.CompareTo(e2.x);
+                });
 
+                for (int i = 0; i < workWith.Count - 1; i++)
+                {
+                    Instantiate(linePrefab, lineParent).GetComponent<LineGUI>().SetObjects(dic[workWith[i].id], dic[workWith[i + 1].id], Color.red);
+                }
             }
         }
     }

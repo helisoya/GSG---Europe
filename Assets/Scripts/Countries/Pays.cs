@@ -190,15 +190,17 @@ public class Pays
     {
         if (focus.required.Count == 0) return true;
 
+        foreach (string exlcusive in focus.exclusive)
+        {
+            if (focusDone.Contains(exlcusive)) return false;
+        }
+
         foreach (string prerequist in focus.required)
         {
             if (!focusDone.Contains(prerequist) && focus.requireAll) return false;
             if (focusDone.Contains(prerequist) && !focus.requireAll) return true;
         }
-        foreach (string exlcusive in focus.exclusive)
-        {
-            if (focusDone.Contains(exlcusive)) return false;
-        }
+
         return focus.requireAll;
     }
 

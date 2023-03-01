@@ -16,10 +16,11 @@ public class LineGUI : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void SetObjects(GameObject one, GameObject two)
+    public void SetObjects(GameObject one, GameObject two, Color col)
     {
         object1 = one.GetComponent<RectTransform>();
         object2 = two.GetComponent<RectTransform>();
+        image.color = col;
 
         RectTransform aux;
         if (object1.localPosition.x > object2.localPosition.x)
