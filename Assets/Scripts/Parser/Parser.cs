@@ -62,6 +62,53 @@ public class Parser : MonoBehaviour
         return list;
     }
 
+    public static Dictionary<string, Culture> ParseCultures(Dictionary<string, Dictionary<string, Focus>> focuses)
+    {
+        string json = Resources.Load<TextAsset>("JSON/cultures").text;
+
+        JSON obj = JSON.ParseString(json);
+
+        Dictionary<string, Culture> list = new Dictionary<string, Culture>();
+
+        JArray array = obj.GetJArray("cultures");
+        JSON jsonCulture;
+        JArray arrayIn;
+        for (int i = 0; i < array.Length; i++)
+        {
+            jsonCulture = array.GetJSON(i);
+            Culture culture = new Culture();
+            culture.id = jsonCulture.GetString("id");
+
+            culture.prefabTank = Resources.Load<GameObject>("Units/" + culture.id);
+
+            culture.focusTree = focuses[jsonCulture.GetString("focus")];
+
+            arrayIn = jsonCulture.GetJArray("names");
+            culture.prenoms = new string[arrayIn.Length];
+            for (int j = 0; j < arrayIn.Length; j++)
+            {
+                culture.prenoms[j] = arrayIn.GetString(j);
+            }
+
+            arrayIn = jsonCulture.GetJArray("surnames");
+            culture.noms = new string[arrayIn.Length];
+            for (int j = 0; j < arrayIn.Length; j++)
+            {
+                culture.noms[j] = arrayIn.GetString(j);
+            }
+
+            arrayIn = jsonCulture.GetJArray("musics");
+            culture.audios = new string[arrayIn.Length];
+            for (int j = 0; j < arrayIn.Length; j++)
+            {
+                culture.audios[j] = arrayIn.GetString(j);
+            }
+
+            list.Add(culture.id, culture);
+        }
+        return list;
+    }
+
     public static Dictionary<string, Pays> ParsePays()
     {
 
@@ -174,49 +221,57 @@ public class Parser : MonoBehaviour
         return list;
     }
 
-    public static Dictionary<string, Focus> ParseFocus()
+    public static Dictionary<string, Dictionary<string, Focus>> ParseFocus()
     {
+        Dictionary<string, Dictionary<string, Focus>> res = new Dictionary<string, Dictionary<string, Focus>>();
+        TextAsset[] textAssets = Resources.LoadAll<TextAsset>("JSON/Focuses");
 
-        string json = Resources.Load<TextAsset>("JSON/focus").text;
-
-        JSON obj = JSON.ParseString(json);
-
-        Dictionary<string, Focus> list = new Dictionary<string, Focus>();
-
-        JArray array = obj.GetJArray("focus");
-        JSON focusJSON;
-        JArray arrayExclusive;
-        JArray arrayRequired;
-        for (int i = 0; i < array.Length; i++)
+        foreach (TextAsset asset in textAssets)
         {
-            focusJSON = array.GetJSON(i);
-            Focus focus = new Focus();
-            focus.id = focusJSON.GetString("id");
-            focus.focusName = focusJSON.GetString("name");
-            focus.desc = focusJSON.GetString("desc");
-            focus.requireAll = focusJSON.GetString("requireAll").Equals("True");
-            focus.effect = focusJSON.GetString("effect");
-            focus.x = focusJSON.GetInt("x");
-            focus.y = focusJSON.GetInt("y");
+            string json = asset.text;
 
-            arrayRequired = focusJSON.GetJArray("required");
-            focus.required = new List<string>();
-            for (int j = 0; j < arrayRequired.Length; j++)
+            JSON obj = JSON.ParseString(json);
+
+            Dictionary<string, Focus> list = new Dictionary<string, Focus>();
+
+            JArray array = obj.GetJArray("focus");
+            JSON focusJSON;
+            JArray arrayExclusive;
+            JArray arrayRequired;
+            for (int i = 0; i < array.Length; i++)
             {
-                focus.required.Add(arrayRequired.GetString(j));
+                focusJSON = array.GetJSON(i);
+                Focus focus = new Focus();
+                focus.id = focusJSON.GetString("id");
+                focus.focusName = focusJSON.GetString("name");
+                focus.desc = focusJSON.GetString("desc");
+                focus.requireAll = focusJSON.GetString("requireAll").Equals("True");
+                focus.effect = focusJSON.GetString("effect");
+                focus.x = focusJSON.GetInt("x");
+                focus.y = focusJSON.GetInt("y");
+
+                arrayRequired = focusJSON.GetJArray("required");
+                focus.required = new List<string>();
+                for (int j = 0; j < arrayRequired.Length; j++)
+                {
+                    focus.required.Add(arrayRequired.GetString(j));
+                }
+
+                arrayExclusive = focusJSON.GetJArray("exclusive");
+                focus.exclusive = new List<string>();
+                for (int j = 0; j < arrayExclusive.Length; j++)
+                {
+                    focus.exclusive.Add(arrayExclusive.GetString(j));
+                }
+
+
+                list.Add(focus.id, focus);
             }
-
-            arrayExclusive = focusJSON.GetJArray("exclusive");
-            focus.exclusive = new List<string>();
-            for (int j = 0; j < arrayExclusive.Length; j++)
-            {
-                focus.exclusive.Add(arrayExclusive.GetString(j));
-            }
-
-
-            list.Add(focus.id, focus);
+            res.Add(obj.GetString("id"), list);
         }
-        return list;
+
+
+        return res;
     }
 }
 

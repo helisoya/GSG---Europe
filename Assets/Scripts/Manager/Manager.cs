@@ -37,7 +37,7 @@ public class Manager : MonoBehaviour
 
     private Dictionary<string, Province> provinces;
 
-    public Dictionary<string, Focus> focus;
+    public Dictionary<string, Dictionary<string, Focus>> focuses;
 
     [Header("Parser")]
     public GameObject prefabProvince;
@@ -52,6 +52,7 @@ public class Manager : MonoBehaviour
     {
         get { return loading != null; }
     }
+
 
     void Awake()
     {
@@ -94,27 +95,32 @@ public class Manager : MonoBehaviour
         provinces = Parser.ParseProvinces();
 
 
-        loadingImg.fillAmount = 1f / 5f;
+        loadingImg.fillAmount = 1f / 6f;
         loadingText.text = "Loading Focus";
         yield return new WaitForEndOfFrame();
-        focus = Parser.ParseFocus();
+        focuses = Parser.ParseFocus();
+
+        loadingImg.fillAmount = 1f / 6f;
+        loadingText.text = "Loading Focus";
+        yield return new WaitForEndOfFrame();
+        cultures.SetCultures(Parser.ParseCultures(focuses));
 
 
-        loadingImg.fillAmount = 2f / 5f;
+        loadingImg.fillAmount = 5f / 6f;
         loadingText.text = "Loading Countries";
         yield return new WaitForEndOfFrame();
         gouvs_data = GetComponent<Gouvernements>();
         pays = Parser.ParsePays();
         cultures = GetComponent<CulturesWorker>();
 
-        loadingImg.fillAmount = 3f / 5f;
+        loadingImg.fillAmount = 5f / 6f;
         loadingText.text = "Loading Formables";
         yield return new WaitForEndOfFrame();
         formables = GetComponent<FormableWorker>();
         formables.SetFormables(Parser.ParseFormables(provinces));
 
 
-        loadingImg.fillAmount = 4f / 5f;
+        loadingImg.fillAmount = 5f / 6f;
         loadingText.text = "Loading History";
         yield return new WaitForEndOfFrame();
         Parser.ParseHistory(provinces, pays, "history");

@@ -198,8 +198,7 @@ public class CanvasWorker : MonoBehaviour
         infoName.text = country.nom;
         infoGovernement.text = manager.GetGovernementName(country.Government_Form);
         infoLeader.text = country.leader.prenom + " " + country.leader.nom + "\n" + country.leader.age.ToString() + " years old";
-        infoFocus.text = "National Focus : \n" +
-            (country.currentFocus.Equals("NONE") ? "None" : manager.focus[country.currentFocus].focusName);
+        infoFocus.text = (country.currentFocus.Equals("NONE") ? "Doing Nothing" : country.focusTree[country.currentFocus].focusName);
         infoFocusFill.fillAmount = (country.currentFocus.Equals("NONE") ? 0 : country.currentFocusTime / (float)country.maxFocusTime);
         infoFlag.GetComponent<Image>().sprite = country.currentFlag;
     }

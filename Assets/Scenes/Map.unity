@@ -4555,7 +4555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   an: 2030
-  cultures: {fileID: 0}
+  cultures: {fileID: 500958224}
   selected_unit: []
   formables: {fileID: 500958228}
   currentFormable:
@@ -4588,192 +4588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36a24891b2331984f8704b6641b9fa49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cultures:
-  - culture: Generic
-    noms:
-    - Romanov
-    - Walker
-    - Hilt
-    - Jakes
-    - Snow
-    - Von Tannenberg
-    - Stallberg
-    - De Bourgogne
-    - Windsor
-    - Jackson
-    - Ramos
-    - Jdanov
-    - Fillion
-    - Bourbon
-    - Karls
-    - Svetlana
-    prenoms:
-    - Mike
-    - "Fran\xE7ois"
-    - James
-    - John
-    - Hans
-    - Marie
-    - Amanda
-    - Joseph
-    - Karl
-    - Benito
-    - Carlos
-    - Florent
-    - Gustave
-    - Suzanne
-    - Christophe
-    - Harold
-    prefabTank: {fileID: 6140748224078626025, guid: a67a36b6e5bd48d488a005aa0510f45d,
-      type: 3}
-  - culture: French
-    noms:
-    - Bourbon
-    - Napoleon
-    - Fillion
-    - Bourbon
-    - De Bourgogne
-    - D'Orleans
-    - Albert
-    - Dupont
-    - Normand
-    - Vannes
-    - Hulot
-    - De Gaulle
-    - Lorrain
-    - Maximilien
-    - Jaures
-    - Macron
-    prenoms:
-    - Francois
-    - Jacques
-    - Michelle
-    - Benoit
-    - Francis
-    - Samuel
-    - Robert
-    - Maxime
-    - Emmanuel
-    - Jean
-    - Jeanne
-    - Marie
-    - Suzanne
-    - Rose
-    - Jill
-    - Ambre
-    prefabTank: {fileID: 33713870930156045, guid: 5b906415e64a9754b874a5f7354a93bd,
-      type: 3}
-  - culture: British
-    noms:
-    - Windsor
-    - Smith
-    - Jones
-    - Williams
-    - Taylor
-    - Davies
-    - Brown
-    - Wilson
-    - Evans
-    - Thomas
-    - Johnson
-    - Roberts
-    - Walker
-    - Wright
-    - Robinson
-    - Thompson
-    prenoms:
-    - James
-    - Robert
-    - Edward
-    - John
-    - Alfred
-    - Lawrence
-    - Stephan
-    - Harry
-    - George
-    - Noah
-    - Mary
-    - Elizabeth
-    - Suzan
-    - Emily
-    - Ruby
-    - Emma
-    prefabTank: {fileID: 4698646863384248930, guid: bf825db6a8e2824409c4203de4bd4f7f,
-      type: 3}
-  - culture: German
-    noms:
-    - Hitler
-    - Himmler
-    - von Konigsberg
-    - "M\xFCller"
-    - Schmidt
-    - Schneider
-    - Fischer
-    - Weber
-    - Meyer
-    - Wagner
-    - Konig
-    - Jung
-    - Frank
-    - Ludwig
-    - Schumacher
-    - Stein
-    prenoms:
-    - Karl
-    - Paul
-    - Wilhelm
-    - Friedrich
-    - Heinrich
-    - Gustav
-    - Helmut
-    - Walther
-    - Otto
-    - Hans
-    - Adolf
-    - Elsa
-    - Marta
-    - Gerda
-    - Edith
-    - Anna
-    prefabTank: {fileID: 7334552912511195229, guid: e4c27e1bed01309429563ac39e94241c,
-      type: 3}
-  - culture: Russian
-    noms:
-    - Oulianov
-    - Dostoievski
-    - Pouchkine
-    - Alekseieva
-    - Gorlanova
-    - Putin
-    - Allilouieva
-    - Djougachvili
-    - Sergueiev
-    - Gueladze
-    - Allilouieva
-    - Svanidze
-    - Bronstein
-    - Sedova
-    - Sokolovskaia
-    - Terechtchenko
-    prenoms:
-    - Svetlana
-    - Aleksandr
-    - Anastassia
-    - Aleksei
-    - Anatoli
-    - Artiom
-    - Galina
-    - Boris
-    - Natalia
-    - Nikita
-    - Nikolai
-    - Yuri
-    - Vladimir
-    - Stanislav
-    - Olga
-    - Lioudmila
-    prefabTank: {fileID: 2847231154623368383, guid: a5381bf1ad0850943b669c754bd25e6d,
-      type: 3}
 --- !u!114 &500958225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11735,7 +11549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e2c52175c2483514c94e2e1d6c62b6ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

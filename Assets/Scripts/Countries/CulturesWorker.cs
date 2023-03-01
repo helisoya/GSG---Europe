@@ -5,57 +5,45 @@ using UnityEngine;
 public class CulturesWorker : MonoBehaviour
 {
 
-    public List<Culture> cultures = new List<Culture>();
+    private Dictionary<string, Culture> cultures = new Dictionary<string, Culture>();
 
-    public Culture GetCulture(string culture)
+    public void SetCultures(Dictionary<string, Culture> newVal)
     {
-        foreach (Culture cult in cultures)
-        {
-            if (cult.culture == culture)
-            {
-                return cult;
-            }
-        }
-        return null;
+        cultures = newVal;
     }
 
-    public string GetRandom_Nom(string culture)
+    public Culture GetCulture(string id)
     {
-        foreach (Culture cult in cultures)
-        {
-            if (cult.culture == culture)
-            {
-                return cult.noms[Random.Range(0, cult.noms.Length)];
-            }
-        }
-        return "Ramos";
+        return cultures[id];
     }
 
-    public string GetRandom_Prenom(string culture)
+    public string GetRandom_Nom(string id)
     {
-        foreach (Culture cult in cultures)
-        {
-            if (cult.culture == culture)
-            {
-                return cult.prenoms[Random.Range(0, cult.prenoms.Length)];
-            }
-        }
-        return "Harold";
+
+        return cultures[id].noms[Random.Range(0, cultures[id].noms.Length)];
     }
 
-    public AudioClip GetRandom_Musique(string culture)
+    public string GetRandom_Prenom(string id)
     {
-        return null;
+        return cultures[id].prenoms[Random.Range(0, cultures[id].prenoms.Length)];
+    }
+
+    public string GetRandom_Musique(string id)
+    {
+        return cultures[id].audios[Random.Range(0, cultures[id].audios.Length)];
     }
 }
 
 [System.Serializable]
 public class Culture
 {
-    public string culture;
+    public string id;
     public string[] noms;
 
     public string[] prenoms;
+    public string[] audios;
 
     public GameObject prefabTank;
+    public Dictionary<string, Focus> focusTree;
+
 }

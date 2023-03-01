@@ -37,7 +37,6 @@ public class Pays
         {
             Sprite result = Resources.Load<Sprite>("Flags/" + cosmeticID + "_" + flag_names[current_flag]);
             if (result != null) return result;
-            Debug.Log("Flag Error : " + nom + " - " + ID);
             return Resources.Load<Sprite>("Flags/" + cosmeticID);
         }
     }
@@ -116,6 +115,11 @@ public class Pays
         get { return units.Count < unitCap; }
     }
 
+    public Dictionary<string, Focus> focusTree
+    {
+        get { return manager.cultures.GetCulture(culture).focusTree; }
+    }
+
 
     public Pays()
     {
@@ -142,7 +146,7 @@ public class Pays
         if (currentFocusTime <= 0)
         {
             focusDone.Add(currentFocus);
-            string[] effect = manager.focus[currentFocus].effect.Split("(");
+            string[] effect = focusTree[currentFocus].effect.Split("(");
             effect[1] = effect[1].Split(")")[0];
             switch (effect[0])
             {
@@ -207,7 +211,7 @@ public class Pays
     public List<Focus> GetAvailableFocus()
     {
         List<Focus> list = new List<Focus>();
-        foreach (Focus focus in manager.focus.Values)
+        foreach (Focus focus in focusTree.Values)
         {
             if (focusDone.Contains(focus.id)) continue;
             if (!PrerequistDone(focus)) continue;

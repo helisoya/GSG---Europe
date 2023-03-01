@@ -23,6 +23,8 @@ public class FocusMenu : MonoBehaviour
         Manager manager = Manager.instance;
         Pays country = manager.player;
 
+        Dictionary<string, Focus> focusTree = country.focusTree;
+
         barX.value = 0;
         barY.value = 1;
 
@@ -40,7 +42,7 @@ public class FocusMenu : MonoBehaviour
 
         if (country.currentFocus != "NONE")
         {
-            focusText.text = "Current : " + manager.focus[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
+            focusText.text = "Current : " + focusTree[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
         }
         else
         {
@@ -49,7 +51,7 @@ public class FocusMenu : MonoBehaviour
 
         Dictionary<string, GameObject> dic = new Dictionary<string, GameObject>();
 
-        foreach (Focus focus in manager.focus.Values)
+        foreach (Focus focus in country.focusTree.Values)
         {
             GameObject obj = Instantiate(prefabButton, graphParent);
             obj.GetComponent<RectTransform>().position = new Vector3(500 + 500 * focus.x, 600 - 300 * focus.y, 0);
@@ -60,7 +62,7 @@ public class FocusMenu : MonoBehaviour
 
         List<Focus> exclusiveDone = new List<Focus>();
 
-        foreach (Focus focus in manager.focus.Values)
+        foreach (Focus focus in focusTree.Values)
         {
             foreach (string requirement in focus.required)
             {
@@ -73,8 +75,8 @@ public class FocusMenu : MonoBehaviour
                 exclusiveDone.Add(focus);
                 foreach (string exlcusive in focus.exclusive)
                 {
-                    workWith.Add(manager.focus[exlcusive]);
-                    exclusiveDone.Add(manager.focus[exlcusive]);
+                    workWith.Add(focusTree[exlcusive]);
+                    exclusiveDone.Add(focusTree[exlcusive]);
                 }
 
                 workWith.Sort((e1, e2) =>
@@ -104,6 +106,6 @@ public class FocusMenu : MonoBehaviour
         Manager manager = Manager.instance;
         Pays country = manager.player;
         country.ChangeFocus(focus);
-        focusText.text = "Current : " + manager.focus[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
+        focusText.text = "Current : " + country.focusTree[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
     }
 }
