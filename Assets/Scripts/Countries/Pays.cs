@@ -11,7 +11,7 @@ public class Pays
 
     public string nom;
 
-    public string culture = "Generic";
+    public Culture culture;
 
 
     public List<Province> provinces;
@@ -117,7 +117,7 @@ public class Pays
 
     public Dictionary<string, Focus> focusTree
     {
-        get { return manager.cultures.GetCulture(culture).focusTree; }
+        get { return culture.focusTree; }
     }
 
 
@@ -412,15 +412,15 @@ public class Pays
 
     public void RandomizeLeader()
     {
-        leader.nom = manager.cultures.GetRandom_Nom(culture);
-        leader.prenom = manager.cultures.GetRandom_Prenom(culture);
+        leader.nom = culture.GetRandom_Nom();
+        leader.prenom = culture.GetRandom_Prenom();
         leader.age = Random.Range(30, 70);
         leader.ResetDeath();
     }
 
     public void SameFamilyLeader()
     {
-        leader.prenom = manager.cultures.GetRandom_Prenom(culture);
+        leader.prenom = culture.GetRandom_Prenom();
         leader.age = Random.Range(30, 70);
         leader.ResetDeath();
     }
@@ -606,7 +606,7 @@ public class Pays
 
     public void CreateUnit(Vector3 pos)
     {
-        Unit obj = Manager.Instantiate(manager.cultures.GetCulture(culture).prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
+        Unit obj = Manager.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
         pos.y = 0.3f;
         obj.transform.position = pos;
         obj.country = this;

@@ -4475,7 +4475,6 @@ GameObject:
   - component: {fileID: 500958222}
   - component: {fileID: 500958230}
   - component: {fileID: 500958223}
-  - component: {fileID: 500958224}
   - component: {fileID: 500958225}
   - component: {fileID: 500958226}
   - component: {fileID: 500958227}
@@ -4555,7 +4554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   an: 2030
-  cultures: {fileID: 500958224}
   selected_unit: []
   formables: {fileID: 500958228}
   currentFormable:
@@ -4576,18 +4574,6 @@ MonoBehaviour:
   loadingText: {fileID: 1827005706}
   loadingImg: {fileID: 520536668}
   picker: {fileID: 1651495223}
---- !u!114 &500958224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500958220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a24891b2331984f8704b6641b9fa49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &500958225
 MonoBehaviour:
   m_ObjectHideFlags: 0

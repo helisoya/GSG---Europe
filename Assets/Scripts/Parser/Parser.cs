@@ -109,7 +109,7 @@ public class Parser : MonoBehaviour
         return list;
     }
 
-    public static Dictionary<string, Pays> ParsePays()
+    public static Dictionary<string, Pays> ParsePays(Dictionary<string, Culture> cultures)
     {
 
         string json = Resources.Load<TextAsset>("JSON/pays").text;
@@ -128,7 +128,7 @@ public class Parser : MonoBehaviour
             pays.ID = jsonPays.GetString("id");
             pays.cosmeticID = jsonPays.GetString("id");
             pays.nom = jsonPays.GetString("name");
-            pays.culture = jsonPays.GetString("culture");
+            pays.culture = cultures[jsonPays.GetString("culture")];
             pays.DestroyIfNotSelected = jsonPays.GetString("secretNation").Equals("True");
             color = jsonPays.GetJArray("color");
             pays.SetColor(new Color(color.GetFloat(0) / 255f, color.GetFloat(1) / 255f, color.GetFloat(2) / 255f));

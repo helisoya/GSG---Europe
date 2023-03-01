@@ -17,7 +17,6 @@ public class Manager : MonoBehaviour
 
     public int an = 2030;
 
-    public CulturesWorker cultures;
 
     public List<GameObject> selected_unit = new List<GameObject>();
 
@@ -38,6 +37,7 @@ public class Manager : MonoBehaviour
     private Dictionary<string, Province> provinces;
 
     public Dictionary<string, Dictionary<string, Focus>> focuses;
+    public Dictionary<string, Culture> cultures;
 
     [Header("Parser")]
     public GameObject prefabProvince;
@@ -103,15 +103,14 @@ public class Manager : MonoBehaviour
         loadingImg.fillAmount = 1f / 6f;
         loadingText.text = "Loading Focus";
         yield return new WaitForEndOfFrame();
-        cultures.SetCultures(Parser.ParseCultures(focuses));
+        cultures = Parser.ParseCultures(focuses);
 
 
         loadingImg.fillAmount = 5f / 6f;
         loadingText.text = "Loading Countries";
         yield return new WaitForEndOfFrame();
         gouvs_data = GetComponent<Gouvernements>();
-        pays = Parser.ParsePays();
-        cultures = GetComponent<CulturesWorker>();
+        pays = Parser.ParsePays(cultures);
 
         loadingImg.fillAmount = 5f / 6f;
         loadingText.text = "Loading Formables";
