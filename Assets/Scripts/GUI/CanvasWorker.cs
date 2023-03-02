@@ -43,10 +43,10 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private GameObject politicalRoot;
     [SerializeField] private Transform politicalGraph;
     [SerializeField] private PartyGUI[] politicalPartiesGUI;
-    [SerializeField] private Text politicalElections;
-    [SerializeField] private Text politicalAP;
-    [SerializeField] private Text politicalGovernement;
-    [SerializeField] private Text politicalGovernementDesc;
+    [SerializeField] private TextMeshProUGUI politicalElections;
+    [SerializeField] private TextMeshProUGUI politicalAP;
+    [SerializeField] private TextMeshProUGUI politicalGovernement;
+    [SerializeField] private TextMeshProUGUI politicalGovernementDesc;
     [SerializeField] private Dropdown_Formable_Manager politicalFormables;
 
     [Space]
@@ -482,5 +482,5 @@ public class CanvasWorker : MonoBehaviour
 public class PartyGUI
 {
     public Image image;
-    public Text text;
+    public TextMeshProUGUI text;
 }

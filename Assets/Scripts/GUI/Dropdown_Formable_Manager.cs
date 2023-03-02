@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Dropdown_Formable_Manager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     private List<FormableNation> current;
 
     public CanvasWorker canvas;
+    public TMP_Dropdown dropdown;
 
     public void RefreshDropdown(Pays country)
     {
@@ -34,15 +36,15 @@ public class Dropdown_Formable_Manager : MonoBehaviour
         {
             choices.Add(formable.Name);
         }
-        transform.Find("List").GetComponent<UnityEngine.UI.Dropdown>().ClearOptions();
-        transform.Find("List").GetComponent<UnityEngine.UI.Dropdown>().AddOptions(choices);
+        dropdown.ClearOptions();
+        dropdown.AddOptions(choices);
         SelectNewFormable();
     }
 
 
     public void SelectNewFormable()
     {
-        manager.currentFormable = current[transform.Find("List").GetComponent<UnityEngine.UI.Dropdown>().value];
+        manager.currentFormable = current[dropdown.value];
 
         if (manager.currentFormable.CountryHasAllRequirement(manager.player))
         {
