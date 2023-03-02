@@ -59,6 +59,27 @@ public class Parser : MonoBehaviour
             province.Init(vecs);
             list.Add(province.id, province);
         }
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            jsonProv = array.GetJSON(i);
+
+            string id = jsonProv.GetString("id");
+
+            arrayVertices = jsonProv.GetJArray("adjacencies");
+            list[id].adjacencies = new Province[arrayVertices.Length];
+
+            for (int j = 0; j < arrayVertices.Length; j++)
+            {
+                if (!list.ContainsKey(arrayVertices.GetString(j)))
+                {
+                    print("Error : " + arrayVertices.GetString(j));
+                    continue;
+                }
+                list[id].adjacencies[j] = list[arrayVertices.GetString(j)];
+            }
+        }
+
         return list;
     }
 
