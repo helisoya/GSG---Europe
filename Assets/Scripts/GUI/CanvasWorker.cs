@@ -52,10 +52,10 @@ public class CanvasWorker : MonoBehaviour
     [Space]
     [Header("Utilities")]
     [SerializeField] private GameObject utilityRoot;
-    [SerializeField] private Text utilityDate;
-    [SerializeField] private Text utilityAP;
-    [SerializeField] private Text utilitySpeed;
-    [SerializeField] private Text utilityUC;
+    [SerializeField] private TextMeshProUGUI utilityDate;
+    [SerializeField] private TextMeshProUGUI utilityAP;
+    [SerializeField] private TextMeshProUGUI utilitySpeed;
+    [SerializeField] private TextMeshProUGUI utilityUC;
 
 
     [Space]
@@ -129,6 +129,11 @@ public class CanvasWorker : MonoBehaviour
             manager.provincesToBeTakenInPeaceDeal.Add(prov);
         }
         prov.RefreshColor();
+    }
+
+    public void Show_CountryInfoPlayer()
+    {
+        Show_CountryInfo(manager.player);
     }
 
 
