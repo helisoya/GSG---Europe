@@ -983,7 +983,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "_frequency",
     "m_StageCapability": 2,
-    "m_Value": 6.0,
+    "m_Value": 2.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
 }

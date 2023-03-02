@@ -61,8 +61,8 @@ public class CanvasWorker : MonoBehaviour
     [Space]
     [Header("Province Details")]
     [SerializeField] private GameObject provinceDetailsRoot;
-    [SerializeField] private Text provinceDetailsName;
-    [SerializeField] private Dropdown provinceDetailsDropdown;
+    [SerializeField] private TextMeshProUGUI provinceDetailsName;
+    [SerializeField] private TMP_Dropdown provinceDetailsDropdown;
 
     [Space]
     [Header("Events")]
