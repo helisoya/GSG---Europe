@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FocusMenu : MonoBehaviour
 {
     public GameObject focusMenuRoot;
-    public Text focusText;
+    public TextMeshProUGUI focusText;
     public Transform graphParent;
     public Transform lineParent;
     public GameObject prefabButton;
