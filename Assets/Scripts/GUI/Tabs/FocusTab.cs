@@ -4,22 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class FocusMenu : MonoBehaviour
+public class FocusTab : GUITab
 {
-    public GameObject focusMenuRoot;
-    public TextMeshProUGUI focusText;
-    public Transform graphParent;
-    public Transform lineParent;
-    public GameObject prefabButton;
+    [SerializeField] protected GameObject focusMenuRoot;
+    [SerializeField] protected TextMeshProUGUI focusText;
+    [SerializeField] protected Transform graphParent;
+    [SerializeField] protected Transform lineParent;
+    [SerializeField] protected GameObject prefabButton;
 
-    public Scrollbar barX;
-    public Scrollbar barY;
+    [SerializeField] protected Scrollbar barX;
+    [SerializeField] protected Scrollbar barY;
 
-    public GameObject linePrefab;
+    [SerializeField] protected GameObject linePrefab;
+
+    public override void OpenTab()
+    {
+        base.OpenTab();
+        Timer.instance.StopTime();
+        ShowFocusMenu();
+    }
+
+    public override void CloseTab()
+    {
+        base.CloseTab();
+        Timer.instance.ResumeTime();
+    }
+
 
     public void ShowFocusMenu()
     {
-        if (!focusMenuRoot.activeInHierarchy) return;
+        if (!isOpen) return;
 
         Manager manager = Manager.instance;
         Pays country = manager.player;

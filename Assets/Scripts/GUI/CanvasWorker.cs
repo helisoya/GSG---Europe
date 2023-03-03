@@ -79,7 +79,7 @@ public class CanvasWorker : MonoBehaviour
     [Space]
     [Header("Other Menus")]
     [SerializeField] private PauseTab pauseTab;
-    [SerializeField] private FocusMenu focusMenu;
+    [SerializeField] private FocusTab focusMenu;
 
 
     void Awake()
@@ -106,8 +106,8 @@ public class CanvasWorker : MonoBehaviour
 
     public void OpenPeaceDealTab(string side1, string side2)
     {
-        Timer.instance.StopTime();
         HideEverything();
+        Timer.instance.StopTime();
         manager.inPeaceDeal = true;
         manager.peaceDealSide1 = side1;
         manager.peaceDealSide2 = side2;
@@ -236,7 +236,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void OpenPolitiqueTab()
     {
-        manager.GetComponent<Timer>().StopTime();
+        Timer.instance.StopTime();
         utilityRoot.SetActive(false);
         holder_CountryInfo.SetActive(false);
         provinceDetailsRoot.SetActive(false);
@@ -281,8 +281,8 @@ public class CanvasWorker : MonoBehaviour
 
     public void Event(string Title, string Desc)
     {
-        manager.gameObject.GetComponent<Timer>().StopTime();
         HideEverything();
+        Timer.instance.StopTime();
         eventsRoot.SetActive(true);
         eventsTitle.text = Title;
         eventsDesc.text = Desc;
@@ -290,7 +290,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void Hide_Event()
     {
-        manager.GetComponent<Timer>().ResumeTime();
+        Timer.instance.ResumeTime();
 
         manager.player.Reset_Flag();
         Show_CountryInfo(manager.player);
@@ -450,7 +450,15 @@ public class CanvasWorker : MonoBehaviour
 
     public void UpdateFocus()
     {
-        focusMenu.ShowFocusMenu();
+        if (focusMenu.isOpen)
+        {
+            focusMenu.ShowFocusMenu();
+        }
+    }
+
+    public void OpenFocusTab()
+    {
+        focusMenu.OpenTab();
     }
 
     public void HideEverything()
@@ -462,7 +470,7 @@ public class CanvasWorker : MonoBehaviour
         eventsRoot.SetActive(false);
 
         if (pauseTab.isOpen) pauseTab.CloseTab();
-        focusMenu.gameObject.SetActive(false);
+        if (focusMenu.isOpen) focusMenu.CloseTab();
         peaceDealRoot.SetActive(false);
     }
 

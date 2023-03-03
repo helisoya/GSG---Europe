@@ -8,7 +8,7 @@ public class FocusButton : MonoBehaviour
 {
     private Focus focusName;
 
-    private FocusMenu menu;
+    private FocusTab menu;
 
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private TextMeshProUGUI desc;
@@ -17,7 +17,7 @@ public class FocusButton : MonoBehaviour
 
     private int focusCase;
 
-    public void Init(Focus focus, int focusCase, FocusMenu focusMenu)
+    public void Init(Focus focus, int focusCase, FocusTab focusMenu)
     {
         // Cases
         // 0 = Done
