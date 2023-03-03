@@ -15,16 +15,19 @@ public class Timer : MonoBehaviour
 
     public static Timer instance;
 
-    void Start()
+    private bool isStoped;
+
+    void Awake()
     {
         instance = this;
         time_default = time;
+        isStoped = false;
     }
 
 
     void Update()
     {
-        if (!Manager.instance.picked)
+        if (!Manager.instance.picked || isStoped)
         {
             return;
         }
@@ -51,12 +54,14 @@ public class Timer : MonoBehaviour
     {
         lastspeed = Time.timeScale;
         Time.timeScale = 0;
+        isStoped = true;
         UpdateText();
     }
 
     public void ResumeTime()
     {
         Time.timeScale = lastspeed;
+        isStoped = false;
         UpdateText();
     }
 

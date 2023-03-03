@@ -1,29 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
-public class SettingsMenu : MonoBehaviour
+public class PauseTab : GUITab
 {
-    public GameObject clouds;
+    [SerializeField] protected GameObject normalMenuRoot;
+    [SerializeField] protected GameObject settingsMenuRoot;
 
-    public Sun sun;
 
-    public Toggle cloud_t;
-
-    public Toggle sun_t;
-
-    public TMP_Dropdown res_d;
-
-    public Toggle fullscreen_t;
-
+    [Header("Settings")]
+    [SerializeField] private GameObject clouds;
+    [SerializeField] private Sun sun;
+    [SerializeField] private Toggle cloud_t;
+    [SerializeField] private Toggle sun_t;
+    [SerializeField] private TMP_Dropdown res_d;
+    [SerializeField] private Toggle fullscreen_t;
     private Resolution[] resolutions;
 
-    bool start = true;
-
-    void Awake()
+    public void QuitToDesktop()
     {
+        Application.Quit();
+    }
+
+    public void QuitToTitle()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void OpenSettings()
+    {
+        normalMenuRoot.SetActive(false);
+        settingsMenuRoot.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        normalMenuRoot.SetActive(true);
+        settingsMenuRoot.SetActive(false);
+    }
+
+    public override void OpenTab()
+    {
+        base.OpenTab();
+        Timer.instance.StopTime();
 
         resolutions = Screen.resolutions;
 
@@ -56,8 +78,17 @@ public class SettingsMenu : MonoBehaviour
         {
             fullscreen_t.isOn = (PlayerPrefs.GetString("fullscreen") == "true");
         }
-        start = false;
     }
+
+    public override void CloseTab()
+    {
+        base.CloseTab();
+        CanvasWorker.instance.ShowDefault();
+        Timer.instance.ResumeTime();
+    }
+
+
+
 
     public void UpdateClouds()
     {
@@ -85,25 +116,12 @@ public class SettingsMenu : MonoBehaviour
     public void UpdateFullscreen()
     {
         PlayerPrefs.SetString("fullscreen", fullscreen_t.isOn.ToString());
-        if (!start)
-        {
-            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, fullscreen_t.isOn);
-        }
-
+        Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, fullscreen_t.isOn);
     }
 
     public void UpdateResolution()
     {
         PlayerPrefs.SetInt("resolution", res_d.value);
-        if (!start)
-        {
-            Screen.SetResolution(resolutions[res_d.value].width, resolutions[res_d.value].height, fullscreen_t.isOn);
-        }
-
-    }
-
-    public void Quit()
-    {
-        Application.Quit();
+        Screen.SetResolution(resolutions[res_d.value].width, resolutions[res_d.value].height, fullscreen_t.isOn);
     }
 }

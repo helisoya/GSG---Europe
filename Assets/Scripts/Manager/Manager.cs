@@ -321,7 +321,6 @@ public class Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GetComponent<Timer>().StopTime();
             CanvasWorker.instance.OpenSettingsMenu();
         }
     }

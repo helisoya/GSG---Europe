@@ -78,11 +78,11 @@ public class CanvasWorker : MonoBehaviour
 
     [Space]
     [Header("Other Menus")]
-    [SerializeField] private SettingsMenu settingsRoot;
+    [SerializeField] private PauseTab pauseTab;
     [SerializeField] private FocusMenu focusMenu;
 
 
-    void Start()
+    void Awake()
     {
         instance = this;
     }
@@ -99,8 +99,9 @@ public class CanvasWorker : MonoBehaviour
 
     public void OpenSettingsMenu()
     {
+        if (pauseTab.isOpen) return;
         HideEverything();
-        settingsRoot.gameObject.SetActive(true);
+        pauseTab.OpenTab();
     }
 
     public void OpenPeaceDealTab(string side1, string side2)
@@ -459,7 +460,8 @@ public class CanvasWorker : MonoBehaviour
         utilityRoot.SetActive(false);
         provinceDetailsRoot.SetActive(false);
         eventsRoot.SetActive(false);
-        settingsRoot.gameObject.SetActive(false);
+
+        if (pauseTab.isOpen) pauseTab.CloseTab();
         focusMenu.gameObject.SetActive(false);
         peaceDealRoot.SetActive(false);
     }
