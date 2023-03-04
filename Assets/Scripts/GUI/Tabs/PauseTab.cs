@@ -27,6 +27,7 @@ public class PauseTab : GUITab
 
     public void QuitToTitle()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
 

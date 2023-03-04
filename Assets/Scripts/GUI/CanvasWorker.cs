@@ -8,32 +8,13 @@ public class CanvasWorker : MonoBehaviour
 {
     [HideInInspector] public Manager manager;
 
-    private Pays current_countryinfo = null;
-
-
     private Province current_city;
-
-
-
     private List<string> current_cores;
 
 
     public static CanvasWorker instance;
 
 
-    [Space]
-    [Header("Country Infos")]
-    [SerializeField] private GameObject holder_CountryInfo;
-    [SerializeField] private TextMeshProUGUI infoName;
-    [SerializeField] private TextMeshProUGUI infoGovernement;
-    [SerializeField] private TextMeshProUGUI infoLeader;
-    [SerializeField] private TextMeshProUGUI infoFocus;
-    [SerializeField] private Image infoFocusFill;
-    [SerializeField] private Image infoFlag;
-    [SerializeField] private GameObject infoDiploRoot;
-    [SerializeField] private Button infoDiploWar;
-    [SerializeField] private Button infoDiploVassal;
-    [SerializeField] private Button infoDiploPeace;
 
 
 
@@ -69,6 +50,7 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private PauseTab pauseTab;
     [SerializeField] private FocusTab focusMenu;
     [SerializeField] private PoliticalTab politicalTab;
+    [SerializeField] private CountryInfoTab countryInfoTab;
 
 
     void Awake()
@@ -123,79 +105,19 @@ public class CanvasWorker : MonoBehaviour
 
     public void Show_CountryInfoPlayer()
     {
-        Show_CountryInfo(manager.player);
+        countryInfoTab.Show_CountryInfo(manager.player);
     }
 
-
-    public void Show_CountryInfo(Pays NEW)
+    public void Show_CountryInfo(Pays country)
     {
-        infoFlag.transform.parent.gameObject.SetActive(true);
-        current_countryinfo = NEW;
-        UpdateInfo(NEW);
-
-        infoDiploRoot.SetActive(false);
-
-        if (NEW != manager.player)
-        { // Cas nation IA
-            infoDiploRoot.SetActive(true);
-            infoDiploPeace.onClick.RemoveAllListeners();
-            infoDiploWar.onClick.RemoveAllListeners();
-            infoDiploVassal.onClick.RemoveAllListeners();
-
-            infoDiploPeace.onClick.AddListener(() =>
-            {
-                OpenPeaceDealTab(manager.player.ID, NEW.ID);
-                //UpdateRelations_ShortCut(manager.player, NEW, 0);
-                //Show_CountryInfo(NEW);
-            });
-            infoDiploWar.onClick.AddListener(() =>
-            {
-                UpdateRelations_ShortCut(manager.player, NEW, 1);
-                Show_CountryInfo(NEW);
-            });
-            infoDiploVassal.onClick.AddListener(() =>
-            {
-                Pays old = manager.player;
-                manager.player = NEW;
-                old.RefreshProvinces();
-                NEW.RefreshProvinces();
-                Show_CountryInfo(NEW);
-            });
-
-            if (manager.player.relations[NEW.ID] == 1)
-            { // Pays en guerre
-                infoDiploPeace.gameObject.SetActive(true);
-                infoDiploWar.gameObject.SetActive(false);
-                infoDiploVassal.gameObject.SetActive(false);
-            }
-            else if (manager.player.relations[NEW.ID] == 2)
-            { // Cas Vassal
-                infoDiploPeace.gameObject.SetActive(false);
-                infoDiploWar.gameObject.SetActive(false);
-                infoDiploVassal.gameObject.SetActive(true);
-            }
-            else
-            {
-                infoDiploPeace.gameObject.SetActive(false);
-                infoDiploWar.gameObject.SetActive(true);
-                infoDiploVassal.gameObject.SetActive(false);
-            }
-        }
+        countryInfoTab.Show_CountryInfo(country);
     }
+
+
 
     public void UpdateInfo()
     {
-        UpdateInfo(current_countryinfo);
-    }
-
-    public void UpdateInfo(Pays country)
-    {
-        infoName.text = country.nom;
-        infoGovernement.text = manager.GetGovernementName(country.Government_Form);
-        infoLeader.text = country.leader.prenom + " " + country.leader.nom + "\n" + country.leader.age.ToString() + " years old";
-        infoFocus.text = (country.currentFocus.Equals("NONE") ? "Doing Nothing" : country.focusTree[country.currentFocus].focusName);
-        infoFocusFill.fillAmount = (country.currentFocus.Equals("NONE") ? 0 : country.currentFocusTime / (float)country.maxFocusTime);
-        infoFlag.GetComponent<Image>().sprite = country.currentFlag;
+        countryInfoTab.UpdateInfo();
     }
 
 
@@ -223,7 +145,7 @@ public class CanvasWorker : MonoBehaviour
         Timer.instance.ResumeTime();
 
         manager.player.Reset_Flag();
-        Show_CountryInfo(manager.player);
+        countryInfoTab.Show_CountryInfo(manager.player);
         eventsRoot.SetActive(false);
         ShowDefault();
         Reset_Bindings_Event();
@@ -250,7 +172,7 @@ public class CanvasWorker : MonoBehaviour
                 A.MakePeaceWithCountry(B);
                 if (B.provinces.Count == 0)
                 {
-                    Show_CountryInfo(A);
+                    countryInfoTab.Show_CountryInfo(A);
                 }
                 break;
 
@@ -375,7 +297,7 @@ public class CanvasWorker : MonoBehaviour
 
     public void HideEverything()
     {
-        holder_CountryInfo.SetActive(false);
+        if (countryInfoTab.isOpen) countryInfoTab.CloseTab();
         utilityRoot.SetActive(false);
         provinceDetailsRoot.SetActive(false);
         eventsRoot.SetActive(false);
@@ -388,7 +310,6 @@ public class CanvasWorker : MonoBehaviour
 
     public void ShowDefault()
     {
-        holder_CountryInfo.SetActive(true);
         utilityRoot.SetActive(true);
     }
 
