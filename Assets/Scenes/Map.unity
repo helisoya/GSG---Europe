@@ -4847,8 +4847,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 841567459}
+        m_TargetAssemblyTypeName: ProvinceTab, Assembly-CSharp
         m_MethodName: BuyUnit
         m_Mode: 1
         m_Arguments:
@@ -8111,8 +8111,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841567458}
+  - component: {fileID: 841567459}
   m_Layer: 5
-  m_Name: SpawnUnit
+  m_Name: ProvinceTab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8144,6 +8145,21 @@ RectTransform:
   m_AnchoredPosition: {x: -400, y: 172}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &841567459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841567457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4728eaad21511c4f9e31df2d2be349a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabRoot: {fileID: 841567457}
+  provinceName: {fileID: 1370912833}
+  provinceCores: {fileID: 1215545892}
 --- !u!1 &846757385
 GameObject:
   m_ObjectHideFlags: 0
@@ -10741,9 +10757,6 @@ MonoBehaviour:
   utilityAP: {fileID: 110730715}
   utilitySpeed: {fileID: 792397724}
   utilityUC: {fileID: 1831685737}
-  provinceDetailsRoot: {fileID: 841567457}
-  provinceDetailsName: {fileID: 1370912833}
-  provinceDetailsDropdown: {fileID: 1215545892}
   eventsRoot: {fileID: 306641303}
   eventsTitle: {fileID: 1583425219}
   eventsDesc: {fileID: 1445537938}
@@ -10758,6 +10771,7 @@ MonoBehaviour:
   focusMenu: {fileID: 1982600615}
   politicalTab: {fileID: 1674045811}
   countryInfoTab: {fileID: 313059318}
+  provinceTab: {fileID: 841567459}
 --- !u!1 &1164439265
 GameObject:
   m_ObjectHideFlags: 0
@@ -12688,8 +12702,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 841567459}
+        m_TargetAssemblyTypeName: ProvinceTab, Assembly-CSharp
         m_MethodName: ReleaseCountry
         m_Mode: 1
         m_Arguments:
@@ -16150,10 +16164,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 841567457}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 841567459}
+        m_TargetAssemblyTypeName: GUITab, Assembly-CSharp
+        m_MethodName: CloseTab
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

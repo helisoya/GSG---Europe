@@ -8,10 +8,6 @@ public class CanvasWorker : MonoBehaviour
 {
     [HideInInspector] public Manager manager;
 
-    private Province current_city;
-    private List<string> current_cores;
-
-
     public static CanvasWorker instance;
 
 
@@ -26,12 +22,6 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private TextMeshProUGUI utilitySpeed;
     [SerializeField] private TextMeshProUGUI utilityUC;
 
-
-    [Space]
-    [Header("Province Details")]
-    [SerializeField] private GameObject provinceDetailsRoot;
-    [SerializeField] private TextMeshProUGUI provinceDetailsName;
-    [SerializeField] private TMP_Dropdown provinceDetailsDropdown;
 
     [Space]
     [Header("Events")]
@@ -51,6 +41,7 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private FocusTab focusMenu;
     [SerializeField] private PoliticalTab politicalTab;
     [SerializeField] private CountryInfoTab countryInfoTab;
+    [SerializeField] private ProvinceTab provinceTab;
 
 
     void Awake()
@@ -215,72 +206,11 @@ public class CanvasWorker : MonoBehaviour
 
     public void ShowBuyUnit(Province c)
     {
-        current_city = c;
-        provinceDetailsRoot.SetActive(true);
-        provinceDetailsName.text = c.name;
-
-        current_cores = GetAllCountriesProvince(c);
-
-        List<string> l = new List<string>();
-
-        foreach (string str in current_cores)
-        {
-            l.Add(manager.GetCountry(str).nom);
-        }
-        provinceDetailsDropdown.ClearOptions();
-        provinceDetailsDropdown.AddOptions(l);
-    }
-
-    public void ReleaseCountry()
-    {
-        if (current_cores.Count == 0)
-        {
-            return;
-        }
-        string released = current_cores[provinceDetailsDropdown.value];
-
-        manager.player.RemoveProvince(current_city);
-
-        Pays releasedP = manager.GetCountry(released);
-
-        releasedP.AddProvince(current_city);
-
-        if (releasedP.provinces.Count == 1)
-        {
-            UpdateRelations_ShortCut(manager.player, releasedP, 2);
-        }
-        provinceDetailsRoot.SetActive(false);
+        provinceTab.ShowProvinceDetails(c);
     }
 
 
-    List<string> GetAllCountriesProvince(Province prov)
-    {
-        List<string> l = new List<string>();
 
-        foreach (string key in manager.pays.Keys)
-        {
-            if (key != manager.player.ID)
-            {
-                if (manager.GetCountry(key).cores.Contains(prov))
-                {
-                    l.Add(key);
-                }
-            }
-        }
-        return l;
-    }
-
-    public void BuyUnit()
-    {
-        if (manager.player.canBuyUnit && current_city.owner == manager.player
-         && current_city.controller == manager.player && manager.player.AP >= 100)
-        {
-            manager.player.AP -= 100;
-            current_city.SpawnUnitAtCity();
-            UpdatePPBar();
-        }
-
-    }
 
     public void UpdateFocus()
     {
@@ -299,7 +229,7 @@ public class CanvasWorker : MonoBehaviour
     {
         if (countryInfoTab.isOpen) countryInfoTab.CloseTab();
         utilityRoot.SetActive(false);
-        provinceDetailsRoot.SetActive(false);
+        if (provinceTab.isOpen) provinceTab.CloseTab();
         eventsRoot.SetActive(false);
 
         if (pauseTab.isOpen) pauseTab.CloseTab();

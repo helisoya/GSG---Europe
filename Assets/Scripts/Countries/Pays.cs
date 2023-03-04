@@ -49,7 +49,7 @@ public class Pays
     private int bonusMilCap = 0;
     private int bonusAP = 0;
 
-    public int unitCap { get { return 10 + provinces.Count + bonusMilCap; } }
+    public int unitCap { get { return 5 + (provinces.Count / 2) + bonusMilCap; } }
 
 
     [HideInInspector]
