@@ -4234,8 +4234,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
         m_MethodName: Add_Popularity_ShortCut
         m_Mode: 3
         m_Arguments:
@@ -5598,9 +5598,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
-        m_MethodName: ClosePolitique
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
+        m_MethodName: CloseTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8309,7 +8309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 500958223}
   formables: {fileID: 500958228}
-  canvas: {fileID: 1134928010}
+  tab: {fileID: 1674045811}
   dropdown: {fileID: 350302713}
 --- !u!1 &862631448
 GameObject:
@@ -10068,9 +10068,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
-        m_MethodName: OpenPolitiqueTab
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
+        m_MethodName: OpenTab
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10712,19 +10712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  piechart_colors:
-  - serializedVersion: 2
-    rgba: 4278198783
-  - serializedVersion: 2
-    rgba: 4288505039
-  - serializedVersion: 2
-    rgba: 4279552250
-  - serializedVersion: 2
-    rgba: 4294041127
-  - serializedVersion: 2
-    rgba: 4294933046
-  piechart_prefab: {fileID: 7116107645431108405, guid: 1dbcd8b72cf1ab6469a1b6b42d5c6c97,
-    type: 3}
   holder_CountryInfo: {fileID: 313059314}
   infoName: {fileID: 1559957893}
   infoGovernement: {fileID: 41442502}
@@ -10736,24 +10723,6 @@ MonoBehaviour:
   infoDiploWar: {fileID: 2023522484}
   infoDiploVassal: {fileID: 1915652651}
   infoDiploPeace: {fileID: 2004773436}
-  politicalRoot: {fileID: 1674045809}
-  politicalGraph: {fileID: 2099030069}
-  politicalPartiesGUI:
-  - image: {fileID: 2004393635}
-    text: {fileID: 1507868245}
-  - image: {fileID: 1786692208}
-    text: {fileID: 1695165861}
-  - image: {fileID: 1540694640}
-    text: {fileID: 803389314}
-  - image: {fileID: 389921134}
-    text: {fileID: 1451148906}
-  - image: {fileID: 2059760250}
-    text: {fileID: 846757387}
-  politicalElections: {fileID: 451595671}
-  politicalAP: {fileID: 932252071}
-  politicalGovernement: {fileID: 1442564042}
-  politicalGovernementDesc: {fileID: 106284608}
-  politicalFormables: {fileID: 851022409}
   utilityRoot: {fileID: 1327807364}
   utilityDate: {fileID: 1627989042}
   utilityAP: {fileID: 110730715}
@@ -10774,6 +10743,7 @@ MonoBehaviour:
   peaceDealVassal: {fileID: 1374526730}
   pauseTab: {fileID: 1298658980}
   focusMenu: {fileID: 1982600615}
+  politicalTab: {fileID: 1674045811}
 --- !u!1 &1164439265
 GameObject:
   m_ObjectHideFlags: 0
@@ -14929,8 +14899,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
         m_MethodName: Add_Popularity_ShortCut
         m_Mode: 3
         m_Arguments:
@@ -16715,6 +16685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674045810}
+  - component: {fileID: 1674045811}
   m_Layer: 5
   m_Name: PolitiqueTab
   m_TagString: Untagged
@@ -16755,6 +16726,49 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -700, y: -342}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1674045811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674045809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d566f700dfe5a4cab26b84f9807198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabRoot: {fileID: 1674045809}
+  politicalGraph: {fileID: 2099030069}
+  politicalPartiesGUI:
+  - image: {fileID: 2004393635}
+    text: {fileID: 1507868245}
+  - image: {fileID: 1786692208}
+    text: {fileID: 1695165861}
+  - image: {fileID: 1540694640}
+    text: {fileID: 803389314}
+  - image: {fileID: 389921134}
+    text: {fileID: 1451148906}
+  - image: {fileID: 2059760250}
+    text: {fileID: 846757387}
+  politicalElections: {fileID: 451595671}
+  politicalAP: {fileID: 932252071}
+  politicalGovernement: {fileID: 1442564042}
+  politicalGovernementDesc: {fileID: 106284608}
+  politicalFormables: {fileID: 851022409}
+  piechart_colors:
+  - serializedVersion: 2
+    rgba: 4281808852
+  - serializedVersion: 2
+    rgba: 4284703661
+  - serializedVersion: 2
+    rgba: 4283087288
+  - serializedVersion: 2
+    rgba: 4290224950
+  - serializedVersion: 2
+    rgba: 4286863159
+  piechart_prefab: {fileID: 7116107645431108405, guid: 1dbcd8b72cf1ab6469a1b6b42d5c6c97,
+    type: 3}
 --- !u!1 &1693558926
 GameObject:
   m_ObjectHideFlags: 0
@@ -18025,8 +18039,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
         m_MethodName: Add_Popularity_ShortCut
         m_Mode: 3
         m_Arguments:
@@ -20494,8 +20508,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
         m_MethodName: Add_Popularity_ShortCut
         m_Mode: 3
         m_Arguments:
@@ -21086,8 +21100,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1134928010}
-        m_TargetAssemblyTypeName: CanvasWorker, Assembly-CSharp
+      - m_Target: {fileID: 1674045811}
+        m_TargetAssemblyTypeName: PoliticalTab, Assembly-CSharp
         m_MethodName: Add_Popularity_ShortCut
         m_Mode: 3
         m_Arguments:

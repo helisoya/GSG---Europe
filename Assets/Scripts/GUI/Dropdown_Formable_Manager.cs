@@ -11,7 +11,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
 
     private List<FormableNation> current;
 
-    public CanvasWorker canvas;
+    public PoliticalTab tab;
     public TMP_Dropdown dropdown;
 
     public void RefreshDropdown(Pays country)
@@ -63,13 +63,13 @@ public class Dropdown_Formable_Manager : MonoBehaviour
         {
             manager.GetCountry(key).RefreshProvinces();
         }
-        canvas.ClosePolitique();
+        tab.CloseTab();
     }
 
     public void FormShortcut()
     {
         manager.formables.FormNation(manager.player, manager.currentFormable);
-        canvas.ClosePolitique();
-        canvas.Show_CountryInfo(manager.player);
+        tab.CloseTab();
+        CanvasWorker.instance.Show_CountryInfoPlayer();
     }
 }
