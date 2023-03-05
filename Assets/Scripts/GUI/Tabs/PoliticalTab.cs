@@ -30,6 +30,8 @@ public class PoliticalTab : GUITab
     {
         base.CloseTab();
         Timer.instance.ResumeTime();
+        CanvasWorker.instance.UpdateInfo();
+        CanvasWorker.instance.RefreshUtilityBar();
     }
 
 
@@ -59,7 +61,7 @@ public class PoliticalTab : GUITab
         {
             politicalElections.text = "Next Elections : " + manager.player.date_elections.ToString();
         }
-        politicalAP.text = "Admin Power : " + manager.player.AP.ToString();
+        politicalAP.text = "Admin Power : " + manager.player.AP.ToString() + " <sprite=12>";
         politicalGovernement.text = manager.GetGovernementName(manager.player.Government_Form);
         politicalGovernementDesc.text = manager.GetGovernementDesc(manager.player.Government_Form);
         politicalFormables.RefreshDropdown(manager.player);
@@ -96,7 +98,6 @@ public class PoliticalTab : GUITab
         }
         manager.player.AP -= 10;
         politicalAP.text = "Admin Power : " + manager.player.AP.ToString();
-        CanvasWorker.instance.UpdatePPBar();
 
         manager.player.Add_Popularity(index, 5);
 

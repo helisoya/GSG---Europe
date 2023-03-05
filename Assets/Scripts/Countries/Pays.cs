@@ -300,7 +300,7 @@ public class Pays
 
         if (this == manager.player)
         {
-            CanvasWorker.instance.UpdateUtilityUnitCap();
+            CanvasWorker.instance.RefreshUtilityBar();
         }
     }
 
@@ -611,7 +611,7 @@ public class Pays
         obj.transform.position = pos;
         obj.country = this;
         units.Add(obj);
-        CanvasWorker.instance.UpdateUtilityUnitCap();
+        CanvasWorker.instance.RefreshUtilityBar();
     }
 
 

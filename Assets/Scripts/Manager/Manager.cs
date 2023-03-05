@@ -202,7 +202,6 @@ public class Manager : MonoBehaviour
     {
         player = chosenCountry;
         picked = true;
-        CanvasWorker.instance.ShowDefault();
         CanvasWorker.instance.Show_CountryInfo(player);
 
         List<string> toDelete = new List<string>();
@@ -232,10 +231,8 @@ public class Manager : MonoBehaviour
             pays.Remove(key);
         }
         Ajout_Mois();
-        CanvasWorker.instance.Update_Date();
+        CanvasWorker.instance.ShowDefault();
         CanvasWorker.instance.UpdateInfo();
-        CanvasWorker.instance.UpdatePPBar();
-        CanvasWorker.instance.UpdateUtilityUnitCap();
     }
 
     public Pays GetCountry(string ID)
@@ -276,8 +273,6 @@ public class Manager : MonoBehaviour
     public void NextTurn()
     {
         Ajout_Mois();
-        CanvasWorker.instance.Update_Date();
-
         foreach (Pays country in pays.Values)
         {
             if (country.provinces.Count > 0)
@@ -291,8 +286,7 @@ public class Manager : MonoBehaviour
                 }
             }
         }
-        CanvasWorker.instance.UpdatePPBar();
-        CanvasWorker.instance.UpdateUtilityUnitCap();
+        CanvasWorker.instance.RefreshUtilityBar();
         CanvasWorker.instance.UpdateInfo();
     }
 

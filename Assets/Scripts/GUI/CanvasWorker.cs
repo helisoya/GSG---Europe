@@ -14,14 +14,6 @@ public class CanvasWorker : MonoBehaviour
 
 
 
-    [Space]
-    [Header("Utilities")]
-    [SerializeField] private GameObject utilityRoot;
-    [SerializeField] private TextMeshProUGUI utilityDate;
-    [SerializeField] private TextMeshProUGUI utilityAP;
-    [SerializeField] private TextMeshProUGUI utilitySpeed;
-    [SerializeField] private TextMeshProUGUI utilityUC;
-
 
     [Space]
     [Header("Events")]
@@ -42,6 +34,7 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private PoliticalTab politicalTab;
     [SerializeField] private CountryInfoTab countryInfoTab;
     [SerializeField] private ProvinceTab provinceTab;
+    [SerializeField] private UtilityTab utilityTab;
 
 
     void Awake()
@@ -49,15 +42,7 @@ public class CanvasWorker : MonoBehaviour
         instance = this;
     }
 
-    public void UpdateSpeedText(int speed)
-    {
-        utilitySpeed.text = "Speed : " + speed.ToString();
-    }
 
-    public void UpdateUtilityUnitCap()
-    {
-        utilityUC.text = manager.player.units.Count + "/" + manager.player.unitCap;
-    }
 
     public void OpenSettingsMenu()
     {
@@ -114,10 +99,7 @@ public class CanvasWorker : MonoBehaviour
 
 
 
-    public void Update_Date()
-    {
-        utilityDate.text = manager.GetDate();
-    }
+
 
 
 
@@ -228,7 +210,7 @@ public class CanvasWorker : MonoBehaviour
     public void HideEverything()
     {
         if (countryInfoTab.isOpen) countryInfoTab.CloseTab();
-        utilityRoot.SetActive(false);
+        if (utilityTab.isOpen) utilityTab.CloseTab();
         if (provinceTab.isOpen) provinceTab.CloseTab();
         eventsRoot.SetActive(false);
 
@@ -240,12 +222,13 @@ public class CanvasWorker : MonoBehaviour
 
     public void ShowDefault()
     {
-        utilityRoot.SetActive(true);
+        utilityTab.OpenTab();
     }
 
-    public void UpdatePPBar()
+
+    public void RefreshUtilityBar()
     {
-        utilityAP.text = "AP : " + manager.player.AP.ToString();
+        utilityTab.RefreshBar();
     }
 
 }

@@ -41,12 +41,12 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.P))
         {
             Time.timeScale = Mathf.Clamp(Time.timeScale + 1, 0, maxspeed);
-            UpdateText();
+            CanvasWorker.instance.RefreshUtilityBar();
         }
         else if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.M))
         {
             Time.timeScale = Mathf.Clamp(Time.timeScale - 1, 0, maxspeed);
-            UpdateText();
+            CanvasWorker.instance.RefreshUtilityBar();
         }
     }
 
@@ -55,18 +55,13 @@ public class Timer : MonoBehaviour
         lastspeed = Time.timeScale;
         Time.timeScale = 0;
         isStoped = true;
-        UpdateText();
+        CanvasWorker.instance.RefreshUtilityBar();
     }
 
     public void ResumeTime()
     {
         Time.timeScale = lastspeed;
         isStoped = false;
-        UpdateText();
-    }
-
-    void UpdateText()
-    {
-        CanvasWorker.instance.UpdateSpeedText((int)Time.timeScale);
+        CanvasWorker.instance.RefreshUtilityBar();
     }
 }

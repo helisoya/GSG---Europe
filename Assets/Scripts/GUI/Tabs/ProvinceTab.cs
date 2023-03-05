@@ -85,7 +85,7 @@ public class ProvinceTab : GUITab
         {
             manager.player.AP -= 100;
             currentProvine.SpawnUnitAtCity();
-            CanvasWorker.instance.UpdatePPBar();
+            CanvasWorker.instance.RefreshUtilityBar();
         }
 
     }
