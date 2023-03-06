@@ -11,6 +11,7 @@ public class ProvinceTab : GUITab
     private Province currentProvine;
     private List<string> current_cores;
 
+    public GameObject prefabRailroad;
 
     public void ShowProvinceDetails(Province prov)
     {
@@ -88,5 +89,26 @@ public class ProvinceTab : GUITab
             CanvasWorker.instance.RefreshUtilityBar();
         }
 
+    }
+
+    public void AddRailroad()
+    {
+        if (!currentProvine.hasRailroad)
+        {
+            currentProvine.hasRailroad = true;
+            foreach (Province prov in currentProvine.adjacencies)
+            {
+                if (!prov.hasRailroad) continue;
+
+                bool val = currentProvine.id.CompareTo(prov.id) == -1;
+                string key = val ? prov.id + "_" + currentProvine.id : currentProvine.id + "_" + prov.id;
+                if (!Province.railroads.ContainsKey(key))
+                {
+                    Railroad rail = Instantiate(prefabRailroad).GetComponent<Railroad>();
+                    rail.Init(currentProvine.id, prov.id);
+                    Province.railroads.Add(key, rail);
+                }
+            }
+        }
     }
 }

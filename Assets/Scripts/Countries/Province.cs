@@ -19,6 +19,9 @@ public class Province : MonoBehaviour
 
     public Province[] adjacencies;
 
+    public bool hasRailroad;
+
+    public static Dictionary<string, Railroad> railroads;
 
     public void SetOwner(Pays pays)
     {

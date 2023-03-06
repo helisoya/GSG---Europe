@@ -54,6 +54,11 @@ public class Unit : MonoBehaviour
             }
         }
 
+        if (Camera.main.transform.position.y > 250)
+        {
+            UpdateIsSeen(false);
+        }
+
 
         target = transform.position;
         manager = Manager.instance;
@@ -90,21 +95,10 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void Check()
+    public void UpdateIsSeen(bool value)
     {
-        if (isSeen())
-        {
-            if (disabled)
-            {
-                disabled = false;
-                UpdateAllRenderers(true);
-            }
-        }
-        else if (!disabled)
-        {
-            disabled = true;
-            UpdateAllRenderers(false);
-        }
+        disabled = !value;
+        UpdateAllRenderers(value);
     }
 
     public int GetDmg()
@@ -330,11 +324,5 @@ public class Unit : MonoBehaviour
         }
 
     }
-
-    bool isSeen()
-    {
-        return Camera.main.transform.position.y <= 250;
-    }
-
 
 }

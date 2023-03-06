@@ -21,7 +21,12 @@ public class CamMove : MonoBehaviour
     public GameObject border_left;
     public GameObject border_right;
 
+    private float lastYPos;
 
+    void Start()
+    {
+        lastYPos = transform.position.y;
+    }
 
     void Update()
     {
@@ -38,10 +43,20 @@ public class CamMove : MonoBehaviour
             {
                 angle = y * 80 / middle;
             }
+            lastYPos = transform.position.y;
             transform.position = new Vector3(transform.position.x, y, transform.position.z);
             transform.eulerAngles = new Vector3(angle, transform.eulerAngles.y, transform.eulerAngles.z);
 
-            GameObject.Find("Manager").GetComponent<Manager>().CheckEveryItems();
+            if (lastYPos <= 250 && y > 250)
+            {
+                Manager.instance.UpdateMapGFXSeen(false);
+            }
+            else if (lastYPos >= 250 && y < 250)
+            {
+                Manager.instance.UpdateMapGFXSeen(true);
+            }
+
+
         }
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)

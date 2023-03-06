@@ -246,11 +246,11 @@ public class Pays
     }
 
 
-    public void CheckCitiesUnits()
+    public void UpdateUnitsSeen(bool value)
     {
         foreach (Unit obj in units)
         {
-            obj.Check();
+            obj.UpdateIsSeen(value);
         }
     }
 

@@ -94,7 +94,7 @@ public class Manager : MonoBehaviour
         loadingText.text = "Loading Provinces";
         yield return new WaitForEndOfFrame();
         provinces = Parser.ParseProvinces();
-
+        Province.railroads = new Dictionary<string, Railroad>();
 
         loadingImg.fillAmount = 1f / 7f;
         loadingText.text = "Loading Focus";
@@ -192,14 +192,19 @@ public class Manager : MonoBehaviour
     }
 
 
-    public void CheckEveryItems()
+    public void UpdateMapGFXSeen(bool value)
     {
         foreach (Pays pays in pays.Values)
         {
             if (pays.provinces.Count != 0)
             {
-                pays.CheckCitiesUnits();
+                pays.UpdateUnitsSeen(value);
             }
+        }
+
+        foreach (Railroad railroad in Province.railroads.Values)
+        {
+            railroad.UpdateIsSeen(value);
         }
     }
 
