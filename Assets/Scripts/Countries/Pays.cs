@@ -17,6 +17,7 @@ public class Pays
     public List<Province> provinces;
 
     public int Government_Form = 0;
+    public int currentParty = 2;
 
     public Leader leader;
 
@@ -436,6 +437,7 @@ public class Pays
             }
         }
         Add_Popularity(index, 5);
+        currentParty = index;
 
         if (manager.player == this)
         {

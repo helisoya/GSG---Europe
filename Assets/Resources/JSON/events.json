@@ -1,0 +1,306 @@
+{
+	"events":[
+		{
+			"id":"CHANGE_GOVERNEMENT_REPUBLIC",
+			"title":"Governement Type",
+			"description":"We are now a republic. What kind of republic will we be ?",
+			"buttons":[
+				{
+					"name":"Parlimentary Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(0)"
+					]
+				},
+				{
+					"name":"Mixed Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(1)"
+					]
+				},
+				{
+					"name":"Presidential Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(2)"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"CHANGE_GOVERNEMENT_MONARCHY",
+			"title":"Governement Type",
+			"description":"We are now a monarchy. What kind of monarchy will we be ?",
+			"buttons":[
+				{
+					"name":"Absolute Monarchy",
+					"effect":[
+						"CHANGE_GOVERNEMENT(3)"
+					]
+				},
+				{
+					"name":"Elective Monarchy",
+					"effect":[
+						"CHANGE_GOVERNEMENT(4)"
+					]
+				},
+				{
+					"name":"Parlimentary Monarchy",
+					"effect":[
+						"CHANGE_GOVERNEMENT(5)"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"CHANGE_GOVERNEMENT_COMMUNISM",
+			"title":"Governement Type",
+			"description":"We are now communist. What kind of communist state will we be ?",
+			"buttons":[
+				{
+					"name":"Soviet Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(6)"
+					]
+				},
+				{
+					"name":"People's Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(7)"
+					]
+				},
+				{
+					"name":"Popular Union",
+					"effect":[
+						"CHANGE_GOVERNEMENT(8)"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"CHANGE_GOVERNEMENT_FASCISM",
+			"title":"Governement Type",
+			"description":"We are now fascist. What kind of fascist state will we be ?",
+			"buttons":[
+				{
+					"name":"New Reich",
+					"effect":[
+						"CHANGE_GOVERNEMENT(9)"
+					]
+				},
+				{
+					"name":"Social Republic",
+					"effect":[
+						"CHANGE_GOVERNEMENT(10)"
+					]
+				},
+				{
+					"name":"Military Junta",
+					"effect":[
+						"CHANGE_GOVERNEMENT(11)"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_MONARCHY_COMMUNISM",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Alright",
+					"effect":[
+					]
+				},
+				{
+					"name":"Establish a Soviet",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_COMMUNISM)"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_MONARCHY_SOCIALISM",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Alright",
+					"effect":[
+					]
+				},
+				{
+					"name":"Establish a republic",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_REPUBLIC)"
+					]
+				}
+			]
+		},
+		
+		
+		{
+			"id":"ELECTIONS_NORMAL",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Perfect",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_REPUBLIC_NORMAL",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Keep the leader",
+					"effect":[
+						"KEEPLEADER()"
+					]
+				},
+				{
+					"name":"Get a new leader",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_REPUBLIC_REELECTED",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Establish a monarchy",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_MONARCHY)"
+					]
+				},
+				{
+					"name":"Get a new leader",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_REPUBLIC_COMMUNISM",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Establish communism",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_COMMUNISM)"
+					]
+				},
+				{
+					"name":"Alright",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_REPUBLIC_FASCISM",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Establish fascism",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_FASCISM)"
+					]
+				},
+				{
+					"name":"Alright",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_COMMUNISM_REPUBLIC",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Establish a republic",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_REPUBLIC)"
+					]
+				},
+				{
+					"name":"Alright",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"ELECTIONS_COMMUNISM_FASCISM",
+			"title":"Elections",
+			"description":"The election is finished. The new party in power is : $newParty .",
+			"buttons":[
+				{
+					"name":"Establish fascism",
+					"effect":[
+						"EVENT(CHANGE_GOVERNEMENT_FASCISM)"
+					]
+				},
+				{
+					"name":"Alright",
+					"effect":[
+						"NEWLEADER()"
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"DEATH_LEADER_NORMAL",
+			"title":"Ruler",
+			"description":"Our ruler is dead. A new one has been chosen : $newRuler .",
+			"buttons":[
+				{
+					"name":"A terrible loss...",
+					"effect":[
+					]
+				}
+			]
+		},
+		
+		{
+			"id":"DEATH_LEADER_MONARCH",
+			"title":"Monarch",
+			"description":"The monarch is dead, his child, $newRuler , will be the monarch now.",
+			"buttons":[
+				{
+					"name":"Long live our monarch !",
+					"effect":[
+					]
+				}
+			]
+		}
+	]
+}

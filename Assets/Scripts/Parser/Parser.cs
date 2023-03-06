@@ -83,6 +83,48 @@ public class Parser : MonoBehaviour
         return list;
     }
 
+
+    public static Dictionary<string, GameEvent> ParseEvents()
+    {
+        string json = Resources.Load<TextAsset>("JSON/events").text;
+
+        JSON obj = JSON.ParseString(json);
+
+        Dictionary<string, GameEvent> list = new Dictionary<string, GameEvent>();
+
+        JArray array = obj.GetJArray("events");
+        JSON jsonEvent;
+        JArray arrayIn;
+        JArray arrayEffects;
+        for (int i = 0; i < array.Length; i++)
+        {
+            jsonEvent = array.GetJSON(i);
+            GameEvent gameEvent = new GameEvent();
+            gameEvent.id = jsonEvent.GetString("id");
+            gameEvent.title = jsonEvent.GetString("title");
+            gameEvent.description = jsonEvent.GetString("description");
+
+
+            arrayIn = jsonEvent.GetJArray("buttons");
+            for (int j = 0; j < arrayIn.Length; j++)
+            {
+                JSON button = arrayIn.GetJSON(j);
+                gameEvent.buttons[j] = new GameEvent.EventButton();
+                gameEvent.buttons[j].label = button.GetString("name");
+                arrayEffects = button.GetJArray("effect");
+                gameEvent.buttons[j].effects = new string[arrayEffects.Length];
+                for (int y = 0; y < arrayEffects.Length; y++)
+                {
+                    gameEvent.buttons[j].effects[y] = arrayEffects.GetString(y);
+                }
+            }
+
+
+            list.Add(gameEvent.id, gameEvent);
+        }
+        return list;
+    }
+
     public static Dictionary<string, Culture> ParseCultures(Dictionary<string, Dictionary<string, Focus>> focuses)
     {
         string json = Resources.Load<TextAsset>("JSON/cultures").text;

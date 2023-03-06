@@ -21,6 +21,7 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private Text eventsTitle;
     [SerializeField] private Text eventsDesc;
     [SerializeField] private Button[] eventsButtons;
+    private GameEvent currentEvent = null;
 
     [Space]
     [Header("Peace Deal")]
@@ -102,15 +103,65 @@ public class CanvasWorker : MonoBehaviour
 
 
 
-
-
-    public void Event(string Title, string Desc)
+    public void OpenEvent(string eventId)
     {
+        GameEvent gameEvent = manager.events[eventId];
         HideEverything();
         Timer.instance.StopTime();
         eventsRoot.SetActive(true);
-        eventsTitle.text = Title;
-        eventsDesc.text = Desc;
+        eventsTitle.text = gameEvent.title;
+
+        Pays player = Manager.instance.player;
+
+        eventsDesc.text = gameEvent.description.Replace("$currentRuler", player.leader.prenom + " " + player.leader.nom).Replace("$currentParty", player.parties[player.currentParty].partyName);
+        currentEvent = gameEvent;
+
+        for (int i = 0; i < 4; i++)
+        {
+            GameEvent.EventButton button = gameEvent.buttons[i];
+            if (button == null) continue;
+
+            eventsButtons[i].gameObject.SetActive(true);
+            eventsButtons[i].GetComponentInChildren<Text>().text = button.label;
+        }
+    }
+
+    public void ChoseEventOutcome(int index)
+    {
+        if (currentEvent == null) return;
+
+        string[] effects = currentEvent.buttons[index].effects;
+        string[] separators = { "(", ")" };
+
+        bool hideEvent = true;
+        foreach (string effect in effects)
+        {
+            string[] split = effect.Split(separators, System.StringSplitOptions.RemoveEmptyEntries);
+            switch (split[0])
+            {
+                case "CHANGE_GOVERNEMENT":
+                    manager.player.reelected = false;
+                    manager.player.Government_Form = int.Parse(split[1]);
+                    manager.player.Reset_Flag();
+                    manager.player.Reset_Elections();
+                    break;
+                case "EVENT":
+                    hideEvent = false;
+                    OpenEvent(split[1]);
+                    break;
+                case "KEEPLEADER":
+                    manager.player.reelected = true;
+                    break;
+                case "NEWLEADER":
+                    manager.player.RandomizeLeader();
+                    manager.player.reelected = false;
+                    break;
+            }
+        }
+        if (hideEvent)
+        {
+            Hide_Event();
+        }
     }
 
     public void Hide_Event()
@@ -121,16 +172,6 @@ public class CanvasWorker : MonoBehaviour
         countryInfoTab.Show_CountryInfo(manager.player);
         eventsRoot.SetActive(false);
         ShowDefault();
-        Reset_Bindings_Event();
-    }
-
-    void Reset_Bindings_Event()
-    {
-        for (int i = 1; i < eventsButtons.Length; i++)
-        {
-            eventsButtons[i].onClick.RemoveAllListeners();
-            eventsButtons[i].gameObject.SetActive(false);
-        }
     }
 
 
