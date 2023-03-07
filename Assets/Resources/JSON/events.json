@@ -107,7 +107,7 @@
 		{
 			"id":"ELECTIONS_MONARCHY_COMMUNISM",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Alright",
@@ -126,7 +126,7 @@
 		{
 			"id":"ELECTIONS_MONARCHY_SOCIALISM",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Alright",
@@ -146,7 +146,7 @@
 		{
 			"id":"ELECTIONS_NORMAL",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Perfect",
@@ -160,7 +160,7 @@
 		{
 			"id":"ELECTIONS_REPUBLIC_NORMAL",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Keep the leader",
@@ -180,7 +180,7 @@
 		{
 			"id":"ELECTIONS_REPUBLIC_REELECTED",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Establish a monarchy",
@@ -200,7 +200,7 @@
 		{
 			"id":"ELECTIONS_REPUBLIC_COMMUNISM",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Establish communism",
@@ -220,7 +220,7 @@
 		{
 			"id":"ELECTIONS_REPUBLIC_FASCISM",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Establish fascism",
@@ -240,7 +240,7 @@
 		{
 			"id":"ELECTIONS_COMMUNISM_REPUBLIC",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Establish a republic",
@@ -260,7 +260,7 @@
 		{
 			"id":"ELECTIONS_COMMUNISM_FASCISM",
 			"title":"Elections",
-			"description":"The election is finished. The new party in power is : $newParty .",
+			"description":"The election is finished. The new party in power is : $currentParty .",
 			"buttons":[
 				{
 					"name":"Establish fascism",
@@ -280,7 +280,7 @@
 		{
 			"id":"DEATH_LEADER_NORMAL",
 			"title":"Ruler",
-			"description":"Our ruler is dead. A new one has been chosen : $newRuler .",
+			"description":"Our ruler is dead. A new one has been chosen : $currentRuler .",
 			"buttons":[
 				{
 					"name":"A terrible loss...",
@@ -293,7 +293,7 @@
 		{
 			"id":"DEATH_LEADER_MONARCH",
 			"title":"Monarch",
-			"description":"The monarch is dead, his child, $newRuler , will be the monarch now.",
+			"description":"The monarch is dead, his child, $currentRuler , will be the monarch now.",
 			"buttons":[
 				{
 					"name":"Long live our monarch !",

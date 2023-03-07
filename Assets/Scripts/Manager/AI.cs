@@ -15,6 +15,17 @@ public class AI : MonoBehaviour
             return;
         }
 
+
+        if (Random.Range(0, 100) <= 5)
+        {
+            Province prov = country.provinces[Random.Range(0, country.provinces.Count)];
+            if (!prov.hasRailroad)
+            {
+                manager.AddRailRoadToProvince(prov);
+                return;
+            }
+        }
+
         if (!country.hasTech_Naval)
         {
             country.hasTech_Naval = true;

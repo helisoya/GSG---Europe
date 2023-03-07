@@ -39,6 +39,8 @@ public class Manager : MonoBehaviour
     public Dictionary<string, Dictionary<string, Focus>> focuses;
     public Dictionary<string, Culture> cultures;
     public Dictionary<string, GameEvent> events;
+    public GameObject prefabRailroad;
+    private Dictionary<string, Railroad> railroads;
 
     [Header("Parser")]
     public GameObject prefabProvince;
@@ -94,7 +96,7 @@ public class Manager : MonoBehaviour
         loadingText.text = "Loading Provinces";
         yield return new WaitForEndOfFrame();
         provinces = Parser.ParseProvinces();
-        Province.railroads = new Dictionary<string, Railroad>();
+        railroads = new Dictionary<string, Railroad>();
 
         loadingImg.fillAmount = 1f / 7f;
         loadingText.text = "Loading Focus";
@@ -137,6 +139,25 @@ public class Manager : MonoBehaviour
         picker.Init();
 
         loading = null;
+    }
+
+
+    public void AddRailRoadToProvince(Province province)
+    {
+        province.hasRailroad = true;
+        foreach (Province prov in province.adjacencies)
+        {
+            if (!prov.hasRailroad) continue;
+
+            bool val = province.id.CompareTo(prov.id) == -1;
+            string key = val ? prov.id + "_" + province.id : province.id + "_" + prov.id;
+            if (!railroads.ContainsKey(key))
+            {
+                Railroad rail = Instantiate(prefabRailroad).GetComponent<Railroad>();
+                rail.Init(province.id, prov.id);
+                railroads.Add(key, rail);
+            }
+        }
     }
 
     public void EndPeaceDeal(bool vassalizeB)
@@ -202,7 +223,7 @@ public class Manager : MonoBehaviour
             }
         }
 
-        foreach (Railroad railroad in Province.railroads.Values)
+        foreach (Railroad railroad in railroads.Values)
         {
             railroad.UpdateIsSeen(value);
         }

@@ -5181,6 +5181,8 @@ MonoBehaviour:
   peaceDealSide1: 
   peaceDealSide2: 
   provincesToBeTakenInPeaceDeal: []
+  prefabRailroad: {fileID: 6465783048123092435, guid: 47d66b858314b16428604912795f1b87,
+    type: 3}
   prefabProvince: {fileID: 8347739125421405574, guid: ca259870b0a25bb4fa6eb2ef2860c37f,
     type: 3}
   provinceParent: {fileID: 1866431412}
@@ -7759,8 +7761,6 @@ MonoBehaviour:
   tabRoot: {fileID: 841567457}
   provinceName: {fileID: 1370912833}
   provinceCores: {fileID: 1215545892}
-  prefabRailroad: {fileID: 6465783048123092435, guid: 47d66b858314b16428604912795f1b87,
-    type: 3}
 --- !u!1 &846757385
 GameObject:
   m_ObjectHideFlags: 0

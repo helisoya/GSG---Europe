@@ -21,8 +21,6 @@ public class Province : MonoBehaviour
 
     public bool hasRailroad;
 
-    public static Dictionary<string, Railroad> railroads;
-
     public void SetOwner(Pays pays)
     {
         owner = pays;
