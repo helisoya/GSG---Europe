@@ -12,10 +12,18 @@ public class CountryInfoTab : GUITab
     [SerializeField] private TextMeshProUGUI infoFocus;
     [SerializeField] private Image infoFocusFill;
     [SerializeField] private Image infoFlag;
-    [SerializeField] private GameObject infoDiploRoot;
-    [SerializeField] private Button infoDiploWar;
-    [SerializeField] private Button infoDiploVassal;
-    [SerializeField] private Button infoDiploPeace;
+
+
+    [SerializeField] private GameObject diploRoot;
+    [SerializeField] private GameObject buttonImproveRelations;
+    [SerializeField] private GameObject buttonDecreaseRelations;
+    [SerializeField] private GameObject buttonCreateWargoal;
+    [SerializeField] private GameObject buttonDeclareWar;
+    [SerializeField] private GameObject buttonPeaceDeal;
+    [SerializeField] private GameObject buttonFederation;
+    [SerializeField] private GameObject buttonDeclareIndependance;
+    [SerializeField] private GameObject buttonPlayAs;
+
 
 
     private Pays current_countryinfo = null;
@@ -35,53 +43,20 @@ public class CountryInfoTab : GUITab
         current_countryinfo = NEW;
         UpdateInfo(NEW);
 
-        infoDiploRoot.SetActive(false);
-
+        diploRoot.SetActive(NEW != manager.player);
         if (NEW != manager.player)
         { // Cas nation IA
-            infoDiploRoot.SetActive(true);
-            infoDiploPeace.onClick.RemoveAllListeners();
-            infoDiploWar.onClick.RemoveAllListeners();
-            infoDiploVassal.onClick.RemoveAllListeners();
+            buttonImproveRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
+            buttonDecreaseRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
+            buttonCreateWargoal.SetActive(false);
 
-            infoDiploPeace.onClick.AddListener(() =>
-            {
-                CanvasWorker.instance.OpenPeaceDealTab(manager.player.ID, NEW.ID);
-                //UpdateRelations_ShortCut(manager.player, NEW, 0);
-                //Show_CountryInfo(NEW);
-            });
-            infoDiploWar.onClick.AddListener(() =>
-            {
-                CanvasWorker.instance.UpdateRelations_ShortCut(manager.player, NEW, 1);
-                Show_CountryInfo(NEW);
-            });
-            infoDiploVassal.onClick.AddListener(() =>
-            {
-                Pays old = manager.player;
-                manager.player = NEW;
-                old.RefreshProvinces();
-                NEW.RefreshProvinces();
-                Show_CountryInfo(NEW);
-            });
+            buttonDeclareWar.SetActive(NEW != manager.player.lord && !NEW.relations[manager.player.ID].atWar);
+            buttonPeaceDeal.SetActive(NEW.relations[manager.player.ID].atWar);
 
-            if (manager.player.relations[NEW.ID] == 1)
-            { // Pays en guerre
-                infoDiploPeace.gameObject.SetActive(true);
-                infoDiploWar.gameObject.SetActive(false);
-                infoDiploVassal.gameObject.SetActive(false);
-            }
-            else if (manager.player.relations[NEW.ID] == 2)
-            { // Cas Vassal
-                infoDiploPeace.gameObject.SetActive(false);
-                infoDiploWar.gameObject.SetActive(false);
-                infoDiploVassal.gameObject.SetActive(true);
-            }
-            else
-            {
-                infoDiploPeace.gameObject.SetActive(false);
-                infoDiploWar.gameObject.SetActive(true);
-                infoDiploVassal.gameObject.SetActive(false);
-            }
+            buttonFederation.SetActive(!NEW.relations[manager.player.ID].atWar);
+
+            buttonDeclareIndependance.SetActive(NEW == manager.player.lord);
+            buttonPlayAs.SetActive(NEW.lord == manager.player);
         }
     }
 
@@ -99,4 +74,50 @@ public class CountryInfoTab : GUITab
         infoFocusFill.fillAmount = (country.currentFocus.Equals("NONE") ? 0 : country.currentFocusTime / (float)country.maxFocusTime);
         infoFlag.GetComponent<Image>().sprite = country.currentFlag;
     }
+
+    public void Event_IncreaseRelation()
+    {
+
+    }
+
+    public void Event_DecreaseRelation()
+    {
+
+    }
+
+    public void Event_CreateWarGoal()
+    {
+
+    }
+
+    public void Event_DeclareWar()
+    {
+        CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
+        Show_CountryInfo(current_countryinfo);
+    }
+
+    public void Event_PeaceDeal()
+    {
+        CanvasWorker.instance.OpenPeaceDealTab(Manager.instance.player.ID, current_countryinfo.ID);
+    }
+
+    public void Event_Federation()
+    {
+
+    }
+
+    public void Event_DeclareIndependance()
+    {
+
+    }
+
+    public void Event_PlayAs()
+    {
+        Pays old = Manager.instance.player;
+        Manager.instance.player = current_countryinfo;
+        old.RefreshProvinces();
+        current_countryinfo.RefreshProvinces();
+        Show_CountryInfo(current_countryinfo);
+    }
+
 }

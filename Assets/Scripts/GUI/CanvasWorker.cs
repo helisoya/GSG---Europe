@@ -196,28 +196,26 @@ public class CanvasWorker : MonoBehaviour
 
             case 2:
 
-                keys = new List<string>(B.relations.Keys);
-                foreach (string key in keys)
+                keys = new List<string>(B.atWarWith.Keys);
+                foreach (string pays in keys)
                 {
-                    B.relations[key] = 0;
+                    B.MakePeaceWithCountry(manager.GetCountry(pays));
                 }
 
-                A.relations[B.ID] = st;
-                B.relations[A.ID] = 3;
+                B.lord = A;
                 B.CopyCat(A);
                 B.MimicColor(A);
                 B.vassal = true;
                 break;
 
             case 3:
-                keys = new List<string>(A.relations.Keys);
+                keys = new List<string>(A.atWarWith.Keys);
                 foreach (string pays in keys)
                 {
-                    A.relations[pays] = 0;
+                    A.MakePeaceWithCountry(manager.GetCountry(pays));
                 }
 
-                A.relations[B.ID] = st;
-                B.relations[A.ID] = 2;
+                A.lord = B;
                 A.CopyCat(B);
                 A.MimicColor(B);
                 A.vassal = true;

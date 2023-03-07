@@ -242,7 +242,6 @@ public class Manager : MonoBehaviour
         {
             if (!p.DestroyIfNotSelected || p.ID == player.ID)
             {
-                p.Refresh_Relations();
                 p.RandomizeLeader();
                 p.RefreshProvinces();
             }
@@ -256,11 +255,6 @@ public class Manager : MonoBehaviour
                     DestroyImmediate(obj.gameObject);
                 }
             }
-        }
-
-        foreach (string key in toDelete)
-        {
-            pays.Remove(key);
         }
         Ajout_Mois();
         CanvasWorker.instance.ShowDefault();

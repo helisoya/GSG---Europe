@@ -15,17 +15,6 @@ public class AI : MonoBehaviour
             return;
         }
 
-
-        if (Random.Range(0, 100) <= 5)
-        {
-            Province prov = country.provinces[Random.Range(0, country.provinces.Count)];
-            if (!prov.hasRailroad)
-            {
-                manager.AddRailRoadToProvince(prov);
-                return;
-            }
-        }
-
         if (!country.hasTech_Naval)
         {
             country.hasTech_Naval = true;
@@ -73,15 +62,15 @@ public class AI : MonoBehaviour
         foreach (string key in country.relations.Keys)
         {
             pays = manager.GetCountry(key);
-            if (pays != country && pays.provinces.Count != 0 && country.relations[key] < 2)
+            if (pays != country && pays.provinces.Count != 0 && (country.lord != pays && pays.lord != country))
             {
-                if (country.relations[key] == 0 &&
+                if (!country.relations[key].atWar &&
                 Random.Range(0, 100) < (manager.player == pays ? 1 : 3))
                 {
                     country.DeclareWarOnCountry(pays);
                     return;
                 }
-                else if (pays != manager.player && country.relations[key] == 1 && Random.Range(0, 100) < 10)
+                else if (pays != manager.player && country.relations[key].atWar && Random.Range(0, 100) < 10)
                 {
                     country.MakePeaceWithCountry(pays);
                     return;

@@ -190,6 +190,25 @@ public class Parser : MonoBehaviour
             pays.SetColor(new Color(color.GetFloat(0) / 255f, color.GetFloat(1) / 255f, color.GetFloat(2) / 255f));
             list.Add(pays.ID, pays);
         }
+
+        int comparison;
+        foreach (Pays pays in list.Values)
+        {
+            foreach (Pays other in list.Values)
+            {
+                comparison = pays.ID.CompareTo(other.ID);
+                if (comparison == 0) continue;
+
+                if (other.relations.ContainsKey(pays.ID))
+                {
+                    pays.relations.Add(other.ID, other.relations[pays.ID]);
+                }
+                else
+                {
+                    pays.relations.Add(other.ID, new Relation());
+                }
+            }
+        }
         return list;
     }
 

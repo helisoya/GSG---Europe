@@ -11,8 +11,12 @@ public class ProvinceTab : GUITab
     private Province currentProvine;
     private List<string> current_cores;
 
+    [SerializeField] private GameObject showIfOwner;
+    [SerializeField] private GameObject showIfOwnerIsVassal;
+
     public void ShowProvinceDetails(Province prov)
     {
+
         currentProvine = prov;
         OpenTab();
         provinceName.text = prov.name;
@@ -27,8 +31,19 @@ public class ProvinceTab : GUITab
         }
         provinceCores.ClearOptions();
         provinceCores.AddOptions(l);
+
+        showIfOwner.SetActive(prov.owner == Manager.instance.player);
+        showIfOwnerIsVassal.SetActive(prov.owner.lord == Manager.instance.player);
     }
 
+    public void SeizeProvince()
+    {
+        showIfOwner.SetActive(true);
+        showIfOwnerIsVassal.SetActive(false);
+
+        currentProvine.owner.RemoveProvince(currentProvine);
+        Manager.instance.player.AddProvince(currentProvine, true);
+    }
 
 
     public void ReleaseCountry()

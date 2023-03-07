@@ -53,17 +53,11 @@ public class Pays
     public int unitCap { get { return 5 + (provinces.Count / 2) + bonusMilCap; } }
 
 
-    [HideInInspector]
     public int date_elections = -1;
-
     private Manager manager;
-
     private Events events;
-
-    [HideInInspector]
     public bool reelected = false;
 
-    [HideInInspector]
     public List<Unit> units;
 
     public int unit_damage { get { return 10 + bonusDamage; } }
@@ -82,17 +76,19 @@ public class Pays
     public int bonusEvasion;
     public int bonusSpeed;
 
-
-    [HideInInspector]
     public bool hasTech_Naval = false;
 
+    //public Dictionary<string, int> relations; // Relations :
+    // 0 = Rien
+    // 1 = Guerre
+    // 2 = Vassal
+    // 3 = Maitre
 
-    [HideInInspector]
-    public Dictionary<string, int> relations; // Relations :
-                                              // 0 = Rien
-                                              // 1 = Guerre
-                                              // 2 = Vassal
-                                              // 3 = Maitre
+
+    public Pays lord;
+
+
+    public Dictionary<string, Relation> relations;
 
     public List<Province> cores;
 
@@ -130,13 +126,12 @@ public class Pays
         atWarWith = new Dictionary<string, int>();
         units = new List<Unit>();
         leader = new Leader();
+        relations = new Dictionary<string, Relation>();
         manager = Manager.instance;
         events = manager.GetComponent<Events>();
 
         Reset_Elections();
         Reset_Flag();
-
-        relations = new Dictionary<string, int>();
     }
 
     public void IncrementFocus()
@@ -262,12 +257,11 @@ public class Pays
 
     public void DeclareWarOnCountry(Pays country)
     {
-        if (relations[country.ID] == 1)
+        if (relations[country.ID].atWar)
         {
             return;
         }
-        relations[country.ID] = 1;
-        country.relations[ID] = 1;
+        relations[country.ID].atWar = true;
 
         atWarWith.Add(country.ID, 0);
         country.atWarWith.Add(ID, 0);
@@ -275,13 +269,13 @@ public class Pays
 
     public void MakePeaceWithCountry(Pays other)
     {
-        if (relations[other.ID] == 0)
+        if (!relations[other.ID].atWar)
         {
             return;
         }
 
-        relations[other.ID] = 0;
-        other.relations[ID] = 0;
+        relations[other.ID].atWar = false;
+        relations[other.ID].relationScore = 0;
 
         atWarWith.Remove(other.ID);
         other.atWarWith.Remove(ID);
@@ -313,17 +307,6 @@ public class Pays
             if (unit.IsOnCountryTerritory(country))
             {
                 unit.transform.position = placeTo.center;
-            }
-        }
-    }
-
-    public void Refresh_Relations()
-    {
-        foreach (Pays pays in manager.pays.Values)
-        {
-            if (pays.ID != ID && !pays.DestroyIfNotSelected)
-            {
-                relations.Add(pays.ID, 0);
             }
         }
     }
@@ -640,11 +623,6 @@ public class Pays
         {
             prov.RefreshColor();
         }
-    }
-
-    public void UpdateStatusWithCountry(string country, int st)
-    {
-        relations[country] = st;
     }
 
 

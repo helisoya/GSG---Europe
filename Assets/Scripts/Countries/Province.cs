@@ -65,9 +65,9 @@ public class Province : MonoBehaviour
 
     public void Click_Event()
     {
-        if (owner == Manager.instance.player && Manager.instance.picked)
+        if (Manager.instance.picked)
         {
-            GameObject.Find("Canvas").GetComponent<CanvasWorker>().ShowBuyUnit(this);
+            CanvasWorker.instance.ShowBuyUnit(this);
         }
     }
 
@@ -151,15 +151,7 @@ public class Province : MonoBehaviour
             }
             else
             {
-                indexOwner = owner.relations[manager.player.ID];
-                if (indexOwner == 3)
-                {
-                    indexOwner = 2;
-                }
-                else if (indexOwner == 2)
-                {
-                    indexOwner = 3;
-                }
+                indexOwner = DetermineRelationToPlayer(owner);
             }
 
             if (controller == manager.player)
@@ -168,15 +160,7 @@ public class Province : MonoBehaviour
             }
             else
             {
-                indexController = controller.relations[manager.player.ID];
-                if (indexController == 3)
-                {
-                    indexController = 2;
-                }
-                else if (indexController == 2)
-                {
-                    indexController = 3;
-                }
+                indexController = DetermineRelationToPlayer(controller);
             }
             SetColor(MapModes.colors_relations[indexOwner], MapModes.colors_relations[indexController]);
 
@@ -195,6 +179,15 @@ public class Province : MonoBehaviour
         }
     }
 
+
+    int DetermineRelationToPlayer(Pays p)
+    {
+        if (p.lord == Manager.instance.player) return 2;
+        if (Manager.instance.player.lord == p) return 3;
+        if (p.relations[Manager.instance.player.ID].atWar) return 1;
+        return 0;
+    }
+
     void OnMouseDown()
     {
         if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -208,6 +201,7 @@ public class Province : MonoBehaviour
 
             if (Manager.instance.picked)
             {
+                CanvasWorker.instance.ShowBuyUnit(this);
                 canvas.Show_CountryInfo(owner);
             }
             else
@@ -215,10 +209,7 @@ public class Province : MonoBehaviour
                 CountryPicker.instance.UpdateCountry(owner);
             }
 
-            if (owner == Manager.instance.player)
-            {
-                CanvasWorker.instance.ShowBuyUnit(this);
-            }
+
 
         }
 

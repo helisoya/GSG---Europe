@@ -171,7 +171,7 @@ public class Unit : MonoBehaviour
                     }
 
                 }
-                else if (prov.owner != country && !(country.relations[prov.owner.ID] >= 2))
+                else if (prov.owner != country && !(country.lord == prov.owner || prov.owner.lord == country))
                 {
                     if (country == manager.player)
                     {
