@@ -48,9 +48,9 @@ public class CountryInfoTab : GUITab
         { // Cas nation IA
             buttonImproveRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
             buttonDecreaseRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
-            buttonCreateWargoal.SetActive(false);
 
-            buttonDeclareWar.SetActive(NEW != manager.player.lord && !NEW.relations[manager.player.ID].atWar);
+            buttonCreateWargoal.SetActive(!NEW.relations[manager.player.ID].atWar && NEW != manager.player.lord && !NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID));
+            buttonDeclareWar.SetActive(NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID) && NEW != manager.player.lord && !NEW.relations[manager.player.ID].atWar);
             buttonPeaceDeal.SetActive(NEW.relations[manager.player.ID].atWar);
 
             buttonFederation.SetActive(!NEW.relations[manager.player.ID].atWar);
@@ -77,22 +77,42 @@ public class CountryInfoTab : GUITab
 
     public void Event_IncreaseRelation()
     {
-
+        Pays player = Manager.instance.player;
+        if (player.AP >= 15)
+        {
+            player.AP -= 15;
+            player.relations[current_countryinfo.ID].AddScore(10);
+            CanvasWorker.instance.RefreshUtilityBar();
+        }
     }
 
     public void Event_DecreaseRelation()
     {
-
+        Pays player = Manager.instance.player;
+        if (player.AP >= 15)
+        {
+            player.AP -= 15;
+            player.relations[current_countryinfo.ID].AddScore(-10);
+            CanvasWorker.instance.RefreshUtilityBar();
+        }
     }
 
     public void Event_CreateWarGoal()
     {
-
+        Pays player = Manager.instance.player;
+        if (player.AP >= 50 && !player.relations[current_countryinfo.ID].wargoals.Contains(player.ID))
+        {
+            player.AP -= 50;
+            player.relations[current_countryinfo.ID].wargoals.Add(player.ID);
+            CanvasWorker.instance.RefreshUtilityBar();
+            Show_CountryInfo(current_countryinfo);
+        }
     }
 
     public void Event_DeclareWar()
     {
         CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
+
         Show_CountryInfo(current_countryinfo);
     }
 

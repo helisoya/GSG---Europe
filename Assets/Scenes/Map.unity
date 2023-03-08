@@ -2154,6 +2154,8 @@ GameObject:
   - component: {fileID: 233792357}
   - component: {fileID: 233792356}
   - component: {fileID: 233792355}
+  - component: {fileID: 233792359}
+  - component: {fileID: 233792358}
   m_Layer: 5
   m_Name: FormFederation
   m_TagString: Untagged
@@ -2179,7 +2181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 17.5, y: -52.5}
+  m_AnchoredPosition: {x: 52.5, y: -52.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &233792355
@@ -2276,6 +2278,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233792353}
   m_CullTransparentMesh: 1
+--- !u!114 &233792358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233792353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 233792359}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 233792359}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &233792359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233792353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Form a federation (100<sprite=12>)
 --- !u!1 &237155087
 GameObject:
   m_ObjectHideFlags: 0
@@ -6771,6 +6831,8 @@ GameObject:
   - component: {fileID: 670158636}
   - component: {fileID: 670158635}
   - component: {fileID: 670158634}
+  - component: {fileID: 670158638}
+  - component: {fileID: 670158637}
   m_Layer: 5
   m_Name: PlayAs
   m_TagString: Untagged
@@ -6796,7 +6858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.5, y: -52.5}
+  m_AnchoredPosition: {x: 122.5, y: -52.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670158634
@@ -6893,6 +6955,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 670158632}
   m_CullTransparentMesh: 1
+--- !u!114 &670158637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670158632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 670158638}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 670158638}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &670158638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670158632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Play as Vassal
 --- !u!1 &694194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6905,6 +7025,8 @@ GameObject:
   - component: {fileID: 694194229}
   - component: {fileID: 694194228}
   - component: {fileID: 694194227}
+  - component: {fileID: 694194231}
+  - component: {fileID: 694194230}
   m_Layer: 5
   m_Name: DeclareIndependance
   m_TagString: Untagged
@@ -6930,7 +7052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.5, y: -52.5}
+  m_AnchoredPosition: {x: 87.5, y: -52.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694194227
@@ -7027,6 +7149,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694194225}
   m_CullTransparentMesh: 1
+--- !u!114 &694194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 694194231}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 694194231}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &694194231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Declare Independance
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -8309,6 +8489,8 @@ GameObject:
   - component: {fileID: 832237398}
   - component: {fileID: 832237397}
   - component: {fileID: 832237396}
+  - component: {fileID: 832237400}
+  - component: {fileID: 832237399}
   m_Layer: 5
   m_Name: DamageRelations
   m_TagString: Untagged
@@ -8431,6 +8613,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832237394}
   m_CullTransparentMesh: 1
+--- !u!114 &832237399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832237394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 832237400}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 832237400}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &832237400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832237394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Decrease relations by 10 points (15 <sprite=12>)
 --- !u!1 &841567457
 GameObject:
   m_ObjectHideFlags: 0
@@ -9765,6 +10005,8 @@ GameObject:
   - component: {fileID: 966790768}
   - component: {fileID: 966790767}
   - component: {fileID: 966790766}
+  - component: {fileID: 966790770}
+  - component: {fileID: 966790769}
   m_Layer: 5
   m_Name: PeaceDeal
   m_TagString: Untagged
@@ -9790,7 +10032,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.5, y: -17.5}
+  m_AnchoredPosition: {x: 17.5, y: -52.5}
   m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966790766
@@ -9887,6 +10129,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966790764}
   m_CullTransparentMesh: 1
+--- !u!114 &966790769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966790764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 966790770}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 966790770}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &966790770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966790764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Negociate Peace
 --- !u!1 &968244080
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,7 +10660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1021631250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10377,11 +10677,11 @@ RectTransform:
   m_Father: {fileID: 1134928009}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 339.20004, y: 166.51001}
-  m_SizeDelta: {x: 200, y: 64.17999}
-  m_Pivot: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 800.1576, y: -469.68945}
+  m_SizeDelta: {x: 200, y: 47.885}
+  m_Pivot: {x: -0.014210771, y: 1.0544081}
 --- !u!114 &1021631251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14270,6 +14570,8 @@ GameObject:
   - component: {fileID: 1393522550}
   - component: {fileID: 1393522549}
   - component: {fileID: 1393522548}
+  - component: {fileID: 1393522552}
+  - component: {fileID: 1393522551}
   m_Layer: 5
   m_Name: ImproveRelations
   m_TagString: Untagged
@@ -14392,6 +14694,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393522546}
   m_CullTransparentMesh: 1
+--- !u!114 &1393522551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393522546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1393522552}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1393522552}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1393522552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393522546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Increase relations by 10 points (15 <sprite=12>)
 --- !u!1 &1411007338
 GameObject:
   m_ObjectHideFlags: 0
@@ -15518,6 +15878,8 @@ GameObject:
   - component: {fileID: 1513818866}
   - component: {fileID: 1513818865}
   - component: {fileID: 1513818864}
+  - component: {fileID: 1513818868}
+  - component: {fileID: 1513818867}
   m_Layer: 5
   m_Name: DeclareWar
   m_TagString: Untagged
@@ -15640,6 +16002,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513818862}
   m_CullTransparentMesh: 1
+--- !u!114 &1513818867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513818862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1513818868}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1513818868}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1513818868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513818862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: 'Declare War '
 --- !u!1 &1514120033
 GameObject:
   m_ObjectHideFlags: 0
@@ -16037,12 +16457,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
+  m_fontSize: 14
   m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 6
-  m_fontSizeMax: 16
+  m_fontSizeMin: 4
+  m_fontSizeMax: 14
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -20987,6 +21407,8 @@ GameObject:
   - component: {fileID: 2065845060}
   - component: {fileID: 2065845059}
   - component: {fileID: 2065845058}
+  - component: {fileID: 2065845062}
+  - component: {fileID: 2065845061}
   m_Layer: 5
   m_Name: CreateWargoal
   m_TagString: Untagged
@@ -21109,6 +21531,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065845056}
   m_CullTransparentMesh: 1
+--- !u!114 &2065845061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065845056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2065845062}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseEnter
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2065845062}
+          m_TargetAssemblyTypeName: TooltipTrigger, Assembly-CSharp
+          m_MethodName: OnMouseExit
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &2065845062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065845056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e7c338fa679e044b9770468d25e8e2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Create a wargoal (50 <sprite=12>)
 --- !u!1 &2073744393
 GameObject:
   m_ObjectHideFlags: 0

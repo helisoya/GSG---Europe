@@ -262,6 +262,7 @@ public class Pays
             return;
         }
         relations[country.ID].atWar = true;
+        relations[country.ID].wargoals.Remove(ID);
 
         atWarWith.Add(country.ID, 0);
         country.atWarWith.Add(ID, 0);

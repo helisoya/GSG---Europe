@@ -162,7 +162,20 @@ public class Province : MonoBehaviour
             {
                 indexController = DetermineRelationToPlayer(controller);
             }
-            SetColor(MapModes.colors_relations[indexOwner], MapModes.colors_relations[indexController]);
+
+            Color ColOwner = MapModes.colors_relations[indexOwner];
+            Color ColController = MapModes.colors_relations[indexController];
+            if (indexOwner == 0)
+            {
+                int score = owner.relations[manager.player.ID].relationScore;
+                ColOwner = Color.Lerp(Color.red, Color.green, (score + 100) / 200f);
+            }
+            if (indexController == 0)
+            {
+                int score = controller.relations[manager.player.ID].relationScore;
+                ColController = Color.Lerp(Color.red, Color.green, (score + 100) / 200f);
+            }
+            SetColor(ColOwner, ColController);
 
         }
         else if (MapModes.currentMapMode == MapModes.MAPMODE.FORMABLE)
