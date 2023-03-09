@@ -47,8 +47,12 @@ public class Pays
     public int AP = 100;
     public int AP_PerMonth { get { return 10 + bonusAP; } }
 
+    public int DP = 10;
+    public int DP_PerMonth { get { return 2 + bonusDP; } }
+
     private int bonusMilCap = 0;
     private int bonusAP = 0;
+    private int bonusDP = 0;
 
     public int unitCap { get { return 5 + (provinces.Count / 2) + bonusMilCap; } }
 

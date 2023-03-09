@@ -303,6 +303,7 @@ public class Manager : MonoBehaviour
         {
             if (country.provinces.Count > 0)
             {
+                country.DP += country.DP_PerMonth;
                 country.AP += country.AP_PerMonth;
                 country.IncrementFocus();
 

@@ -9,28 +9,9 @@ public class UtilityTab : GUITab
     [SerializeField] private TextMeshProUGUI utilityAP;
     [SerializeField] private TextMeshProUGUI utilitySpeed;
     [SerializeField] private TextMeshProUGUI utilityUC;
+    [SerializeField] private TextMeshProUGUI utilityDP;
 
 
-    public void UpdateSpeedText()
-    {
-        utilitySpeed.text = "Speed : " + ((int)(Time.timeScale)).ToString();
-    }
-
-    public void UpdateUtilityUnitCap()
-    {
-        utilityUC.text = Manager.instance.player.units.Count + "/" + Manager.instance.player.unitCap;
-    }
-
-    public void Update_Date()
-    {
-        utilityDate.text = Manager.instance.GetDate();
-    }
-
-
-    public void UpdateAPBar()
-    {
-        utilityAP.text = Manager.instance.player.AP.ToString();
-    }
 
     public override void OpenTab()
     {
@@ -40,9 +21,12 @@ public class UtilityTab : GUITab
 
     public void RefreshBar()
     {
-        UpdateSpeedText();
-        UpdateUtilityUnitCap();
-        Update_Date();
-        UpdateAPBar();
+        utilitySpeed.text = "Speed : " + ((int)(Time.timeScale)).ToString();
+        utilityDate.text = Manager.instance.GetDate();
+        Pays player = Manager.instance.player;
+
+        utilityAP.text = player.AP.ToString();
+        utilityDP.text = player.DP.ToString();
+        utilityUC.text = player.units.Count + "/" + player.unitCap;
     }
 }

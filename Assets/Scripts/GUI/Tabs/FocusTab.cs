@@ -20,6 +20,7 @@ public class FocusTab : GUITab
     public override void OpenTab()
     {
         base.OpenTab();
+        Tooltip.instance.HideInfo();
         Timer.instance.StopTime();
         ShowFocusMenu();
     }

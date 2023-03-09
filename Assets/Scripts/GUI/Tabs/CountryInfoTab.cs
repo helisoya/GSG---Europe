@@ -78,9 +78,9 @@ public class CountryInfoTab : GUITab
     public void Event_IncreaseRelation()
     {
         Pays player = Manager.instance.player;
-        if (player.AP >= 15)
+        if (player.DP >= 5)
         {
-            player.AP -= 15;
+            player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(10);
             CanvasWorker.instance.RefreshUtilityBar();
         }
@@ -89,9 +89,9 @@ public class CountryInfoTab : GUITab
     public void Event_DecreaseRelation()
     {
         Pays player = Manager.instance.player;
-        if (player.AP >= 15)
+        if (player.DP >= 5)
         {
-            player.AP -= 15;
+            player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(-10);
             CanvasWorker.instance.RefreshUtilityBar();
         }
@@ -100,25 +100,27 @@ public class CountryInfoTab : GUITab
     public void Event_CreateWarGoal()
     {
         Pays player = Manager.instance.player;
-        if (player.AP >= 50 && !player.relations[current_countryinfo.ID].wargoals.Contains(player.ID))
+        if (player.DP >= 20 && !player.relations[current_countryinfo.ID].wargoals.Contains(player.ID))
         {
-            player.AP -= 50;
+            player.DP -= 20;
             player.relations[current_countryinfo.ID].wargoals.Add(player.ID);
             CanvasWorker.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
+            Tooltip.instance.HideInfo();
         }
     }
 
     public void Event_DeclareWar()
     {
         CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
-
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
     }
 
     public void Event_PeaceDeal()
     {
         CanvasWorker.instance.OpenPeaceDealTab(Manager.instance.player.ID, current_countryinfo.ID);
+        Tooltip.instance.HideInfo();
     }
 
     public void Event_Federation()
@@ -128,7 +130,10 @@ public class CountryInfoTab : GUITab
 
     public void Event_DeclareIndependance()
     {
-
+        Manager.instance.player.lord = null;
+        CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
+        Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
     }
 
     public void Event_PlayAs()
@@ -138,6 +143,7 @@ public class CountryInfoTab : GUITab
         old.RefreshProvinces();
         current_countryinfo.RefreshProvinces();
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
     }
 
 }

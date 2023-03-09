@@ -167,8 +167,8 @@ MonoBehaviour:
     m_Unicode: 9786
     m_GlyphIndex: 14
     m_Scale: 1
-    m_Name: 263a
-    m_HashCode: 1748406
+    m_Name: UC
+    m_HashCode: 2742
   - m_ElementType: 2
     m_Unicode: 9785
     m_GlyphIndex: 15
@@ -392,10 +392,10 @@ MonoBehaviour:
       m_HorizontalBearingY: 115.6
       m_HorizontalAdvance: 128
     m_GlyphRect:
-      m_X: 128
+      m_X: 112
       m_Y: 0
-      m_Width: 128
-      m_Height: 128
+      m_Width: 60
+      m_Height: 60
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -408,10 +408,10 @@ MonoBehaviour:
       m_HorizontalBearingY: 115.6
       m_HorizontalAdvance: 128
     m_GlyphRect:
-      m_X: 256
+      m_X: 52
       m_Y: 0
-      m_Width: 128
-      m_Height: 128
+      m_Width: 60
+      m_Height: 60
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
