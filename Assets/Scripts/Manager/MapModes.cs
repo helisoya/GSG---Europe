@@ -18,6 +18,7 @@ public class MapModes : MonoBehaviour
         POLITICAL,
         IDEOLOGICAL,
         DIPLOMATIC,
+        FEDERATION,
         FORMABLE
     }
     private MAPMODE _currentMapMode = MAPMODE.POLITICAL;
@@ -78,7 +79,12 @@ public class MapModes : MonoBehaviour
             _currentMapMode = MAPMODE.DIPLOMATIC;
             Manager.instance.RefreshMap();
         }
-        else if (Input.GetKeyDown(KeyCode.Alpha4) && Manager.instance.currentFormable != null)
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            _currentMapMode = MAPMODE.FEDERATION;
+            Manager.instance.RefreshMap();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5) && Manager.instance.currentFormable != null)
         {
             _currentMapMode = MAPMODE.FORMABLE;
             Manager.instance.RefreshMap();

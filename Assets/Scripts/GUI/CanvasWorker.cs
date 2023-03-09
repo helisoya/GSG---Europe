@@ -205,7 +205,6 @@ public class CanvasWorker : MonoBehaviour
                 B.lord = A;
                 B.CopyCat(A);
                 B.MimicColor(A);
-                B.vassal = true;
                 break;
 
             case 3:
@@ -218,7 +217,6 @@ public class CanvasWorker : MonoBehaviour
                 A.lord = B;
                 A.CopyCat(B);
                 A.MimicColor(B);
-                A.vassal = true;
                 break;
         }
 

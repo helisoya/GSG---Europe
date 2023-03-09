@@ -90,24 +90,18 @@ public class Pays
 
 
     public Pays lord;
-
+    public Federation federation;
 
     public Dictionary<string, Relation> relations;
 
     public List<Province> cores;
-
-    [HideInInspector]
     public Dictionary<string, int> atWarWith;
-
-    [HideInInspector]
-    public bool vassal = false;
 
 
     public List<string> focusDone;
     public string currentFocus;
     public int maxFocusTime;
     public int currentFocusTime;
-
     public bool DestroyIfNotSelected = false;
 
 

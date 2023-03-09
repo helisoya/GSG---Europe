@@ -21,7 +21,7 @@ public class AI : MonoBehaviour
         }
 
         BuyUnit(country);
-        if (!country.vassal)
+        if (country.lord == null)
         {
             WageWar(country);
             BoostIdeologie(country);

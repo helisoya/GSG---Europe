@@ -32,8 +32,10 @@ public class Manager : MonoBehaviour
 
     public string peaceDealSide1;
     public string peaceDealSide2;
-    public List<Province> provincesToBeTakenInPeaceDeal;
 
+
+    public List<Federation> federations;
+    public List<Province> provincesToBeTakenInPeaceDeal;
     private Dictionary<string, Province> provinces;
 
     public Dictionary<string, Dictionary<string, Focus>> focuses;
@@ -65,6 +67,7 @@ public class Manager : MonoBehaviour
     void Start()
     {
         loading = null;
+        federations = new List<Federation>();
 
         loading = StartCoroutine(LoadFiles());
 

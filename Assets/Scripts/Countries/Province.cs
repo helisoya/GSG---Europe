@@ -127,6 +127,15 @@ public class Province : MonoBehaviour
             return;
         }
 
+        if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
+        {
+            SetColor(
+                owner.federation != null ? owner.federation.color : MapModes.colors_grayed,
+                controller.federation != null ? controller.federation.color : MapModes.colors_grayed
+                );
+            return;
+        }
+
 
 
         if (MapModes.currentMapMode == MapModes.MAPMODE.POLITICAL)

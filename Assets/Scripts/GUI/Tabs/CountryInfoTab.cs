@@ -125,7 +125,23 @@ public class CountryInfoTab : GUITab
 
     public void Event_Federation()
     {
+        Pays player = Manager.instance.player;
 
+        if (player.federation == null && current_countryinfo.federation == null)
+        {
+            Federation federation = new Federation();
+            federation.AddMember(player);
+            federation.AddMember(current_countryinfo);
+            Manager.instance.federations.Add(federation);
+        }
+        else if (player.federation != null && current_countryinfo.federation == null)
+        {
+            player.federation.AddMember(current_countryinfo);
+        }
+        else if (player.federation == null && current_countryinfo.federation != null)
+        {
+            current_countryinfo.federation.AddMember(player);
+        }
     }
 
     public void Event_DeclareIndependance()
