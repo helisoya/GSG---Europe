@@ -101,7 +101,28 @@
 			"exclusive":[],
 			"effect":"SPEED(2)"
 		},
-		
+		{
+			"id":"HIRE_DIPLOMATS",
+			"x":5,
+			"y":1,
+			"name":"Hire new diplomats",
+			"desc":"Gives +20 <sprite=13>",
+			"required":["EXPAND_ADMIN"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":"DP(20)"
+		},
+		{
+			"id":"EUROPE_TOUR",
+			"x":5,
+			"y":2,
+			"name":"Diplomatic tour",
+			"desc":"Gives +2 <sprite=13> per turn",
+			"required":["HIRE_DIPLOMATS"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":"DPBONUS(2)"
+		},
 		
 		{
 			"id":"PREPARE_ELECTIONS",

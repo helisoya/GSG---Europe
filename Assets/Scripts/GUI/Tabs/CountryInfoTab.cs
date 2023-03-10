@@ -11,6 +11,7 @@ public class CountryInfoTab : GUITab
     [SerializeField] private TextMeshProUGUI infoFocus;
     [SerializeField] private Image infoFocusFill;
     [SerializeField] private Image infoFlag;
+    [SerializeField] private TextMeshProUGUI infoRelations;
 
     [Header("Leader Tab")]
     [SerializeField] private GameObject leaderTabRoot;
@@ -116,6 +117,16 @@ public class CountryInfoTab : GUITab
         leaderBody.color = country.leader.bodyColor;
         leaderHair.sprite = Resources.Load<Sprite>("Characters/Hair/" + country.leader.hairGFX);
         leaderHair.color = country.leader.hairColor;
+
+        if (country == Manager.instance.player)
+        {
+            infoRelations.text = "";
+        }
+        else
+        {
+            infoRelations.text = "Relations : " + country.relations[Manager.instance.player.ID].relationScore.ToString();
+        }
+
     }
 
     public void ToggleLeadeTab()
@@ -131,6 +142,7 @@ public class CountryInfoTab : GUITab
             player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(10);
             CanvasWorker.instance.RefreshUtilityBar();
+            Show_CountryInfo(current_countryinfo);
         }
     }
 
@@ -142,6 +154,7 @@ public class CountryInfoTab : GUITab
             player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(-10);
             CanvasWorker.instance.RefreshUtilityBar();
+            Show_CountryInfo(current_countryinfo);
         }
     }
 
@@ -173,7 +186,7 @@ public class CountryInfoTab : GUITab
 
     public void Event_CreateFederation()
     {
-        if (Manager.instance.player.DP < 15) return;
+        if (Manager.instance.player.DP < 15 || Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
 
         Manager.instance.player.DP -= 15;
         Federation federation = new Federation();
@@ -183,6 +196,7 @@ public class CountryInfoTab : GUITab
         Manager.instance.federations.Add(federation);
         CanvasWorker.instance.RefreshUtilityBar();
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
 
         if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
@@ -193,8 +207,10 @@ public class CountryInfoTab : GUITab
 
     public void Event_JoinFederation()
     {
+        if (Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
         current_countryinfo.federation.AddMember(Manager.instance.player);
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
         if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
             Manager.instance.player.RefreshProvinces();
@@ -203,8 +219,10 @@ public class CountryInfoTab : GUITab
 
     public void Event_InviteFederation()
     {
+        if (Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
         Manager.instance.player.federation.AddMember(current_countryinfo);
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
         if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
             current_countryinfo.RefreshProvinces();
@@ -215,6 +233,7 @@ public class CountryInfoTab : GUITab
     {
         current_countryinfo.federation.RemoveMember(current_countryinfo);
         Show_CountryInfo(current_countryinfo);
+        Tooltip.instance.HideInfo();
         if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
             current_countryinfo.RefreshProvinces();

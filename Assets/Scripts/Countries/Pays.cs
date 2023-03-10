@@ -150,6 +150,12 @@ public class Pays
                 case "APBONUS":
                     bonusAP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
                     break;
+                case "DP":
+                    DP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                    break;
+                case "DPBONUS":
+                    bonusDP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                    break;
                 case "MILCAP":
                     bonusMilCap += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
                     break;
