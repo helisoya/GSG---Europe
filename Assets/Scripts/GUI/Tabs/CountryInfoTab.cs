@@ -8,10 +8,16 @@ public class CountryInfoTab : GUITab
 {
     [SerializeField] private TextMeshProUGUI infoName;
     [SerializeField] private TextMeshProUGUI infoGovernement;
-    [SerializeField] private TextMeshProUGUI infoLeader;
     [SerializeField] private TextMeshProUGUI infoFocus;
     [SerializeField] private Image infoFocusFill;
     [SerializeField] private Image infoFlag;
+
+    [Header("Leader Tab")]
+    [SerializeField] private GameObject leaderTabRoot;
+    [SerializeField] private TextMeshProUGUI infoLeader;
+    [SerializeField] private Image leaderHead;
+    [SerializeField] private Image leaderHair;
+    [SerializeField] private Image leaderBody;
 
 
     [Header("Diplomacy")]
@@ -98,10 +104,23 @@ public class CountryInfoTab : GUITab
     {
         infoName.text = country.nom;
         infoGovernement.text = Manager.instance.GetGovernementName(country.Government_Form);
-        infoLeader.text = country.leader.prenom + " " + country.leader.nom + "\n" + country.leader.age.ToString() + " years old";
+
         infoFocus.text = (country.currentFocus.Equals("NONE") ? "Doing Nothing" : country.focusTree[country.currentFocus].focusName);
         infoFocusFill.fillAmount = (country.currentFocus.Equals("NONE") ? 0 : country.currentFocusTime / (float)country.maxFocusTime);
         infoFlag.GetComponent<Image>().sprite = country.currentFlag;
+
+        infoLeader.text = country.leader.prenom + " " + country.leader.nom + "\n" + country.leader.age.ToString() + " years old";
+        leaderHead.sprite = Resources.Load<Sprite>("Characters/Head/" + country.leader.headGFX);
+        leaderHead.color = country.leader.headColor;
+        leaderBody.sprite = Resources.Load<Sprite>("Characters/Body/" + country.leader.bodyGFX);
+        leaderBody.color = country.leader.bodyColor;
+        leaderHair.sprite = Resources.Load<Sprite>("Characters/Hair/" + country.leader.hairGFX);
+        leaderHair.color = country.leader.hairColor;
+    }
+
+    public void ToggleLeadeTab()
+    {
+        leaderTabRoot.SetActive(!leaderTabRoot.activeInHierarchy);
     }
 
     public void Event_IncreaseRelation()

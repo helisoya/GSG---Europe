@@ -398,6 +398,7 @@ public class Pays
         leader.nom = culture.GetRandom_Nom();
         leader.prenom = culture.GetRandom_Prenom();
         leader.age = Random.Range(30, 70);
+        leader.RandomizeLeaderGFX();
         leader.ResetDeath();
     }
 
@@ -405,6 +406,7 @@ public class Pays
     {
         leader.prenom = culture.GetRandom_Prenom();
         leader.age = Random.Range(30, 70);
+        leader.RandomizeLeaderGFX();
         leader.ResetDeath();
     }
 

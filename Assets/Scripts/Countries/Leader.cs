@@ -9,10 +9,17 @@ public class Leader
     public int age;
 
     private int death;
+    public string bodyGFX;
+    public string hairGFX;
+    public string headGFX;
+    public Color bodyColor;
+    public Color hairColor;
+    public Color headColor;
 
     public Leader()
     {
         age = Random.Range(40, 68);
+        RandomizeLeaderGFX();
         ResetDeath();
     }
 
@@ -24,6 +31,17 @@ public class Leader
             return true;
         }
         return false;
+    }
+
+    public void RandomizeLeaderGFX()
+    {
+        bodyGFX = LeadersData.GetRandomBodyPart();
+        hairGFX = LeadersData.GetRandomHairPart();
+        headGFX = LeadersData.GetRandomHeadPart();
+
+        bodyColor = LeadersData.GetRandomBodyColor();
+        headColor = LeadersData.GetRandomHeadColor();
+        hairColor = LeadersData.GetRandomHairColor();
     }
 
     public void ResetDeath()

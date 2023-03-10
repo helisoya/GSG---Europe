@@ -40,6 +40,7 @@ public class ProvinceTab : GUITab
     {
         showIfOwner.SetActive(true);
         showIfOwnerIsVassal.SetActive(false);
+        if (currentProvine.owner.provinces.Count == 1) CanvasWorker.instance.Show_CountryInfoPlayer();
 
         currentProvine.owner.RemoveProvince(currentProvine);
         Manager.instance.player.AddProvince(currentProvine, true);
