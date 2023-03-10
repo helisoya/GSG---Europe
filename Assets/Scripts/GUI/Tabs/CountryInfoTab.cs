@@ -14,13 +14,17 @@ public class CountryInfoTab : GUITab
     [SerializeField] private Image infoFlag;
 
 
+    [Header("Diplomacy")]
     [SerializeField] private GameObject diploRoot;
     [SerializeField] private GameObject buttonImproveRelations;
     [SerializeField] private GameObject buttonDecreaseRelations;
     [SerializeField] private GameObject buttonCreateWargoal;
     [SerializeField] private GameObject buttonDeclareWar;
     [SerializeField] private GameObject buttonPeaceDeal;
-    [SerializeField] private GameObject buttonFederation;
+    [SerializeField] private GameObject buttonCreateFederation;
+    [SerializeField] private GameObject buttonJoinFederation;
+    [SerializeField] private GameObject buttonInviteFederation;
+    [SerializeField] private GameObject buttonKickFederation;
     [SerializeField] private GameObject buttonDeclareIndependance;
     [SerializeField] private GameObject buttonPlayAs;
 
@@ -49,11 +53,36 @@ public class CountryInfoTab : GUITab
             buttonImproveRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
             buttonDecreaseRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
 
-            buttonCreateWargoal.SetActive(!NEW.relations[manager.player.ID].atWar && NEW != manager.player.lord && !NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID));
-            buttonDeclareWar.SetActive(NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID) && NEW != manager.player.lord && !NEW.relations[manager.player.ID].atWar);
+            buttonCreateWargoal.SetActive(
+                !(NEW.federation != null && manager.player.federation == NEW.federation) &&
+                !NEW.relations[manager.player.ID].atWar &&
+                NEW != manager.player.lord &&
+                !NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID));
+            buttonDeclareWar.SetActive(
+                !(NEW.federation != null && manager.player.federation == NEW.federation) &&
+                NEW.relations[manager.player.ID].wargoals.Contains(manager.player.ID) &&
+                NEW != manager.player.lord &&
+                !NEW.relations[manager.player.ID].atWar);
             buttonPeaceDeal.SetActive(NEW.relations[manager.player.ID].atWar);
 
-            buttonFederation.SetActive(!NEW.relations[manager.player.ID].atWar);
+            buttonCreateFederation.SetActive(
+                !NEW.relations[manager.player.ID].atWar &&
+                NEW.federation == null &&
+                manager.player.federation == null);
+            buttonKickFederation.SetActive(
+                !NEW.relations[manager.player.ID].atWar &&
+                NEW.federation != null &&
+                manager.player.federation == NEW.federation &&
+                manager.player.federation.leader == manager.player);
+            buttonJoinFederation.SetActive(
+                !NEW.relations[manager.player.ID].atWar &&
+                NEW.federation != null &&
+                manager.player.federation == null);
+            buttonInviteFederation.SetActive(
+                !NEW.relations[manager.player.ID].atWar &&
+                NEW.federation == null &&
+                manager.player.federation != null &&
+                manager.player.federation.leader == manager.player);
 
             buttonDeclareIndependance.SetActive(NEW == manager.player.lord);
             buttonPlayAs.SetActive(NEW.lord == manager.player);
@@ -123,24 +152,53 @@ public class CountryInfoTab : GUITab
         Tooltip.instance.HideInfo();
     }
 
-    public void Event_Federation()
+    public void Event_CreateFederation()
     {
-        Pays player = Manager.instance.player;
+        if (Manager.instance.player.DP < 15) return;
 
-        if (player.federation == null && current_countryinfo.federation == null)
+        Manager.instance.player.DP -= 15;
+        Federation federation = new Federation();
+        federation.AddMember(Manager.instance.player);
+        federation.AddMember(current_countryinfo);
+        federation.leader = Manager.instance.player;
+        Manager.instance.federations.Add(federation);
+        CanvasWorker.instance.RefreshUtilityBar();
+        Show_CountryInfo(current_countryinfo);
+
+        if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
-            Federation federation = new Federation();
-            federation.AddMember(player);
-            federation.AddMember(current_countryinfo);
-            Manager.instance.federations.Add(federation);
+            current_countryinfo.RefreshProvinces();
+            Manager.instance.player.RefreshProvinces();
         }
-        else if (player.federation != null && current_countryinfo.federation == null)
+    }
+
+    public void Event_JoinFederation()
+    {
+        current_countryinfo.federation.AddMember(Manager.instance.player);
+        Show_CountryInfo(current_countryinfo);
+        if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
-            player.federation.AddMember(current_countryinfo);
+            Manager.instance.player.RefreshProvinces();
         }
-        else if (player.federation == null && current_countryinfo.federation != null)
+    }
+
+    public void Event_InviteFederation()
+    {
+        Manager.instance.player.federation.AddMember(current_countryinfo);
+        Show_CountryInfo(current_countryinfo);
+        if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
         {
-            current_countryinfo.federation.AddMember(player);
+            current_countryinfo.RefreshProvinces();
+        }
+    }
+
+    public void Event_KickFederation()
+    {
+        current_countryinfo.federation.RemoveMember(current_countryinfo);
+        Show_CountryInfo(current_countryinfo);
+        if (MapModes.currentMapMode == MapModes.MAPMODE.FEDERATION)
+        {
+            current_countryinfo.RefreshProvinces();
         }
     }
 
