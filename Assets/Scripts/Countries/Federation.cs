@@ -7,13 +7,23 @@ public class Federation
     public List<Pays> members;
     public Pays leader;
     public Color color;
+    public int UCBonus;
+    public int DPBonus;
+    public int APBonus;
 
+    public bool leaderFrozen;
+    public bool vassalized;
+
+    private int yearNextElection;
 
     public Federation()
     {
+        leaderFrozen = false;
+        vassalized = false;
         members = new List<Pays>();
         leader = null;
         color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+        yearNextElection = Manager.instance.an + 8;
     }
 
     public void AddMember(Pays pays)
@@ -41,6 +51,60 @@ public class Federation
 
     }
 
+    public void Unite()
+    {
+
+        foreach (Pays member in members)
+        {
+            if (member == leader) continue;
+
+            List<Province> provincesToAnnex = new List<Province>(member.provinces);
+            Debug.Log(member.provinces);
+            foreach (Province province in provincesToAnnex)
+            {
+                Debug.Log(province.Province_Name);
+                member.RemoveProvince(province);
+                leader.AddProvince(province, false);
+            }
+        }
+
+        leader.RefreshProvinces();
+        leader.federation = null;
+        leader = null;
+        members.Clear();
+        Manager.instance.federations.Remove(this);
+    }
+
+    public void EnableVassals()
+    {
+        vassalized = true;
+
+
+
+        List<Pays> toKeep = new List<Pays>();
+
+        foreach (Pays member in members)
+        {
+            if (member == leader)
+            {
+                toKeep.Add(member);
+            }
+            else if (member.relations[leader.ID].relationScore >= 50)
+            {
+                CanvasWorker.instance.UpdateRelations_ShortCut(member, leader, 3);
+                toKeep.Add(member);
+            }
+            else
+            {
+                member.federation = null;
+                member.relations[leader.ID].relationScore -= 20;
+            }
+
+        }
+
+        members = toKeep;
+    }
+
     public void GetNewLeader()
     {
         int indexMax = 0;
@@ -49,7 +113,7 @@ public class Federation
         for (int i = 1; i < members.Count; i++)
         {
             int val = GetTotalRelationScoreOfCountry(i);
-            if (val > max)
+            if (val > max || (val == max && Random.Range(0, 2) == 0))
             {
                 max = val;
                 indexMax = i;
@@ -72,5 +136,17 @@ public class Federation
     public void SetLeader(Pays pays)
     {
         leader = pays;
+    }
+
+
+    public void CheckYearElection()
+    {
+        if (leaderFrozen) return;
+
+        if (Manager.instance.an == yearNextElection)
+        {
+            yearNextElection += 8;
+            GetNewLeader();
+        }
     }
 }

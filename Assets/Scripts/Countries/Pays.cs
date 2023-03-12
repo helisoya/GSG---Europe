@@ -45,16 +45,16 @@ public class Pays
     public Party[] parties;
 
     public int AP = 100;
-    public int AP_PerMonth { get { return 10 + bonusAP; } }
+    public int AP_PerMonth { get { return 10 + bonusAP + (federation != null ? 10 * federation.APBonus : 0); } }
 
     public int DP = 10;
-    public int DP_PerMonth { get { return 2 + bonusDP; } }
+    public int DP_PerMonth { get { return 2 + bonusDP + (federation != null ? federation.DPBonus : 0); } }
 
     private int bonusMilCap = 0;
     private int bonusAP = 0;
     private int bonusDP = 0;
 
-    public int unitCap { get { return 5 + (provinces.Count / 2) + bonusMilCap; } }
+    public int unitCap { get { return 5 + (provinces.Count / 2) + bonusMilCap + (federation != null ? 3 * federation.UCBonus : 0); } }
 
 
     public int date_elections = -1;
@@ -614,9 +614,9 @@ public class Pays
         provinces.Remove(prov);
         if (provinces.Count == 0)
         {
-            while (units.Count != 0)
+            foreach (Unit unit in units)
             {
-                Manager.DestroyImmediate(units[0]);
+                Manager.Destroy(unit.gameObject);
             }
         }
     }

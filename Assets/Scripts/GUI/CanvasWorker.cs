@@ -36,6 +36,7 @@ public class CanvasWorker : MonoBehaviour
     [SerializeField] private CountryInfoTab countryInfoTab;
     [SerializeField] private ProvinceTab provinceTab;
     [SerializeField] private UtilityTab utilityTab;
+    [SerializeField] private FederationTab federationTab;
 
 
     void Awake()
@@ -254,6 +255,7 @@ public class CanvasWorker : MonoBehaviour
         if (pauseTab.isOpen) pauseTab.CloseTab();
         if (focusMenu.isOpen) focusMenu.CloseTab();
         if (politicalTab.isOpen) politicalTab.CloseTab();
+        if (federationTab.isOpen) federationTab.CloseTab();
         peaceDealRoot.SetActive(false);
     }
 

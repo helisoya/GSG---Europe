@@ -292,9 +292,13 @@ public class Manager : MonoBehaviour
         {
             mois = 1;
             an += 1;
-            foreach (string key in pays.Keys)
+            foreach (Pays key in pays.Values)
             {
-                GetCountry(key).NewYear();
+                key.NewYear();
+            }
+            foreach (Federation federation in federations)
+            {
+                federation.CheckYearElection();
             }
         }
     }
@@ -346,6 +350,13 @@ public class Manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             CanvasWorker.instance.OpenSettingsMenu();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            player.DP += 99999;
+            player.AP += 99999;
         }
     }
 

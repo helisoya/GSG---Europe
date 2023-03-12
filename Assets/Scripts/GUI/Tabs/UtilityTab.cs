@@ -10,6 +10,7 @@ public class UtilityTab : GUITab
     [SerializeField] private TextMeshProUGUI utilitySpeed;
     [SerializeField] private TextMeshProUGUI utilityUC;
     [SerializeField] private TextMeshProUGUI utilityDP;
+    [SerializeField] private GameObject utilityFederation;
 
 
 
@@ -28,5 +29,7 @@ public class UtilityTab : GUITab
         utilityAP.text = player.AP.ToString();
         utilityDP.text = player.DP.ToString();
         utilityUC.text = player.units.Count + "/" + player.unitCap;
+
+        utilityFederation.SetActive(player.federation != null);
     }
 }

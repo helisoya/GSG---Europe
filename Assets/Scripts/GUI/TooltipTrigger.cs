@@ -9,6 +9,7 @@ public class TooltipTrigger : MonoBehaviour
 
     public void OnMouseEnter(BaseEventData data)
     {
+        if (!enabled) return;
         Tooltip.instance.ShowInfo(text);
     }
 

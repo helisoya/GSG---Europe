@@ -80,16 +80,19 @@ public class CountryInfoTab : GUITab
                 !NEW.relations[manager.player.ID].atWar &&
                 NEW.federation != null &&
                 manager.player.federation == NEW.federation &&
-                manager.player.federation.leader == manager.player);
+                manager.player.federation.leader == manager.player &&
+                !manager.player.federation.vassalized);
             buttonJoinFederation.SetActive(
                 !NEW.relations[manager.player.ID].atWar &&
                 NEW.federation != null &&
-                manager.player.federation == null);
+                manager.player.federation == null &&
+                !NEW.federation.vassalized);
             buttonInviteFederation.SetActive(
                 !NEW.relations[manager.player.ID].atWar &&
                 NEW.federation == null &&
                 manager.player.federation != null &&
-                manager.player.federation.leader == manager.player);
+                manager.player.federation.leader == manager.player &&
+                !manager.player.federation.vassalized);
 
             buttonDeclareIndependance.SetActive(NEW == manager.player.lord);
             buttonPlayAs.SetActive(NEW.lord == manager.player);
@@ -143,6 +146,7 @@ public class CountryInfoTab : GUITab
             player.relations[current_countryinfo.ID].AddScore(10);
             CanvasWorker.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
+            current_countryinfo.RefreshProvinces();
         }
     }
 
@@ -155,6 +159,7 @@ public class CountryInfoTab : GUITab
             player.relations[current_countryinfo.ID].AddScore(-10);
             CanvasWorker.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
+            current_countryinfo.RefreshProvinces();
         }
     }
 
