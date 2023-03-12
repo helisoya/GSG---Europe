@@ -205,7 +205,7 @@ public class Parser : MonoBehaviour
                 }
                 else
                 {
-                    pays.relations.Add(other.ID, new Relation());
+                    pays.relations.Add(other.ID, new Relation(pays, other));
                 }
             }
         }
@@ -254,6 +254,10 @@ public class Parser : MonoBehaviour
             pays.Reset_Flag();
             pays.Reset_Elections();
             pays.RefreshProvinces();
+        }
+        foreach (Pays pays in allCountries.Values)
+        {
+            pays.CheckNeighboors();
         }
     }
 

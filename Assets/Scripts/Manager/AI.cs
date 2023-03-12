@@ -9,6 +9,12 @@ public class AI : MonoBehaviour
 
     public void IA(Pays country)
     {
+        if (country.provinces.Count == 0) return;
+
+        if (country.currentFocusTime == 0)
+        {
+            ChangeFocus(country);
+        }
 
         if (Random.Range(0, 5) != 0)
         {
@@ -19,34 +25,90 @@ public class AI : MonoBehaviour
         {
             country.hasTech_Naval = true;
         }
-
         BuyUnit(country);
+
         if (country.lord == null)
         {
-            WageWar(country);
-            BoostIdeologie(country);
+            ManageDiplomacy(country);
+            ManageFederation(country);
         }
         UnitMovement(country);
-        if (country.currentFocusTime == 0)
-        {
-            ChangeFocus(country);
-        }
+
     }
 
 
     void BuyUnit(Pays country)
     {
-        if (country.provinces == null || !country.canBuyUnit || country.provinces.Count == 0)
+        if (country.provinces == null || !country.canBuyUnit || country.provinces.Count == 0 || country.AP < 100)
         {
             return;
         }
-        foreach (Province prov in country.provinces)
+
+        if (Random.Range(0, 50) == 0)
         {
-            if (prov.controller == country && Random.Range(0, 50) == 0 && country.AP >= 100)
+            country.AP -= 100;
+            country.provinces[Random.Range(0, country.provinces.Count)].SpawnUnitAtCity();
+        }
+    }
+
+    void ManageDiplomacy(Pays country)
+    {
+        foreach (string pays in country.atWarWith.Keys)
+        {
+            Pays p = manager.GetCountry(pays);
+            if (p.CompletelyOccupied())
             {
-                country.AP -= 100;
-                prov.GetComponent<Province>().SpawnUnitAtCity();
+                country.MakePeaceWithCountry(p);
             }
+        }
+
+        if (country.AI_NEIGHBOORS.Count == 0) return;
+
+        Pays diplomacyWith = country.AI_NEIGHBOORS[Random.Range(0, country.AI_NEIGHBOORS.Count)];
+
+        if (diplomacyWith != country)
+        {
+            if (Random.Range(0, 100) <= 5)
+            {
+                country.relations[diplomacyWith.ID].AddScore(-666);
+            }
+            else
+            {
+                country.relations[diplomacyWith.ID].AddScore(Random.Range(-30, 30));
+            }
+
+        }
+
+        foreach (string pays in country.AI_MARKFORWAR)
+        {
+            if (!country.atWarWith.ContainsKey(pays))
+            {
+                country.DeclareWarOnCountry(manager.GetCountry(pays));
+            }
+        }
+        country.AI_MARKFORWAR.Clear();
+    }
+
+
+    void ManageFederation(Pays country)
+    {
+        if (country.AI_NEIGHBOORS.Count == 0) return;
+        Pays tryWith = country.AI_NEIGHBOORS[Random.Range(0, country.AI_NEIGHBOORS.Count)];
+        if (tryWith.federation != null || tryWith == manager.player ||
+        tryWith.atWarWith.ContainsKey(country.ID) || country.relations[tryWith.ID].relationScore < 50) return;
+
+
+        if (country.federation == null)
+        {
+            Federation federation = new Federation();
+            federation.AddMember(country);
+            federation.AddMember(tryWith);
+            federation.SetLeader(country);
+            manager.federations.Add(federation);
+        }
+        else if (country.federation.leader == country)
+        {
+            country.federation.AddMember(tryWith);
         }
     }
 
@@ -112,16 +174,6 @@ public class AI : MonoBehaviour
             }
         }
     }
-
-
-    void BoostIdeologie(Pays country)
-    {
-        if (Random.Range(0, 100) < 30)
-        {
-            country.Add_Popularity(Random.Range(0, country.parties.Length), Random.Range(5, 20));
-        }
-    }
-
 
     void ChangeFocus(Pays country)
     {

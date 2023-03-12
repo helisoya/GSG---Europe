@@ -82,12 +82,6 @@ public class Pays
 
     public bool hasTech_Naval = false;
 
-    //public Dictionary<string, int> relations; // Relations :
-    // 0 = Rien
-    // 1 = Guerre
-    // 2 = Vassal
-    // 3 = Maitre
-
 
     public Pays lord;
     public Federation federation;
@@ -103,6 +97,10 @@ public class Pays
     public int maxFocusTime;
     public int currentFocusTime;
     public bool DestroyIfNotSelected = false;
+
+
+    public List<string> AI_MARKFORWAR;
+    public List<Pays> AI_NEIGHBOORS;
 
 
     public bool canBuyUnit
@@ -127,6 +125,9 @@ public class Pays
         relations = new Dictionary<string, Relation>();
         manager = Manager.instance;
         events = manager.GetComponent<Events>();
+
+        AI_MARKFORWAR = new List<string>();
+        AI_NEIGHBOORS = new List<Pays>();
 
         Reset_Elections();
         Reset_Flag();
@@ -322,6 +323,15 @@ public class Pays
         {
             provinces[i].RefreshColor();
         }
+    }
+
+    public bool CompletelyOccupied()
+    {
+        foreach (Province province in provinces)
+        {
+            if (province.controller == this) return false;
+        }
+        return true;
     }
 
 
@@ -619,6 +629,7 @@ public class Pays
                 Manager.Destroy(unit.gameObject);
             }
         }
+        CheckNeighboors();
     }
 
     public void AddProvince(Province prov, bool refresh = true)
@@ -630,8 +641,23 @@ public class Pays
         {
             prov.RefreshColor();
         }
+        CheckNeighboors();
     }
 
+    public void CheckNeighboors()
+    {
+        AI_NEIGHBOORS.Clear();
+        foreach (Province province in provinces)
+        {
+            foreach (Province neighboor in province.adjacencies)
+            {
+                if (neighboor.owner != this && !AI_NEIGHBOORS.Contains(neighboor.owner))
+                {
+                    AI_NEIGHBOORS.Add(neighboor.owner);
+                }
+            }
+        }
+    }
 
 
     public void CopyCat(Pays c)

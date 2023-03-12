@@ -59,7 +59,6 @@ public class Federation
             if (member == leader) continue;
 
             List<Province> provincesToAnnex = new List<Province>(member.provinces);
-            Debug.Log(member.provinces);
             foreach (Province province in provincesToAnnex)
             {
                 Debug.Log(province.Province_Name);
@@ -128,7 +127,7 @@ public class Federation
         int tot = 0;
         for (int i = 0; i < members.Count; i++)
         {
-            if (i != indexToExclude) tot += p.relations[members[indexToExclude].ID].relationScore;
+            if (i != indexToExclude) tot += p.relations[members[i].ID].relationScore;
         }
         return tot;
     }

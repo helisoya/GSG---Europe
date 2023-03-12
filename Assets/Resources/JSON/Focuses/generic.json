@@ -140,55 +140,55 @@
 			"x":0,
 			"y":2,
 			"name":"Support the communists",
-			"desc":"Gives +20 support for the communists",
+			"desc":"Gives +50 support for the communists",
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(0,20)"
+			"effect":"PARTYPOP(0,50)"
 		},
 		{
 			"id":"ELECTION_SOCIALIST",
 			"x":1,
 			"y":2,
 			"name":"Support the socialists",
-			"desc":"Gives +20 support for the socialists",
+			"desc":"Gives +50 support for the socialists",
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(1,20)"
+			"effect":"PARTYPOP(1,50)"
 		},
 		{
 			"id":"ELECTION_CENTRIST",
 			"x":2,
 			"y":2,
 			"name":"Support the centrists",
-			"desc":"Gives +20 support for the centrists",
+			"desc":"Gives +50 support for the centrists",
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(2,20)"
+			"effect":"PARTYPOP(2,50)"
 		},
 		{
 			"id":"ELECTION_CONSERVATIVE",
 			"x":3,
 			"y":2,
 			"name":"Support the conservatives",
-			"desc":"Gives +20 support for the conservatives",
+			"desc":"Gives +50 support for the conservatives",
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(3,20)"
+			"effect":"PARTYPOP(3,50)"
 		},
 		{
 			"id":"ELECTION_FASCIST",
 			"x":4,
 			"y":2,
 			"name":"Support the fascists",
-			"desc":"Gives +20 support for the fascists",
+			"desc":"Gives +50 support for the fascists",
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE"],
-			"effect":"PARTYPOP(4,20)"
+			"effect":"PARTYPOP(4,50)"
 		},
 		{
 			"id":"REINFORCE_GOVERNMENT",
