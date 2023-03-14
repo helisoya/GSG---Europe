@@ -10,7 +10,7 @@ public class Focus
     public List<string> required;
     public bool requireAll;
     public List<string> exclusive;
-    public string effect;
+    public List<string> effect;
     public int x;
     public int y;
 }

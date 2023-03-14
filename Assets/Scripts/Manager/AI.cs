@@ -53,7 +53,8 @@ public class AI : MonoBehaviour
 
     void ManageDiplomacy(Pays country)
     {
-        foreach (string pays in country.atWarWith.Keys)
+        List<string> atWar = new List<string>(country.atWarWith.Keys);
+        foreach (string pays in atWar)
         {
             Pays p = manager.GetCountry(pays);
             if (p.CompletelyOccupied())

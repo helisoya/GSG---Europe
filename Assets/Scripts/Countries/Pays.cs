@@ -141,44 +141,78 @@ public class Pays
         if (currentFocusTime <= 0)
         {
             focusDone.Add(currentFocus);
-            string[] effect = focusTree[currentFocus].effect.Split("(");
-            effect[1] = effect[1].Split(")")[0];
-            switch (effect[0])
+
+            foreach (string effectNotSplited in focusTree[currentFocus].effect)
             {
-                case "AP":
-                    AP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "APBONUS":
-                    bonusAP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "DP":
-                    DP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "DPBONUS":
-                    bonusDP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "MILCAP":
-                    bonusMilCap += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "SPEED":
-                    bonusSpeed += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "HP":
-                    bonusHP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "EVASION":
-                    bonusEvasion += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "ATTACK":
-                    bonusDamage += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                    break;
-                case "ENABLE_NAVAL":
-                    hasTech_Naval = true;
-                    break;
-                case "PARTYPOP":
-                    string[] split = effect[1].Split(",");
-                    Add_Popularity(int.Parse(split[0], System.Globalization.NumberStyles.Any), int.Parse(split[1], System.Globalization.NumberStyles.Any));
-                    break;
+                string[] effect = effectNotSplited.Split("(");
+                effect[1] = effect[1].Split(")")[0];
+                switch (effect[0])
+                {
+                    case "AP":
+                        AP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "APBONUS":
+                        bonusAP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "DP":
+                        DP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "DPBONUS":
+                        bonusDP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "SETGOVERNEMENT":
+                        Government_Form = int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        Reset_Elections();
+                        Reset_Flag();
+                        break;
+                    case "MILCAP":
+                        bonusMilCap += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "SPEED":
+                        bonusSpeed += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "HP":
+                        bonusHP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "EVASION":
+                        bonusEvasion += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "ATTACK":
+                        bonusDamage += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "ENABLE_NAVAL":
+                        hasTech_Naval = true;
+                        break;
+                    case "PARTYPOP":
+                        string[] split = effect[1].Split(",");
+                        Add_Popularity(int.Parse(split[0], System.Globalization.NumberStyles.Any), int.Parse(split[1], System.Globalization.NumberStyles.Any));
+                        break;
+                    case "FREE":
+                        Pays p = manager.GetCountry(effect[1]);
+                        foreach (Province prov in p.cores)
+                        {
+                            if (provinces.Contains(prov))
+                            {
+                                RemoveProvince(prov);
+                                p.AddProvince(prov);
+                            }
+                        }
+                        break;
+                    case "ANNEXPROVINCE":
+                        string[] splited = effect[1].Split(",");
+                        Pays p1 = manager.GetCountry(splited[0]);
+                        Province prov1 = manager.GetProvince(splited[1]);
+                        prov1.owner.RemoveProvince(prov1);
+                        p1.AddProvince(prov1);
+                        break;
+                    case "COSMETIC":
+                        cosmeticID = effect[1];
+                        break;
+                    case "PUPPET":
+                        Pays p2 = manager.GetCountry(effect[1]);
+                        CanvasWorker.instance.UpdateRelations_ShortCut(p2, this, 3);
+                        break;
+                }
             }
             currentFocus = "NONE";
 

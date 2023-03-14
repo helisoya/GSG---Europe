@@ -45,6 +45,8 @@ public class FocusTab : GUITab
         barX.value = 0;
         barY.value = 1;
 
+        graphParent.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(6000, 4200);
+
 
         foreach (Transform child in graphParent)
         {

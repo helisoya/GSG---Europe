@@ -10,7 +10,7 @@
 			"required":[],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"AP(100)"
+			"effect":["AP(100)"]
 		},
 		{
 			"id":"EXPAND_MILITARY",
@@ -21,7 +21,7 @@
 			"required":["EXPAND_ADMIN"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"MILCAP(5)"
+			"effect":["MILCAP(5)"]
 		},
 		{
 			"id":"NAVAL_RESEARCH",
@@ -32,7 +32,7 @@
 			"required":["EXPAND_MILITARY"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"ENABLE_NAVAL(true)"
+			"effect":["ENABLE_NAVAL(true)"]
 		},
 		{
 			"id":"NAVAL_TRAINING",
@@ -43,7 +43,7 @@
 			"required":["NAVAL_RESEARCH"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"NAVALBOOST(30)"
+			"effect":["NAVALBOOST(30)"]
 		},
 		{
 			"id":"MILITARY_DRAFT",
@@ -54,7 +54,7 @@
 			"required":["EXPAND_MILITARY"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"AP(200)"
+			"effect":["AP(200)"]
 		},
 		{
 			"id":"HP_INCREASE",
@@ -65,7 +65,7 @@
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"HP(50)"
+			"effect":["HP(50)"]
 		},
 		{
 			"id":"EVASION_INCREASE",
@@ -76,7 +76,7 @@
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"EVASION(5)"
+			"effect":["EVASION(5)"]
 		},
 		{
 			"id":"DAMAGE_INCREASE",
@@ -87,7 +87,7 @@
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"Attack(5)"
+			"effect":["ATTACK(5)"]
 		},
 		
 		{
@@ -99,7 +99,7 @@
 			"required":["EXPAND_ADMIN"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"SPEED(2)"
+			"effect":["SPEED(2)"]
 		},
 		{
 			"id":"HIRE_DIPLOMATS",
@@ -110,7 +110,7 @@
 			"required":["EXPAND_ADMIN"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"DP(20)"
+			"effect":["DP(20)"]
 		},
 		{
 			"id":"EUROPE_TOUR",
@@ -121,7 +121,7 @@
 			"required":["HIRE_DIPLOMATS"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"DPBONUS(2)"
+			"effect":["DPBONUS(2)"]
 		},
 		
 		{
@@ -133,7 +133,7 @@
 			"required":["EXPAND_ADMIN"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"AP(50)"
+			"effect":["AP(50)"]
 		},
 		{
 			"id":"ELECTION_COMMUNIST",
@@ -144,7 +144,7 @@
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(0,50)"
+			"effect":["PARTYPOP(0,50)"]
 		},
 		{
 			"id":"ELECTION_SOCIALIST",
@@ -155,7 +155,7 @@
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(1,50)"
+			"effect":["PARTYPOP(1,50)"]
 		},
 		{
 			"id":"ELECTION_CENTRIST",
@@ -166,7 +166,7 @@
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(2,50)"
+			"effect":["PARTYPOP(2,50)"]
 		},
 		{
 			"id":"ELECTION_CONSERVATIVE",
@@ -177,7 +177,7 @@
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_FASCIST"],
-			"effect":"PARTYPOP(3,50)"
+			"effect":["PARTYPOP(3,50)"]
 		},
 		{
 			"id":"ELECTION_FASCIST",
@@ -188,7 +188,7 @@
 			"required":["PREPARE_ELECTIONS"],
 			"requireAll":"False",
 			"exclusive":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE"],
-			"effect":"PARTYPOP(4,50)"
+			"effect":["PARTYPOP(4,50)"]
 		},
 		{
 			"id":"REINFORCE_GOVERNMENT",
@@ -199,7 +199,7 @@
 			"required":["ELECTION_COMMUNIST","ELECTION_SOCIALIST","ELECTION_CENTRIST","ELECTION_CONSERVATIVE","ELECTION_FASCIST"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":"APTURN(10)"
+			"effect":["APTURN(10)"]
 		}
 	]
 
