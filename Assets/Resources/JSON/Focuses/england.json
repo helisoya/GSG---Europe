@@ -191,7 +191,7 @@
 			"name":"Ready for War !",
 			"desc":"Gives +5 <sprite=12> per turn",
 			"required":["STABILIZE_COUNTRY","FINISH_REFORMS"],
-			"requireAll":"TRUE",
+			"requireAll":"True",
 			"exclusive":[],
 			"effect":["APTURN(5)"]
 		},

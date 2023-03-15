@@ -69,7 +69,7 @@ public class AI : MonoBehaviour
 
         if (diplomacyWith != country)
         {
-            if (Random.Range(0, 100) <= 5)
+            if (Random.Range(0, 100) <= 5 && (country.federation == null || country.federation != diplomacyWith.federation))
             {
                 country.relations[diplomacyWith.ID].AddScore(-666);
             }

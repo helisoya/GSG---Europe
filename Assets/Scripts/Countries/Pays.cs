@@ -300,6 +300,15 @@ public class Pays
         {
             return;
         }
+        if (lord == country)
+        {
+            lord = null;
+        }
+        else if (country.lord == this)
+        {
+            country.lord = null;
+        }
+
         relations[country.ID].atWar = true;
         relations[country.ID].wargoals.Remove(ID);
 
