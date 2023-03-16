@@ -61,7 +61,6 @@ public class Federation
             List<Province> provincesToAnnex = new List<Province>(member.provinces);
             foreach (Province province in provincesToAnnex)
             {
-                Debug.Log(province.Province_Name);
                 member.RemoveProvince(province);
                 leader.AddProvince(province, false);
             }
@@ -84,7 +83,7 @@ public class Federation
 
         foreach (Pays member in members)
         {
-            if (member == leader)
+            if (member == leader || member.lord == leader)
             {
                 toKeep.Add(member);
             }

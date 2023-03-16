@@ -116,7 +116,7 @@ public class Pays
 
     public Pays()
     {
-        maxFocusTime = 15;
+        maxFocusTime = 10;
         currentFocus = "NONE";
         focusDone = new List<string>();
         atWarWith = new Dictionary<string, int>();

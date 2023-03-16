@@ -98,7 +98,7 @@ public class PoliticalTab : GUITab
             return;
         }
         manager.player.AP -= 10;
-        politicalAP.text = manager.player.AP.ToString() + " <sprite=12>";
+        politicalAP.text = "Admin Power : " + manager.player.AP.ToString() + " <sprite=12>";
 
         manager.player.Add_Popularity(index, 5);
 

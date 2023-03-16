@@ -20,6 +20,7 @@ public class FederationTab : GUITab
     [SerializeField] private Button buttonVassalize;
     [SerializeField] private Button buttonUnite;
     [SerializeField] private Button buttonLeader;
+    [SerializeField] private TextMeshProUGUI textPlayerDP;
 
     public override void OpenTab()
     {
@@ -35,6 +36,11 @@ public class FederationTab : GUITab
         Timer.instance.ResumeTime();
         Tooltip.instance.HideInfo();
         CanvasWorker.instance.RefreshUtilityBar();
+    }
+
+    void RefreshDPText()
+    {
+        textPlayerDP.text = "Diplomatic Power : " + Manager.instance.player.DP.ToString() + "<sprite=13>";
     }
 
     public void AddAPBonus()
@@ -102,6 +108,7 @@ public class FederationTab : GUITab
             return;
         }
         leaderPanel.UpdateInfo(federation.leader);
+        RefreshDPText();
 
         foreach (Transform child in membersRoot)
         {

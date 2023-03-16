@@ -35,6 +35,10 @@ public class FocusButton : MonoBehaviour
         {
             button.interactable = false;
         }
+        else
+        {
+            button.interactable = true;
+        }
 
         switch (focusCase)
         {
