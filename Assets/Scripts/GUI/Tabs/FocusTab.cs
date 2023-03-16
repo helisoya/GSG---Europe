@@ -17,6 +17,16 @@ public class FocusTab : GUITab
 
     [SerializeField] protected GameObject linePrefab;
 
+    private Dictionary<string, GameObject> dic;
+
+
+    private bool first = true;
+
+    public void Reset()
+    {
+        first = true;
+    }
+
     public override void OpenTab()
     {
         base.OpenTab();
@@ -42,20 +52,11 @@ public class FocusTab : GUITab
 
         Dictionary<string, Focus> focusTree = country.focusTree;
 
-        barX.value = 0;
-        barY.value = 1;
-
-        graphParent.parent.GetComponent<RectTransform>().sizeDelta = new Vector2(6000, 4200);
 
 
-        foreach (Transform child in graphParent)
+        if (first)
         {
-            Destroy(child.gameObject);
-        }
-
-        foreach (Transform child in lineParent)
-        {
-            Destroy(child.gameObject);
+            InitTree();
         }
 
 
@@ -68,16 +69,62 @@ public class FocusTab : GUITab
             focusText.text = "Current : None";
         }
 
-        Dictionary<string, GameObject> dic = new Dictionary<string, GameObject>();
+
+        foreach (string id in dic.Keys)
+        {
+            dic[id].GetComponent<FocusButton>().Init(focusTree[id], FocusCase(focusTree[id]), this);
+        }
+    }
+
+
+    int FocusCase(Focus focus)
+    {
+        if (Manager.instance.player.focusDone.Contains(focus.id)) return 0;
+        if (Manager.instance.player.currentFocus.Equals(focus.id)) return 1;
+        if (Manager.instance.player.PrerequistDone(focus)) return 2;
+        return 3;
+    }
+
+    public void SelectFocus(string focus)
+    {
+        Manager manager = Manager.instance;
+        Pays country = manager.player;
+        country.ChangeFocus(focus);
+        focusText.text = "Current : " + country.focusTree[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
+        ShowFocusMenu();
+    }
+
+
+    void InitTree()
+    {
+        Pays country = Manager.instance.player;
+        Dictionary<string, Focus> focusTree = country.focusTree;
+
+        barX.value = 0;
+        barY.value = 1;
+        first = false;
+        dic = new Dictionary<string, GameObject>();
+
+        foreach (Transform child in lineParent)
+        {
+            Destroy(child.parent);
+        }
+
+        foreach (Transform child in graphParent)
+        {
+            Destroy(child.parent);
+        }
+
 
         foreach (Focus focus in country.focusTree.Values)
         {
             GameObject obj = Instantiate(prefabButton, graphParent);
             obj.GetComponent<RectTransform>().position = new Vector3(500 + 500 * focus.x, 600 - 300 * focus.y, 0);
-            obj.GetComponent<FocusButton>().Init(focus, FocusCase(focus), this);
+
 
             dic.Add(focus.id, obj);
         }
+
 
         List<Focus> exclusiveDone = new List<Focus>();
 
@@ -109,22 +156,5 @@ public class FocusTab : GUITab
                 }
             }
         }
-    }
-
-
-    int FocusCase(Focus focus)
-    {
-        if (Manager.instance.player.focusDone.Contains(focus.id)) return 0;
-        if (Manager.instance.player.currentFocus.Equals(focus.id)) return 1;
-        if (Manager.instance.player.PrerequistDone(focus)) return 2;
-        return 3;
-    }
-
-    public void SelectFocus(string focus)
-    {
-        Manager manager = Manager.instance;
-        Pays country = manager.player;
-        country.ChangeFocus(focus);
-        focusText.text = "Current : " + country.focusTree[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
     }
 }

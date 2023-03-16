@@ -261,6 +261,7 @@ public class CountryInfoTab : GUITab
         current_countryinfo.RefreshProvinces();
         Show_CountryInfo(current_countryinfo);
         Tooltip.instance.HideInfo();
+        CanvasWorker.instance.ResetFocusTree();
     }
 
 }

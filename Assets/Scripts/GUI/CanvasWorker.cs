@@ -240,6 +240,11 @@ public class CanvasWorker : MonoBehaviour
         }
     }
 
+    public void ResetFocusTree()
+    {
+        focusMenu.Reset();
+    }
+
     public void OpenFocusTab()
     {
         focusMenu.OpenTab();
