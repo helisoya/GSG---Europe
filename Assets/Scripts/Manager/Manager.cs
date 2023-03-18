@@ -30,8 +30,8 @@ public class Manager : MonoBehaviour
 
     public bool inPeaceDeal = false;
 
-    public string peaceDealSide1;
-    public string peaceDealSide2;
+    public Pays peaceDealSide1;
+    public Pays peaceDealSide2;
 
 
     public List<Federation> federations;
@@ -165,8 +165,8 @@ public class Manager : MonoBehaviour
 
     public void EndPeaceDeal(bool vassalizeB)
     {
-        Pays A = GetCountry(peaceDealSide1);
-        Pays B = GetCountry(peaceDealSide2);
+        Pays A = peaceDealSide1;
+        Pays B = peaceDealSide2;
         inPeaceDeal = false;
         foreach (Province province in provincesToBeTakenInPeaceDeal)
         {

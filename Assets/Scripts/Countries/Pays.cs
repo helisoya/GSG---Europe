@@ -89,7 +89,7 @@ public class Pays
     public Dictionary<string, Relation> relations;
 
     public List<Province> cores;
-    public Dictionary<string, int> atWarWith;
+    public List<string> atWarWith;
 
 
     public List<string> focusDone;
@@ -119,7 +119,7 @@ public class Pays
         maxFocusTime = 10;
         currentFocus = "NONE";
         focusDone = new List<string>();
-        atWarWith = new Dictionary<string, int>();
+        atWarWith = new List<string>();
         units = new List<Unit>();
         leader = new Leader();
         relations = new Dictionary<string, Relation>();
@@ -310,10 +310,11 @@ public class Pays
         }
 
         relations[country.ID].atWar = true;
+        relations[country.ID].ResetWarScores();
         relations[country.ID].wargoals.Remove(ID);
 
-        atWarWith.Add(country.ID, 0);
-        country.atWarWith.Add(ID, 0);
+        atWarWith.Add(country.ID);
+        country.atWarWith.Add(ID);
     }
 
     public void MakePeaceWithCountry(Pays other)

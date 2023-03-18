@@ -27,6 +27,11 @@ public class CanvasWorker : MonoBehaviour
     [Header("Peace Deal")]
     [SerializeField] private GameObject peaceDealRoot;
     [SerializeField] private Toggle peaceDealVassal;
+    [SerializeField] private Image peaceDealCountry1Img;
+    [SerializeField] private TextMeshProUGUI peaceDealCountry1Score;
+    [SerializeField] private Image peaceDealCountry2Img;
+    [SerializeField] private TextMeshProUGUI peaceDealCountry2Score;
+    [SerializeField] private TextMeshProUGUI peaceDealAcceptance;
 
     [Space]
     [Header("Other Menus")]
@@ -57,16 +62,48 @@ public class CanvasWorker : MonoBehaviour
     {
         HideEverything();
         Timer.instance.StopTime();
+        peaceDealVassal.isOn = false;
         manager.inPeaceDeal = true;
-        manager.peaceDealSide1 = side1;
-        manager.peaceDealSide2 = side2;
+        manager.peaceDealSide1 = manager.GetCountry(side1);
+        manager.peaceDealSide2 = manager.GetCountry(side2);
         manager.provincesToBeTakenInPeaceDeal = new List<Province>();
+
+        peaceDealCountry1Img.sprite = manager.peaceDealSide1.currentFlag;
+        peaceDealCountry2Img.sprite = manager.peaceDealSide2.currentFlag;
+        peaceDealCountry1Score.text = manager.peaceDealSide1.relations[manager.peaceDealSide2.ID].warScores[manager.peaceDealSide1.ID].ToString();
+        peaceDealCountry2Score.text = manager.peaceDealSide1.relations[manager.peaceDealSide2.ID].warScores[manager.peaceDealSide2.ID].ToString();
+
+        PeaceDealRefreshAcceptance();
         peaceDealRoot.SetActive(true);
         manager.RefreshMap();
     }
 
+    public void PeaceDealRefreshAcceptance()
+    {
+        peaceDealAcceptance.text = PeaceDealAcceptanceScore().ToString();
+    }
+
+    public void HidePeaceDeal()
+    {
+        HideEverything();
+        ShowDefault();
+
+        manager.inPeaceDeal = false;
+        manager.RefreshMap();
+        CanvasWorker.instance.Show_CountryInfo(manager.player);
+        Timer.instance.ResumeTime();
+    }
+
+    int PeaceDealAcceptanceScore()
+    {
+        Relation relation = manager.peaceDealSide1.relations[manager.peaceDealSide2.ID];
+        int vassalCost = peaceDealVassal.isOn ? Mathf.CeilToInt(manager.peaceDealSide2.provinces.Count / 2f) * 10 : 0;
+        return relation.warScores[manager.peaceDealSide1.ID] - manager.provincesToBeTakenInPeaceDeal.Count * 10 - vassalCost;
+    }
+
     public void EndPeaceDeal()
     {
+        if (PeaceDealAcceptanceScore() < 0) return;
         HideEverything();
         ShowDefault();
         manager.EndPeaceDeal(peaceDealVassal.isOn);
@@ -78,6 +115,7 @@ public class CanvasWorker : MonoBehaviour
         {
             manager.provincesToBeTakenInPeaceDeal.Add(prov);
         }
+        PeaceDealRefreshAcceptance();
         prov.RefreshColor();
     }
 
@@ -197,7 +235,7 @@ public class CanvasWorker : MonoBehaviour
 
             case 2:
 
-                keys = new List<string>(B.atWarWith.Keys);
+                keys = new List<string>(B.atWarWith);
                 foreach (string pays in keys)
                 {
                     B.MakePeaceWithCountry(manager.GetCountry(pays));
@@ -209,7 +247,7 @@ public class CanvasWorker : MonoBehaviour
                 break;
 
             case 3:
-                keys = new List<string>(A.atWarWith.Keys);
+                keys = new List<string>(A.atWarWith);
                 foreach (string pays in keys)
                 {
                     A.MakePeaceWithCountry(manager.GetCountry(pays));

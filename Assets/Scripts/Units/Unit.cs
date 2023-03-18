@@ -157,10 +157,11 @@ public class Unit : MonoBehaviour
 
                 if (prov.controller == country) return;
 
-                if (country.atWarWith.ContainsKey(prov.controller.ID)
+                if (country.atWarWith.Contains(prov.controller.ID)
                     && (prov.owner == prov.controller || prov.owner == country))
                 {
-
+                    country.relations[prov.controller.ID].warScores[country.ID] += 10;
+                    country.relations[prov.controller.ID].warScores[prov.controller.ID] -= 10;
                     prov.SetController(country);
                     prov.RefreshColor();
 
@@ -182,6 +183,7 @@ public class Unit : MonoBehaviour
                         prov.SetController(country);
                         prov.RefreshColor();
                         country.DeclareWarOnCountry(prov.owner);
+                        country.relations[prov.owner.ID].warScores[country.ID] += 10;
                     }
                     target = transform.position;
                 }
@@ -219,7 +221,7 @@ public class Unit : MonoBehaviour
 
         bool canRegen = true;
 
-        foreach (string key in country.atWarWith.Keys)
+        foreach (string key in country.atWarWith)
         {
             foreach (Unit unit in manager.GetCountry(key).units)
             {

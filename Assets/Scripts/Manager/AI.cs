@@ -53,8 +53,8 @@ public class AI : MonoBehaviour
 
     void ManageDiplomacy(Pays country)
     {
-        List<string> atWar = new List<string>(country.atWarWith.Keys);
-        foreach (string pays in atWar)
+        List<string> list = new List<string>(country.atWarWith);
+        foreach (string pays in list)
         {
             Pays p = manager.GetCountry(pays);
             if (p.CompletelyOccupied())
@@ -82,7 +82,7 @@ public class AI : MonoBehaviour
 
         foreach (string pays in country.AI_MARKFORWAR)
         {
-            if (!country.atWarWith.ContainsKey(pays))
+            if (!country.atWarWith.Contains(pays))
             {
                 country.DeclareWarOnCountry(manager.GetCountry(pays));
             }
@@ -96,7 +96,7 @@ public class AI : MonoBehaviour
         if (country.AI_NEIGHBOORS.Count == 0) return;
         Pays tryWith = country.AI_NEIGHBOORS[Random.Range(0, country.AI_NEIGHBOORS.Count)];
         if (tryWith.federation != null || tryWith == manager.player ||
-        tryWith.atWarWith.ContainsKey(country.ID) || country.relations[tryWith.ID].relationScore < 50) return;
+        tryWith.atWarWith.Contains(country.ID) || country.relations[tryWith.ID].relationScore < 50) return;
 
 
         if (country.federation == null)
@@ -161,7 +161,7 @@ public class AI : MonoBehaviour
                 }
                 else if (Random.Range(0, 30) == 0 && country.atWarWith.Count != 0)
                 {
-                    Pays p = manager.GetCountry(new List<string>(country.atWarWith.Keys)[Random.Range(0, country.atWarWith.Keys.Count)]);
+                    Pays p = manager.GetCountry(country.atWarWith[Random.Range(0, country.atWarWith.Count)]);
                     if (p.provinces.Count <= 0)
                     {
                         country.MakePeaceWithCountry(p);

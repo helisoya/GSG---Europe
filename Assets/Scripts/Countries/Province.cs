@@ -112,7 +112,7 @@ public class Province : MonoBehaviour
         Manager manager = Manager.instance;
         if (manager.inPeaceDeal)
         {
-            if (owner.ID != manager.peaceDealSide1 && owner.ID != manager.peaceDealSide2)
+            if (owner != manager.peaceDealSide1 && owner != manager.peaceDealSide2)
             {
                 SetColor(MapModes.colors_grayed, MapModes.colors_grayed);
             }
@@ -214,9 +214,13 @@ public class Province : MonoBehaviour
     {
         if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
-            if (Manager.instance.inPeaceDeal && Manager.instance.peaceDealSide2 == owner.ID && Manager.instance.player == controller)
+            if (Manager.instance.inPeaceDeal && Manager.instance.peaceDealSide2 == owner && Manager.instance.player == controller)
             {
                 CanvasWorker.instance.PeaceDealProvinceSelection(this);
+                return;
+            }
+            else if (Manager.instance.inPeaceDeal)
+            {
                 return;
             }
 
