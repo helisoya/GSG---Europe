@@ -1,0 +1,188 @@
+{
+	"id":"France",
+	"focus":[
+		{
+			"id":"ELECTION",
+			"x":2,
+			"y":0,
+			"name":"Hold the elections",
+			"desc":"Gives +20 <sprite=12>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["AP(20)"]
+		},
+		
+		{
+			"id":"CONTINUE_FIFTH",
+			"x":2,
+			"y":1,
+			"name":"Continue the fifth republic",
+			"desc":"Gives +20 <sprite=12>",
+			"required":["ELECTION"],
+			"requireAll":"False",
+			"exclusive":["CREATE_SIXTH","RESTORE_EMPIRE"],
+			"effect":["AP(20)"]
+		},
+		{
+			"id":"RESTORE_DIPLOMACY",
+			"x":2,
+			"y":2,
+			"name":"Take a diplomatic tour",
+			"desc":"Gives +2 <sprite=13> per turn",
+			"required":["CONTINUE_FIFTH"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["DPBONUS(2)"]
+		},
+		
+		{
+			"id":"RESTORE_EMPIRE",
+			"x":3,
+			"y":1,
+			"name":"Restaure the empire",
+			"desc":"Change Governement to Monarchy",
+			"required":["ELECTION"],
+			"requireAll":"False",
+			"exclusive":["CREATE_SIXTH","CONTINUE_FIFTH"],
+			"effect":["PARTYPOP(3,60)","SETGOVERNEMENT(3)"]
+		},
+		{
+			"id":"RESTORE_GRANDE_ARMEE",
+			"x":3,
+			"y":2,
+			"name":"Restore the grande armée",
+			"desc":"Gives +10 <sprite=14>",
+			"required":["RESTORE_EMPIRE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["MILCAP(10)"]
+		},
+		
+		{
+			"id":"CREATE_SIXTH",
+			"x":1,
+			"y":1,
+			"name":"Create the sixth republic",
+			"desc":"Gives -20 <sprite=12>",
+			"required":["ELECTION"],
+			"requireAll":"False",
+			"exclusive":["CONTINUE_FIFTH","RESTORE_EMPIRE"],
+			"effect":["AP(-20)","PARTYPOP(0,30)","PARTYPOP(4,30)"]
+		},
+		{
+			"id":"BASE_COMMUNISM",
+			"x":0,
+			"y":2,
+			"name":"Base it on communism",
+			"desc":"Change governement to communism",
+			"required":["CREATE_SIXTH"],
+			"requireAll":"False",
+			"exclusive":["BASE_FASCISM"],
+			"effect":["PARTYPOP(0,50)","SETGOVERNEMENT(7)"]
+		},
+		{
+			"id":"BASE_FASCISM",
+			"x":1,
+			"y":2,
+			"name":"Base it on fascism",
+			"desc":"Change governement to fascism",
+			"required":["CREATE_SIXTH"],
+			"requireAll":"False",
+			"exclusive":["BASE_COMMUNISM"],
+			"effect":["PARTYPOP(4,50)","SETGOVERNEMENT(9)"]
+		},
+		{
+			"id":"INCREASE_CONTROL",
+			"x":1,
+			"y":3,
+			"name":"Increase control",
+			"desc":"Gives +10 <sprite=12> per turn",
+			"required":["BASE_COMMUNISM","BASE_FASCISM"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["APTURN(10)"]
+		},
+		{
+			"id":"STABILIZE_STATE",
+			"x":2,
+			"y":4,
+			"name":"Stabilize the state",
+			"desc":"Gives +10 <sprite=12> per turn",
+			"required":["INCREASE_CONTROL","RESTORE_GRANDE_ARMEE","RESTORE_DIPLOMACY"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["APTURN(10)"]
+		},
+		
+		
+		{
+			"id":"EXPAND_MILITARY",
+			"x":6,
+			"y":0,
+			"name":"Expand the Military",
+			"desc":"Gives +5 <sprite=14>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["MILCAP(5)"]
+		},
+		{
+			"id":"NAVAL_RESEARCH",
+			"x":5,
+			"y":1,
+			"name":"Naval Research",
+			"desc":"Permit the use of boats",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["ENABLE_NAVAL(true)"]
+		},
+		
+		{
+			"id":"OFFENSIVE_DOCTRINE",
+			"x":6,
+			"y":1,
+			"name":"Offensive doctrine",
+			"desc":"Gives +50% Attack to units",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":["DEFENSIVE_DOCTRINE"],
+			"effect":["ATTACK(5)"]
+		},
+		{
+			"id":"SPEED_FOCUS",
+			"x":6,
+			"y":2,
+			"name":"Speed Focus",
+			"desc":"Gives +30% Speed to units",
+			"required":["OFFENSIVE_DOCTRINE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["SPEED(2)"]
+		},
+		
+		{
+			"id":"DEFENSIVE_DOCTRINE",
+			"x":7,
+			"y":1,
+			"name":"Defensive Focus",
+			"desc":"Gives +50 HP to units",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":["OFFENSIVE_DOCTRINE"],
+			"effect":["HP(50)"]
+		},
+		{
+			"id":"EVASIVE_TRAINING",
+			"x":7,
+			"y":2,
+			"name":"Evasive training",
+			"desc":"Gives +15% Evasion to units",
+			"required":["DEFENSIVE_DOCTRINE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["EVASION(15)"]
+		}
+	]
+}

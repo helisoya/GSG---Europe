@@ -113,15 +113,11 @@ public class Unit : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out hit);
         Province prov = hit.transform.gameObject.GetComponent<Province>();
         if (prov == null) return false;
-        return prov.owner.Equals(id);
+        return prov.owner.ID.Equals(id);
     }
 
     void Update()
     {
-
-
-
-
         if (country.provinces.Count <= 0)
         {
             TakeDamage(Max + 1);
