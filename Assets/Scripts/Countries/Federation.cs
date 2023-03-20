@@ -41,8 +41,15 @@ public class Federation
     {
         if (members.Contains(pays))
         {
-            members.Add(pays);
+            members.Remove(pays);
             pays.federation = null;
+
+            if (members.Count == 0)
+            {
+                Manager.instance.federations.Remove(this);
+                return;
+            }
+
             if (pays == leader)
             {
                 GetNewLeader();

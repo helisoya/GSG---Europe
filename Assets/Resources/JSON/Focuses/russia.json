@@ -1,0 +1,198 @@
+{
+	"id":"Russia",
+	"focus":[
+		{
+			"id":"COUP",
+			"x":2,
+			"y":0,
+			"name":"Coup d'Etat",
+			"desc":"Gives -50 <sprite=12>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["AP(-50)"]
+		},
+		
+		{
+			"id":"FAILURE",
+			"x":3,
+			"y":1,
+			"name":"Failure",
+			"desc":"Gives -50 <sprite=12>",
+			"required":["COUP"],
+			"requireAll":"False",
+			"exclusive":["SUCCESS"],
+			"effect":["AP(-50)"]
+		},
+		{
+			"id":"TIGHTEN_GRIP",
+			"x":3,
+			"y":3,
+			"name":"Fascism",
+			"desc":"Change governement to fascism & +80<sprite=12>",
+			"required":["FAILURE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["PARTYPOP(4,70)","SETGOVERNEMENT(9)","AP(80)"]
+		},
+		
+		{
+			"id":"SUCCESS",
+			"x":1,
+			"y":1,
+			"name":"Sucess",
+			"desc":"Gives 25 <sprite=12>",
+			"required":["COUP"],
+			"requireAll":"False",
+			"exclusive":["FAILURE"],
+			"effect":["AP(25)"]
+		},
+		{
+			"id":"TSAR",
+			"x":1,
+			"y":2,
+			"name":"Restore the tsar",
+			"desc":"Change Governement to Monarchy",
+			"required":["SUCCESS"],
+			"requireAll":"False",
+			"exclusive":["LIBERAL","COMMUNISM"],
+			"effect":["PARTYPOP(3,60)","SETGOVERNEMENT(3)"]
+		},
+		{
+			"id":"COMMUNISM",
+			"x":0,
+			"y":2,
+			"name":"Restore communism",
+			"desc":"Change Governement to Communism",
+			"required":["SUCCESS"],
+			"requireAll":"False",
+			"exclusive":["LIBERAL","TSAR"],
+			"effect":["PARTYPOP(0,50)","SETGOVERNEMENT(7)"]
+		},
+		{
+			"id":"LIBERAL",
+			"x":2,
+			"y":2,
+			"name":"Liberalize the country",
+			"desc":"Gives +10<sprite=13>",
+			"required":["SUCCESS"],
+			"requireAll":"False",
+			"exclusive":["COMMUNISM","TSAR"],
+			"effect":["PARTYPOP(1,30)","PARTYPOP(2,30)","DP(10)"]
+		},
+		{
+			"id":"DIPLOMATIC_REVIVAL",
+			"x":1,
+			"y":3,
+			"name":"Diplomatic Revival",
+			"desc":"Gives +2 <sprite=13> per turn",
+			"required":["COMMUNISM","LIBERAL","TSAR"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["DPBONUS(2)"]
+		},
+		{
+			"id":"NATION_ANEW",
+			"x":2,
+			"y":4,
+			"name":"A nation, anew",
+			"desc":"Gives +10 <sprite=12> per turn",
+			"required":["TIGHTEN_GRIP","DIPLOMATIC_REVIVAL"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["APTURN(10)"]
+		},
+		
+		
+		{
+			"id":"EXPAND_MILITARY",
+			"x":5,
+			"y":0,
+			"name":"Reform the army",
+			"desc":"Gives +5 <sprite=14> &+50<sprite=12>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["MILCAP(5)","AP(50)"]
+		},
+		{
+			"id":"NAVAL_RESEARCH",
+			"x":6,
+			"y":1,
+			"name":"Naval training",
+			"desc":"Permit the use of boats",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["ENABLE_NAVAL(true)"]
+		},
+		{
+			"id":"TRAIN_MENS",
+			"x":5,
+			"y":1,
+			"name":"Train more mens",
+			"desc":"Gives +15 <sprite=14>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":["EXPAND_MILITARY"],
+			"effect":["MILCAP(15)"]
+		},
+		{
+			"id":"EVASIVE_TACTICS",
+			"x":5,
+			"y":2,
+			"name":"Evasive training",
+			"desc":"Gives +15% Evasion to units",
+			"required":["TRAIN_MENS"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["EVASION(15)"]
+		},
+		
+		
+		{
+			"id":"DIPLOMATIC_STANCE",
+			"x":8,
+			"y":0,
+			"name":"Diplomatic Revival",
+			"desc":"Gives +5 <sprite=13>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["DP(5)"]
+		},
+		{
+			"id":"PUPPET_BELARUS",
+			"x":8,
+			"y":1,
+			"name":"Puppet Belarus",
+			"desc":"Puppet Belarus",
+			"required":["DIPLOMATIC_STANCE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["PUPPET(BLR)"]
+		},
+		{
+			"id":"ANNEX_BELARUS",
+			"x":8,
+			"y":2,
+			"name":"Annex Belarus",
+			"desc":"Annex Belarus",
+			"required":["PUPPET_BELARUS"],
+			"requireAll":"False",
+			"exclusive":["FORM_NEWUNION"],
+			"effect":["ANNEX(BLR)"]
+		},
+		{
+			"id":"FORM_NEWUNION",
+			"x":9,
+			"y":2,
+			"name":"Form a new union",
+			"desc":"Form a federation with Belarus",
+			"required":["PUPPET_BELARUS"],
+			"requireAll":"False",
+			"exclusive":["ANNEX_BELARUS"],
+			"effect":["FEDERATION(BLR)"]
+		}
+	]
+}

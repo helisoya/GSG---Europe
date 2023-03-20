@@ -242,7 +242,36 @@ public class Pays
                                 federation.AddMember(chosenCandidate);
                             }
                         }
+                        break;
 
+                    case "FEDERATION":
+                        Pays federateWith = manager.GetCountry(effect[1]);
+                        if (federateWith.federation != null)
+                        {
+                            federateWith.federation.RemoveMember(federateWith);
+                        }
+                        if (federation == null)
+                        {
+                            Federation federation = new Federation();
+                            federation.AddMember(this);
+                            federation.AddMember(federateWith);
+                            federation.SetLeader(this);
+                            manager.federations.Add(federation);
+                        }
+                        else
+                        {
+                            federation.AddMember(federateWith);
+                        }
+                        break;
+
+                    case "ANNEX":
+                        Pays toAnnex = manager.GetCountry(effect[1]);
+                        List<Province> provs = new List<Province>(toAnnex.provinces);
+                        foreach (Province prov in provs)
+                        {
+                            toAnnex.RemoveProvince(prov);
+                            AddProvince(prov);
+                        }
                         break;
                 }
             }
@@ -700,6 +729,10 @@ public class Pays
         provinces.Remove(prov);
         if (provinces.Count == 0)
         {
+            if (federation != null)
+            {
+                federation.RemoveMember(this);
+            }
             foreach (Unit unit in units)
             {
                 Manager.Destroy(unit.gameObject);
