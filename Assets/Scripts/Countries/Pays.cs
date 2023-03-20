@@ -212,6 +212,38 @@ public class Pays
                         Pays p2 = manager.GetCountry(effect[1]);
                         CanvasWorker.instance.UpdateRelations_ShortCut(p2, this, 3);
                         break;
+                    case "RANDOMFEDERATION":
+                        List<Pays> candidates = new List<Pays>();
+                        foreach (Pays p3 in AI_NEIGHBOORS)
+                        {
+                            if (p3.federation == null || p3.federation != federation)
+                            {
+                                candidates.Add(p3);
+                            }
+                        }
+                        if (candidates.Count != 0)
+                        {
+                            Pays chosenCandidate = candidates[Random.Range(0, candidates.Count)];
+                            if (chosenCandidate.federation != null)
+                            {
+                                chosenCandidate.federation.RemoveMember(chosenCandidate);
+                            }
+
+                            if (federation == null)
+                            {
+                                Federation federation = new Federation();
+                                federation.AddMember(this);
+                                federation.AddMember(chosenCandidate);
+                                federation.SetLeader(this);
+                                manager.federations.Add(federation);
+                            }
+                            else
+                            {
+                                federation.AddMember(chosenCandidate);
+                            }
+                        }
+
+                        break;
                 }
             }
             currentFocus = "NONE";

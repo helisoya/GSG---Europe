@@ -1,0 +1,174 @@
+{
+	"id":"Germany",
+	"focus":[
+		{
+			"id":"CROSSROAD",
+			"x":3,
+			"y":0,
+			"name":"At a crossroad",
+			"desc":"Gives +50 <sprite=12>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["AP(50)"]
+		},
+		
+		{
+			"id":"TOWARD_EUROPE",
+			"x":3,
+			"y":1,
+			"name":"Toward Europe",
+			"desc":"Creates a random federation with a neighboor",
+			"required":["CROSSROAD"],
+			"requireAll":"False",
+			"exclusive":["RETURN_OLD"],
+			"effect":["RANDOMFEDERATION()"]
+		},
+		{
+			"id":"DIPLOMATIC_TOUR",
+			"x":3,
+			"y":3,
+			"name":"Take a diplomatic tour",
+			"desc":"Gives +2 <sprite=13> per turn",
+			"required":["TOWARD_EUROPE"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["DPBONUS(2)"]
+		},
+		
+		{
+			"id":"RETURN_OLD",
+			"x":1,
+			"y":1,
+			"name":"Return to the old",
+			"desc":"Gives -50<sprite=12>",
+			"required":["CROSSROAD"],
+			"requireAll":"False",
+			"exclusive":["TOWARD_EUROPE"],
+			"effect":["AP(-50)"]
+		},
+		{
+			"id":"MONARCHY",
+			"x":2,
+			"y":2,
+			"name":"Monarchism",
+			"desc":"Change Governement to Monarchy",
+			"required":["RETURN_OLD"],
+			"requireAll":"False",
+			"exclusive":["FASCISM","COMMUNISM"],
+			"effect":["PARTYPOP(3,60)","SETGOVERNEMENT(3)"]
+		},
+		{
+			"id":"COMMUNISM",
+			"x":0,
+			"y":2,
+			"name":"Communism",
+			"desc":"Change governement to communism",
+			"required":["RETURN_OLD"],
+			"requireAll":"False",
+			"exclusive":["FASCISM","MONARCHY"],
+			"effect":["PARTYPOP(0,50)","SETGOVERNEMENT(7)"]
+		},
+		{
+			"id":"FASCISM",
+			"x":1,
+			"y":2,
+			"name":"Fascism",
+			"desc":"Change governement to fascism",
+			"required":["RETURN_OLD"],
+			"requireAll":"False",
+			"exclusive":["MONARCHY","COMMUNISM"],
+			"effect":["PARTYPOP(4,50)","SETGOVERNEMENT(9)"]
+		},
+		{
+			"id":"STRENGTHEN_STATE",
+			"x":1,
+			"y":3,
+			"name":"Strengthen the state",
+			"desc":"Gives +5 <sprite=12> per turn",
+			"required":["MONARCHY","FASCISM","COMMUNISM"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["APTURN(5)"]
+		},
+		{
+			"id":"TOWARD_FUTUR",
+			"x":2,
+			"y":4,
+			"name":"Toward the futur",
+			"desc":"Gives +10 <sprite=12> per turn",
+			"required":["STRENGTHEN_STATE","DIPLOMATIC_TOUR"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["APTURN(10)"]
+		},
+		
+		
+		{
+			"id":"EXPAND_MILITARY",
+			"x":5,
+			"y":0,
+			"name":"Reform the army",
+			"desc":"Gives +5 <sprite=14>",
+			"required":[],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["MILCAP(5)"]
+		},
+		{
+			"id":"NAVAL_RESEARCH",
+			"x":5,
+			"y":1,
+			"name":"Naval training",
+			"desc":"Permit the use of boats",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["ENABLE_NAVAL(true)"]
+		},
+		{
+			"id":"BLITZKRIEG",
+			"x":6,
+			"y":1,
+			"name":"Blitzkrieg",
+			"desc":"Gives +40% Speed to units",
+			"required":["EXPAND_MILITARY"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["SPEED(3)"]
+		},
+		{
+			"id":"OFFENSIVE_DOCTRINE",
+			"x":5,
+			"y":2,
+			"name":"Offensive doctrine",
+			"desc":"Gives +50% Attack to units",
+			"required":["BLITZKRIEG"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["ATTACK(5)"]
+		},
+		{
+			"id":"EVASIVE_TRAINING",
+			"x":6,
+			"y":2,
+			"name":"Evasive training",
+			"desc":"Gives +15% Evasion to units",
+			"required":["BLITZKRIEG"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["EVASION(15)"]
+		},
+		{
+			"id":"BETTER_ARMOR",
+			"x":6,
+			"y":3,
+			"name":"Better Armor",
+			"desc":"Gives +50 HP to units",
+			"required":["EVASIVE_TRAINING"],
+			"requireAll":"False",
+			"exclusive":[],
+			"effect":["HP(50)"]
+		}
+	]
+}
