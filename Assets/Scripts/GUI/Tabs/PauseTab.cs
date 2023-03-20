@@ -51,35 +51,33 @@ public class PauseTab : GUITab
 
         resolutions = Screen.resolutions;
 
+        int currentRes = 0;
         List<string> names = new List<string>();
         for (int i = 0; i < resolutions.Length; i++)
         {
             names.Add(resolutions[i].width + " x " + resolutions[i].height);
+            if (currentRes == 0 && Screen.currentResolution.width == resolutions[i].width &&
+            Screen.currentResolution.height == resolutions[i].height &&
+            Screen.currentResolution.refreshRate == resolutions[i].refreshRate)
+            {
+                currentRes = i;
+            }
         }
 
         res_d.ClearOptions();
         res_d.AddOptions(names);
-
-        if (PlayerPrefs.HasKey("resolution"))
-        {
-            if (PlayerPrefs.GetInt("resolution") < resolutions.Length)
-            {
-                res_d.value = PlayerPrefs.GetInt("resolution");
-            }
-        }
+        res_d.SetValueWithoutNotify(currentRes);
 
         if (PlayerPrefs.HasKey("clouds"))
         {
-            cloud_t.isOn = (PlayerPrefs.GetString("clouds") == "true");
+            cloud_t.SetIsOnWithoutNotify(PlayerPrefs.GetString("clouds") == "true");
         }
         if (PlayerPrefs.HasKey("sun"))
         {
-            sun_t.isOn = (PlayerPrefs.GetString("sun") == "true");
+            sun_t.SetIsOnWithoutNotify(PlayerPrefs.GetString("sun") == "true");
         }
-        if (PlayerPrefs.HasKey("fullscreen"))
-        {
-            fullscreen_t.isOn = (PlayerPrefs.GetString("fullscreen") == "true");
-        }
+
+        fullscreen_t.SetIsOnWithoutNotify(Screen.fullScreen);
     }
 
     public override void CloseTab()
@@ -96,7 +94,7 @@ public class PauseTab : GUITab
     {
         bool val = cloud_t.isOn;
         clouds.SetActive(val);
-        PlayerPrefs.SetString("clouds", val.ToString());
+        PlayerPrefs.SetString("clouds", val ? "true" : "false");
     }
 
     public void UpdateSun()
@@ -105,25 +103,23 @@ public class PauseTab : GUITab
         {
             sun.StopCycle();
             sun.enabled = false;
-            PlayerPrefs.SetString("sun", false.ToString());
+            PlayerPrefs.SetString("sun", "false");
         }
         else
         {
             sun.enabled = true;
-            PlayerPrefs.SetString("sun", true.ToString());
+            PlayerPrefs.SetString("sun", "true");
         }
 
     }
 
     public void UpdateFullscreen()
     {
-        PlayerPrefs.SetString("fullscreen", fullscreen_t.isOn.ToString());
         Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, fullscreen_t.isOn);
     }
 
     public void UpdateResolution()
     {
-        PlayerPrefs.SetInt("resolution", res_d.value);
         Screen.SetResolution(resolutions[res_d.value].width, resolutions[res_d.value].height, fullscreen_t.isOn);
     }
 }
