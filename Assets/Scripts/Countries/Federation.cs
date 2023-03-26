@@ -60,8 +60,8 @@ public class Federation
 
     public void Unite()
     {
-
-        foreach (Pays member in members)
+        List<Pays> membersCopy = new List<Pays>(members);
+        foreach (Pays member in membersCopy)
         {
             if (member == leader) continue;
 

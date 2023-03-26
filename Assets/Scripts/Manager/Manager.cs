@@ -352,12 +352,13 @@ public class Manager : MonoBehaviour
             CanvasWorker.instance.OpenSettingsMenu();
         }
 
-
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             player.DP += 99999;
             player.AP += 99999;
         }
+#endif
     }
 
 }
