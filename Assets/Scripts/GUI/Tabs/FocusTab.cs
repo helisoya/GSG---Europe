@@ -119,7 +119,7 @@ public class FocusTab : GUITab
         foreach (Focus focus in country.focusTree.Values)
         {
             GameObject obj = Instantiate(prefabButton, graphParent);
-            obj.GetComponent<RectTransform>().position = new Vector3(500 + 500 * focus.x, 600 - 300 * focus.y, 0);
+            obj.GetComponent<RectTransform>().anchoredPosition = new Vector3(100 + 200 * focus.x, -100 - 100 * focus.y, 0);
 
 
             dic.Add(focus.id, obj);
