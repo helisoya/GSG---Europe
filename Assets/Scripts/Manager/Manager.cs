@@ -36,7 +36,7 @@ public class Manager : MonoBehaviour
 
     public List<Federation> federations;
     public List<Province> provincesToBeTakenInPeaceDeal;
-    private Dictionary<string, Province> provinces;
+    private Dictionary<int, Province> provinces;
 
     public Dictionary<string, Dictionary<string, Focus>> focuses;
     public Dictionary<string, Culture> cultures;
@@ -50,7 +50,6 @@ public class Manager : MonoBehaviour
     [SerializeField] private GameObject loadingRoot;
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Image loadingImg;
-    [SerializeField] private CountryPicker picker;
     private Coroutine loading;
 
     public bool isLoading
@@ -139,7 +138,7 @@ public class Manager : MonoBehaviour
 
         CanvasWorker.instance.manager = this;
 
-        picker.Init();
+        CountryPicker.instance.Init();
 
         loading = null;
     }
@@ -269,7 +268,7 @@ public class Manager : MonoBehaviour
         return pays[ID];
     }
 
-    public Province GetProvince(string ID)
+    public Province GetProvince(int ID)
     {
         return provinces[ID];
     }

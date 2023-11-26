@@ -7,6 +7,12 @@ public class TooltipTrigger : MonoBehaviour
 {
     [SerializeField] private string text;
 
+
+    public void SetText(string newText)
+    {
+        text = newText;
+    }
+
     public void OnMouseEnter(BaseEventData data)
     {
         if (!enabled) return;

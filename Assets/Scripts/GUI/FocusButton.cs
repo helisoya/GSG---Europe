@@ -14,6 +14,7 @@ public class FocusButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI desc;
     [SerializeField] private Button button;
     [SerializeField] private Image buttonGraphics;
+    [SerializeField] private TooltipTrigger tooltip;
 
     private int focusCase;
 
@@ -30,6 +31,8 @@ public class FocusButton : MonoBehaviour
         this.focusCase = focusCase;
         text.text = focus.focusName;
         desc.text = focus.desc;
+
+        tooltip.SetText(focus.desc);
 
         if (focusCase != 2 || !Manager.instance.player.currentFocus.Equals("NONE"))
         {

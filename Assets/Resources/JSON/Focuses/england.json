@@ -1,263 +1,361 @@
 {
-	"id":"England",
-	"focus":[
-	
+	"id": "England",
+	"focus": [
 		{
-			"id":"STATUS_KINGDOM",
-			"x":4,
-			"y":0,
-			"name":"Status of the Kingdom",
-			"desc":"Gives -50 <sprite=12>",
-			"required":[],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["AP(-50)"]
+			"id": "STATUS_KINGDOM",
+			"x": 4,
+			"y": 0,
+			"name": "Status of the Kingdom",
+			"desc": "Gives -50 <sprite=12>",
+			"required": [],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"AP(-50)"
+			]
 		},
-	
 		{
-			"id":"RETHINK_ADMINISTRATION",
-			"x":1,
-			"y":1,
-			"name":"Rethink the Administration",
-			"desc":"Gives +25 <sprite=12>",
-			"required":["STATUS_KINGDOM"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["AP(25)"]
+			"id": "RETHINK_ADMINISTRATION",
+			"x": 1,
+			"y": 1,
+			"name": "Rethink the Administration",
+			"desc": "Gives +25 <sprite=12>",
+			"required": [
+				"STATUS_KINGDOM"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"AP(25)"
+			]
 		},
-		
 		{
-			"id":"FREE_CONSTITUANTS",
-			"x":0,
-			"y":3,
-			"name":"Free the constituants",
-			"desc":"Free Wales, Scotland & Northen Ireland (+ 50<sprite=1>)",
-			"required":["RETHINK_ADMINISTRATION"],
-			"requireAll":"False",
-			"exclusive":["STATUS_QUO","PUPPET_CONSTITUANTS"],
-			"effect":["FREE(SCO)","FREE(WLS)","ANNEXPROVINCE(IRE,360)","COSMETIC(ENG)","AP(50)"]
+			"id": "FREE_CONSTITUANTS",
+			"x": 0,
+			"y": 3,
+			"name": "Free the constituants",
+			"desc": "Free Wales, Scotland & Northen Ireland (+ 50 <sprite=12>)",
+			"required": [
+				"RETHINK_ADMINISTRATION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"STATUS_QUO",
+				"PUPPET_CONSTITUANTS"
+			],
+			"effect": [
+				"FREE(SCO)",
+				"FREE(WLS)",
+				"ANNEXPROVINCE(IRE,360)",
+				"COSMETIC(ENG)",
+				"AP(50)"
+			]
 		},
-		
 		{
-			"id":"STATUS_QUO",
-			"x":1,
-			"y":3,
-			"name":"Status Quo",
-			"desc":"Gives -100 <sprite=12>",
-			"required":["RETHINK_ADMINISTRATION"],
-			"requireAll":"False",
-			"exclusive":["FREE_CONSTITUANTS","PUPPET_CONSTITUANTS"],
-			"effect":["AP(-100)"]
+			"id": "STATUS_QUO",
+			"x": 1,
+			"y": 3,
+			"name": "Status Quo",
+			"desc": "Gives -100 <sprite=12>",
+			"required": [
+				"RETHINK_ADMINISTRATION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"FREE_CONSTITUANTS",
+				"PUPPET_CONSTITUANTS"
+			],
+			"effect": [
+				"AP(-100)"
+			]
 		},
-		
 		{
-			"id":"PUPPET_CONSTITUANTS",
-			"x":2,
-			"y":3,
-			"name":"Puppet the constituants",
-			"desc":"Puppet Wales & Scotland",
-			"required":["RETHINK_ADMINISTRATION"],
-			"requireAll":"False",
-			"exclusive":["STATUS_QUO","FREE_CONSTITUANTS"],
-			"effect":["FREE(SCO)","FREE(WLS)","ANNEXPROVINCE(IRE,360)","COSMETIC(ENG)","PUPPET(SCO)","PUPPET(WLS)"]
+			"id": "PUPPET_CONSTITUANTS",
+			"x": 2,
+			"y": 3,
+			"name": "Puppet the constituants",
+			"desc": "Puppet Wales & Scotland",
+			"required": [
+				"RETHINK_ADMINISTRATION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"STATUS_QUO",
+				"FREE_CONSTITUANTS"
+			],
+			"effect": [
+				"FREE(SCO)",
+				"FREE(WLS)",
+				"ANNEXPROVINCE(IRE,360)",
+				"COSMETIC(ENG)",
+				"PUPPET(SCO)",
+				"PUPPET(WLS)"
+			]
 		},
-		
 		{
-			"id":"FINISH_REFORMS",
-			"x":1,
-			"y":5,
-			"name":"Finish the reforms",
-			"desc":"Gives +5<sprite=12> per turn",
-			"required":["PUPPET_CONSTITUANTS","STATUS_QUO","FREE_CONSTITUANTS"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["APTURN(5)"]
+			"id": "FINISH_REFORMS",
+			"x": 1,
+			"y": 5,
+			"name": "Finish the reforms",
+			"desc": "Gives +5<sprite=12> per turn",
+			"required": [
+				"PUPPET_CONSTITUANTS",
+				"STATUS_QUO",
+				"FREE_CONSTITUANTS"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"APTURN(5)"
+			]
 		},
-		
 		{
-			"id":"TRUST_MONARCHY",
-			"x":4,
-			"y":2,
-			"name":"Trust in the monarchy",
-			"desc":"Gives +25 <sprite=12>",
-			"required":["STATUS_KINGDOM"],
-			"requireAll":"False",
-			"exclusive":["REVOLUTION"],
-			"effect":["AP(25)"]
+			"id": "TRUST_MONARCHY",
+			"x": 4,
+			"y": 2,
+			"name": "Trust in the monarchy",
+			"desc": "Gives +25 <sprite=12>",
+			"required": [
+				"STATUS_KINGDOM"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"REVOLUTION"
+			],
+			"effect": [
+				"AP(25)"
+			]
 		},
-		
 		{
-			"id":"REINFORCE_MONARCHY",
-			"x":4,
-			"y":4,
-			"name":"Reinforce the monarchy",
-			"desc":"Gives +10<sprite=13>",
-			"required":["TRUST_MONARCHY"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["DP(10)"]
+			"id": "REINFORCE_MONARCHY",
+			"x": 4,
+			"y": 4,
+			"name": "Reinforce the monarchy",
+			"desc": "Gives +10<sprite=13>",
+			"required": [
+				"TRUST_MONARCHY"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"DP(10)"
+			]
 		},
-		
-		
 		{
-			"id":"REVOLUTION",
-			"x":6,
-			"y":2,
-			"name":"Revolution !",
-			"desc":"Gives -75 <sprite=12> & Change governement to republic",
-			"required":["STATUS_KINGDOM"],
-			"requireAll":"False",
-			"exclusive":["TRUST_MONARCHY"],
-			"effect":["AP(-75)","PARTYPOP(1,50)","SETGOVERNEMENT(0)"]
+			"id": "REVOLUTION",
+			"x": 6,
+			"y": 2,
+			"name": "Revolution !",
+			"desc": "Gives -75 <sprite=12> & Change governement to republic",
+			"required": [
+				"STATUS_KINGDOM"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"TRUST_MONARCHY"
+			],
+			"effect": [
+				"AP(-75)",
+				"PARTYPOP(1,50)",
+				"SETGOVERNEMENT(0)"
+			]
 		},
-		
 		{
-			"id":"COUNTER_REVOLUTION",
-			"x":5,
-			"y":3,
-			"name":"Counter Revolution",
-			"desc":"Gives -25 <sprite=12> & Change governement to fascism",
-			"required":["REVOLUTION"],
-			"requireAll":"False",
-			"exclusive":["TRUST_REPUBLIC","RED_LONDON"],
-			"effect":["AP(-25)","PARTYPOP(4,50)","SETGOVERNEMENT(9)"]
+			"id": "COUNTER_REVOLUTION",
+			"x": 5,
+			"y": 3,
+			"name": "Counter Revolution",
+			"desc": "Gives -25 <sprite=12> & Change governement to fascism",
+			"required": [
+				"REVOLUTION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"TRUST_REPUBLIC",
+				"RED_LONDON"
+			],
+			"effect": [
+				"AP(-25)",
+				"PARTYPOP(4,50)",
+				"SETGOVERNEMENT(9)"
+			]
 		},
-		
 		{
-			"id":"CREATE_PROPAGANDA",
-			"x":5,
-			"y":4,
-			"name":"Create Propaganda",
-			"desc":"Gives +5 <sprite=12> per turn",
-			"required":["COUNTER_REVOLUTION"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["APTURN(5)"]
+			"id": "CREATE_PROPAGANDA",
+			"x": 5,
+			"y": 4,
+			"name": "Create Propaganda",
+			"desc": "Gives +5 <sprite=12> per turn",
+			"required": [
+				"COUNTER_REVOLUTION"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"APTURN(5)"
+			]
 		},
-		
-		
 		{
-			"id":"TRUST_REPUBLIC",
-			"x":6,
-			"y":3,
-			"name":"Trust in the republic",
-			"desc":"Gives +50 <sprite=12>",
-			"required":["REVOLUTION"],
-			"requireAll":"False",
-			"exclusive":["COUNTER_REVOLUTION","RED_LONDON"],
-			"effect":["AP(50)"]
+			"id": "TRUST_REPUBLIC",
+			"x": 6,
+			"y": 3,
+			"name": "Trust in the republic",
+			"desc": "Gives +50 <sprite=12>",
+			"required": [
+				"REVOLUTION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"COUNTER_REVOLUTION",
+				"RED_LONDON"
+			],
+			"effect": [
+				"AP(50)"
+			]
 		},
-		
 		{
-			"id":"RED_LONDON",
-			"x":7,
-			"y":3,
-			"name":"Red London",
-			"desc":"Change governement to communism",
-			"required":["REVOLUTION"],
-			"requireAll":"False",
-			"exclusive":["COUNTER_REVOLUTION","TRUST_REPUBLIC"],
-			"effect":["PARTYPOP(0,50)","SETGOVERNEMENT(7)"]
+			"id": "RED_LONDON",
+			"x": 7,
+			"y": 3,
+			"name": "Red London",
+			"desc": "Change governement to communism",
+			"required": [
+				"REVOLUTION"
+			],
+			"requireAll": "False",
+			"exclusive": [
+				"COUNTER_REVOLUTION",
+				"TRUST_REPUBLIC"
+			],
+			"effect": [
+				"PARTYPOP(0,50)",
+				"SETGOVERNEMENT(7)"
+			]
 		},
-		
 		{
-			"id":"HANG_MONARCH",
-			"x":6,
-			"y":4,
-			"name":"Hang the monarch",
-			"desc":"Gives +25 <sprite=12> & Lose 5<sprite=13>",
-			"required":["RED_LONDON","TRUST_REPUBLIC"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["AP(25)","DP(5)"]
+			"id": "HANG_MONARCH",
+			"x": 6,
+			"y": 4,
+			"name": "Hang the monarch",
+			"desc": "Gives +25 <sprite=12> & Lose 5<sprite=13>",
+			"required": [
+				"RED_LONDON",
+				"TRUST_REPUBLIC"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"AP(25)",
+				"DP(5)"
+			]
 		},
-		
 		{
-			"id":"STABILIZE_COUNTRY",
-			"x":5,
-			"y":5,
-			"name":"Stabilize the country",
-			"desc":"Gives +2 <sprite=13> per turn",
-			"required":["REINFORCE_MONARCHY","CREATE_PROPAGANDA","HANG_MONARCH"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["DPBONUS(2)"]
+			"id": "STABILIZE_COUNTRY",
+			"x": 5,
+			"y": 5,
+			"name": "Stabilize the country",
+			"desc": "Gives +2 <sprite=13> per turn",
+			"required": [
+				"REINFORCE_MONARCHY",
+				"CREATE_PROPAGANDA",
+				"HANG_MONARCH"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"DPBONUS(2)"
+			]
 		},
-		
 		{
-			"id":"READY_WAR",
-			"x":3,
-			"y":7,
-			"name":"Ready for War !",
-			"desc":"Gives +5 <sprite=12> per turn",
-			"required":["STABILIZE_COUNTRY","FINISH_REFORMS"],
-			"requireAll":"True",
-			"exclusive":[],
-			"effect":["APTURN(5)"]
+			"id": "READY_WAR",
+			"x": 3,
+			"y": 7,
+			"name": "Ready for War !",
+			"desc": "Gives +5 <sprite=12> per turn",
+			"required": [
+				"STABILIZE_COUNTRY",
+				"FINISH_REFORMS"
+			],
+			"requireAll": "True",
+			"exclusive": [],
+			"effect": [
+				"APTURN(5)"
+			]
 		},
-		
-		
 		{
-			"id":"REFORM_ARMY",
-			"x":9,
-			"y":1,
-			"name":"Reform the army",
-			"desc":"Gives +5 <sprite=14>",
-			"required":["STATUS_KINGDOM"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["MILCAP(25)"]
+			"id": "REFORM_ARMY",
+			"x": 9,
+			"y": 1,
+			"name": "Reform the army",
+			"desc": "Gives +5 <sprite=14>",
+			"required": [
+				"STATUS_KINGDOM"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"MILCAP(25)"
+			]
 		},
-		
 		{
-			"id":"BEACH_LANDINGS",
-			"x":9,
-			"y":2,
-			"name":"Beach Landings",
-			"desc":"Enable naval crafts",
-			"required":["REFORM_ARMY"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["ENABLE_NAVAL(true)"]
+			"id": "BEACH_LANDINGS",
+			"x": 9,
+			"y": 2,
+			"name": "Beach Landings",
+			"desc": "Enable naval crafts",
+			"required": [
+				"REFORM_ARMY"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"ENABLE_NAVAL(true)"
+			]
 		},
-		
 		{
-			"id":"NAVAL_EXERCICES",
-			"x":9,
-			"y":3,
-			"name":"Naval Exercices",
-			"desc":"Gives a 40% atk. boost on sea",
-			"required":["BEACH_LANDINGS"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["NAVALBOOST(40)"]
+			"id": "NAVAL_EXERCICES",
+			"x": 9,
+			"y": 3,
+			"name": "Naval Exercices",
+			"desc": "Gives a 40% atk. boost on sea",
+			"required": [
+				"BEACH_LANDINGS"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"NAVALBOOST(40)"
+			]
 		},
-		
-		
-		
 		{
-			"id":"OFFENSIVE_EXERCICE",
-			"x":10,
-			"y":2,
-			"name":"Offensive Exercice",
-			"desc":"Gives +60% attack to units",
-			"required":["REFORM_ARMY"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["ATTACK(6)"]
+			"id": "OFFENSIVE_EXERCICE",
+			"x": 10,
+			"y": 2,
+			"name": "Offensive Exercice",
+			"desc": "Gives +60% attack to units",
+			"required": [
+				"REFORM_ARMY"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"ATTACK(6)"
+			]
 		},
-		
 		{
-			"id":"DEFENSIVE_EXERCICE",
-			"x":10,
-			"y":3,
-			"name":"Defensive Exercice",
-			"desc":"Gives +80HP to all units",
-			"required":["OFFENSIVE_EXERCICE"],
-			"requireAll":"False",
-			"exclusive":[],
-			"effect":["HP(80)"]
+			"id": "DEFENSIVE_EXERCICE",
+			"x": 10,
+			"y": 3,
+			"name": "Defensive Exercice",
+			"desc": "Gives +80HP to all units",
+			"required": [
+				"OFFENSIVE_EXERCICE"
+			],
+			"requireAll": "False",
+			"exclusive": [],
+			"effect": [
+				"HP(80)"
+			]
 		}
 	]
-
 }

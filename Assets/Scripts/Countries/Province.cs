@@ -8,7 +8,7 @@ public class Province : MonoBehaviour
     public Pays controller = null;
     public Pays owner = null;
     public string Province_Name;
-    public string id;
+    public int id;
 
 
     private CanvasWorker canvas;

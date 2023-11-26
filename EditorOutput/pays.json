@@ -3,7 +3,7 @@
 		{
 			"id":"SCO",
 			"name":"Scotland",
-			"culture":"British",
+			"culture":"Generic",
 			"color":[37, 182, 204],
 			"secretNation":"False"
 		},
@@ -38,7 +38,7 @@
 		{
 			"id":"PRS",
 			"name":"Prussia",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[96, 96, 96],
 			"secretNation":"False"
 		},
@@ -80,7 +80,7 @@
 		{
 			"id":"HES",
 			"name":"Hesse",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[185, 89, 13],
 			"secretNation":"False"
 		},
@@ -101,7 +101,7 @@
 		{
 			"id":"HAN",
 			"name":"Hanover",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[185, 153, 13],
 			"secretNation":"False"
 		},
@@ -115,7 +115,7 @@
 		{
 			"id":"RIE",
 			"name":"Rheinland",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[41, 159, 95],
 			"secretNation":"False"
 		},
@@ -143,28 +143,28 @@
 		{
 			"id":"WLS",
 			"name":"Wales",
-			"culture":"British",
+			"culture":"Generic",
 			"color":[24, 192, 51],
 			"secretNation":"False"
 		},
 		{
 			"id":"UKR",
 			"name":"Ukraine",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[190, 212, 123],
 			"secretNation":"False"
 		},
 		{
 			"id":"KAZ",
 			"name":"Kazakhstan",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[79, 172, 197],
 			"secretNation":"False"
 		},
 		{
 			"id":"LIT",
 			"name":"Lithuania",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[64, 173, 121],
 			"secretNation":"False"
 		},
@@ -178,7 +178,7 @@
 		{
 			"id":"CZE",
 			"name":"Czechia",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[47, 121, 154],
 			"secretNation":"False"
 		},
@@ -192,7 +192,7 @@
 		{
 			"id":"HOL",
 			"name":"Netherlands",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[212, 163, 49],
 			"secretNation":"False"
 		},
@@ -220,14 +220,14 @@
 		{
 			"id":"IRE",
 			"name":"Ireland",
-			"culture":"British",
+			"culture":"Generic",
 			"color":[37, 204, 54],
 			"secretNation":"False"
 		},
 		{
 			"id":"AZE",
 			"name":"Azerbaidjan",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[133, 192, 115],
 			"secretNation":"False"
 		},
@@ -255,21 +255,21 @@
 		{
 			"id":"BRI",
 			"name":"Britany",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[140, 174, 176],
 			"secretNation":"False"
 		},
 		{
 			"id":"BEL",
 			"name":"Belgium",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[214, 221, 43],
 			"secretNation":"False"
 		},
 		{
 			"id":"GEO",
 			"name":"Georgia",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[183, 116, 94],
 			"secretNation":"False"
 		},
@@ -339,63 +339,63 @@
 		{
 			"id":"EST",
 			"name":"Estonia",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[30, 180, 173],
 			"secretNation":"False"
 		},
 		{
 			"id":"BAV",
 			"name":"Bavaria",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[93, 108, 176],
 			"secretNation":"False"
 		},
 		{
 			"id":"SWI",
 			"name":"Switzerland",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[212, 43, 23],
 			"secretNation":"False"
 		},
 		{
 			"id":"ARM",
 			"name":"Armenia",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[204, 165, 122],
 			"secretNation":"False"
 		},
 		{
 			"id":"ENG",
 			"name":"England",
-			"culture":"British",
+			"culture":"Generic",
 			"color":[173, 21, 19],
 			"secretNation":"False"
 		},
 		{
 			"id":"LAT",
 			"name":"Latvia",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[197, 45, 66],
 			"secretNation":"False"
 		},
 		{
 			"id":"ELS",
 			"name":"Alsace",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[202, 35, 115],
 			"secretNation":"False"
 		},
 		{
 			"id":"FLA",
 			"name":"Flanders",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[188, 142, 45],
 			"secretNation":"False"
 		},
 		{
 			"id":"LUX",
 			"name":"Luxemburg",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[61, 167, 178],
 			"secretNation":"False"
 		},
@@ -409,14 +409,14 @@
 		{
 			"id":"SIB",
 			"name":"Siberia",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[20, 173, 12],
 			"secretNation":"False"
 		},
 		{
 			"id":"OCC",
 			"name":"Occitania",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[236, 166, 30],
 			"secretNation":"False"
 		},
@@ -465,7 +465,7 @@
 		{
 			"id":"AUS",
 			"name":"Austria",
-			"culture":"German",
+			"culture":"Generic",
 			"color":[164, 112, 112],
 			"secretNation":"False"
 		},
@@ -514,7 +514,7 @@
 		{
 			"id":"BLR",
 			"name":"Belarus",
-			"culture":"Russian",
+			"culture":"Generic",
 			"color":[177, 236, 197],
 			"secretNation":"False"
 		},
@@ -556,7 +556,7 @@
 		{
 			"id":"WAL",
 			"name":"Wallonia",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[173, 183, 18],
 			"secretNation":"False"
 		},
@@ -584,7 +584,7 @@
 		{
 			"id":"NRM",
 			"name":"Normandy",
-			"culture":"French",
+			"culture":"Generic",
 			"color":[236, 92, 30],
 			"secretNation":"False"
 		},

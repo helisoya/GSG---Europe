@@ -7,8 +7,8 @@ import os
 import io
 from PIL import Image, ImageTk
 
-from shapely.ops import unary_union
-from shapely.geometry import Polygon
+
+focus = {}
 
 D_Points = {}
 D_Provinces = {}
@@ -159,6 +159,15 @@ canvasmap.bind("<B1-Motion>", move_move)
 
 # -------------------- Fonctions Chargement Dictionaires -------------------------
 
+def LoadJSON(text):
+    global focus
+
+    with io.open("Assets/Resources/JSON/Focuses/"+text+".json","r",encoding="utf8") as jsonp_file:
+        focus = eval(jsonp_file.read())
+    
+
+
+
 def SaveJSON():
     global D_Points,D_Provinces,D_Pays,D_Drapeaux,D_Formables
 
@@ -171,7 +180,7 @@ def SaveJSON():
         jsonp_file.write("{\n\t\"points\":[\n")
         i = 1
         for point in D_Points:
-            jsonp_file.write("\t\t{\"id\": "+str(point)+",\"x\":"+str(D_Points[point][0])+",\"y\":0.2,\"z\":"+str(-D_Points[point][1])+"}")
+            jsonp_file.write("\t\t{\"name\":\""+point+"\",\"x\":"+str(D_Points[point][0])+",\"y\":0.2,\"z\":"+str(-D_Points[point][1])+"}")
 
             if i != len(D_Points):
                 jsonp_file.write(",")
@@ -187,12 +196,12 @@ def SaveJSON():
         j = 1
         for province in D_Provinces:
             jsonp_file.write("\t\t{\n")
-            jsonp_file.write("\t\t\t\"id\":"+str(province[1:])+",\n")
+            jsonp_file.write("\t\t\t\"id\":\""+province[1:]+"\",\n")
             jsonp_file.write("\t\t\t\"name\":\""+D_Provinces[province]["name"]+"\",\n")
 
             jsonp_file.write("\t\t\t\"adjacencies\":[\n")
             for i in range(len(D_Provinces[province]["adjacencies"])):
-                jsonp_file.write("\t\t\t\t"+str(D_Provinces[province]["adjacencies"][i][1:]))
+                jsonp_file.write("\t\t\t\t\""+str(D_Provinces[province]["adjacencies"][i][1:])+"\"")
                 if i != len(D_Provinces[province]["adjacencies"])-1:
                     jsonp_file.write(",")
                 jsonp_file.write("\n")
@@ -200,7 +209,7 @@ def SaveJSON():
             
             jsonp_file.write("\t\t\t\"vertices\":[\n")
             for i in range(len(D_Provinces[province]["points"])):
-                jsonp_file.write("\t\t\t\t"+str(D_Provinces[province]["points"][i]))
+                jsonp_file.write("\t\t\t\t\""+str(D_Provinces[province]["points"][i])+"\"")
                 if i != len(D_Provinces[province]["points"])-1:
                     jsonp_file.write(",")
                 jsonp_file.write("\n")
@@ -256,7 +265,7 @@ def SaveJSON():
 
             jsonp_file.write("\t\t\t\"provinces\":[\n")
             for i in range(len(D_Pays[pays]["provinces"])):
-                jsonp_file.write("\t\t\t\t"+str(D_Pays[pays]["provinces"][i][1:]))
+                jsonp_file.write("\t\t\t\t\""+str(D_Pays[pays]["provinces"][i][1:])+"\"")
                 if i != len(D_Pays[pays]["provinces"])-1:
                     jsonp_file.write(",")
                 jsonp_file.write("\n")
@@ -264,7 +273,7 @@ def SaveJSON():
 
             jsonp_file.write("\t\t\t\"cores\":[\n")
             for i in range(len(D_Pays[pays]["cores"])):
-                jsonp_file.write("\t\t\t\t"+str(D_Pays[pays]["cores"][i][1:]))
+                jsonp_file.write("\t\t\t\t\""+str(D_Pays[pays]["cores"][i][1:])+"\"")
                 if i != len(D_Pays[pays]["cores"])-1:
                     jsonp_file.write(",")
                 jsonp_file.write("\n")
@@ -298,7 +307,7 @@ def SaveJSON():
 
             jsonp_file.write("\t\t\t\"required\":[\n")
             for i in range(len(D_Formables[pays]["required"])):
-                jsonp_file.write("\t\t\t\t"+str(D_Formables[pays]["required"][i][1:]))
+                jsonp_file.write("\t\t\t\t\""+str(D_Formables[pays]["required"][i][1:])+"\"")
                 if i != len(D_Formables[pays]["required"])-1:
                     jsonp_file.write(",")
                 jsonp_file.write("\n")
@@ -317,22 +326,21 @@ def LoadJSONs():
     with io.open("Assets/Resources/JSON/points.json","r",encoding="utf8") as jsonp_file:
         json = eval(jsonp_file.read())["points"]
         for point in json:
-            D_Points[point["id"]] = [point["x"],-point["z"]]
+            D_Points[point["name"]] = [point["x"],-point["z"]]
         
     with io.open("Assets/Resources/JSON/provinces.json","r",encoding="utf8") as jsonp_file:
         json = eval(jsonp_file.read())["provinces"]
         
         for province in json:
-            idProvTemp = "p" + str(province["id"])
-            D_Provinces[idProvTemp] = {}
-            D_Provinces[idProvTemp]["name"] = province["name"]
-            D_Provinces[idProvTemp]["owner"] = "000"
-            D_Provinces[idProvTemp]["points"] = province["vertices"]
-            D_Provinces[idProvTemp]["adjacencies"] = ["p"+str(adjacent) for adjacent in province["adjacencies"]]
+            D_Provinces["p"+province["id"]] = {}
+            D_Provinces["p"+province["id"]]["name"] = province["name"]
+            D_Provinces["p"+province["id"]]["owner"] = "000"
+            D_Provinces["p"+province["id"]]["points"] = province["vertices"]
+            D_Provinces["p"+province["id"]]["adjacencies"] = ["p"+adjacent for adjacent in province["adjacencies"]]
             listPoints = [D_Points[point] for point in province["vertices"]] 
-            canvasmap.create_polygon(listPoints, outline='black',fill="gray", width=1,tags=idProvTemp)
-            canvasmap.tag_bind(idProvTemp,"<Button-3>",RightClick)
-            canvasmap.tag_bind(idProvTemp,"<Button-1>",LeftClick)
+            canvasmap.create_polygon(listPoints, outline='black',fill="gray", width=1,tags="p"+province["id"])
+            canvasmap.tag_bind("p"+province["id"],"<Button-3>",RightClick)
+            canvasmap.tag_bind("p"+province["id"],"<Button-1>",LeftClick)
 
 
     with io.open("Assets/Resources/JSON/pays.json","r",encoding="utf8") as jsonp_file:
@@ -349,12 +357,12 @@ def LoadJSONs():
         for pays in json:
             D_Pays[pays["id"]]["governement"] = pays["governement"]
             D_Pays[pays["id"]]["parties"] = pays["parties"]
-            D_Pays[pays["id"]]["provinces"] = ["p"+str(province) for province in pays["provinces"]]
-            D_Pays[pays["id"]]["cores"] = ["p"+str(core) for core in pays["cores"]]
+            D_Pays[pays["id"]]["provinces"] = ["p"+province for province in pays["provinces"]]
+            D_Pays[pays["id"]]["cores"] = ["p"+core for core in pays["cores"]]
 
             for i in range(len(pays["provinces"])):
-                D_Provinces["p"+str(pays["provinces"][i])]["owner"] = pays["id"]
-                canvasmap.itemconfigure("p"+str(pays["provinces"][i]),fill='#%02x%02x%02x' % tuple(D_Pays[pays["id"]]["color"]))
+                D_Provinces["p"+pays["provinces"][i]]["owner"] = pays["id"]
+                canvasmap.itemconfigure("p"+pays["provinces"][i],fill='#%02x%02x%02x' % tuple(D_Pays[pays["id"]]["color"]))
 
     with io.open("Assets/Resources/JSON/formables.json","r",encoding="utf8") as jsonp_file:
         json = eval(jsonp_file.read())["formables"]
@@ -362,7 +370,7 @@ def LoadJSONs():
             D_Formables[formable["id"]] = {}
             D_Formables[formable["id"]]["name"] = formable["name"]
             D_Formables[formable["id"]]["contestants"] = formable["contestants"]
-            D_Formables[formable["id"]]["required"] = ["p"+str(province) for province in formable["required"]]
+            D_Formables[formable["id"]]["required"] = ["p"+province for province in formable["required"]]
 
 
     for Pays in D_Pays:

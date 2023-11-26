@@ -201,7 +201,7 @@ public class Pays
                     case "ANNEXPROVINCE":
                         string[] splited = effect[1].Split(",");
                         Pays p1 = manager.GetCountry(splited[0]);
-                        Province prov1 = manager.GetProvince(splited[1]);
+                        Province prov1 = manager.GetProvince(int.Parse(splited[1]));
                         prov1.owner.RemoveProvince(prov1);
                         p1.AddProvince(prov1);
                         break;

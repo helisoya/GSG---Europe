@@ -167,7 +167,12 @@ public class Selection : MonoBehaviour
                     Vector3 pos = new Vector3(hit.point.x, 0.3f, hit.point.z);
                     foreach (GameObject unit in Manager.instance.selected_unit)
                     {
-                        unit.GetComponent<Unit>().target = pos;
+                        if (unit != null)
+                        {
+                            Vector3 aroundPos = Random.insideUnitSphere * 5;
+                            aroundPos.y = 0;
+                            unit.GetComponent<Unit>().target = pos + aroundPos;
+                        }
                     }
                 }
             }

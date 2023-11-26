@@ -7,7 +7,7 @@ using Leguar.TotalJSON;
 public class Parser : MonoBehaviour
 {
 
-    public static Dictionary<string, Vector3> ParsePoints()
+    public static Dictionary<int, Vector3> ParsePoints()
     {
 
         string json = Resources.Load<TextAsset>("JSON/points").text;
@@ -15,26 +15,26 @@ public class Parser : MonoBehaviour
         JSON obj = JSON.ParseString(json);
 
         JArray array = obj.GetJArray("points");
-        Dictionary<string, Vector3> list = new Dictionary<string, Vector3>();
+        Dictionary<int, Vector3> list = new Dictionary<int, Vector3>();
 
         for (int i = 0; i < array.Length; i++)
         {
             JSON vec = array.GetJSON(i);
-            list.Add(vec.GetString("name"), new Vector3(vec.GetFloat("x"), vec.GetFloat("y"), vec.GetFloat("z")));
+            list.Add(vec.GetInt("id"), new Vector3(vec.GetFloat("x"), vec.GetFloat("y"), vec.GetFloat("z")));
         }
         return list;
     }
 
 
-    public static Dictionary<string, Province> ParseProvinces()
+    public static Dictionary<int, Province> ParseProvinces()
     {
-        Dictionary<string, Vector3> points = ParsePoints();
+        Dictionary<int, Vector3> points = ParsePoints();
 
         string json = Resources.Load<TextAsset>("JSON/provinces").text;
 
         JSON obj = JSON.ParseString(json);
 
-        Dictionary<string, Province> list = new Dictionary<string, Province>();
+        Dictionary<int, Province> list = new Dictionary<int, Province>();
 
         JArray array = obj.GetJArray("provinces");
         JArray arrayVertices;
@@ -47,14 +47,14 @@ public class Parser : MonoBehaviour
             province = Instantiate(Manager.instance.prefabProvince, Manager.instance.provinceParent).GetComponent<Province>();
             province.gameObject.name = jsonProv.GetString("name");
             province.Province_Name = jsonProv.GetString("name");
-            province.id = jsonProv.GetString("id");
+            province.id = jsonProv.GetInt("id");
             arrayVertices = jsonProv.GetJArray("vertices");
 
             vecs = new Vector3[arrayVertices.Length];
 
             for (int j = 0; j < arrayVertices.Length; j++)
             {
-                vecs[j] = points[arrayVertices.GetString(j)];
+                vecs[j] = points[arrayVertices.GetInt(j)];
             }
             province.Init(vecs);
             list.Add(province.id, province);
@@ -64,19 +64,19 @@ public class Parser : MonoBehaviour
         {
             jsonProv = array.GetJSON(i);
 
-            string id = jsonProv.GetString("id");
+            int id = jsonProv.GetInt("id");
 
             arrayVertices = jsonProv.GetJArray("adjacencies");
             list[id].adjacencies = new Province[arrayVertices.Length];
 
             for (int j = 0; j < arrayVertices.Length; j++)
             {
-                if (!list.ContainsKey(arrayVertices.GetString(j)))
+                if (!list.ContainsKey(arrayVertices.GetInt(j)))
                 {
                     print("Error : " + arrayVertices.GetString(j));
                     continue;
                 }
-                list[id].adjacencies[j] = list[arrayVertices.GetString(j)];
+                list[id].adjacencies[j] = list[arrayVertices.GetInt(j)];
             }
         }
 
@@ -212,7 +212,7 @@ public class Parser : MonoBehaviour
         return list;
     }
 
-    public static void ParseHistory(Dictionary<string, Province> allProvinces, Dictionary<string, Pays> allCountries, string fileName)
+    public static void ParseHistory(Dictionary<int, Province> allProvinces, Dictionary<string, Pays> allCountries, string fileName)
     {
 
         string json = Resources.Load<TextAsset>("JSON/" + fileName).text;
@@ -242,14 +242,14 @@ public class Parser : MonoBehaviour
             pays.provinces = new List<Province>();
             for (int j = 0; j < arrayProvinces.Length; j++)
             {
-                pays.AddProvince(allProvinces[arrayProvinces.GetString(j)], false);
+                pays.AddProvince(allProvinces[arrayProvinces.GetInt(j)], false);
             }
 
             arrayProvinces = jsonPays.GetJArray("cores");
             pays.cores = new List<Province>();
             for (int j = 0; j < arrayProvinces.Length; j++)
             {
-                pays.cores.Add(allProvinces[arrayProvinces.GetString(j)]);
+                pays.cores.Add(allProvinces[arrayProvinces.GetInt(j)]);
             }
             pays.Reset_Flag();
             pays.Reset_Elections();
@@ -261,7 +261,7 @@ public class Parser : MonoBehaviour
         }
     }
 
-    public static List<FormableNation> ParseFormables(Dictionary<string, Province> allProvinces)
+    public static List<FormableNation> ParseFormables(Dictionary<int, Province> allProvinces)
     {
 
         string json = Resources.Load<TextAsset>("JSON/formables").text;
@@ -292,7 +292,7 @@ public class Parser : MonoBehaviour
             formable.required = new List<Province>();
             for (int j = 0; j < arrayRequired.Length; j++)
             {
-                formable.required.Add(allProvinces[arrayRequired.GetString(j)]);
+                formable.required.Add(allProvinces[arrayRequired.GetInt(j)]);
             }
 
             list.Add(formable);
