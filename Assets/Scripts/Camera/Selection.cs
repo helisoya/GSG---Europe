@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Selection : MonoBehaviour
@@ -73,7 +74,7 @@ public class Selection : MonoBehaviour
                         {
                             if (unit != null)
                             {
-                                unit.GetComponent<Unit>().selected_bar.SetActive(false);
+                                unit.GetComponent<Unit>().SetSelectedBarActive(false);
                             }
                         }
 
@@ -102,7 +103,7 @@ public class Selection : MonoBehaviour
                         {
                             if (unit != null)
                             {
-                                unit.GetComponent<Unit>().selected_bar.SetActive(false);
+                                unit.GetComponent<Unit>().SetSelectedBarActive(false);
                             }
                         }
 
@@ -125,7 +126,7 @@ public class Selection : MonoBehaviour
                     {
                         if (unit != null)
                         {
-                            unit.GetComponent<Unit>().selected_bar.SetActive(false);
+                            unit.GetComponent<Unit>().SetSelectedBarActive(false);
                         }
                     }
 
@@ -162,16 +163,15 @@ public class Selection : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (Manager.instance.selected_unit != null)
+                Province prov = hit.transform.GetComponent<Province>();
+
+                if (prov != null && Manager.instance.selected_unit != null)
                 {
-                    Vector3 pos = new Vector3(hit.point.x, 0.3f, hit.point.z);
                     foreach (GameObject unit in Manager.instance.selected_unit)
                     {
                         if (unit != null)
                         {
-                            Vector3 aroundPos = Random.insideUnitSphere * 5;
-                            aroundPos.y = 0;
-                            unit.GetComponent<Unit>().target = pos + aroundPos;
+                            unit.GetComponent<Unit>().SetNewTarget(prov);
                         }
                     }
                 }

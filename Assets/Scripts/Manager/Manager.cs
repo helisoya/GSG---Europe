@@ -43,6 +43,14 @@ public class Manager : MonoBehaviour
     public Dictionary<string, GameEvent> events;
     public GameObject prefabRailroad;
     private Dictionary<string, Railroad> railroads;
+    private Graph m_graph;
+    public Graph movementGraph
+    {
+        get
+        {
+            return m_graph;
+        }
+    }
 
     [Header("Parser")]
     public GameObject prefabProvince;
@@ -99,6 +107,11 @@ public class Manager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         provinces = Parser.ParseProvinces();
         railroads = new Dictionary<string, Railroad>();
+        m_graph = new Graph();
+        foreach (Province prov in provinces.Values)
+        {
+            m_graph.nodes.Add(prov);
+        }
 
         loadingImg.fillAmount = 1f / 7f;
         loadingText.text = "Loading Focus";

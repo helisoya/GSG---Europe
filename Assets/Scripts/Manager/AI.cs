@@ -142,22 +142,20 @@ public class AI : MonoBehaviour
         }
     }
 
-    Vector3 GetRandomPosInsideCountry(Pays country)
+    Province GetRandomPosInsideCountry(Pays country)
     {
-        Vector3 pos = country.provinces[Random.Range(0, country.provinces.Count)].center;
-        pos.y = 0.3f;
-        return pos;
+        return country.provinces[Random.Range(0, country.provinces.Count)];
     }
 
     void UnitMovement(Pays country)
     {
         foreach (Unit unit in country.units)
         {
-            if (unit.target == unit.transform.position)
+            if (unit.StandBy())
             {
                 if (Random.Range(0, 50) == 0 && country.provinces.Count != 0)
                 {
-                    unit.target = GetRandomPosInsideCountry(country);
+                    unit.SetNewTarget(GetRandomPosInsideCountry(country));
                 }
                 else if (Random.Range(0, 30) == 0 && country.atWarWith.Count != 0)
                 {
@@ -168,7 +166,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        unit.target = GetRandomPosInsideCountry(p);
+                        unit.SetNewTarget(GetRandomPosInsideCountry(p));
                     }
 
                 }

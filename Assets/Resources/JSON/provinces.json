@@ -3,6 +3,7 @@
 		{
 			"id":2,
 			"name":"Banat",
+			"type":"NORMAL",
 			"adjacencies":[
 				102,
 				40,
@@ -30,6 +31,7 @@
 		{
 			"id":6,
 			"name":"Khmelnytskyi",
+			"type":"NORMAL",
 			"adjacencies":[
 				58,
 				301,
@@ -57,6 +59,7 @@
 		{
 			"id":7,
 			"name":"Rheinland",
+			"type":"NORMAL",
 			"adjacencies":[
 				130,
 				47,
@@ -96,12 +99,15 @@
 		{
 			"id":10,
 			"name":"Bafra",
+			"type":"COSTAL",
 			"adjacencies":[
 				168,
 				115,
 				10,
 				116,
-				443
+				443,
+				519,
+				518
 			],
 			"vertices":[
 				2596,
@@ -126,6 +132,7 @@
 		{
 			"id":14,
 			"name":"Mantua",
+			"type":"NORMAL",
 			"adjacencies":[
 				14,
 				39,
@@ -156,6 +163,7 @@
 		{
 			"id":16,
 			"name":"Argyll",
+			"type":"COSTAL",
 			"adjacencies":[
 				105,
 				16,
@@ -201,6 +209,7 @@
 		{
 			"id":17,
 			"name":"London",
+			"type":"COSTAL",
 			"adjacencies":[
 				101,
 				17,
@@ -229,6 +238,7 @@
 		{
 			"id":20,
 			"name":"Allier",
+			"type":"NORMAL",
 			"adjacencies":[
 				290,
 				382,
@@ -258,7 +268,11 @@
 		{
 			"id":21,
 			"name":"Baleares",
+			"type":"COSTAL",
 			"adjacencies":[
+				503,
+				504,
+				502
 			],
 			"vertices":[
 				870,
@@ -272,6 +286,7 @@
 		{
 			"id":23,
 			"name":"Goubkine",
+			"type":"NORMAL",
 			"adjacencies":[
 				212,
 				38,
@@ -293,6 +308,7 @@
 		{
 			"id":24,
 			"name":"Munster",
+			"type":"COSTAL",
 			"adjacencies":[
 				80,
 				376,
@@ -332,8 +348,13 @@
 		{
 			"id":26,
 			"name":"Cagliari",
+			"type":"COSTAL",
 			"adjacencies":[
-				26
+				507,
+				503,
+				504,
+				505,
+				506
 			],
 			"vertices":[
 				1080,
@@ -357,6 +378,7 @@
 		{
 			"id":28,
 			"name":"Ostrobotnia-North",
+			"type":"COSTAL",
 			"adjacencies":[
 				61,
 				474,
@@ -388,6 +410,7 @@
 		{
 			"id":30,
 			"name":"Tbilissi ",
+			"type":"NORMAL",
 			"adjacencies":[
 				238,
 				407,
@@ -415,6 +438,7 @@
 		{
 			"id":32,
 			"name":"Thuringe",
+			"type":"NORMAL",
 			"adjacencies":[
 				373,
 				446,
@@ -436,6 +460,7 @@
 		{
 			"id":34,
 			"name":"Silesia",
+			"type":"NORMAL",
 			"adjacencies":[
 				373,
 				390,
@@ -471,6 +496,7 @@
 		{
 			"id":38,
 			"name":"Briansk",
+			"type":"NORMAL",
 			"adjacencies":[
 				206,
 				324,
@@ -510,6 +536,7 @@
 		{
 			"id":39,
 			"name":"Grisons",
+			"type":"NORMAL",
 			"adjacencies":[
 				167,
 				262,
@@ -537,6 +564,7 @@
 		{
 			"id":40,
 			"name":"Nisava",
+			"type":"NORMAL",
 			"adjacencies":[
 				259,
 				173,
@@ -572,6 +600,7 @@
 		{
 			"id":42,
 			"name":"Lappeenranta",
+			"type":"COSTAL",
 			"adjacencies":[
 				62,
 				396,
@@ -601,11 +630,13 @@
 		{
 			"id":43,
 			"name":"Montenegro",
+			"type":"COSTAL",
 			"adjacencies":[
 				453,
 				351,
 				455,
-				344
+				344,
+				510
 			],
 			"vertices":[
 				1270,
@@ -626,13 +657,15 @@
 		{
 			"id":44,
 			"name":"Bourgas",
+			"type":"COSTAL",
 			"adjacencies":[
 				169,
 				187,
 				255,
 				173,
 				259,
-				408
+				408,
+				518
 			],
 			"vertices":[
 				1414,
@@ -650,6 +683,7 @@
 		{
 			"id":45,
 			"name":"Brabant",
+			"type":"COSTAL",
 			"adjacencies":[
 				155,
 				7,
@@ -688,6 +722,7 @@
 		{
 			"id":46,
 			"name":"Salzbourg",
+			"type":"NORMAL",
 			"adjacencies":[
 				316,
 				123,
@@ -723,6 +758,7 @@
 		{
 			"id":47,
 			"name":"Luxembourg",
+			"type":"NORMAL",
 			"adjacencies":[
 				7,
 				322,
@@ -744,6 +780,7 @@
 		{
 			"id":48,
 			"name":"Finnmark",
+			"type":"COSTAL",
 			"adjacencies":[
 				419,
 				221,
@@ -776,12 +813,14 @@
 		{
 			"id":51,
 			"name":"Shaki",
+			"type":"COSTAL",
 			"adjacencies":[
 				407,
 				30,
 				51,
 				185,
-				120
+				120,
+				521
 			],
 			"vertices":[
 				2313,
@@ -820,6 +859,7 @@
 		{
 			"id":53,
 			"name":"Talinn",
+			"type":"COSTAL",
 			"adjacencies":[
 				234,
 				189,
@@ -852,6 +892,7 @@
 		{
 			"id":56,
 			"name":"Batman",
+			"type":"NORMAL",
 			"adjacencies":[
 				443,
 				295,
@@ -886,12 +927,14 @@
 		{
 			"id":57,
 			"name":"Burli",
+			"type":"COSTAL",
 			"adjacencies":[
 				286,
 				477,
 				89,
 				72,
-				57
+				57,
+				521
 			],
 			"vertices":[
 				2280,
@@ -921,6 +964,7 @@
 		{
 			"id":58,
 			"name":"Tchernivtsi",
+			"type":"NORMAL",
 			"adjacencies":[
 				228,
 				325,
@@ -943,6 +987,7 @@
 		{
 			"id":60,
 			"name":"Ardennes",
+			"type":"NORMAL",
 			"adjacencies":[
 				284,
 				322,
@@ -972,6 +1017,7 @@
 		{
 			"id":61,
 			"name":"Cajanie",
+			"type":"NORMAL",
 			"adjacencies":[
 				28,
 				421,
@@ -1002,6 +1048,7 @@
 		{
 			"id":62,
 			"name":"Leningrad",
+			"type":"COSTAL",
 			"adjacencies":[
 				189,
 				42,
@@ -1029,6 +1076,7 @@
 		{
 			"id":64,
 			"name":"Tolva",
+			"type":"NORMAL",
 			"adjacencies":[
 				421,
 				474,
@@ -1057,6 +1105,7 @@
 		{
 			"id":67,
 			"name":"Pskov",
+			"type":"NORMAL",
 			"adjacencies":[
 				484,
 				324,
@@ -1088,6 +1137,7 @@
 		{
 			"id":68,
 			"name":"Oster Gotland",
+			"type":"COSTAL",
 			"adjacencies":[
 				110,
 				68,
@@ -1119,6 +1169,7 @@
 		{
 			"id":69,
 			"name":"Pyrenées",
+			"type":"COSTAL",
 			"adjacencies":[
 				71,
 				160,
@@ -1157,6 +1208,7 @@
 		{
 			"id":71,
 			"name":"Navarre",
+			"type":"COSTAL",
 			"adjacencies":[
 				69,
 				268,
@@ -1193,11 +1245,13 @@
 		{
 			"id":72,
 			"name":"Berezino",
+			"type":"COSTAL",
 			"adjacencies":[
 				478,
 				57,
 				286,
-				72
+				72,
+				521
 			],
 			"vertices":[
 				2403,
@@ -1222,13 +1276,15 @@
 		{
 			"id":77,
 			"name":"Homs",
+			"type":"COSTAL",
 			"adjacencies":[
 				381,
 				476,
 				135,
 				128,
 				77,
-				431
+				431,
+				515
 			],
 			"vertices":[
 				2635,
@@ -1252,6 +1308,7 @@
 		{
 			"id":80,
 			"name":"Dublin",
+			"type":"COSTAL",
 			"adjacencies":[
 				24,
 				360,
@@ -1288,6 +1345,7 @@
 		{
 			"id":81,
 			"name":"Bereznik ",
+			"type":"NORMAL",
 			"adjacencies":[
 				495,
 				374,
@@ -1307,9 +1365,11 @@
 		{
 			"id":84,
 			"name":"Oujda",
+			"type":"COSTAL",
 			"adjacencies":[
 				297,
-				350
+				350,
+				502
 			],
 			"vertices":[
 				2715,
@@ -1326,6 +1386,7 @@
 		{
 			"id":85,
 			"name":"Jutland",
+			"type":"COSTAL",
 			"adjacencies":[
 				501,
 				85
@@ -1358,13 +1419,15 @@
 		{
 			"id":87,
 			"name":"Mutenia",
+			"type":"COSTAL",
 			"adjacencies":[
 				174,
 				486,
 				228,
 				255,
 				87,
-				457
+				457,
+				518
 			],
 			"vertices":[
 				1453,
@@ -1392,6 +1455,7 @@
 		{
 			"id":88,
 			"name":"Sampi-South",
+			"type":"NORMAL",
 			"adjacencies":[
 				485,
 				248,
@@ -1425,11 +1489,13 @@
 		{
 			"id":89,
 			"name":"Astrakhan ",
+			"type":"COSTAL",
 			"adjacencies":[
 				57,
 				477,
 				309,
-				119
+				119,
+				521
 			],
 			"vertices":[
 				2308,
@@ -1450,6 +1516,7 @@
 		{
 			"id":90,
 			"name":"Slavonia",
+			"type":"NORMAL",
 			"adjacencies":[
 				403,
 				344,
@@ -1476,6 +1543,7 @@
 		{
 			"id":91,
 			"name":"Heves",
+			"type":"NORMAL",
 			"adjacencies":[
 				264,
 				450,
@@ -1508,6 +1576,7 @@
 		{
 			"id":94,
 			"name":"Sudovia",
+			"type":"COSTAL",
 			"adjacencies":[
 				337,
 				271,
@@ -1540,11 +1609,13 @@
 		{
 			"id":95,
 			"name":"Sotchi",
+			"type":"COSTAL",
 			"adjacencies":[
 				384,
 				490,
 				238,
-				377
+				377,
+				519
 			],
 			"vertices":[
 				2360,
@@ -1562,6 +1633,7 @@
 		{
 			"id":96,
 			"name":"Krakow",
+			"type":"NORMAL",
 			"adjacencies":[
 				264,
 				390,
@@ -1595,6 +1667,7 @@
 		{
 			"id":99,
 			"name":"Normandy",
+			"type":"COSTAL",
 			"adjacencies":[
 				312,
 				60,
@@ -1642,6 +1715,7 @@
 		{
 			"id":100,
 			"name":"Aveiro",
+			"type":"COSTAL",
 			"adjacencies":[
 				109,
 				430,
@@ -1672,6 +1746,7 @@
 		{
 			"id":101,
 			"name":"Kent",
+			"type":"COSTAL",
 			"adjacencies":[
 				17,
 				101,
@@ -1700,6 +1775,7 @@
 		{
 			"id":102,
 			"name":"Voivodina",
+			"type":"NORMAL",
 			"adjacencies":[
 				90,
 				2,
@@ -1729,6 +1805,7 @@
 		{
 			"id":103,
 			"name":"Vosges",
+			"type":"NORMAL",
 			"adjacencies":[
 				472,
 				141,
@@ -1749,6 +1826,7 @@
 		{
 			"id":105,
 			"name":"Aberdeenshire",
+			"type":"COSTAL",
 			"adjacencies":[
 				16,
 				105,
@@ -1783,6 +1861,7 @@
 		{
 			"id":107,
 			"name":"Coruna",
+			"type":"COSTAL",
 			"adjacencies":[
 				430,
 				107,
@@ -1815,6 +1894,7 @@
 		{
 			"id":109,
 			"name":"Lisbon",
+			"type":"COSTAL",
 			"adjacencies":[
 				100,
 				329
@@ -1834,6 +1914,7 @@
 		{
 			"id":110,
 			"name":"Smaland",
+			"type":"COSTAL",
 			"adjacencies":[
 				68,
 				414,
@@ -1856,6 +1937,7 @@
 		{
 			"id":111,
 			"name":"Clumberland",
+			"type":"COSTAL",
 			"adjacencies":[
 				387,
 				240,
@@ -1885,12 +1967,14 @@
 		{
 			"id":112,
 			"name":"Macedonia",
+			"type":"COSTAL",
 			"adjacencies":[
 				315,
 				455,
 				169,
 				182,
-				323
+				323,
+				516
 			],
 			"vertices":[
 				1326,
@@ -1912,6 +1996,7 @@
 		{
 			"id":113,
 			"name":"Petrozavodsk ",
+			"type":"COSTAL",
 			"adjacencies":[
 				442,
 				166,
@@ -1945,12 +2030,14 @@
 		{
 			"id":114,
 			"name":"Var",
+			"type":"COSTAL",
 			"adjacencies":[
 				487,
 				196,
 				114,
 				439,
-				437
+				437,
+				505
 			],
 			"vertices":[
 				304,
@@ -1976,6 +2063,7 @@
 		{
 			"id":115,
 			"name":"Silvas",
+			"type":"NORMAL",
 			"adjacencies":[
 				10,
 				168,
@@ -1996,6 +2084,7 @@
 		{
 			"id":116,
 			"name":"Rize",
+			"type":"COSTAL",
 			"adjacencies":[
 				185,
 				377,
@@ -2005,7 +2094,8 @@
 				404,
 				56,
 				443,
-				10
+				10,
+				519
 			],
 			"vertices":[
 				2461,
@@ -2032,11 +2122,13 @@
 		{
 			"id":119,
 			"name":"Makhatchkala ",
+			"type":"COSTAL",
 			"adjacencies":[
 				490,
 				89,
 				238,
-				407
+				407,
+				521
 			],
 			"vertices":[
 				2320,
@@ -2054,6 +2146,7 @@
 		{
 			"id":120,
 			"name":"Sisian",
+			"type":"NORMAL",
 			"adjacencies":[
 				404,
 				185,
@@ -2085,6 +2178,7 @@
 		{
 			"id":123,
 			"name":"Munich",
+			"type":"NORMAL",
 			"adjacencies":[
 				46,
 				262,
@@ -2117,6 +2211,7 @@
 		{
 			"id":125,
 			"name":"Donegal",
+			"type":"COSTAL",
 			"adjacencies":[
 				360,
 				125,
@@ -2155,6 +2250,7 @@
 		{
 			"id":128,
 			"name":"Gaziantep",
+			"type":"COSTAL",
 			"adjacencies":[
 				135,
 				77,
@@ -2162,7 +2258,8 @@
 				128,
 				443,
 				56,
-				375
+				375,
+				515
 			],
 			"vertices":[
 				2546,
@@ -2190,6 +2287,7 @@
 		{
 			"id":130,
 			"name":"Stuttgart",
+			"type":"NORMAL",
 			"adjacencies":[
 				7,
 				163,
@@ -2217,11 +2315,15 @@
 		{
 			"id":134,
 			"name":"Molise",
+			"type":"COSTAL",
 			"adjacencies":[
 				134,
 				454,
 				395,
-				488
+				488,
+				511,
+				510,
+				507
 			],
 			"vertices":[
 				994,
@@ -2250,6 +2352,7 @@
 		{
 			"id":135,
 			"name":"Alep",
+			"type":"NORMAL",
 			"adjacencies":[
 				77,
 				128,
@@ -2284,6 +2387,7 @@
 		{
 			"id":137,
 			"name":"Amman",
+			"type":"NORMAL",
 			"adjacencies":[
 				381,
 				208,
@@ -2308,9 +2412,13 @@
 		{
 			"id":138,
 			"name":"Athens",
+			"type":"COSTAL",
 			"adjacencies":[
 				323,
-				199
+				199,
+				516,
+				513,
+				509
 			],
 			"vertices":[
 				1359,
@@ -2333,6 +2441,7 @@
 		{
 			"id":139,
 			"name":"Vas",
+			"type":"NORMAL",
 			"adjacencies":[
 				468,
 				316,
@@ -2361,6 +2470,7 @@
 		{
 			"id":141,
 			"name":"Aube",
+			"type":"NORMAL",
 			"adjacencies":[
 				322,
 				103,
@@ -2388,6 +2498,7 @@
 		{
 			"id":142,
 			"name":"Orenburg",
+			"type":"NORMAL",
 			"adjacencies":[
 				418,
 				400,
@@ -2415,6 +2526,7 @@
 		{
 			"id":143,
 			"name":"Ile de France",
+			"type":"NORMAL",
 			"adjacencies":[
 				60,
 				322,
@@ -2435,13 +2547,16 @@
 		{
 			"id":146,
 			"name":"Kherson",
+			"type":"COSTAL",
 			"adjacencies":[
 				420,
 				412,
 				457,
 				146,
 				283,
-				296
+				296,
+				518,
+				520
 			],
 			"vertices":[
 				2046,
@@ -2474,6 +2589,7 @@
 		{
 			"id":149,
 			"name":"Mazyr",
+			"type":"NORMAL",
 			"adjacencies":[
 				301,
 				184,
@@ -2512,6 +2628,7 @@
 		{
 			"id":152,
 			"name":"Riazan ",
+			"type":"NORMAL",
 			"adjacencies":[
 				242,
 				286,
@@ -2528,7 +2645,11 @@
 		{
 			"id":154,
 			"name":"Crete",
+			"type":"COSTAL",
 			"adjacencies":[
+				513,
+				514,
+				512
 			],
 			"vertices":[
 				1396,
@@ -2548,6 +2669,7 @@
 		{
 			"id":155,
 			"name":"Flanders",
+			"type":"COSTAL",
 			"adjacencies":[
 				45,
 				284,
@@ -2584,13 +2706,15 @@
 		{
 			"id":156,
 			"name":"Slovenia",
+			"type":"COSTAL",
 			"adjacencies":[
 				403,
 				316,
 				156,
 				468,
 				262,
-				475
+				475,
+				511
 			],
 			"vertices":[
 				1220,
@@ -2617,6 +2741,7 @@
 		{
 			"id":160,
 			"name":"Garonne",
+			"type":"NORMAL",
 			"adjacencies":[
 				437,
 				160,
@@ -2644,6 +2769,7 @@
 		{
 			"id":162,
 			"name":"Cheshire",
+			"type":"COSTAL",
 			"adjacencies":[
 				240,
 				162,
@@ -2685,6 +2811,7 @@
 		{
 			"id":163,
 			"name":"Palatinate",
+			"type":"NORMAL",
 			"adjacencies":[
 				410,
 				32,
@@ -2714,6 +2841,7 @@
 		{
 			"id":166,
 			"name":"Volkhov",
+			"type":"NORMAL",
 			"adjacencies":[
 				113,
 				189,
@@ -2742,6 +2870,7 @@
 		{
 			"id":167,
 			"name":"Zurich",
+			"type":"NORMAL",
 			"adjacencies":[
 				177,
 				262,
@@ -2769,11 +2898,13 @@
 		{
 			"id":168,
 			"name":"Karabuk",
+			"type":"COSTAL",
 			"adjacencies":[
 				115,
 				10,
 				198,
-				237
+				237,
+				518
 			],
 			"vertices":[
 				2600,
@@ -2787,10 +2918,12 @@
 		{
 			"id":169,
 			"name":"Thrace",
+			"type":"COSTAL",
 			"adjacencies":[
 				408,
 				112,
-				187
+				187,
+				516
 			],
 			"vertices":[
 				1321,
@@ -2811,6 +2944,7 @@
 		{
 			"id":170,
 			"name":"Oslo",
+			"type":"COSTAL",
 			"adjacencies":[
 				263,
 				456,
@@ -2841,6 +2975,7 @@
 		{
 			"id":173,
 			"name":"Sofia",
+			"type":"NORMAL",
 			"adjacencies":[
 				40,
 				408,
@@ -2865,6 +3000,7 @@
 		{
 			"id":174,
 			"name":"Bucarest",
+			"type":"NORMAL",
 			"adjacencies":[
 				259,
 				40,
@@ -2895,6 +3031,7 @@
 		{
 			"id":175,
 			"name":"Oukhta",
+			"type":"NORMAL",
 			"adjacencies":[
 				180,
 				299,
@@ -2914,6 +3051,7 @@
 		{
 			"id":177,
 			"name":"Wurtemberg",
+			"type":"NORMAL",
 			"adjacencies":[
 				123,
 				262,
@@ -2949,6 +3087,7 @@
 		{
 			"id":179,
 			"name":"Holland",
+			"type":"COSTAL",
 			"adjacencies":[
 				179,
 				45,
@@ -2985,6 +3124,7 @@
 		{
 			"id":180,
 			"name":"Oma",
+			"type":"COSTAL",
 			"adjacencies":[
 				175,
 				299,
@@ -3023,6 +3163,7 @@
 		{
 			"id":182,
 			"name":"Skopje",
+			"type":"NORMAL",
 			"adjacencies":[
 				351,
 				40,
@@ -3052,6 +3193,7 @@
 		{
 			"id":183,
 			"name":"Medelpad",
+			"type":"COSTAL",
 			"adjacencies":[
 				440,
 				183,
@@ -3076,6 +3218,7 @@
 		{
 			"id":184,
 			"name":"Brest",
+			"type":"NORMAL",
 			"adjacencies":[
 				301,
 				149,
@@ -3106,6 +3249,7 @@
 		{
 			"id":185,
 			"name":"Erevan",
+			"type":"NORMAL",
 			"adjacencies":[
 				116,
 				120,
@@ -3132,9 +3276,13 @@
 		{
 			"id":187,
 			"name":"Istanbul",
+			"type":"COSTAL",
 			"adjacencies":[
 				44,
-				169
+				169,
+				518,
+				517,
+				516
 			],
 			"vertices":[
 				1349,
@@ -3159,6 +3307,7 @@
 		{
 			"id":188,
 			"name":"Fionia",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -3172,6 +3321,7 @@
 		{
 			"id":189,
 			"name":"Kinguissepp ",
+			"type":"COSTAL",
 			"adjacencies":[
 				484,
 				67,
@@ -3199,13 +3349,16 @@
 		{
 			"id":196,
 			"name":"Gard",
+			"type":"COSTAL",
 			"adjacencies":[
 				114,
 				437,
 				160,
 				268,
 				196,
-				69
+				69,
+				504,
+				505
 			],
 			"vertices":[
 				288,
@@ -3232,6 +3385,7 @@
 		{
 			"id":197,
 			"name":"Agden",
+			"type":"COSTAL",
 			"adjacencies":[
 				433,
 				385,
@@ -3256,6 +3410,7 @@
 		{
 			"id":198,
 			"name":"Ankara",
+			"type":"NORMAL",
 			"adjacencies":[
 				375,
 				466,
@@ -3275,9 +3430,14 @@
 		{
 			"id":199,
 			"name":"Peloponnese",
+			"type":"COSTAL",
 			"adjacencies":[
 				138,
-				199
+				199,
+				509,
+				508,
+				512,
+				513
 			],
 			"vertices":[
 				1369,
@@ -3305,11 +3465,13 @@
 		{
 			"id":203,
 			"name":"Granada",
+			"type":"COSTAL",
 			"adjacencies":[
 				393,
 				203,
 				298,
-				210
+				210,
+				502
 			],
 			"vertices":[
 				839,
@@ -3333,6 +3495,7 @@
 		{
 			"id":206,
 			"name":"Tchernihiv",
+			"type":"NORMAL",
 			"adjacencies":[
 				38,
 				214,
@@ -3367,10 +3530,12 @@
 		{
 			"id":208,
 			"name":"Israel",
+			"type":"COSTAL",
 			"adjacencies":[
 				137,
 				381,
-				476
+				476,
+				515
 			],
 			"vertices":[
 				2659,
@@ -3388,11 +3553,14 @@
 		{
 			"id":209,
 			"name":"Akhisar",
+			"type":"COSTAL",
 			"adjacencies":[
 				304,
 				237,
 				209,
-				466
+				466,
+				517,
+				516
 			],
 			"vertices":[
 				2578,
@@ -3418,13 +3586,15 @@
 		{
 			"id":210,
 			"name":"Cuenca",
+			"type":"COSTAL",
 			"adjacencies":[
 				483,
 				268,
 				71,
 				298,
 				210,
-				203
+				203,
+				502
 			],
 			"vertices":[
 				778,
@@ -3448,6 +3618,7 @@
 		{
 			"id":212,
 			"name":"Moscow",
+			"type":"NORMAL",
 			"adjacencies":[
 				324,
 				38,
@@ -3466,6 +3637,7 @@
 		{
 			"id":214,
 			"name":"Kiev",
+			"type":"NORMAL",
 			"adjacencies":[
 				206,
 				412,
@@ -3497,7 +3669,10 @@
 		{
 			"id":217,
 			"name":"Chypre",
+			"type":"COSTAL",
 			"adjacencies":[
+				515,
+				514
 			],
 			"vertices":[
 				2614,
@@ -3522,6 +3697,7 @@
 		{
 			"id":219,
 			"name":"Vendée",
+			"type":"COSTAL",
 			"adjacencies":[
 				382,
 				219,
@@ -3551,6 +3727,7 @@
 		{
 			"id":221,
 			"name":"Troms",
+			"type":"COSTAL",
 			"adjacencies":[
 				48,
 				485,
@@ -3580,6 +3757,7 @@
 		{
 			"id":227,
 			"name":"Komi",
+			"type":"NORMAL",
 			"adjacencies":[
 				175,
 				299,
@@ -3600,6 +3778,7 @@
 		{
 			"id":228,
 			"name":"Bucovina",
+			"type":"NORMAL",
 			"adjacencies":[
 				319,
 				58,
@@ -3624,6 +3803,7 @@
 		{
 			"id":231,
 			"name":"Ourmia",
+			"type":"NORMAL",
 			"adjacencies":[
 				231,
 				404,
@@ -3656,6 +3836,7 @@
 		{
 			"id":232,
 			"name":"Warsaw",
+			"type":"NORMAL",
 			"adjacencies":[
 				331,
 				272,
@@ -3684,6 +3865,7 @@
 		{
 			"id":234,
 			"name":"Viljandi",
+			"type":"COSTAL",
 			"adjacencies":[
 				53,
 				235,
@@ -3712,6 +3894,7 @@
 		{
 			"id":235,
 			"name":"Vidzeme",
+			"type":"COSTAL",
 			"adjacencies":[
 				67,
 				234,
@@ -3733,10 +3916,13 @@
 		{
 			"id":237,
 			"name":"Izmit",
+			"type":"COSTAL",
 			"adjacencies":[
 				168,
 				198,
-				209
+				209,
+				518,
+				517
 			],
 			"vertices":[
 				2477,
@@ -3754,6 +3940,7 @@
 		{
 			"id":238,
 			"name":"Grozny",
+			"type":"NORMAL",
 			"adjacencies":[
 				490,
 				95,
@@ -3775,6 +3962,7 @@
 		{
 			"id":240,
 			"name":"Lancashire",
+			"type":"COSTAL",
 			"adjacencies":[
 				111,
 				162,
@@ -3804,6 +3992,7 @@
 		{
 			"id":241,
 			"name":"Arkhangelsk",
+			"type":"COSTAL",
 			"adjacencies":[
 				299,
 				180,
@@ -3841,6 +4030,7 @@
 		{
 			"id":242,
 			"name":"Penza",
+			"type":"NORMAL",
 			"adjacencies":[
 				363,
 				356,
@@ -3861,6 +4051,7 @@
 		{
 			"id":244,
 			"name":"Norfolk",
+			"type":"NORMAL",
 			"adjacencies":[
 				244,
 				17,
@@ -3890,9 +4081,12 @@
 		{
 			"id":245,
 			"name":"Tunis",
+			"type":"COSTAL",
 			"adjacencies":[
 				245,
-				274
+				274,
+				503,
+				508
 			],
 			"vertices":[
 				2688,
@@ -3916,6 +4110,7 @@
 		{
 			"id":248,
 			"name":"Nordland",
+			"type":"COSTAL",
 			"adjacencies":[
 				221,
 				485,
@@ -3942,6 +4137,7 @@
 		{
 			"id":249,
 			"name":"Uusimaa",
+			"type":"COSTAL",
 			"adjacencies":[
 				42,
 				396,
@@ -3968,6 +4164,7 @@
 		{
 			"id":250,
 			"name":"Kirov",
+			"type":"NORMAL",
 			"adjacencies":[
 				227,
 				495,
@@ -3989,11 +4186,13 @@
 		{
 			"id":255,
 			"name":"Varna",
+			"type":"COSTAL",
 			"adjacencies":[
 				44,
 				259,
 				174,
-				87
+				87,
+				518
 			],
 			"vertices":[
 				1428,
@@ -4014,8 +4213,11 @@
 		{
 			"id":258,
 			"name":"Sicily",
+			"type":"COSTAL",
 			"adjacencies":[
-				258
+				508,
+				507,
+				503
 			],
 			"vertices":[
 				1064,
@@ -4043,6 +4245,7 @@
 		{
 			"id":259,
 			"name":"Montana",
+			"type":"NORMAL",
 			"adjacencies":[
 				174,
 				173,
@@ -4070,6 +4273,7 @@
 		{
 			"id":262,
 			"name":"Tyrol",
+			"type":"NORMAL",
 			"adjacencies":[
 				341,
 				39,
@@ -4110,6 +4314,7 @@
 		{
 			"id":263,
 			"name":"Dalecarlia",
+			"type":"NORMAL",
 			"adjacencies":[
 				445,
 				170,
@@ -4137,6 +4342,7 @@
 		{
 			"id":264,
 			"name":"Kosice",
+			"type":"NORMAL",
 			"adjacencies":[
 				325,
 				91,
@@ -4160,6 +4366,7 @@
 		{
 			"id":266,
 			"name":"Britany",
+			"type":"COSTAL",
 			"adjacencies":[
 				266,
 				219,
@@ -4201,12 +4408,14 @@
 		{
 			"id":268,
 			"name":"Catalonia",
+			"type":"COSTAL",
 			"adjacencies":[
 				71,
 				69,
 				196,
 				268,
-				210
+				210,
+				504
 			],
 			"vertices":[
 				759,
@@ -4237,6 +4446,7 @@
 		{
 			"id":271,
 			"name":"Kaliningrad",
+			"type":"COSTAL",
 			"adjacencies":[
 				272,
 				94,
@@ -4258,6 +4468,7 @@
 		{
 			"id":272,
 			"name":"Mazuria",
+			"type":"COSTAL",
 			"adjacencies":[
 				271,
 				417,
@@ -4282,10 +4493,13 @@
 		{
 			"id":274,
 			"name":"Constantine",
+			"type":"COSTAL",
 			"adjacencies":[
 				350,
 				274,
-				245
+				245,
+				502,
+				503
 			],
 			"vertices":[
 				2697,
@@ -4310,6 +4524,7 @@
 		{
 			"id":275,
 			"name":"Minsk",
+			"type":"NORMAL",
 			"adjacencies":[
 				337,
 				281,
@@ -4341,6 +4556,7 @@
 		{
 			"id":280,
 			"name":"Tver",
+			"type":"NORMAL",
 			"adjacencies":[
 				484,
 				324,
@@ -4357,6 +4573,7 @@
 		{
 			"id":281,
 			"name":"Vitebsk",
+			"type":"NORMAL",
 			"adjacencies":[
 				324,
 				275,
@@ -4408,6 +4625,7 @@
 		{
 			"id":282,
 			"name":"Arar",
+			"type":"NORMAL",
 			"adjacencies":[
 				431,
 				137,
@@ -4429,6 +4647,7 @@
 		{
 			"id":283,
 			"name":"Kharkiv",
+			"type":"NORMAL",
 			"adjacencies":[
 				38,
 				23,
@@ -4466,6 +4685,7 @@
 		{
 			"id":284,
 			"name":"Wallonia",
+			"type":"NORMAL",
 			"adjacencies":[
 				60,
 				155,
@@ -4506,6 +4726,7 @@
 		{
 			"id":286,
 			"name":"Saratov",
+			"type":"NORMAL",
 			"adjacencies":[
 				418,
 				72,
@@ -4536,6 +4757,7 @@
 		{
 			"id":290,
 			"name":"Jura",
+			"type":"NORMAL",
 			"adjacencies":[
 				447,
 				439,
@@ -4571,6 +4793,7 @@
 		{
 			"id":295,
 			"name":"Haditha ",
+			"type":"NORMAL",
 			"adjacencies":[
 				431,
 				295,
@@ -4601,13 +4824,15 @@
 		{
 			"id":296,
 			"name":"Rostov",
+			"type":"COSTAL",
 			"adjacencies":[
 				392,
 				477,
 				309,
 				384,
 				146,
-				283
+				283,
+				520
 			],
 			"vertices":[
 				2060,
@@ -4632,9 +4857,11 @@
 		{
 			"id":297,
 			"name":"Tanger",
+			"type":"COSTAL",
 			"adjacencies":[
 				84,
-				297
+				297,
+				502
 			],
 			"vertices":[
 				2727,
@@ -4654,6 +4881,7 @@
 		{
 			"id":298,
 			"name":"Caceres",
+			"type":"NORMAL",
 			"adjacencies":[
 				329,
 				100,
@@ -4688,6 +4916,7 @@
 		{
 			"id":299,
 			"name":"Koslan",
+			"type":"NORMAL",
 			"adjacencies":[
 				241,
 				81,
@@ -4710,6 +4939,7 @@
 		{
 			"id":301,
 			"name":"Volhynie",
+			"type":"NORMAL",
 			"adjacencies":[
 				184,
 				428,
@@ -4746,11 +4976,15 @@
 		{
 			"id":304,
 			"name":"Izmir",
+			"type":"COSTAL",
 			"adjacencies":[
 				209,
 				466,
 				304,
-				333
+				333,
+				513,
+				516,
+				514
 			],
 			"vertices":[
 				2495,
@@ -4792,6 +5026,7 @@
 		{
 			"id":308,
 			"name":"Suourland",
+			"type":"COSTAL",
 			"adjacencies":[
 				355,
 				308,
@@ -4829,6 +5064,7 @@
 		{
 			"id":309,
 			"name":"Volgodonsk ",
+			"type":"NORMAL",
 			"adjacencies":[
 				477,
 				296,
@@ -4845,6 +5081,7 @@
 		{
 			"id":312,
 			"name":"Nord",
+			"type":"COSTAL",
 			"adjacencies":[
 				155,
 				284,
@@ -4870,6 +5107,7 @@
 		{
 			"id":313,
 			"name":"Vallais",
+			"type":"NORMAL",
 			"adjacencies":[
 				439,
 				447,
@@ -4892,6 +5130,7 @@
 		{
 			"id":314,
 			"name":"Saare",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -4907,10 +5146,12 @@
 		{
 			"id":315,
 			"name":"Epire",
+			"type":"COSTAL",
 			"adjacencies":[
 				455,
 				112,
-				323
+				323,
+				510
 			],
 			"vertices":[
 				1326,
@@ -4926,6 +5167,7 @@
 		{
 			"id":316,
 			"name":"Wien",
+			"type":"NORMAL",
 			"adjacencies":[
 				46,
 				468,
@@ -4957,6 +5199,7 @@
 		{
 			"id":319,
 			"name":"Balti",
+			"type":"NORMAL",
 			"adjacencies":[
 				58,
 				228,
@@ -4992,6 +5235,7 @@
 		{
 			"id":322,
 			"name":"Meuse",
+			"type":"NORMAL",
 			"adjacencies":[
 				47,
 				103,
@@ -5018,11 +5262,16 @@
 		{
 			"id":323,
 			"name":"Ionia",
+			"type":"COSTAL",
 			"adjacencies":[
 				315,
 				138,
 				323,
-				112
+				112,
+				516,
+				510,
+				509,
+				508
 			],
 			"vertices":[
 				1360,
@@ -5042,6 +5291,7 @@
 		{
 			"id":324,
 			"name":"Smolensk",
+			"type":"NORMAL",
 			"adjacencies":[
 				38,
 				281,
@@ -5074,6 +5324,7 @@
 		{
 			"id":325,
 			"name":"Transcarpatie",
+			"type":"NORMAL",
 			"adjacencies":[
 				264,
 				58,
@@ -5095,6 +5346,7 @@
 		{
 			"id":329,
 			"name":"Evora",
+			"type":"COSTAL",
 			"adjacencies":[
 				452,
 				298,
@@ -5118,6 +5370,7 @@
 		{
 			"id":331,
 			"name":"High Silesia",
+			"type":"NORMAL",
 			"adjacencies":[
 				34,
 				232,
@@ -5146,12 +5399,15 @@
 		{
 			"id":333,
 			"name":"Antalya",
+			"type":"COSTAL",
 			"adjacencies":[
 				466,
 				304,
 				375,
 				333,
-				128
+				128,
+				514,
+				515
 			],
 			"vertices":[
 				2530,
@@ -5177,6 +5433,7 @@
 		{
 			"id":336,
 			"name":"Berdysh ",
+			"type":"NORMAL",
 			"adjacencies":[
 				175,
 				227,
@@ -5194,6 +5451,7 @@
 		{
 			"id":337,
 			"name":"Dzukija",
+			"type":"NORMAL",
 			"adjacencies":[
 				94,
 				271,
@@ -5217,6 +5475,7 @@
 		{
 			"id":340,
 			"name":"Trondelag",
+			"type":"COSTAL",
 			"adjacencies":[
 				440,
 				433,
@@ -5258,6 +5517,7 @@
 		{
 			"id":341,
 			"name":"Trentin",
+			"type":"NORMAL",
 			"adjacencies":[
 				262,
 				475,
@@ -5282,6 +5542,7 @@
 		{
 			"id":342,
 			"name":"Dordogne",
+			"type":"COSTAL",
 			"adjacencies":[
 				342,
 				219,
@@ -5316,6 +5577,7 @@
 		{
 			"id":344,
 			"name":"Bosnia",
+			"type":"COSTAL",
 			"adjacencies":[
 				403,
 				90,
@@ -5323,7 +5585,9 @@
 				344,
 				453,
 				102,
-				43
+				43,
+				511,
+				510
 			],
 			"vertices":[
 				1267,
@@ -5359,10 +5623,12 @@
 		{
 			"id":350,
 			"name":"Alger",
+			"type":"COSTAL",
 			"adjacencies":[
 				274,
 				84,
-				350
+				350,
+				502
 			],
 			"vertices":[
 				2717,
@@ -5383,6 +5649,7 @@
 		{
 			"id":351,
 			"name":"Kosovo",
+			"type":"NORMAL",
 			"adjacencies":[
 				40,
 				182,
@@ -5408,6 +5675,7 @@
 		{
 			"id":353,
 			"name":"Ostrobotnia-South",
+			"type":"COSTAL",
 			"adjacencies":[
 				396,
 				353,
@@ -5435,6 +5703,7 @@
 		{
 			"id":355,
 			"name":"Vesturland",
+			"type":"COSTAL",
 			"adjacencies":[
 				449,
 				355,
@@ -5507,6 +5776,7 @@
 		{
 			"id":356,
 			"name":"Iaroslav",
+			"type":"NORMAL",
 			"adjacencies":[
 				484,
 				280,
@@ -5527,6 +5797,7 @@
 		{
 			"id":357,
 			"name":"Alava",
+			"type":"COSTAL",
 			"adjacencies":[
 				107,
 				71,
@@ -5555,6 +5826,7 @@
 		{
 			"id":360,
 			"name":"Ulster",
+			"type":"COSTAL",
 			"adjacencies":[
 				125,
 				360,
@@ -5592,6 +5864,7 @@
 		{
 			"id":361,
 			"name":"Riga",
+			"type":"COSTAL",
 			"adjacencies":[
 				94,
 				235,
@@ -5627,6 +5900,7 @@
 		{
 			"id":363,
 			"name":"Kostroma",
+			"type":"NORMAL",
 			"adjacencies":[
 				495,
 				250,
@@ -5647,6 +5921,7 @@
 		{
 			"id":364,
 			"name":"Kazan",
+			"type":"NORMAL",
 			"adjacencies":[
 				250,
 				363,
@@ -5668,6 +5943,7 @@
 		{
 			"id":367,
 			"name":"Ayrshire",
+			"type":"COSTAL",
 			"adjacencies":[
 				387,
 				16,
@@ -5698,6 +5974,7 @@
 		{
 			"id":370,
 			"name":"Sjælland",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -5722,9 +5999,11 @@
 		{
 			"id":371,
 			"name":"Dalmatia",
+			"type":"COSTAL",
 			"adjacencies":[
 				403,
-				344
+				344,
+				511
 			],
 			"vertices":[
 				1234,
@@ -5744,6 +6023,7 @@
 		{
 			"id":373,
 			"name":"Brandeburg",
+			"type":"NORMAL",
 			"adjacencies":[
 				410,
 				32,
@@ -5777,6 +6057,7 @@
 		{
 			"id":374,
 			"name":"Velsk",
+			"type":"NORMAL",
 			"adjacencies":[
 				442,
 				166,
@@ -5797,6 +6078,7 @@
 		{
 			"id":375,
 			"name":"Kayseri",
+			"type":"NORMAL",
 			"adjacencies":[
 				115,
 				198,
@@ -5823,6 +6105,7 @@
 		{
 			"id":376,
 			"name":"Mayo",
+			"type":"COSTAL",
 			"adjacencies":[
 				376,
 				80,
@@ -5853,13 +6136,15 @@
 		{
 			"id":377,
 			"name":"Batoumi",
+			"type":"COSTAL",
 			"adjacencies":[
 				116,
 				95,
 				30,
 				185,
 				377,
-				238
+				238,
+				519
 			],
 			"vertices":[
 				2424,
@@ -5887,6 +6172,7 @@
 		{
 			"id":378,
 			"name":"Hiiu",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -5902,6 +6188,7 @@
 		{
 			"id":381,
 			"name":"Damas",
+			"type":"NORMAL",
 			"adjacencies":[
 				137,
 				208,
@@ -5925,6 +6212,7 @@
 		{
 			"id":382,
 			"name":"Loiret",
+			"type":"NORMAL",
 			"adjacencies":[
 				143,
 				322,
@@ -5950,10 +6238,13 @@
 		{
 			"id":384,
 			"name":"Krasnodar",
+			"type":"COSTAL",
 			"adjacencies":[
 				296,
 				490,
-				95
+				95,
+				520,
+				519
 			],
 			"vertices":[
 				2360,
@@ -5979,6 +6270,7 @@
 		{
 			"id":385,
 			"name":"Oppland",
+			"type":"NORMAL",
 			"adjacencies":[
 				433,
 				170,
@@ -6008,12 +6300,14 @@
 		{
 			"id":386,
 			"name":"Toscane",
+			"type":"COSTAL",
 			"adjacencies":[
 				386,
 				14,
 				487,
 				395,
-				454
+				454,
+				506
 			],
 			"vertices":[
 				961,
@@ -6036,6 +6330,7 @@
 		{
 			"id":387,
 			"name":"Dumfries",
+			"type":"COSTAL",
 			"adjacencies":[
 				367,
 				111,
@@ -6061,6 +6356,7 @@
 		{
 			"id":390,
 			"name":"Liberec",
+			"type":"NORMAL",
 			"adjacencies":[
 				34,
 				410,
@@ -6095,6 +6391,7 @@
 		{
 			"id":392,
 			"name":"Voronej",
+			"type":"NORMAL",
 			"adjacencies":[
 				152,
 				23,
@@ -6113,11 +6410,13 @@
 		{
 			"id":393,
 			"name":"Gibraltar",
+			"type":"COSTAL",
 			"adjacencies":[
 				203,
 				393,
 				452,
-				298
+				298,
+				502
 			],
 			"vertices":[
 				866,
@@ -6142,13 +6441,15 @@
 		{
 			"id":395,
 			"name":"Marche",
+			"type":"COSTAL",
 			"adjacencies":[
 				395,
 				386,
 				14,
 				475,
 				134,
-				454
+				454,
+				511
 			],
 			"vertices":[
 				961,
@@ -6175,6 +6476,7 @@
 		{
 			"id":396,
 			"name":"Hame",
+			"type":"NORMAL",
 			"adjacencies":[
 				353,
 				42,
@@ -6201,6 +6503,7 @@
 		{
 			"id":399,
 			"name":"Wales",
+			"type":"COSTAL",
 			"adjacencies":[
 				162,
 				399
@@ -6240,6 +6543,7 @@
 		{
 			"id":400,
 			"name":"Salavat",
+			"type":"NORMAL",
 			"adjacencies":[
 				418,
 				364,
@@ -6260,6 +6564,7 @@
 		{
 			"id":402,
 			"name":"Hanover",
+			"type":"COSTAL",
 			"adjacencies":[
 				179,
 				446,
@@ -6287,12 +6592,14 @@
 		{
 			"id":403,
 			"name":"Quarner",
+			"type":"COSTAL",
 			"adjacencies":[
 				156,
 				468,
 				90,
 				344,
-				371
+				371,
+				511
 			],
 			"vertices":[
 				1226,
@@ -6323,6 +6630,7 @@
 		{
 			"id":404,
 			"name":"Nakhitchevan",
+			"type":"NORMAL",
 			"adjacencies":[
 				120,
 				231,
@@ -6343,11 +6651,13 @@
 		{
 			"id":407,
 			"name":"Derbent",
+			"type":"COSTAL",
 			"adjacencies":[
 				119,
 				238,
 				30,
-				51
+				51,
+				521
 			],
 			"vertices":[
 				2312,
@@ -6366,6 +6676,7 @@
 		{
 			"id":408,
 			"name":"Blagoevgrad",
+			"type":"NORMAL",
 			"adjacencies":[
 				182,
 				173,
@@ -6392,6 +6703,7 @@
 		{
 			"id":410,
 			"name":"Usti",
+			"type":"NORMAL",
 			"adjacencies":[
 				467,
 				163,
@@ -6427,6 +6739,7 @@
 		{
 			"id":412,
 			"name":"Tcherkassy",
+			"type":"NORMAL",
 			"adjacencies":[
 				146,
 				214,
@@ -6457,6 +6770,7 @@
 		{
 			"id":414,
 			"name":"Scania",
+			"type":"COSTAL",
 			"adjacencies":[
 				110
 			],
@@ -6478,6 +6792,7 @@
 		{
 			"id":417,
 			"name":"Pomerania",
+			"type":"COSTAL",
 			"adjacencies":[
 				272,
 				423,
@@ -6501,6 +6816,7 @@
 		{
 			"id":418,
 			"name":"Samara",
+			"type":"NORMAL",
 			"adjacencies":[
 				364,
 				242,
@@ -6529,6 +6845,7 @@
 		{
 			"id":419,
 			"name":"Mourmansk",
+			"type":"COSTAL",
 			"adjacencies":[
 				48,
 				419,
@@ -6573,9 +6890,13 @@
 		{
 			"id":420,
 			"name":"Crimea",
+			"type":"COSTAL",
 			"adjacencies":[
 				146,
-				420
+				420,
+				520,
+				519,
+				518
 			],
 			"vertices":[
 				2024,
@@ -6604,6 +6925,7 @@
 		{
 			"id":421,
 			"name":"Carelia",
+			"type":"COSTAL",
 			"adjacencies":[
 				64,
 				419,
@@ -6644,6 +6966,7 @@
 		{
 			"id":423,
 			"name":"Rostock",
+			"type":"COSTAL",
 			"adjacencies":[
 				417,
 				501,
@@ -6671,7 +6994,10 @@
 		{
 			"id":424,
 			"name":"Corse",
+			"type":"COSTAL",
 			"adjacencies":[
+				506,
+				505
 			],
 			"vertices":[
 				306,
@@ -6697,6 +7023,7 @@
 		{
 			"id":428,
 			"name":"Lublin",
+			"type":"NORMAL",
 			"adjacencies":[
 				301,
 				232,
@@ -6731,6 +7058,7 @@
 		{
 			"id":430,
 			"name":"Porto",
+			"type":"COSTAL",
 			"adjacencies":[
 				100,
 				107,
@@ -6760,6 +7088,7 @@
 		{
 			"id":431,
 			"name":"Nukhayb ",
+			"type":"NORMAL",
 			"adjacencies":[
 				282,
 				295,
@@ -6782,6 +7111,7 @@
 		{
 			"id":433,
 			"name":"Fjordane",
+			"type":"COSTAL",
 			"adjacencies":[
 				385,
 				197,
@@ -6807,6 +7137,7 @@
 		{
 			"id":435,
 			"name":"Helysyum",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -6821,6 +7152,7 @@
 		{
 			"id":436,
 			"name":"Solovki",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -6834,6 +7166,7 @@
 		{
 			"id":437,
 			"name":"Ardeche",
+			"type":"NORMAL",
 			"adjacencies":[
 				196,
 				439,
@@ -6863,6 +7196,7 @@
 		{
 			"id":439,
 			"name":"Savoie",
+			"type":"NORMAL",
 			"adjacencies":[
 				437,
 				313,
@@ -6892,6 +7226,7 @@
 		{
 			"id":440,
 			"name":"Jamtland",
+			"type":"NORMAL",
 			"adjacencies":[
 				340,
 				183,
@@ -6921,6 +7256,7 @@
 		{
 			"id":442,
 			"name":"Vologda",
+			"type":"COSTAL",
 			"adjacencies":[
 				166,
 				113,
@@ -6944,6 +7280,7 @@
 		{
 			"id":443,
 			"name":"Mus",
+			"type":"NORMAL",
 			"adjacencies":[
 				56,
 				375,
@@ -6968,6 +7305,7 @@
 		{
 			"id":445,
 			"name":"Gastrikland",
+			"type":"COSTAL",
 			"adjacencies":[
 				263,
 				445,
@@ -6996,6 +7334,7 @@
 		{
 			"id":446,
 			"name":"Kassel",
+			"type":"NORMAL",
 			"adjacencies":[
 				32,
 				7,
@@ -7032,6 +7371,7 @@
 		{
 			"id":447,
 			"name":"Romande",
+			"type":"NORMAL",
 			"adjacencies":[
 				167,
 				313,
@@ -7065,6 +7405,7 @@
 		{
 			"id":448,
 			"name":"Highlands",
+			"type":"COSTAL",
 			"adjacencies":[
 				448,
 				105,
@@ -7105,6 +7446,7 @@
 		{
 			"id":449,
 			"name":"Norourland",
+			"type":"COSTAL",
 			"adjacencies":[
 				308,
 				449,
@@ -7142,6 +7484,7 @@
 		{
 			"id":450,
 			"name":"Bratislava",
+			"type":"NORMAL",
 			"adjacencies":[
 				139,
 				450,
@@ -7177,6 +7520,7 @@
 		{
 			"id":452,
 			"name":"Faro",
+			"type":"COSTAL",
 			"adjacencies":[
 				329,
 				393,
@@ -7200,6 +7544,7 @@
 		{
 			"id":453,
 			"name":"Belgrade",
+			"type":"NORMAL",
 			"adjacencies":[
 				43,
 				351,
@@ -7229,11 +7574,14 @@
 		{
 			"id":454,
 			"name":"Rome",
+			"type":"COSTAL",
 			"adjacencies":[
 				395,
 				454,
 				386,
-				134
+				134,
+				506,
+				507
 			],
 			"vertices":[
 				977,
@@ -7256,13 +7604,15 @@
 		{
 			"id":455,
 			"name":"Albania",
+			"type":"COSTAL",
 			"adjacencies":[
 				112,
 				315,
 				182,
 				43,
 				351,
-				455
+				455,
+				510
 			],
 			"vertices":[
 				1291,
@@ -7290,6 +7640,7 @@
 		{
 			"id":456,
 			"name":"Bohuslan",
+			"type":"COSTAL",
 			"adjacencies":[
 				170,
 				263,
@@ -7321,13 +7672,15 @@
 		{
 			"id":457,
 			"name":"Odessa",
+			"type":"COSTAL",
 			"adjacencies":[
 				319,
 				87,
 				457,
 				146,
 				412,
-				6
+				6,
+				518
 			],
 			"vertices":[
 				1553,
@@ -7364,6 +7717,7 @@
 		{
 			"id":463,
 			"name":"Iekaterinbourg ",
+			"type":"NORMAL",
 			"adjacencies":[
 				250,
 				499,
@@ -7383,6 +7737,7 @@
 		{
 			"id":466,
 			"name":"Isparta",
+			"type":"NORMAL",
 			"adjacencies":[
 				198,
 				375,
@@ -7409,6 +7764,7 @@
 		{
 			"id":467,
 			"name":"Bohemia",
+			"type":"NORMAL",
 			"adjacencies":[
 				410,
 				390,
@@ -7439,6 +7795,7 @@
 		{
 			"id":468,
 			"name":"Baranya",
+			"type":"NORMAL",
 			"adjacencies":[
 				403,
 				90,
@@ -7468,6 +7825,7 @@
 		{
 			"id":472,
 			"name":"Alsace",
+			"type":"NORMAL",
 			"adjacencies":[
 				167,
 				447,
@@ -7507,6 +7865,7 @@
 		{
 			"id":473,
 			"name":"Gotland",
+			"type":"COSTAL",
 			"adjacencies":[
 			],
 			"vertices":[
@@ -7524,6 +7883,7 @@
 		{
 			"id":474,
 			"name":"Kolari",
+			"type":"NORMAL",
 			"adjacencies":[
 				64,
 				48,
@@ -7563,13 +7923,15 @@
 		{
 			"id":475,
 			"name":"Venise",
+			"type":"COSTAL",
 			"adjacencies":[
 				341,
 				156,
 				475,
 				14,
 				395,
-				262
+				262,
+				511
 			],
 			"vertices":[
 				953,
@@ -7591,10 +7953,12 @@
 		{
 			"id":476,
 			"name":"Liban",
+			"type":"COSTAL",
 			"adjacencies":[
 				381,
 				208,
-				77
+				77,
+				515
 			],
 			"vertices":[
 				2637,
@@ -7617,6 +7981,7 @@
 		{
 			"id":477,
 			"name":"Volgograd",
+			"type":"NORMAL",
 			"adjacencies":[
 				286,
 				392,
@@ -7645,6 +8010,7 @@
 		{
 			"id":478,
 			"name":"Oural",
+			"type":"NORMAL",
 			"adjacencies":[
 				418,
 				142,
@@ -7685,6 +8051,7 @@
 		{
 			"id":483,
 			"name":"Madrid",
+			"type":"NORMAL",
 			"adjacencies":[
 				210,
 				71,
@@ -7717,6 +8084,7 @@
 		{
 			"id":484,
 			"name":"Novgorod",
+			"type":"NORMAL",
 			"adjacencies":[
 				166,
 				189,
@@ -7740,6 +8108,7 @@
 		{
 			"id":485,
 			"name":"Sampi-North",
+			"type":"COSTAL",
 			"adjacencies":[
 				88,
 				248,
@@ -7778,6 +8147,7 @@
 		{
 			"id":486,
 			"name":"Transilvania",
+			"type":"NORMAL",
 			"adjacencies":[
 				325,
 				486,
@@ -7806,6 +8176,7 @@
 		{
 			"id":487,
 			"name":"Piedmont",
+			"type":"COSTAL",
 			"adjacencies":[
 				114,
 				487,
@@ -7813,7 +8184,9 @@
 				39,
 				313,
 				14,
-				386
+				386,
+				506,
+				505
 			],
 			"vertices":[
 				911,
@@ -7847,9 +8220,13 @@
 		{
 			"id":488,
 			"name":"Calabre",
+			"type":"COSTAL",
 			"adjacencies":[
 				488,
-				134
+				134,
+				510,
+				508,
+				507
 			],
 			"vertices":[
 				996,
@@ -7894,6 +8271,7 @@
 		{
 			"id":490,
 			"name":"Stavropol ",
+			"type":"NORMAL",
 			"adjacencies":[
 				309,
 				384,
@@ -7913,6 +8291,7 @@
 		{
 			"id":493,
 			"name":"Cornwall",
+			"type":"COSTAL",
 			"adjacencies":[
 				493,
 				162,
@@ -7955,6 +8334,7 @@
 		{
 			"id":495,
 			"name":"Kotlas",
+			"type":"NORMAL",
 			"adjacencies":[
 				81,
 				363,
@@ -7974,6 +8354,7 @@
 		{
 			"id":499,
 			"name":"Serov",
+			"type":"NORMAL",
 			"adjacencies":[
 				336,
 				227,
@@ -7993,6 +8374,7 @@
 		{
 			"id":501,
 			"name":"Holstein",
+			"type":"COSTAL",
 			"adjacencies":[
 				85,
 				423,
@@ -8017,6 +8399,883 @@
 				1161,
 				1160,
 				1159
+			]
+		},
+		{
+			"id":502,
+			"name":"Mediterean1",
+			"type":"SEA",
+			"adjacencies":[
+				503,
+				21,
+				504,
+				210,
+				203,
+				393,
+				297,
+				84,
+				350,
+				274
+			],
+			"vertices":[
+				862,
+				2729,
+				2728,
+				2726,
+				2727,
+				2725,
+				2724,
+				2723,
+				2722,
+				2714,
+				2713,
+				2712,
+				2711,
+				2710,
+				2709,
+				2708,
+				2707,
+				2706,
+				2705,
+				870,
+				875,
+				874,
+				776,
+				826,
+				825,
+				824,
+				823,
+				822,
+				846,
+				845,
+				844,
+				843,
+				852,
+				853,
+				854,
+				865,
+				864,
+				863
+			]
+		},
+		{
+			"id":503,
+			"name":"Mediterean2",
+			"type":"SEA",
+			"adjacencies":[
+				504,
+				21,
+				502,
+				274,
+				245,
+				26,
+				507,
+				508,
+				258
+			],
+			"vertices":[
+				2705,
+				2704,
+				2703,
+				2702,
+				2701,
+				2700,
+				2699,
+				2695,
+				2694,
+				2693,
+				2692,
+				2691,
+				2690,
+				1059,
+				1060,
+				1065,
+				1066,
+				1067,
+				1068,
+				1069,
+				1070,
+				1073,
+				871,
+				870
+			]
+		},
+		{
+			"id":504,
+			"name":"Mediterean3",
+			"type":"SEA",
+			"adjacencies":[
+				505,
+				26,
+				503,
+				21,
+				502,
+				268,
+				196
+			],
+			"vertices":[
+				776,
+				874,
+				873,
+				872,
+				871,
+				1073,
+				1074,
+				1075,
+				289,
+				288,
+				287,
+				274,
+				275,
+				276,
+				277,
+				764,
+				763,
+				762,
+				761,
+				760,
+				777
+			]
+		},
+		{
+			"id":505,
+			"name":"Mediterean4",
+			"type":"SEA",
+			"adjacencies":[
+				506,
+				424,
+				26,
+				504,
+				114,
+				196,
+				487
+			],
+			"vertices":[
+				289,
+				1075,
+				1076,
+				1077,
+				317,
+				316,
+				315,
+				314,
+				313,
+				312,
+				311,
+				310,
+				309,
+				308,
+				307,
+				306,
+				936,
+				299,
+				298,
+				297,
+				296,
+				295,
+				290
+			]
+		},
+		{
+			"id":506,
+			"name":"Mediterean5",
+			"type":"SEA",
+			"adjacencies":[
+				386,
+				454,
+				507,
+				26,
+				505,
+				424,
+				487
+			],
+			"vertices":[
+				936,
+				306,
+				323,
+				322,
+				321,
+				320,
+				319,
+				318,
+				317,
+				1077,
+				1078,
+				988,
+				987,
+				978,
+				979,
+				980,
+				970,
+				971,
+				972,
+				966,
+				967,
+				933,
+				934,
+				935
+			]
+		},
+		{
+			"id":507,
+			"name":"Mediterean6",
+			"type":"SEA",
+			"adjacencies":[
+				506,
+				454,
+				134,
+				488,
+				508,
+				258,
+				503,
+				26
+			],
+			"vertices":[
+				1078,
+				1079,
+				1080,
+				1072,
+				1065,
+				1060,
+				1061,
+				1062,
+				1063,
+				1064,
+				1053,
+				1054,
+				1055,
+				1045,
+				1046,
+				1040,
+				1039,
+				1038,
+				1037,
+				1036,
+				1031,
+				1030,
+				1029,
+				1026,
+				1010,
+				1009,
+				1008,
+				1003,
+				1004,
+				1005,
+				1007,
+				1006,
+				989,
+				988
+			]
+		},
+		{
+			"id":508,
+			"name":"Mediterean7",
+			"type":"SEA",
+			"adjacencies":[
+				512,
+				199,
+				509,
+				510,
+				488,
+				507,
+				258,
+				503,
+				245
+			],
+			"vertices":[
+				2690,
+				2689,
+				2688,
+				2687,
+				2686,
+				2685,
+				2684,
+				2739,
+				1394,
+				1395,
+				1384,
+				1385,
+				1383,
+				1364,
+				1043,
+				1042,
+				1041,
+				1040,
+				1046,
+				1047,
+				1048,
+				1049,
+				1050,
+				1051,
+				1056,
+				1057,
+				1058,
+				1059
+			]
+		},
+		{
+			"id":509,
+			"name":"Mediterean8",
+			"type":"SEA",
+			"adjacencies":[
+				323,
+				508,
+				199,
+				138
+			],
+			"vertices":[
+				1364,
+				1363,
+				1366,
+				1367,
+				1381,
+				1382,
+				1383
+			]
+		},
+		{
+			"id":510,
+			"name":"Mediterean9",
+			"type":"SEA",
+			"adjacencies":[
+				488,
+				134,
+				511,
+				344,
+				43,
+				455,
+				315,
+				323,
+				508
+			],
+			"vertices":[
+				1043,
+				1364,
+				1365,
+				1337,
+				1336,
+				1329,
+				1330,
+				1331,
+				1332,
+				1333,
+				1334,
+				1335,
+				1276,
+				1274,
+				1275,
+				999,
+				998,
+				997,
+				1017,
+				1016,
+				1025,
+				1024,
+				1023,
+				1022,
+				1021,
+				1020,
+				1019,
+				1014,
+				1028,
+				1027,
+				1035,
+				1034,
+				1033,
+				1032,
+				1044
+			]
+		},
+		{
+			"id":511,
+			"name":"Mediterean10",
+			"type":"SEA",
+			"adjacencies":[
+				475,
+				395,
+				134,
+				510,
+				371,
+				344,
+				403,
+				156
+			],
+			"vertices":[
+				999,
+				1275,
+				1258,
+				1259,
+				1260,
+				1261,
+				1262,
+				1235,
+				1234,
+				1233,
+				1232,
+				1231,
+				1230,
+				1229,
+				1228,
+				1226,
+				1227,
+				950,
+				951,
+				953,
+				954,
+				955,
+				964,
+				963,
+				962,
+				975,
+				974,
+				985,
+				984,
+				983,
+				994,
+				993,
+				1001,
+				1000
+			]
+		},
+		{
+			"id":512,
+			"name":"Mediterean11",
+			"type":"SEA",
+			"adjacencies":[
+				154,
+				513,
+				514,
+				508,
+				199
+			],
+			"vertices":[
+				2739,
+				2740,
+				1399,
+				1398,
+				1397,
+				1396,
+				1407,
+				1388,
+				1387,
+				1386,
+				1389,
+				1390,
+				1391,
+				1392,
+				1393,
+				1394
+			]
+		},
+		{
+			"id":513,
+			"name":"Mediterean12",
+			"type":"SEA",
+			"adjacencies":[
+				514,
+				512,
+				154,
+				199,
+				138,
+				516,
+				304
+			],
+			"vertices":[
+				1388,
+				1407,
+				1406,
+				1405,
+				1404,
+				1403,
+				1402,
+				2518,
+				2516,
+				2517,
+				2515,
+				2514,
+				2512,
+				2513,
+				2511,
+				2510,
+				2509,
+				2507,
+				2508,
+				2506,
+				2504,
+				2505,
+				2503,
+				2502,
+				2501,
+				2498,
+				1375,
+				1374,
+				1373,
+				1372,
+				1371,
+				1370,
+				1369,
+				1368,
+				1388
+			]
+		},
+		{
+			"id":514,
+			"name":"Mediterean13",
+			"type":"SEA",
+			"adjacencies":[
+				515,
+				217,
+				333,
+				304,
+				513,
+				154,
+				512
+			],
+			"vertices":[
+				2740,
+				2741,
+				2621,
+				2622,
+				2623,
+				2624,
+				2625,
+				2626,
+				2627,
+				2628,
+				2629,
+				2527,
+				2526,
+				2525,
+				2524,
+				2523,
+				2522,
+				2520,
+				2521,
+				2519,
+				2518,
+				1402,
+				1401,
+				1400,
+				1399
+			]
+		},
+		{
+			"id":515,
+			"name":"Mediterean14",
+			"type":"SEA",
+			"adjacencies":[
+				208,
+				476,
+				77,
+				128,
+				333,
+				217,
+				514
+			],
+			"vertices":[
+				2741,
+				2621,
+				2619,
+				2620,
+				2618,
+				2617,
+				2616,
+				2615,
+				2614,
+				2630,
+				2629,
+				2527,
+				2528,
+				2530,
+				2529,
+				2531,
+				2533,
+				2534,
+				2532,
+				2535,
+				2536,
+				2537,
+				2650,
+				2649,
+				2648,
+				2647,
+				2663,
+				2662,
+				2661,
+				2660,
+				2659,
+				2668,
+				2667
+			]
+		},
+		{
+			"id":516,
+			"name":"Mediterean14",
+			"type":"SEA",
+			"adjacencies":[
+				209,
+				517,
+				187,
+				169,
+				112,
+				323,
+				138,
+				513,
+				304
+			],
+			"vertices":[
+				2498,
+				2500,
+				2499,
+				2497,
+				2496,
+				2495,
+				2494,
+				2493,
+				2492,
+				2491,
+				2490,
+				2488,
+				2489,
+				2487,
+				2486,
+				2485,
+				2467,
+				1349,
+				1348,
+				1347,
+				1346,
+				1344,
+				1345,
+				1343,
+				1342,
+				1341,
+				1340,
+				1362,
+				1361,
+				1360,
+				1359,
+				1380,
+				1379,
+				1378,
+				1377,
+				1376,
+				1375
+			]
+		},
+		{
+			"id":517,
+			"name":"Bosphorus",
+			"type":"SEA",
+			"adjacencies":[
+				518,
+				516,
+				187,
+				237,
+				209
+			],
+			"vertices":[
+				2485,
+				2467,
+				2468,
+				2469,
+				2470,
+				2471,
+				2472,
+				2473,
+				2474,
+				2475,
+				2477,
+				2479,
+				2478,
+				2480,
+				2481,
+				2482,
+				2483,
+				2484
+			]
+		},
+		{
+			"id":518,
+			"name":"BlackSea1",
+			"type":"SEA",
+			"adjacencies":[
+				517,
+				187,
+				44,
+				255,
+				87,
+				457,
+				146,
+				420,
+				519,
+				10,
+				168,
+				237
+			],
+			"vertices":[
+				2475,
+				2477,
+				2577,
+				2576,
+				2575,
+				2574,
+				2573,
+				2572,
+				2032,
+				2031,
+				2030,
+				2029,
+				2027,
+				2028,
+				2026,
+				2025,
+				2024,
+				2023,
+				2022,
+				2020,
+				2021,
+				2019,
+				2018,
+				2016,
+				2017,
+				2015,
+				2014,
+				2013,
+				2012,
+				1439,
+				1440,
+				1441,
+				1442,
+				1443,
+				1444,
+				1423,
+				1422,
+				1421,
+				1420,
+				1427,
+				1428,
+				1429,
+				2476
+			]
+		},
+		{
+			"id":519,
+			"name":"BlackSea2",
+			"type":"SEA",
+			"adjacencies":[
+				384,
+				520,
+				420,
+				518,
+				10,
+				116,
+				377,
+				95
+			],
+			"vertices":[
+				2572,
+				2571,
+				2570,
+				2569,
+				2568,
+				2567,
+				2566,
+				2565,
+				2564,
+				2428,
+				2429,
+				2430,
+				2431,
+				2432,
+				2344,
+				2343,
+				2341,
+				2342,
+				2340,
+				2339,
+				2337,
+				2037,
+				2036,
+				2035,
+				2034,
+				2033,
+				2032
+			]
+		},
+		{
+			"id":520,
+			"name":"BlackSea3",
+			"type":"SEA",
+			"adjacencies":[
+				519,
+				384,
+				296,
+				146,
+				420
+			],
+			"vertices":[
+				2037,
+				2337,
+				2338,
+				2336,
+				2335,
+				2334,
+				2332,
+				2333,
+				2331,
+				2330,
+				2329,
+				2328,
+				2327,
+				2050,
+				2049,
+				2048,
+				2047,
+				2046,
+				2045,
+				2044,
+				2043,
+				2042,
+				2041,
+				2040,
+				2039,
+				2038
+			]
+		},
+		{
+			"id":521,
+			"name":"CaspianSea",
+			"type":"SEA",
+			"adjacencies":[
+				51,
+				407,
+				119,
+				89,
+				57,
+				72
+			],
+			"vertices":[
+				2447,
+				2313,
+				2314,
+				2315,
+				2316,
+				2317,
+				2318,
+				2319,
+				2320,
+				2321,
+				2322,
+				2323,
+				2324,
+				2264,
+				2395,
+				2396,
+				2397,
+				2398,
+				2399,
+				2400
 			]
 		}
 	]

@@ -6,23 +6,14 @@ public class Pays
 {
 
     public string ID = "000";
-
     public Color32 color;
-
     public string nom;
-
     public Culture culture;
-
-
     public List<Province> provinces;
-
     public int Government_Form = 0;
     public int currentParty = 2;
-
     public Leader leader;
-
     public int current_flag; // Drapeaus + Selectioné
-
     private static string[] flag_names = {
         "republic",
         "monarchy",
@@ -31,7 +22,6 @@ public class Pays
     };
 
     public string cosmeticID;
-
     public Sprite currentFlag
     {
         get
@@ -79,15 +69,12 @@ public class Pays
     public int bonusHP;
     public int bonusEvasion;
     public int bonusSpeed;
-
     public bool hasTech_Naval = false;
 
 
     public Pays lord;
     public Federation federation;
-
     public Dictionary<string, Relation> relations;
-
     public List<Province> cores;
     public List<string> atWarWith;
 
@@ -113,6 +100,8 @@ public class Pays
         get { return culture.focusTree; }
     }
 
+    private List<Pays> canTraverse;
+
 
     public Pays()
     {
@@ -129,8 +118,30 @@ public class Pays
         AI_MARKFORWAR = new List<string>();
         AI_NEIGHBOORS = new List<Pays>();
 
+        canTraverse = new List<Pays>();
+
         Reset_Elections();
         Reset_Flag();
+    }
+
+    public GraphPath StartPathfinding(Province from, Province to)
+    {
+        return manager.movementGraph.GetShortestPath(from, to, canTraverse, true);
+    }
+
+
+    public void RemoveFromTraversalOptions(Pays pays)
+    {
+        canTraverse.Remove(pays);
+
+    }
+
+    public void AddToTraversalOptions(Pays pays)
+    {
+        if (!canTraverse.Contains(pays))
+        {
+            canTraverse.Add(pays);
+        }
     }
 
     public void IncrementFocus()
@@ -376,6 +387,9 @@ public class Pays
 
         atWarWith.Add(country.ID);
         country.atWarWith.Add(ID);
+
+        country.AddToTraversalOptions(this);
+        AddToTraversalOptions(country);
     }
 
     public void MakePeaceWithCountry(Pays other)
@@ -408,6 +422,9 @@ public class Pays
         {
             CanvasWorker.instance.RefreshUtilityBar();
         }
+
+        other.RemoveFromTraversalOptions(this);
+        RemoveFromTraversalOptions(other);
     }
 
 
@@ -711,12 +728,10 @@ public class Pays
         units.Remove(unit);
     }
 
-    public void CreateUnit(Vector3 pos)
+    public void CreateUnit(Province prov)
     {
         Unit obj = Manager.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
-        pos.y = 0.3f;
-        obj.transform.position = pos;
-        obj.country = this;
+        obj.Init(prov, this);
         units.Add(obj);
         CanvasWorker.instance.RefreshUtilityBar();
     }
@@ -735,7 +750,7 @@ public class Pays
             }
             foreach (Unit unit in units)
             {
-                Manager.Destroy(unit.gameObject);
+                Object.Destroy(unit.gameObject);
             }
         }
         CheckNeighboors();
@@ -760,7 +775,7 @@ public class Pays
         {
             foreach (Province neighboor in province.adjacencies)
             {
-                if (neighboor.owner != this && !AI_NEIGHBOORS.Contains(neighboor.owner))
+                if (neighboor.type != ProvinceType.SEA && neighboor.owner != this && !AI_NEIGHBOORS.Contains(neighboor.owner))
                 {
                     AI_NEIGHBOORS.Add(neighboor.owner);
                 }

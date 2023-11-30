@@ -48,6 +48,7 @@ public class Parser : MonoBehaviour
             province.gameObject.name = jsonProv.GetString("name");
             province.Province_Name = jsonProv.GetString("name");
             province.id = jsonProv.GetInt("id");
+            province.type = System.Enum.Parse<ProvinceType>(jsonProv.GetString("type"));
             arrayVertices = jsonProv.GetJArray("vertices");
 
             vecs = new Vector3[arrayVertices.Length];
@@ -254,6 +255,7 @@ public class Parser : MonoBehaviour
             pays.Reset_Flag();
             pays.Reset_Elections();
             pays.RefreshProvinces();
+            pays.AddToTraversalOptions(pays);
         }
         foreach (Pays pays in allCountries.Values)
         {

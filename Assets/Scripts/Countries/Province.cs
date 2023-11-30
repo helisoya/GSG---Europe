@@ -1,40 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+
+public enum ProvinceType
+{
+    NORMAL,
+    COSTAL,
+    SEA
+}
 
 public class Province : MonoBehaviour
 {
-
     public Pays controller = null;
     public Pays owner = null;
     public string Province_Name;
     public int id;
-
+    public ProvinceType type;
 
     private CanvasWorker canvas;
 
     public Vector3 center;
-
     private bool hover;
-
     public Province[] adjacencies;
-
     public bool hasRailroad;
+
+    [SerializeField] private Color seaColor;
 
     public void SetOwner(Pays pays)
     {
+        if (type == ProvinceType.SEA) return;
         owner = pays;
     }
 
     public void SetController(Pays pays)
     {
+        if (type == ProvinceType.SEA) return;
         controller = pays;
     }
 
     public void ComputeCenter(Vector3[] vecs)
     {
         center = Vector3.zero;
-        center.y = vecs[0].y;
 
         float x = 0, y = 0, area = 0, k;
         Vector3 a, b = vecs[vecs.Length - 1];
@@ -54,18 +61,18 @@ public class Province : MonoBehaviour
 
         center.x = x / area;
         center.z = y / area;
+        center.y = 0.3f;
     }
 
     public void SpawnUnitAtCity()
     {
-        Vector3 pos = (Vector3)Random.insideUnitCircle * 2;
-        pos.z = pos.y;
-        owner.CreateUnit(pos + center);
+        if (type == ProvinceType.SEA) return;
+        owner.CreateUnit(this);
     }
 
     public void Click_Event()
     {
-        if (Manager.instance.picked)
+        if (Manager.instance.picked && type != ProvinceType.SEA)
         {
             CanvasWorker.instance.ShowBuyUnit(this);
         }
@@ -84,6 +91,11 @@ public class Province : MonoBehaviour
         GetComponent<MeshFilter>().mesh = MeshGenerator.GenerateMesh(vecs);
 
         gameObject.AddComponent(typeof(MeshCollider));
+
+        if (type == ProvinceType.SEA)
+        {
+            SetColor(seaColor, seaColor);
+        }
 
     }
 
@@ -109,6 +121,13 @@ public class Province : MonoBehaviour
 
     public void RefreshColor()
     {
+
+        if (type == ProvinceType.SEA)
+        {
+            SetColor(seaColor, seaColor);
+            return;
+        }
+
         Manager manager = Manager.instance;
         if (manager.inPeaceDeal)
         {
@@ -204,6 +223,8 @@ public class Province : MonoBehaviour
 
     int DetermineRelationToPlayer(Pays p)
     {
+        if (type == ProvinceType.SEA) return 0;
+
         if (p.lord == Manager.instance.player) return 2;
         if (Manager.instance.player.lord == p) return 3;
         if (p.relations[Manager.instance.player.ID].atWar) return 1;
@@ -212,8 +233,11 @@ public class Province : MonoBehaviour
 
     void OnMouseDown()
     {
+        if (type == ProvinceType.SEA) return;
+
         if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
+
             if (Manager.instance.inPeaceDeal && Manager.instance.peaceDealSide2 == owner && Manager.instance.player == controller)
             {
                 CanvasWorker.instance.PeaceDealProvinceSelection(this);
@@ -228,7 +252,6 @@ public class Province : MonoBehaviour
             if (Manager.instance.picked)
             {
                 CanvasWorker.instance.ShowBuyUnit(this);
-                canvas.Show_CountryInfo(owner);
             }
             else
             {

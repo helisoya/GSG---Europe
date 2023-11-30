@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Federation
@@ -31,8 +32,13 @@ public class Federation
         if (members.Contains(pays))
         {
             return;
-
         }
+
+        foreach (Pays member in members)
+        {
+            member.AddToTraversalOptions(pays);
+        }
+
         members.Add(pays);
         pays.federation = this;
     }
@@ -43,6 +49,11 @@ public class Federation
         {
             members.Remove(pays);
             pays.federation = null;
+
+            foreach (Pays member in members)
+            {
+                member.RemoveFromTraversalOptions(pays);
+            }
 
             if (members.Count == 0)
             {
@@ -65,6 +76,8 @@ public class Federation
         {
             if (member == leader) continue;
 
+            leader.RemoveFromTraversalOptions(member);
+
             List<Province> provincesToAnnex = new List<Province>(member.provinces);
             foreach (Province province in provincesToAnnex)
             {
@@ -76,6 +89,7 @@ public class Federation
         leader.RefreshProvinces();
         leader.federation = null;
         leader = null;
+
         members.Clear();
         Manager.instance.federations.Remove(this);
     }

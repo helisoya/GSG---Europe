@@ -244,6 +244,8 @@ public class CanvasWorker : MonoBehaviour
                 B.lord = A;
                 B.CopyCat(A);
                 B.MimicColor(A);
+                B.AddToTraversalOptions(A);
+                A.AddToTraversalOptions(B);
                 break;
 
             case 3:
@@ -256,6 +258,8 @@ public class CanvasWorker : MonoBehaviour
                 A.lord = B;
                 A.CopyCat(B);
                 A.MimicColor(B);
+                B.AddToTraversalOptions(A);
+                A.AddToTraversalOptions(B);
                 break;
         }
 

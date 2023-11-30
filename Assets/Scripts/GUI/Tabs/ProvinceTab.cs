@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+
 
 public class ProvinceTab : GUITab
 {
@@ -13,6 +15,8 @@ public class ProvinceTab : GUITab
 
     [SerializeField] private GameObject showIfOwner;
     [SerializeField] private GameObject showIfOwnerIsVassal;
+    [SerializeField] private Image ownerFlag;
+    [SerializeField] private Image controllerFlag;
 
     public void ShowProvinceDetails(Province prov)
     {
@@ -34,6 +38,27 @@ public class ProvinceTab : GUITab
 
         showIfOwner.SetActive(prov.owner == Manager.instance.player);
         showIfOwnerIsVassal.SetActive(prov.owner.lord == Manager.instance.player);
+
+        ownerFlag.sprite = prov.owner.currentFlag;
+        if (prov.owner == prov.controller)
+        {
+            controllerFlag.gameObject.SetActive(false);
+        }
+        else
+        {
+            controllerFlag.gameObject.SetActive(true);
+            controllerFlag.sprite = prov.controller.currentFlag;
+        }
+    }
+
+    public void ShowOwner()
+    {
+        CanvasWorker.instance.Show_CountryInfo(currentProvine.owner);
+    }
+
+    public void ShowController()
+    {
+        CanvasWorker.instance.Show_CountryInfo(currentProvine.controller);
     }
 
     public void SeizeProvince()

@@ -55,20 +55,47 @@ public class CamMove : MonoBehaviour
             {
                 Manager.instance.UpdateMapGFXSeen(true);
             }
-
-
         }
+
+
+        Vector3 move = new Vector3(0, 0, 0);
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
-            Vector3 Move = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            transform.position += Move * speed * Time.unscaledDeltaTime;
+            move.x = Input.GetAxisRaw("Horizontal");
+            move.z = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            Vector3 mousePos = Input.mousePosition;
+            if (mousePos.x <= 25)
+            {
+                move.x = -1;
+            }
+            else if (mousePos.x >= Screen.width - 25)
+            {
+                move.x = 1;
+            }
+            if (mousePos.y <= 25)
+            {
+                move.z = -1;
+            }
+            else if (mousePos.y >= Screen.height - 25)
+            {
+                move.z = 1;
+            }
+        }
+
+        if (move.x != 0 || move.z != 0)
+        {
+            transform.position += move * speed * Time.unscaledDeltaTime;
             transform.position = new Vector3(
                 Mathf.Clamp(transform.position.x, border_left.transform.position.x + border_left.transform.localScale.x / 2, border_right.transform.position.x - border_right.transform.localScale.x / 2),
                 transform.position.y,
                 Mathf.Clamp(transform.position.z, border_down.transform.position.z + border_down.transform.localScale.z / 2, border_up.transform.position.z - border_up.transform.localScale.z / 2));
         }
 
-
     }
+
+
 }

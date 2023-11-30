@@ -5,36 +5,37 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
 
-    public Vector3 target;
 
     public Pays country = null;
-
     public float HP = 100;
-
     private int Max;
-
-    private GameObject HP_Bar;
-
     private Manager manager;
 
-    public GameObject selected_bar;
-
-    private GameObject land_part;
-
-    private GameObject sea_part;
-
+    [SerializeField] private GameObject HP_Bar;
+    [SerializeField] private GameObject selected_bar;
+    [SerializeField] private GameObject land_part;
+    [SerializeField] private GameObject sea_part;
     private float timeToRegen = 2;
-
-    public GameObject evasion_prefab;
-
-    public GameObject flag;
-
-    private bool isOnWater = false;
-
+    [SerializeField] private GameObject evasion_prefab;
+    [SerializeField] private GameObject flag;
     bool disabled = false;
 
+    private Province currentProvince;
     List<MeshRenderer> renderers = new List<MeshRenderer>();
+    private GraphPath path;
+    private int currentPathIndex;
 
+    public void Init(Province startProv, Pays owner)
+    {
+        country = owner;
+        currentProvince = startProv;
+        transform.position = startProv.center;
+    }
+
+    public void SetSelectedBarActive(bool value)
+    {
+        selected_bar.SetActive(value);
+    }
 
     void Start()
     {
@@ -60,14 +61,9 @@ public class Unit : MonoBehaviour
         }
 
 
-        target = transform.position;
+        ResetPath();
+
         manager = Manager.instance;
-        selected_bar = transform.Find("Selected").gameObject;
-
-        land_part = transform.Find("Land").gameObject;
-        sea_part = transform.Find("Sea").gameObject;
-
-        HP_Bar = transform.Find("Bar").gameObject;
 
         UpdateFlag();
 
@@ -77,9 +73,25 @@ public class Unit : MonoBehaviour
         }
 
         HP = country.unit_hp;
-        Max = ((int)HP);
+        Max = (int)HP;
 
         RefreshHp();
+    }
+
+
+    public void SetNewTarget(Province prov)
+    {
+        path = country.StartPathfinding(currentProvince, prov);
+        if (path == null) path = new GraphPath();
+
+        string aff = "";
+        foreach (Province p in path.nodes)
+        {
+            aff += p.Province_Name + " -> ";
+        }
+        print(aff);
+
+        currentPathIndex = 0;
     }
 
     public void RefreshHp()
@@ -103,17 +115,31 @@ public class Unit : MonoBehaviour
 
     public int GetDmg()
     {
-        if (isOnWater) return country.unit_navalDamage;
+        if (currentProvince.type == ProvinceType.SEA) return country.unit_navalDamage;
         return country.unit_damage;
+    }
+
+    public bool StandBy()
+    {
+        return path == null || path.length == 0 || currentPathIndex >= path.length;
     }
 
     public bool IsOnCountryTerritory(string id)
     {
-        RaycastHit hit;
-        Physics.Raycast(transform.position, Vector3.down, out hit);
-        Province prov = hit.transform.gameObject.GetComponent<Province>();
-        if (prov == null) return false;
-        return prov.owner.ID.Equals(id);
+        if (currentProvince == null) return false;
+        return currentProvince.owner.ID.Equals(id);
+    }
+
+    public void ResetPath()
+    {
+        path = new GraphPath();
+        currentPathIndex = 0;
+    }
+
+    void SwapParts(bool atSea)
+    {
+        sea_part.SetActive(atSea);
+        land_part.SetActive(!atSea);
     }
 
     void Update()
@@ -124,18 +150,49 @@ public class Unit : MonoBehaviour
         }
 
         Vector3 lastPos = transform.position;
-        if (!(target == transform.position))
+        if (!StandBy())
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, country.unit_speed * Time.deltaTime);
+            Vector3 target = path.nodes[currentPathIndex].center;
+
+            if (!(target == transform.position))
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target, country.unit_speed * Time.deltaTime);
+            }
+            else
+            {
+                currentProvince = path.nodes[currentPathIndex];
+
+                if (currentProvince.type == ProvinceType.SEA)
+                {
+                    SwapParts(true);
+                }
+                else
+                {
+                    SwapParts(false);
+                    if (country.atWarWith.Contains(currentProvince.controller.ID) &&
+                    (currentProvince.owner == currentProvince.controller || currentProvince.owner == country))
+                    {
+                        country.relations[currentProvince.controller.ID].warScores[country.ID] += 10;
+                        country.relations[currentProvince.controller.ID].warScores[currentProvince.controller.ID] -= 10;
+                        currentProvince.SetController(country);
+                        currentProvince.RefreshColor();
+                    }
+                }
+
+
+
+                currentPathIndex++;
+            }
+
+            transform.LookAt(target);
         }
 
-        transform.LookAt(target);
 
 
 
         HP_Bar.transform.LookAt(new Vector3(HP_Bar.transform.position.x, HP_Bar.transform.position.y, HP_Bar.transform.position.z - 50));
 
-
+        /*
         RaycastHit hit;
 
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
@@ -164,7 +221,7 @@ public class Unit : MonoBehaviour
 
                     if (prov.owner != manager.player && prov.owner.units.Count > 0)
                     {
-                        prov.owner.units[Random.Range(0, prov.owner.units.Count)].GetComponent<Unit>().target = transform.position;
+                        prov.owner.units[Random.Range(0, prov.owner.units.Count)].GetComponent<Unit>().SetNewTarget(prov);
                     }
 
                 }
@@ -173,6 +230,7 @@ public class Unit : MonoBehaviour
                     if (country == manager.player)
                     {
                         transform.position = lastPos;
+                        ResetPath();
                     }
                     else
                     {
@@ -181,12 +239,11 @@ public class Unit : MonoBehaviour
                         country.DeclareWarOnCountry(prov.owner);
                         country.relations[prov.owner.ID].warScores[country.ID] += 10;
                     }
-                    target = transform.position;
                 }
             }
             else if (hit.transform.tag == "Border")
             { // Cas Bordure
-                target = lastPos;
+                ResetPath();
                 transform.position = lastPos;
             }
             else
@@ -199,16 +256,17 @@ public class Unit : MonoBehaviour
                 }
                 else if (hit.transform.gameObject.tag == "Map" && !country.hasTech_Naval)
                 {
-                    target = lastPos;
+                    ResetPath();
                     transform.position = lastPos;
                 }
             }
         }
         else
         {
-            target = lastPos;
+            ResetPath();
             transform.position = lastPos;
         }
+        */
 
         if (Random.Range(0, 20) != 0)
         {
@@ -230,8 +288,8 @@ public class Unit : MonoBehaviour
                 if (dist <= 3)
                 {
                     canRegen = false;
-                    target = transform.position;
-                    unit.target = unit.transform.position;
+                    ResetPath();
+                    unit.ResetPath();
                     float dmg_b = unit.GetDmg() * Time.deltaTime * 10;
                     TakeDamage(dmg_b);
                     if (HP <= 0)

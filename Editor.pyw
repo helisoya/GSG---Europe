@@ -21,6 +21,8 @@ currentPROVID = "p2"
 currentFORMABLEID = "BEN"
 
 
+scaleFactor = 1
+
 
 MODE_DRAWING = 0
 MODE_COUNTRY = 1
@@ -29,6 +31,7 @@ MODE_MERGE = 3
 MODE_FORMABLE = 4
 
 currentMOD = MODE_DRAWING
+labelsHidden = False
 
 safeMode = False
 
@@ -128,6 +131,8 @@ def saveNormal():
     SaveJSON()
 
 
+
+
 menuBar = Menu(fenmap)
 fenmap['menu'] = menuBar
 SM_Mode = Menu(menuBar)
@@ -145,6 +150,8 @@ SM_Save.add_command(label='Safe', command=saveSafe)
 SM_Save.add_command(label='Normal', command=saveNormal)
 
 
+
+
 # -------------------- Fonctions pour le déplacement de la carte -----------------
 
 
@@ -153,8 +160,35 @@ def move_start(event):
 def move_move(event):
     canvasmap.scan_dragto(event.x, event.y, gain=1)
 
+def zoom(event):
+    global scaleFactor
+    x = canvasmap.canvasx(event.x)
+    y = canvasmap.canvasy(event.y)
+
+
+    if  event.delta == -120:  # scroll down
+        scaleFactor = 0.5
+    if event.delta == 120:  # scroll up
+        scaleFactor = 1.5
+
+    
+    canvasmap.scale('all', x, y, scaleFactor, scaleFactor)
+
+def hide(event):
+    global labelsHidden
+
+    labelsHidden = not labelsHidden
+    
+    state = "normal"
+    if labelsHidden:
+        state = "hidden"
+        
+    canvasmap.itemconfigure("points", state=state)
+
 canvasmap.bind("<ButtonPress-1>",move_start)
 canvasmap.bind("<B1-Motion>", move_move)
+canvasmap.bind('<MouseWheel>', zoom)
+canvasmap.bind_all("<h>",hide)
 
 
 # -------------------- Fonctions Chargement Dictionaires -------------------------
@@ -189,6 +223,7 @@ def SaveJSON():
             jsonp_file.write("\t\t{\n")
             jsonp_file.write("\t\t\t\"id\":"+str(province[1:])+",\n")
             jsonp_file.write("\t\t\t\"name\":\""+D_Provinces[province]["name"]+"\",\n")
+            jsonp_file.write("\t\t\t\"type\":\""+D_Provinces[province]["type"]+"\",\n")
 
             jsonp_file.write("\t\t\t\"adjacencies\":[\n")
             for i in range(len(D_Provinces[province]["adjacencies"])):
@@ -327,12 +362,16 @@ def LoadJSONs():
             D_Provinces[idProvTemp] = {}
             D_Provinces[idProvTemp]["name"] = province["name"]
             D_Provinces[idProvTemp]["owner"] = "000"
+            D_Provinces[idProvTemp]["type"] = province["type"]
             D_Provinces[idProvTemp]["points"] = province["vertices"]
             D_Provinces[idProvTemp]["adjacencies"] = ["p"+str(adjacent) for adjacent in province["adjacencies"]]
-            listPoints = [D_Points[point] for point in province["vertices"]] 
+            listPoints = [D_Points[point] for point in province["vertices"]]
             canvasmap.create_polygon(listPoints, outline='black',fill="gray", width=1,tags=idProvTemp)
             canvasmap.tag_bind(idProvTemp,"<Button-3>",RightClick)
             canvasmap.tag_bind(idProvTemp,"<Button-1>",LeftClick)
+
+    for point in D_Points:
+        canvasmap.create_text(D_Points[point], text=str(point), fill="black", font=('Helvetica 16 bold'),state="hidden",tags="points")
 
 
     with io.open("Assets/Resources/JSON/pays.json","r",encoding="utf8") as jsonp_file:
@@ -634,19 +673,25 @@ def SetProvinceMODE():
     WipeInfo() 
 
     provName = StringVar()
-    
+    provType = StringVar()
             
 
     def ChangeProvinceInfos():
         global D_Provinces
 
         D_Provinces[currentPROVID]["name"] = provName.get()
-
+        D_Provinces[currentPROVID]["type"] = provType.get()
 
 
     provName.set(D_Provinces[currentPROVID]["name"])
+    provType.set(D_Provinces[currentPROVID]["type"])
     entryName = Entry(Frame_Info,textvariable=provName)
     entryName.pack()
+
+    liste = ["NORMAL","COSTAL","SEA"]
+
+    optionType = OptionMenu(Frame_Info, provType, *liste)
+    optionType.pack()
 
     boutonValid = Button(Frame_Info,text="Valid Changes",command=ChangeProvinceInfos)
     boutonValid.pack()
