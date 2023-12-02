@@ -126,7 +126,7 @@ public class Pays
 
     public GraphPath StartPathfinding(Province from, Province to)
     {
-        return manager.movementGraph.GetShortestPath(from, to, canTraverse, true);
+        return manager.movementGraph.GetShortestPath(from, to, canTraverse, hasTech_Naval);
     }
 
 

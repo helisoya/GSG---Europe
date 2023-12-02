@@ -263,14 +263,18 @@ public class Manager : MonoBehaviour
             else
             {
                 toDelete.Add(p.ID);
-                while (p.provinces.Count > 0)
+                foreach (Province prov in p.provinces)
                 {
-                    Province obj = p.provinces[0];
-                    p.RemoveProvince(obj);
-                    DestroyImmediate(obj.gameObject);
+                    prov.SetAsSeaProvince();
                 }
             }
         }
+
+        foreach (string del in toDelete)
+        {
+            pays.Remove(del);
+        }
+
         Ajout_Mois();
         CanvasWorker.instance.ShowDefault();
         CanvasWorker.instance.UpdateInfo();

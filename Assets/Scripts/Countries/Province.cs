@@ -64,6 +64,14 @@ public class Province : MonoBehaviour
         center.y = 0.3f;
     }
 
+    public void SetAsSeaProvince()
+    {
+        type = ProvinceType.SEA;
+        controller = null;
+        owner = null;
+        SetColor(seaColor, seaColor);
+    }
+
     public void SpawnUnitAtCity()
     {
         if (type == ProvinceType.SEA) return;
