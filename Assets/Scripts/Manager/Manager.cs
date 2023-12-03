@@ -188,12 +188,12 @@ public class Manager : MonoBehaviour
 
         foreach (Province province in A.provinces)
         {
-            if (province.controller == B) province.controller = A;
+            if (province.controller == B) province.SetController(A);
         }
 
         foreach (Province province in B.provinces)
         {
-            if (province.controller == A) province.controller = B;
+            if (province.controller == A) province.SetController(B);
         }
 
 

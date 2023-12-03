@@ -12,31 +12,63 @@ public enum ProvinceType
 
 public class Province : MonoBehaviour
 {
-    public Pays controller = null;
-    public Pays owner = null;
-    public string Province_Name;
     public int id;
+    public string Province_Name;
     public ProvinceType type;
-
-    private CanvasWorker canvas;
-
+    private Pays _controller = null;
+    private Pays _owner = null;
     public Vector3 center;
-    private bool hover;
     public Province[] adjacencies;
     public bool hasRailroad;
+    private bool hover;
+    private List<Unit> _units;
+
+    public List<Unit> units
+    {
+        get
+        {
+            return _units;
+        }
+    }
+
+    public Pays controller
+    {
+        get
+        {
+            return _controller;
+        }
+    }
+
+    public Pays owner
+    {
+        get
+        {
+            return _owner;
+        }
+    }
 
     [SerializeField] private Color seaColor;
 
     public void SetOwner(Pays pays)
     {
         if (type == ProvinceType.SEA) return;
-        owner = pays;
+        _owner = pays;
     }
 
     public void SetController(Pays pays)
     {
         if (type == ProvinceType.SEA) return;
-        controller = pays;
+        _controller = pays;
+    }
+
+    public void AddUnit(Unit unit)
+    {
+        units.Add(unit);
+    }
+
+    public void RemoveUnit(Unit unit)
+    {
+        units.Remove(unit);
     }
 
     public void ComputeCenter(Vector3[] vecs)
@@ -67,8 +99,8 @@ public class Province : MonoBehaviour
     public void SetAsSeaProvince()
     {
         type = ProvinceType.SEA;
-        controller = null;
-        owner = null;
+        _controller = null;
+        _owner = null;
         SetColor(seaColor, seaColor);
     }
 
@@ -89,10 +121,8 @@ public class Province : MonoBehaviour
     public void Init(Vector3[] vecs)
     {
         hover = false;
+        _units = new List<Unit>();
         ComputeCenter(vecs);
-
-
-        canvas = CanvasWorker.instance;
 
         // Initialise la creation de la province en polygone
 

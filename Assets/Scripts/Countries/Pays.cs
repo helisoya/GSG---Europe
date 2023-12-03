@@ -434,7 +434,7 @@ public class Pays
         {
             if (unit.IsOnCountryTerritory(country))
             {
-                unit.transform.position = placeTo.center;
+                unit.Teleport(placeTo);
             }
         }
     }
