@@ -48,5 +48,13 @@ public class ProvinceCountryUnitGFX
         unitgfxs[type].RefreshGFX();
     }
 
+    public void RefreshFlag(Sprite newSprite)
+    {
+        foreach (ProvinceUnitGfx unit in unitgfxs.Values)
+        {
+            unit.RefreshFlag(newSprite);
+        }
+    }
+
 
 }

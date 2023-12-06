@@ -71,12 +71,12 @@
 			"id":"EVASION_INCREASE",
 			"x":8,
 			"y":3,
-			"name":"Better training",
-			"desc":"Gives +5% Evasion to units",
+			"name":"Better armor",
+			"desc":"Gives +10% Defense to units",
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(0,05)"]
+			"effect":["DEFENSE(0,05)"]
 		},
 		{
 			"id":"DAMAGE_INCREASE",

@@ -177,12 +177,12 @@
 			"id":"EVASIVE_TRAINING",
 			"x":7,
 			"y":2,
-			"name":"Evasive training",
-			"desc":"Gives +10% Evasion to units",
+			"name":"New Armor Design",
+			"desc":"Gives +10% Defense to units",
 			"required":["DEFENSIVE_DOCTRINE"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(0,1)"]
+			"effect":["DEFENSE(0,1)"]
 		}
 	]
 }

@@ -14,5 +14,4 @@ public class UnitTypeInfo : ScriptableObject
     public float baseDefense;
     public float baseTravelSpeed;
     public float baseNavelAttack;
-    public float baseEvasion;
 }

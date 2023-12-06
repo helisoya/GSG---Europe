@@ -13,7 +13,7 @@ public class Unit : MonoBehaviour
 {
     [Header("Stats")]
     public UnitTypeInfo info;
-    private float HP;
+    [SerializeField] private float HP;
     [SerializeField] private float timeToRegen = 2;
     private float travelStart;
     private bool selected;
@@ -66,20 +66,11 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public float evasion
-    {
-        get
-        {
-            return info.baseEvasion * country.bonusEvasion;
-        }
-    }
-
 
     [Header("Components")]
     [SerializeField] private GameObject selected_bar;
     [SerializeField] private GameObject land_part;
     [SerializeField] private GameObject sea_part;
-    [SerializeField] private GameObject evasion_prefab;
     [SerializeField] private Renderer flag;
     [SerializeField] private LineRenderer linePath;
 
@@ -228,12 +219,11 @@ public class Unit : MonoBehaviour
     {
         if (country.provinces.Count <= 0)
         {
-            TakeDamage(maxHp + 1);
+            TakeDamage(maxHp + 1, 50);
         }
 
         bool canRegen = true;
 
-        Vector3 lastPos = transform.position;
         if (!StandBy())
         {
             transform.LookAt(path.nodes[currentPathIndex].center);
@@ -247,12 +237,10 @@ public class Unit : MonoBehaviour
                 {
                     Unit unit = ennemiesInNextProvince[idx];
                     unit.ResetPath();
-                    float dmg_toOther = GetDmg() * Time.deltaTime * 5;
-                    float dmg_toMe = unit.GetDmg() * Time.deltaTime * 2.5f;
 
-                    if (!unit.TakeDamage(dmg_toOther))
+                    if (!unit.TakeDamage(GetDmg(), 5))
                     {
-                        if (TakeDamage(dmg_toMe)) return;
+                        if (TakeDamage(unit.GetDmg(), 2.5f)) return;
                     }
                     idx++;
                 }
@@ -296,7 +284,7 @@ public class Unit : MonoBehaviour
         {
             if (timeToRegen <= 0)
             {
-                TakeDamage(-5);
+                TakeDamage(-5, 1);
                 timeToRegen = 2;
             }
             else
@@ -311,22 +299,15 @@ public class Unit : MonoBehaviour
     }
 
 
-    public bool TakeDamage(float dmg)
+    public bool TakeDamage(float dmg, float dmgMult)
     {
-        if (dmg < 0)
+        if (dmg > 0)
         {
-            if (Random.Range(0f, 1f) > evasion)
-            {
-                GameObject obj = Instantiate(evasion_prefab, transform);
-                obj.transform.position = transform.position;
-            }
-            else
-            {
-                dmg = Mathf.Clamp(dmg - defense, 0, dmg);
-                HP = Mathf.Clamp(HP - dmg, 0f, maxHp);
-            }
+            dmg = Mathf.Clamp(dmg - defense, 0, dmg) * Time.deltaTime * dmgMult;
+            HP = Mathf.Clamp(HP - dmg, 0f, maxHp);
+
         }
-        else if (dmg >= 0)
+        else if (dmg <= 0)
         {
             HP = Mathf.Clamp(HP - dmg, 0, maxHp);
         }
@@ -370,6 +351,8 @@ public class Unit : MonoBehaviour
         {
             flag.material.mainTexture = country.currentFlag.texture;
         }
+
+        currentProvince.RefreshCountryFlag(country);
 
     }
 

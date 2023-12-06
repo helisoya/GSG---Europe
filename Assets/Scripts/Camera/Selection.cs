@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Selection : MonoBehaviour
 {
+
+    [SerializeField] private LayerMask uiMask;
 
     RaycastHit hit;
 
@@ -56,6 +59,7 @@ public class Selection : MonoBehaviour
         {
             if (dragSelect == false) //single select
             {
+                /**
                 Ray ray = Camera.main.ScreenPointToRay(p1);
 
                 if (Physics.Raycast(ray, out hit, 50000.0f))
@@ -68,7 +72,7 @@ public class Selection : MonoBehaviour
                         }
 
                     }
-                    else if (hit.transform.tag != "UI")
+                    else if (hit.transform.gameObject.layer != uiMask)
                     {
                         UnselectUnits();
 
@@ -92,7 +96,7 @@ public class Selection : MonoBehaviour
                     {
                         UnselectUnits();
                     }
-                }
+                }**/
             }
             else //marquee select
             {

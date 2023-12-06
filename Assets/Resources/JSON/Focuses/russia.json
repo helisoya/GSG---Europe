@@ -130,7 +130,7 @@
 			"id":"TRAIN_MENS",
 			"x":5,
 			"y":1,
-			"name":"Train more mens",
+			"name":"Train more men",
 			"desc":"Gives +15 <sprite=14>",
 			"required":[],
 			"requireAll":"False",
@@ -141,12 +141,12 @@
 			"id":"EVASIVE_TACTICS",
 			"x":5,
 			"y":2,
-			"name":"Evasive training",
-			"desc":"Gives +15% Evasion to units",
+			"name":"Body Armor",
+			"desc":"Gives +15% Defense to units",
 			"required":["TRAIN_MENS"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(0,15)"]
+			"effect":["DEFENSE(0,15)"]
 		},
 		
 		

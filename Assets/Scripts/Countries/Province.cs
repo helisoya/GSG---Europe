@@ -91,6 +91,14 @@ public class Province : MonoBehaviour
         unitgfxs[unit.country].RefreshUnit(unit.info.type);
     }
 
+    public void RefreshCountryFlag(Pays pays)
+    {
+        if (unitgfxs.ContainsKey(pays))
+        {
+            unitgfxs[pays].RefreshFlag(pays.currentFlag);
+        }
+    }
+
 
     public void ComputeCenter(Vector3[] vecs)
     {

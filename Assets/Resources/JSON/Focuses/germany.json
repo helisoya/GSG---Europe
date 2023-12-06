@@ -152,23 +152,23 @@
 			"id":"EVASIVE_TRAINING",
 			"x":6,
 			"y":2,
-			"name":"Evasive training",
-			"desc":"Gives +5% Evasion to units",
+			"name":"Better armor",
+			"desc":"Gives +5% Defense to units",
 			"required":["BLITZKRIEG"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(0,05)"]
+			"effect":["DEFENSE(0,05)"]
 		},
 		{
 			"id":"BETTER_ARMOR",
 			"x":6,
 			"y":3,
-			"name":"Better Armor",
-			"desc":"Gives +40 HP to units",
+			"name":"Body Armor",
+			"desc":"Gives +30% HP to units",
 			"required":["EVASIVE_TRAINING"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["HP(0,4)"]
+			"effect":["HP(0,3)"]
 		}
 	]
 }

@@ -30,6 +30,7 @@ public class ProvinceUnitGfx : MonoBehaviour
         _count = 0;
 
         unitTypeIcon.sprite = pays.currentFlag;
+        hpFill.color = (pays == Manager.instance.player) ? Color.green : Color.red;
         // Icon
     }
 
@@ -61,6 +62,12 @@ public class ProvinceUnitGfx : MonoBehaviour
 
 
         hpFill.fillAmount = current / total;
+    }
+
+
+    public void RefreshFlag(Sprite sprite)
+    {
+        unitTypeIcon.sprite = sprite;
     }
 
 

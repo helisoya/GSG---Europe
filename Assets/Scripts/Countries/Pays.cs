@@ -58,7 +58,6 @@ public class Pays
     public float bonusNaval;
     public float bonusDamage;
     public float bonusHP;
-    public float bonusEvasion;
     public float bonusSpeed;
     public bool hasTech_Naval = false;
 
@@ -120,7 +119,6 @@ public class Pays
         bonusHP = 1f;
         bonusSpeed = 1f;
         bonusDefense = 1f;
-        bonusEvasion = 1f;
     }
 
     public GraphPath StartPathfinding(Province from, Province to)
@@ -191,10 +189,6 @@ public class Pays
                     case "DEFENSE":
                         refreshUnits = true;
                         bonusDefense += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                        break;
-                    case "EVASION":
-                        refreshUnits = true;
-                        bonusEvasion += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "ATTACK":
                         refreshUnits = true;
