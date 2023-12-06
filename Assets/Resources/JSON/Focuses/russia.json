@@ -28,7 +28,7 @@
 			"id":"TIGHTEN_GRIP",
 			"x":3,
 			"y":3,
-			"name":"Fascism",
+			"name":"Tighten Grip",
 			"desc":"Change governement to fascism & +80<sprite=12>",
 			"required":["FAILURE"],
 			"requireAll":"False",
@@ -146,7 +146,7 @@
 			"required":["TRAIN_MENS"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(15)"]
+			"effect":["EVASION(0,15)"]
 		},
 		
 		

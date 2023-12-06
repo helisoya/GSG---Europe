@@ -144,11 +144,11 @@
 			"x":6,
 			"y":1,
 			"name":"Offensive doctrine",
-			"desc":"Gives +50% Attack to units",
+			"desc":"Gives +20% Attack to units",
 			"required":["EXPAND_MILITARY"],
 			"requireAll":"False",
 			"exclusive":["DEFENSIVE_DOCTRINE"],
-			"effect":["ATTACK(5)"]
+			"effect":["ATTACK(0,2)"]
 		},
 		{
 			"id":"SPEED_FOCUS",
@@ -159,7 +159,7 @@
 			"required":["OFFENSIVE_DOCTRINE"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["SPEED(2)"]
+			"effect":["SPEED(0,3)"]
 		},
 		
 		{
@@ -167,22 +167,22 @@
 			"x":7,
 			"y":1,
 			"name":"Defensive Focus",
-			"desc":"Gives +50 HP to units",
+			"desc":"Gives +10% HP to units",
 			"required":["EXPAND_MILITARY"],
 			"requireAll":"False",
 			"exclusive":["OFFENSIVE_DOCTRINE"],
-			"effect":["HP(50)"]
+			"effect":["HP(0,1)"]
 		},
 		{
 			"id":"EVASIVE_TRAINING",
 			"x":7,
 			"y":2,
 			"name":"Evasive training",
-			"desc":"Gives +15% Evasion to units",
+			"desc":"Gives +10% Evasion to units",
 			"required":["DEFENSIVE_DOCTRINE"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(15)"]
+			"effect":["EVASION(0,1)"]
 		}
 	]
 }

@@ -1,32 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
+
+public enum UnitType
+{
+    INFANTRY,
+    TANK
+}
 
 public class Unit : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private float HP = 100;
-    [SerializeField] private float travelTime;
+    public UnitTypeInfo info;
+    private float HP;
     [SerializeField] private float timeToRegen = 2;
-    private float Max;
     private float travelStart;
+    private bool selected;
+
+    public float maxHp
+    {
+        get
+        {
+            return info.baseHP * country.bonusHP;
+        }
+    }
+
+    public float currentHp
+    {
+        get
+        {
+            return HP;
+        }
+    }
+
+    public float travelSpeed
+    {
+        get
+        {
+            return info.baseTravelSpeed * country.bonusSpeed;
+        }
+    }
+
+    public float damage
+    {
+        get
+        {
+            return info.baseAttack * country.bonusDamage;
+        }
+    }
+
+    public float defense
+    {
+        get
+        {
+            return info.baseDefense * country.bonusDefense;
+        }
+    }
+
+    public float navalDamage
+    {
+        get
+        {
+            return info.baseNavelAttack * country.bonusNaval;
+        }
+    }
+
+    public float evasion
+    {
+        get
+        {
+            return info.baseEvasion * country.bonusEvasion;
+        }
+    }
+
 
     [Header("Components")]
-    [SerializeField] private GameObject HP_Bar;
     [SerializeField] private GameObject selected_bar;
     [SerializeField] private GameObject land_part;
     [SerializeField] private GameObject sea_part;
     [SerializeField] private GameObject evasion_prefab;
     [SerializeField] private Renderer flag;
     [SerializeField] private LineRenderer linePath;
-    bool disabled = false;
+
 
     private Province currentProvince;
     private List<Renderer> renderers = new List<Renderer>();
     private GraphPath path;
     private int currentPathIndex;
 
-    private Pays country = null;
+    public Pays country = null;
     private Manager manager;
 
     public void Init(Province startProv, Pays owner)
@@ -34,16 +97,10 @@ public class Unit : MonoBehaviour
         country = owner;
         currentProvince = startProv;
         transform.position = startProv.center;
-        currentProvince.AddUnit(this);
-    }
 
-    public void SetSelectedBarActive(bool value)
-    {
-        selected_bar.SetActive(value);
-    }
 
-    void Start()
-    {
+        manager = Manager.instance;
+
         renderers = new List<Renderer>(GetComponents<Renderer>());
 
         foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
@@ -61,35 +118,17 @@ public class Unit : MonoBehaviour
 
 
         ResetPath();
-
-        manager = Manager.instance;
-
         UpdateFlag();
 
-        if (manager.player == country)
-        {
-            HP_Bar.GetComponent<Renderer>().material.color = new Color32(0, 255, 0, 255);
-        }
+        HP = maxHp;
 
-        HP = country.unit_hp;
-        Max = HP;
-
-        RefreshHp();
+        currentProvince.AddUnit(this);
     }
-
 
     public void SetNewTarget(Province prov)
     {
         path = country.StartPathfinding(currentProvince, prov);
         if (path == null) path = new GraphPath();
-
-        string aff = "";
-        foreach (Province p in path.nodes)
-        {
-            aff += p.Province_Name + " -> ";
-        }
-        print(aff);
-
 
         if (path.nodes.Count > 0)
         {
@@ -104,6 +143,11 @@ public class Unit : MonoBehaviour
 
         RedrawLinePath();
 
+    }
+
+    public void RefreshGFX()
+    {
+        currentProvince.RefreshUnitGFX(this);
     }
 
     public void RedrawLinePath()
@@ -129,11 +173,6 @@ public class Unit : MonoBehaviour
         linePath.SetPositions(pos);
     }
 
-    public void RefreshHp()
-    {
-        RefreshHealthBar();
-    }
-
     void UpdateAllRenderers(bool val)
     {
         foreach (MeshRenderer renderer in renderers)
@@ -144,14 +183,13 @@ public class Unit : MonoBehaviour
 
     public void UpdateIsSeen(bool value)
     {
-        disabled = !value;
         UpdateAllRenderers(value);
     }
 
-    public int GetDmg()
+    public float GetDmg()
     {
-        if (currentProvince.type == ProvinceType.SEA) return country.unit_navalDamage;
-        return country.unit_damage;
+        if (currentProvince.type == ProvinceType.SEA) return navalDamage;
+        return damage;
     }
 
     public bool StandBy()
@@ -162,13 +200,15 @@ public class Unit : MonoBehaviour
     public void Teleport(Province prov)
     {
         ResetPath();
+        currentProvince.RemoveUnit(this);
         currentProvince = prov;
+        currentProvince.AddUnit(this);
         transform.position = currentProvince.center;
     }
 
     public bool IsOnCountryTerritory(string id)
     {
-        if (currentProvince == null) return false;
+        if (currentProvince == null || currentProvince.type == ProvinceType.SEA) return false;
         return currentProvince.owner.ID.Equals(id);
     }
 
@@ -188,7 +228,7 @@ public class Unit : MonoBehaviour
     {
         if (country.provinces.Count <= 0)
         {
-            TakeDamage(Max + 1);
+            TakeDamage(maxHp + 1);
         }
 
         bool canRegen = true;
@@ -207,13 +247,17 @@ public class Unit : MonoBehaviour
                 {
                     Unit unit = ennemiesInNextProvince[idx];
                     unit.ResetPath();
-                    float dmg = GetDmg() * Time.deltaTime * 10;
+                    float dmg_toOther = GetDmg() * Time.deltaTime * 5;
+                    float dmg_toMe = unit.GetDmg() * Time.deltaTime * 2.5f;
 
-                    unit.TakeDamage(dmg);
+                    if (!unit.TakeDamage(dmg_toOther))
+                    {
+                        if (TakeDamage(dmg_toMe)) return;
+                    }
                     idx++;
                 }
             }
-            else if (Time.time - travelStart >= travelTime)
+            else if (ennemiesInNextProvince.Count == 0 && Time.time - travelStart >= travelSpeed)
             {
 
                 currentProvince.RemoveUnit(this);
@@ -247,15 +291,8 @@ public class Unit : MonoBehaviour
 
         }
 
-        HP_Bar.transform.LookAt(new Vector3(HP_Bar.transform.position.x, HP_Bar.transform.position.y, HP_Bar.transform.position.z - 50));
 
-
-        if (Random.Range(0, 20) != 0)
-        {
-            return;
-        }
-
-        if (canRegen)
+        if (canRegen && HP < maxHp)
         {
             if (timeToRegen <= 0)
             {
@@ -273,30 +310,28 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void RefreshHealthBar()
-    {
-        float amount = (HP * 7) / Max;
-        if (amount < 0)
-        {
-            return;
-        }
-        if (amount != HP_Bar.transform.localScale.x)
-        {
-            HP_Bar.transform.localScale = new Vector3(amount, HP_Bar.transform.localScale.y, HP_Bar.transform.localScale.z);
-        }
-    }
 
     public bool TakeDamage(float dmg)
     {
-        if (dmg < 0 || Random.Range(0, 101) > country.unit_evasion)
+        if (dmg < 0)
         {
-            HP = Mathf.Clamp(HP - dmg, 0f, Max);
+            if (Random.Range(0f, 1f) > evasion)
+            {
+                GameObject obj = Instantiate(evasion_prefab, transform);
+                obj.transform.position = transform.position;
+            }
+            else
+            {
+                dmg = Mathf.Clamp(dmg - defense, 0, dmg);
+                HP = Mathf.Clamp(HP - dmg, 0f, maxHp);
+            }
         }
         else if (dmg >= 0)
         {
-            GameObject obj = Instantiate(evasion_prefab, transform);
-            obj.transform.position = transform.position;
+            HP = Mathf.Clamp(HP - dmg, 0, maxHp);
         }
+
+        currentProvince.RefreshUnitGFX(this);
 
 
         if (HP <= 0)
@@ -308,20 +343,26 @@ public class Unit : MonoBehaviour
         }
         else
         {
-            RefreshHealthBar();
             return false;
         }
     }
 
     public void Click_Event()
     {
-        if (country == manager.player)
+        if (country == manager.player && !selected)
         {
+            selected = true;
             selected_bar.SetActive(true);
-            manager.selected_unit.Add(gameObject);
+            manager.selected_unit.Add(this);
         }
     }
 
+    public void UnSelect()
+    {
+        if (selected_bar == null) return;
+        selected = false;
+        selected_bar.SetActive(false);
+    }
 
     public void UpdateFlag()
     {

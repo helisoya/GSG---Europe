@@ -54,21 +54,12 @@ public class Pays
 
     public List<Unit> units;
 
-    public int unit_damage { get { return 10 + bonusDamage; } }
-
-    public int unit_hp { get { return 100 + bonusHP; } }
-
-    public int unit_evasion { get { return 20 + bonusEvasion; } }
-
-    public int unit_speed { get { return 5 + bonusSpeed; } }
-
-    public int unit_navalDamage { get { return unit_damage / 2 + unit_damage * (bonusNaval / 100); } }
-
-    public int bonusNaval;
-    public int bonusDamage;
-    public int bonusHP;
-    public int bonusEvasion;
-    public int bonusSpeed;
+    public float bonusDefense;
+    public float bonusNaval;
+    public float bonusDamage;
+    public float bonusHP;
+    public float bonusEvasion;
+    public float bonusSpeed;
     public bool hasTech_Naval = false;
 
 
@@ -122,6 +113,14 @@ public class Pays
 
         Reset_Elections();
         Reset_Flag();
+
+
+        bonusNaval = 1f;
+        bonusDamage = 1f;
+        bonusHP = 1f;
+        bonusSpeed = 1f;
+        bonusDefense = 1f;
+        bonusEvasion = 1f;
     }
 
     public GraphPath StartPathfinding(Province from, Province to)
@@ -153,6 +152,8 @@ public class Pays
         {
             focusDone.Add(currentFocus);
 
+            bool refreshUnits = false;
+
             foreach (string effectNotSplited in focusTree[currentFocus].effect)
             {
                 string[] effect = effectNotSplited.Split("(");
@@ -180,16 +181,28 @@ public class Pays
                         bonusMilCap += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "SPEED":
-                        bonusSpeed += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        refreshUnits = true;
+                        bonusSpeed -= float.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "HP":
-                        bonusHP += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        refreshUnits = true;
+                        bonusHP += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "DEFENSE":
+                        refreshUnits = true;
+                        bonusDefense += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "EVASION":
-                        bonusEvasion += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        refreshUnits = true;
+                        bonusEvasion += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "ATTACK":
-                        bonusDamage += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        refreshUnits = true;
+                        bonusDamage += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
+                        break;
+                    case "NAVALBOOST":
+                        refreshUnits = true;
+                        bonusNaval += float.Parse(effect[1], System.Globalization.NumberStyles.Any);
                         break;
                     case "ENABLE_NAVAL":
                         hasTech_Naval = true;
@@ -287,6 +300,15 @@ public class Pays
                 }
             }
             currentFocus = "NONE";
+
+
+            if (refreshUnits)
+            {
+                foreach (Unit unit in units)
+                {
+                    unit.RefreshGFX();
+                }
+            }
 
             if (this == manager.player)
             {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public enum ProvinceType
@@ -22,6 +23,12 @@ public class Province : MonoBehaviour
     public bool hasRailroad;
     private bool hover;
     private List<Unit> _units;
+
+    [Header("Canvas")]
+    [SerializeField] private GameObject canvasRoot;
+    [SerializeField] private GameObject prefabUnitGFX;
+    [SerializeField] private Transform unitGfxRoot;
+    private Dictionary<Pays, ProvinceCountryUnitGFX> unitgfxs;
 
     public List<Unit> units
     {
@@ -64,12 +71,26 @@ public class Province : MonoBehaviour
     public void AddUnit(Unit unit)
     {
         units.Add(unit);
+
+        if (!unitgfxs.ContainsKey(unit.country))
+        {
+            unitgfxs.Add(unit.country, new ProvinceCountryUnitGFX(prefabUnitGFX, unitGfxRoot));
+        }
+        unitgfxs[unit.country].AddUnit(unit);
     }
 
     public void RemoveUnit(Unit unit)
     {
         units.Remove(unit);
+
+        unitgfxs[unit.country].RemoveUnit(unit);
     }
+
+    public void RefreshUnitGFX(Unit unit)
+    {
+        unitgfxs[unit.country].RefreshUnit(unit.info.type);
+    }
+
 
     public void ComputeCenter(Vector3[] vecs)
     {
@@ -135,6 +156,9 @@ public class Province : MonoBehaviour
             SetColor(seaColor, seaColor);
         }
 
+        canvasRoot.transform.position = center + Vector3.up * 2;
+        canvasRoot.GetComponent<Canvas>().worldCamera = Camera.main;
+        unitgfxs = new Dictionary<Pays, ProvinceCountryUnitGFX>();
     }
 
 

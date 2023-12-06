@@ -18,7 +18,7 @@ public class Manager : MonoBehaviour
     public int an = 2030;
 
 
-    public List<GameObject> selected_unit = new List<GameObject>();
+    public List<Unit> selected_unit = new List<Unit>();
 
 
 

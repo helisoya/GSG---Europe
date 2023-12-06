@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b8812101fff014da75f79f9fe6ea70, type: 3}
+  m_Name: Tank
+  m_EditorClassIdentifier: 
+  type: 1
+  unitName: Tank
+  unitSprite: {fileID: 0}
+  baseHP: 100
+  baseAttack: 5
+  baseDefense: 2
+  baseTravelSpeed: 2
+  baseNavelAttack: 2
+  baseEvasion: 0.1

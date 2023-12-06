@@ -43,7 +43,7 @@
 			"required":["NAVAL_RESEARCH"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["NAVALBOOST(30)"]
+			"effect":["NAVALBOOST(0,3)"]
 		},
 		{
 			"id":"MILITARY_DRAFT",
@@ -61,11 +61,11 @@
 			"x":9,
 			"y":3,
 			"name":"First Aid Kits",
-			"desc":"Gives +50 HP to units",
+			"desc":"Gives +25% HP to units",
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["HP(50)"]
+			"effect":["HP(0,25)"]
 		},
 		{
 			"id":"EVASION_INCREASE",
@@ -76,18 +76,18 @@
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(5)"]
+			"effect":["EVASION(0,05)"]
 		},
 		{
 			"id":"DAMAGE_INCREASE",
 			"x":7,
 			"y":3,
 			"name":"Better weapons",
-			"desc":"Gives +50% Attack to units",
+			"desc":"Gives +20% Attack to units",
 			"required":["MILITARY_DRAFT"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["ATTACK(5)"]
+			"effect":["ATTACK(0,2)"]
 		},
 		
 		{
@@ -99,7 +99,7 @@
 			"required":["EXPAND_ADMIN"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["SPEED(2)"]
+			"effect":["SPEED(0,3)"]
 		},
 		{
 			"id":"HIRE_DIPLOMATS",

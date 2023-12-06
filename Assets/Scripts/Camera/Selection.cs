@@ -68,17 +68,9 @@ public class Selection : MonoBehaviour
                         }
 
                     }
-                    else //exclusive selected
+                    else if (hit.transform.tag != "UI")
                     {
-                        foreach (GameObject unit in Manager.instance.selected_unit)
-                        {
-                            if (unit != null)
-                            {
-                                unit.GetComponent<Unit>().SetSelectedBarActive(false);
-                            }
-                        }
-
-                        Manager.instance.selected_unit = new List<GameObject>();
+                        UnselectUnits();
 
                         if (hit.transform.gameObject.tag == "Unit")
                         {
@@ -98,16 +90,7 @@ public class Selection : MonoBehaviour
                     }
                     else
                     {
-
-                        foreach (GameObject unit in Manager.instance.selected_unit)
-                        {
-                            if (unit != null)
-                            {
-                                unit.GetComponent<Unit>().SetSelectedBarActive(false);
-                            }
-                        }
-
-                        Manager.instance.selected_unit = new List<GameObject>();
+                        UnselectUnits();
                     }
                 }
             }
@@ -122,15 +105,7 @@ public class Selection : MonoBehaviour
 
                 if (!Input.GetKey(KeyCode.LeftShift))
                 {
-                    foreach (GameObject unit in Manager.instance.selected_unit)
-                    {
-                        if (unit != null)
-                        {
-                            unit.GetComponent<Unit>().SetSelectedBarActive(false);
-                        }
-                    }
-
-                    Manager.instance.selected_unit = new List<GameObject>();
+                    UnselectUnits();
                 }
 
                 foreach (Unit unit in Manager.instance.player.units)
@@ -167,17 +142,24 @@ public class Selection : MonoBehaviour
 
                 if (prov != null && Manager.instance.selected_unit != null)
                 {
-                    foreach (GameObject unit in Manager.instance.selected_unit)
+                    foreach (Unit unit in Manager.instance.selected_unit)
                     {
-                        if (unit != null)
-                        {
-                            unit.GetComponent<Unit>().SetNewTarget(prov);
-                        }
+                        unit?.SetNewTarget(prov);
                     }
                 }
             }
         }
 
+    }
+
+    void UnselectUnits()
+    {
+        foreach (Unit unit in Manager.instance.selected_unit)
+        {
+            unit?.UnSelect();
+        }
+
+        Manager.instance.selected_unit = new List<Unit>();
     }
 
     private void OnGUI()

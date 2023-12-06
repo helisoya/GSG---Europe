@@ -135,40 +135,40 @@
 			"required":["EXPAND_MILITARY"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["SPEED(3)"]
+			"effect":["SPEED(0,4)"]
 		},
 		{
 			"id":"OFFENSIVE_DOCTRINE",
 			"x":5,
 			"y":2,
 			"name":"Offensive doctrine",
-			"desc":"Gives +50% Attack to units",
+			"desc":"Gives +30% Attack to units",
 			"required":["BLITZKRIEG"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["ATTACK(5)"]
+			"effect":["ATTACK(0,3)"]
 		},
 		{
 			"id":"EVASIVE_TRAINING",
 			"x":6,
 			"y":2,
 			"name":"Evasive training",
-			"desc":"Gives +15% Evasion to units",
+			"desc":"Gives +5% Evasion to units",
 			"required":["BLITZKRIEG"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["EVASION(15)"]
+			"effect":["EVASION(0,05)"]
 		},
 		{
 			"id":"BETTER_ARMOR",
 			"x":6,
 			"y":3,
 			"name":"Better Armor",
-			"desc":"Gives +50 HP to units",
+			"desc":"Gives +40 HP to units",
 			"required":["EVASIVE_TRAINING"],
 			"requireAll":"False",
 			"exclusive":[],
-			"effect":["HP(50)"]
+			"effect":["HP(0,4)"]
 		}
 	]
 }

@@ -324,7 +324,7 @@
 			"requireAll": "False",
 			"exclusive": [],
 			"effect": [
-				"NAVALBOOST(40)"
+				"NAVALBOOST(0,4)"
 			]
 		},
 		{
@@ -332,14 +332,14 @@
 			"x": 10,
 			"y": 2,
 			"name": "Offensive Exercice",
-			"desc": "Gives +60% attack to units",
+			"desc": "Gives +30% attack to units",
 			"required": [
 				"REFORM_ARMY"
 			],
 			"requireAll": "False",
 			"exclusive": [],
 			"effect": [
-				"ATTACK(6)"
+				"ATTACK(0,3)"
 			]
 		},
 		{
@@ -347,14 +347,14 @@
 			"x": 10,
 			"y": 3,
 			"name": "Defensive Exercice",
-			"desc": "Gives +80HP to all units",
+			"desc": "Gives +30% HP to all units",
 			"required": [
 				"OFFENSIVE_EXERCICE"
 			],
 			"requireAll": "False",
 			"exclusive": [],
 			"effect": [
-				"HP(80)"
+				"HP(0,3)"
 			]
 		}
 	]
