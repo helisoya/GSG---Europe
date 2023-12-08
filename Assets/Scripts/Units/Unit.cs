@@ -91,6 +91,7 @@ public class Unit : MonoBehaviour
 
 
         manager = Manager.instance;
+        manager.RegisterUnit(this);
 
         renderers = new List<Renderer>(GetComponents<Renderer>());
 
@@ -292,10 +293,6 @@ public class Unit : MonoBehaviour
                 timeToRegen -= Time.deltaTime;
             }
         }
-        else
-        {
-            return;
-        }
     }
 
 
@@ -319,6 +316,7 @@ public class Unit : MonoBehaviour
         {
             country.RemoveUnit(this);
             currentProvince.RemoveUnit(this);
+            manager.UnRegisterUnit(this);
             Destroy(gameObject);
             return true;
         }

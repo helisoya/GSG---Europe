@@ -14,13 +14,9 @@ public class Manager : MonoBehaviour
     public Dictionary<string, Pays> pays;
 
     private int mois = 0;
-
     public int an = 2030;
 
-
     public List<Unit> selected_unit = new List<Unit>();
-
-
 
     public FormableWorker formables;
 
@@ -33,16 +29,18 @@ public class Manager : MonoBehaviour
     public Pays peaceDealSide1;
     public Pays peaceDealSide2;
 
-
     public List<Federation> federations;
     public List<Province> provincesToBeTakenInPeaceDeal;
     private Dictionary<int, Province> provinces;
 
-    public Dictionary<string, Dictionary<string, Focus>> focuses;
-    public Dictionary<string, Culture> cultures;
+    private Dictionary<string, Dictionary<string, Focus>> focuses;
+    private Dictionary<string, Culture> cultures;
     public Dictionary<string, GameEvent> events;
-    public GameObject prefabRailroad;
+    [SerializeField] private GameObject prefabRailroad;
     private Dictionary<string, Railroad> railroads;
+
+    private List<Unit> allUnits;
+
     private Graph m_graph;
     public Graph movementGraph
     {
@@ -75,6 +73,7 @@ public class Manager : MonoBehaviour
     {
         loading = null;
         federations = new List<Federation>();
+        allUnits = new List<Unit>();
 
         loading = StartCoroutine(LoadFiles());
 
@@ -156,6 +155,15 @@ public class Manager : MonoBehaviour
         loading = null;
     }
 
+    public void RegisterUnit(Unit unit)
+    {
+        allUnits.Add(unit);
+    }
+
+    public void UnRegisterUnit(Unit unit)
+    {
+        allUnits.Remove(unit);
+    }
 
     public void AddRailRoadToProvince(Province province)
     {
@@ -230,12 +238,9 @@ public class Manager : MonoBehaviour
 
     public void UpdateMapGFXSeen(bool value)
     {
-        foreach (Pays pays in pays.Values)
+        foreach (Unit unit in allUnits)
         {
-            if (pays.provinces.Count != 0)
-            {
-                pays.UpdateUnitsSeen(value);
-            }
+            unit.UpdateIsSeen(value);
         }
 
         foreach (Railroad railroad in railroads.Values)

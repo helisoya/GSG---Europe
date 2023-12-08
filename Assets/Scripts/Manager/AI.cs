@@ -153,11 +153,7 @@ public class AI : MonoBehaviour
         {
             if (unit.StandBy())
             {
-                if (Random.Range(0, 50) == 0 && country.provinces.Count != 0)
-                {
-                    unit.SetNewTarget(GetRandomPosInsideCountry(country));
-                }
-                else if (Random.Range(0, 30) == 0 && country.atWarWith.Count != 0)
+                if (Random.Range(0, 10) == 0 && country.atWarWith.Count != 0)
                 {
                     Pays p = manager.GetCountry(country.atWarWith[Random.Range(0, country.atWarWith.Count)]);
                     if (p.provinces.Count <= 0)

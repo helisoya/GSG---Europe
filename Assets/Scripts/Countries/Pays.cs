@@ -368,14 +368,6 @@ public class Pays
     }
 
 
-    public void UpdateUnitsSeen(bool value)
-    {
-        foreach (Unit obj in units)
-        {
-            obj.UpdateIsSeen(value);
-        }
-    }
-
     public void ChangeFocus(string newFocus)
     {
         currentFocus = newFocus;
