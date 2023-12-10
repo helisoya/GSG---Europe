@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Handles time
+/// </summary>
 public class Timer : MonoBehaviour
 {
 
@@ -24,7 +28,9 @@ public class Timer : MonoBehaviour
         isStoped = false;
     }
 
-
+    /// <summary>
+    /// Updates the time and speed
+    /// </summary>
     void Update()
     {
         if (!Manager.instance.picked || isStoped)
@@ -50,6 +56,9 @@ public class Timer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stop time
+    /// </summary>
     public void StopTime()
     {
         lastspeed = Time.timeScale;
@@ -58,6 +67,9 @@ public class Timer : MonoBehaviour
         CanvasWorker.instance.RefreshUtilityBar();
     }
 
+    /// <summary>
+    /// Resume time at the last non 0 value
+    /// </summary>
     public void ResumeTime()
     {
         Time.timeScale = lastspeed;

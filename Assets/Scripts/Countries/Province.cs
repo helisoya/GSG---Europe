@@ -4,6 +4,9 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+/// <summary>
+/// A province's type
+/// </summary>
 public enum ProvinceType
 {
     NORMAL,
@@ -11,6 +14,9 @@ public enum ProvinceType
     SEA
 }
 
+/// <summary>
+/// A province on the map
+/// </summary>
 public class Province : MonoBehaviour
 {
     public int id;
@@ -56,18 +62,30 @@ public class Province : MonoBehaviour
 
     [SerializeField] private Color seaColor;
 
+    /// <summary>
+    /// Changes the province's owner
+    /// </summary>
+    /// <param name="pays">The new owner</param>
     public void SetOwner(Pays pays)
     {
         if (type == ProvinceType.SEA) return;
         _owner = pays;
     }
 
+    /// <summary>
+    /// Changes the province's controller
+    /// </summary>
+    /// <param name="pays">The new controller</param>
     public void SetController(Pays pays)
     {
         if (type == ProvinceType.SEA) return;
         _controller = pays;
     }
 
+    /// <summary>
+    /// Add a unit to the province
+    /// </summary>
+    /// <param name="unit">The new unit</param>
     public void AddUnit(Unit unit)
     {
         units.Add(unit);
@@ -79,6 +97,10 @@ public class Province : MonoBehaviour
         unitgfxs[unit.country].AddUnit(unit);
     }
 
+    /// <summary>
+    /// Remove a unit from the province
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RemoveUnit(Unit unit)
     {
         units.Remove(unit);
@@ -86,11 +108,19 @@ public class Province : MonoBehaviour
         unitgfxs[unit.country].RemoveUnit(unit);
     }
 
+    /// <summary>
+    /// Refresh the GFX for a country's unitType
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RefreshUnitGFX(Unit unit)
     {
         unitgfxs[unit.country].RefreshUnit(unit.info.type);
     }
 
+    /// <summary>
+    /// Refresh the country's flag of a country's units
+    /// </summary>
+    /// <param name="pays">The target country</param>
     public void RefreshCountryFlag(Pays pays)
     {
         if (unitgfxs.ContainsKey(pays))
@@ -99,7 +129,10 @@ public class Province : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Compute the center of the province
+    /// </summary>
+    /// <param name="vecs">The vertices of the province</param>
     public void ComputeCenter(Vector3[] vecs)
     {
         center = Vector3.zero;
@@ -125,6 +158,9 @@ public class Province : MonoBehaviour
         center.y = 0.3f;
     }
 
+    /// <summary>
+    /// Changes the province to a sea province
+    /// </summary>
     public void SetAsSeaProvince()
     {
         type = ProvinceType.SEA;
@@ -133,20 +169,19 @@ public class Province : MonoBehaviour
         SetColor(seaColor, seaColor);
     }
 
+    /// <summary>
+    /// Spawns a unit inside the province
+    /// </summary>
     public void SpawnUnitAtCity()
     {
         if (type == ProvinceType.SEA) return;
         owner.CreateUnit(this);
     }
 
-    public void Click_Event()
-    {
-        if (Manager.instance.picked && type != ProvinceType.SEA)
-        {
-            CanvasWorker.instance.ShowBuyUnit(this);
-        }
-    }
-
+    /// <summary>
+    /// Initialize the country
+    /// </summary>
+    /// <param name="vecs">The vertices</param>
     public void Init(Vector3[] vecs)
     {
         hover = false;
@@ -169,7 +204,11 @@ public class Province : MonoBehaviour
         unitgfxs = new Dictionary<Pays, ProvinceCountryUnitGFX>();
     }
 
-
+    /// <summary>
+    /// Changes the color of the province
+    /// </summary>
+    /// <param name="col1">Owner's color</param>
+    /// <param name="col2">Controller's color</param>
     public void SetColor(Color col1, Color col2)
     {
         if (hover)
@@ -188,7 +227,9 @@ public class Province : MonoBehaviour
         GetComponent<Renderer>().material.SetColor("_Color2", col2);
     }
 
-
+    /// <summary>
+    /// Refresh the province's color
+    /// </summary>
     public void RefreshColor()
     {
 
@@ -290,7 +331,11 @@ public class Province : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Determine the Relation Index of a country toward the player
+    /// </summary>
+    /// <param name="p">The country</param>
+    /// <returns>The relation index</returns>
     int DetermineRelationToPlayer(Pays p)
     {
         if (type == ProvinceType.SEA) return 0;
@@ -301,6 +346,9 @@ public class Province : MonoBehaviour
         return 0;
     }
 
+    /// <summary>
+    /// OnClick Event
+    /// </summary>
     void OnMouseDown()
     {
         if (type == ProvinceType.SEA) return;
@@ -334,6 +382,10 @@ public class Province : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// On mouse enter event
+    /// </summary>
     void OnMouseEnter()
     {
 
@@ -346,6 +398,9 @@ public class Province : MonoBehaviour
         RefreshColor();
     }
 
+    /// <summary>
+    /// On mouse exit event
+    /// </summary>
     void OnMouseExit()
     {
         if (Manager.instance.isLoading) return;

@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles Units GFX from a Country, inside a province
+/// </summary>
 public class ProvinceCountryUnitGFX
 {
     private Dictionary<UnitType, ProvinceUnitGfx> unitgfxs;
     private GameObject prefab;
     private Transform root;
 
+
+    /// <summary>
+    /// Creates a ProvinceCountryUnitGFX
+    /// </summary>
+    /// <param name="prefab">Unit row prefab</param>
+    /// <param name="root">Where to add the rows</param>
     public ProvinceCountryUnitGFX(GameObject prefab, Transform root)
     {
         this.prefab = prefab;
@@ -15,6 +24,11 @@ public class ProvinceCountryUnitGFX
         unitgfxs = new Dictionary<UnitType, ProvinceUnitGfx>();
     }
 
+
+    /// <summary>
+    /// Add a new unit
+    /// </summary>
+    /// <param name="unit">The new unit</param>
     public void AddUnit(Unit unit)
     {
 
@@ -31,6 +45,10 @@ public class ProvinceCountryUnitGFX
         }
     }
 
+    /// <summary>
+    /// Removes a unit
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RemoveUnit(Unit unit)
     {
 
@@ -43,11 +61,20 @@ public class ProvinceCountryUnitGFX
         }
     }
 
+    /// <summary>
+    /// Refresh a certain unitType's GFX
+    /// </summary>
+    /// <param name="type">The UnitType</param>
     public void RefreshUnit(UnitType type)
     {
         unitgfxs[type].RefreshGFX();
     }
 
+
+    /// <summary>
+    /// Refresh the flags of all GFX
+    /// </summary>
+    /// <param name="newSprite">The new flag</param>
     public void RefreshFlag(Sprite newSprite)
     {
         foreach (ProvinceUnitGfx unit in unitgfxs.Values)

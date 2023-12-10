@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// The pause menu tab
+/// </summary>
 public class PauseTab : GUITab
 {
     [SerializeField] protected GameObject normalMenuRoot;
@@ -20,29 +23,45 @@ public class PauseTab : GUITab
     [SerializeField] private Toggle fullscreen_t;
     private Resolution[] resolutions;
 
+    /// <summary>
+    /// Quit to desktop
+    /// </summary>
     public void QuitToDesktop()
     {
         Application.Quit();
     }
 
+    /// <summary>
+    /// Quit to Title Screen
+    /// </summary>
     public void QuitToTitle()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Main Menu");
     }
 
+    /// <summary>
+    /// Open settings
+    /// </summary>
     public void OpenSettings()
     {
         normalMenuRoot.SetActive(false);
         settingsMenuRoot.SetActive(true);
     }
 
+    /// <summary>
+    /// Close settings
+    /// </summary>
     public void CloseSettings()
     {
         normalMenuRoot.SetActive(true);
         settingsMenuRoot.SetActive(false);
     }
 
+
+    /// <summary>
+    /// Open the pause menu
+    /// </summary>
     public override void OpenTab()
     {
         base.OpenTab();
@@ -80,6 +99,9 @@ public class PauseTab : GUITab
         fullscreen_t.SetIsOnWithoutNotify(Screen.fullScreen);
     }
 
+    /// <summary>
+    /// Closes the pause menu
+    /// </summary>
     public override void CloseTab()
     {
         base.CloseTab();

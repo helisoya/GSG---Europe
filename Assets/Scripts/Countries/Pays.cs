@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A country
+/// </summary>
 public class Pays
 {
 
@@ -93,6 +96,9 @@ public class Pays
     private List<Pays> canTraverse;
 
 
+    /// <summary>
+    /// Initialize a country
+    /// </summary>
     public Pays()
     {
         maxFocusTime = 10;
@@ -110,8 +116,8 @@ public class Pays
 
         canTraverse = new List<Pays>();
 
-        Reset_Elections();
-        Reset_Flag();
+        ResetElections();
+        ResetFlag();
 
 
         bonusNaval = 1f;
@@ -121,18 +127,32 @@ public class Pays
         bonusDefense = 1f;
     }
 
+    /// <summary>
+    /// Starts pathfinding between 2 provinces
+    /// </summary>
+    /// <param name="from">Start province</param>
+    /// <param name="to">Target province</param>
+    /// <returns>The path between the 2 provinces</returns>
     public GraphPath StartPathfinding(Province from, Province to)
     {
         return manager.movementGraph.GetShortestPath(from, to, canTraverse, hasTech_Naval);
     }
 
-
+    /// <summary>
+    /// Adds a country to traversal options
+    /// </summary>
+    /// <param name="pays">The country to add</param>
     public void RemoveFromTraversalOptions(Pays pays)
     {
         canTraverse.Remove(pays);
 
     }
 
+
+    /// <summary>
+    /// Removes a country from traversal options
+    /// </summary>
+    /// <param name="pays">The country to remove</param>
     public void AddToTraversalOptions(Pays pays)
     {
         if (!canTraverse.Contains(pays))
@@ -141,6 +161,10 @@ public class Pays
         }
     }
 
+
+    /// <summary>
+    /// Increment the current focus
+    /// </summary>
     public void IncrementFocus()
     {
         if (currentFocus.Equals("NONE")) return;
@@ -151,6 +175,9 @@ public class Pays
             focusDone.Add(currentFocus);
 
             bool refreshUnits = false;
+
+
+            // Effects interpreter
 
             foreach (string effectNotSplited in focusTree[currentFocus].effect)
             {
@@ -172,8 +199,8 @@ public class Pays
                         break;
                     case "SETGOVERNEMENT":
                         Government_Form = int.Parse(effect[1], System.Globalization.NumberStyles.Any);
-                        Reset_Elections();
-                        Reset_Flag();
+                        ResetElections();
+                        ResetFlag();
                         break;
                     case "MILCAP":
                         bonusMilCap += int.Parse(effect[1], System.Globalization.NumberStyles.Any);
@@ -203,7 +230,7 @@ public class Pays
                         break;
                     case "PARTYPOP":
                         string[] split = effect[1].Split(",");
-                        Add_Popularity(int.Parse(split[0], System.Globalization.NumberStyles.Any), int.Parse(split[1], System.Globalization.NumberStyles.Any));
+                        AddPopularity(int.Parse(split[0], System.Globalization.NumberStyles.Any), int.Parse(split[1], System.Globalization.NumberStyles.Any));
                         break;
                     case "FREE":
                         Pays p = manager.GetCountry(effect[1]);
@@ -295,7 +322,7 @@ public class Pays
             }
             currentFocus = "NONE";
 
-
+            // Refresh Units if needed
             if (refreshUnits)
             {
                 foreach (Unit unit in units)
@@ -304,6 +331,7 @@ public class Pays
                 }
             }
 
+            // Refresh Canvas if needed
             if (this == manager.player)
             {
                 CanvasWorker.instance.UpdateFocus();
@@ -312,7 +340,11 @@ public class Pays
     }
 
 
-
+    /// <summary>
+    /// Check if the prerequists for a Focus are one
+    /// </summary>
+    /// <param name="focus">The focus</param>
+    /// <returns>The prerequists are done ?</returns>
     public bool PrerequistDone(Focus focus)
     {
         if (focus.required.Count == 0) return true;
@@ -331,6 +363,10 @@ public class Pays
         return focus.requireAll;
     }
 
+    /// <summary>
+    /// Finds the available focuses
+    /// </summary>
+    /// <returns>A list of available focuses</returns>
     public List<Focus> GetAvailableFocus()
     {
         List<Focus> list = new List<Focus>();
@@ -343,6 +379,9 @@ public class Pays
         return list;
     }
 
+    /// <summary>
+    /// Cuts down the army to the size of the unit cap
+    /// </summary>
     public void CutDownArmy()
     {
         if (units.Count <= unitCap) return;
@@ -355,25 +394,36 @@ public class Pays
 
         for (int i = unitCap; i < units.Count; i++)
         {
-            Manager.Destroy(units[i].gameObject);
+            Object.Destroy(units[i].gameObject);
         }
 
         units = correctList;
     }
 
-
+    /// <summary>
+    /// Change the color of the country
+    /// </summary>
+    /// <param name="col">The new color</param>
     public void SetColor(Color col)
     {
         color = col;
     }
 
-
+    /// <summary>
+    /// Change the current focus
+    /// </summary>
+    /// <param name="newFocus">The new focus's ID</param>
     public void ChangeFocus(string newFocus)
     {
         currentFocus = newFocus;
         currentFocusTime = maxFocusTime;
     }
 
+
+    /// <summary>
+    /// Declare war on a country
+    /// </summary>
+    /// <param name="country">The target country</param>
     public void DeclareWarOnCountry(Pays country)
     {
         if (relations[country.ID].atWar)
@@ -400,6 +450,10 @@ public class Pays
         AddToTraversalOptions(country);
     }
 
+    /// <summary>
+    /// Makes peace with a country
+    /// </summary>
+    /// <param name="other">The target country</param>
     public void MakePeaceWithCountry(Pays other)
     {
         if (!relations[other.ID].atWar)
@@ -435,7 +489,11 @@ public class Pays
         RemoveFromTraversalOptions(other);
     }
 
-
+    /// <summary>
+    /// Removes all units placed inside a country
+    /// </summary>
+    /// <param name="placeTo">Where to place the units if they are misplaced</param>
+    /// <param name="country">The target country</param>
     public void RemoveUnitsFromCountry(Province placeTo, string country)
     {
         foreach (Unit unit in units)
@@ -447,6 +505,9 @@ public class Pays
         }
     }
 
+    /// <summary>
+    /// Refreshs provinces
+    /// </summary>
     public void RefreshProvinces()
     {
         for (int i = 0; i < provinces.Count; i++)
@@ -455,6 +516,10 @@ public class Pays
         }
     }
 
+    /// <summary>
+    /// Check if the country is completely occupied
+    /// </summary>
+    /// <returns>Is the country complely occupied ?</returns>
     public bool CompletelyOccupied()
     {
         foreach (Province province in provinces)
@@ -464,25 +529,27 @@ public class Pays
         return true;
     }
 
-
+    /// <summary>
+    /// Compute the effects of the end of the year for the country
+    /// </summary>
     public void NewYear()
     {
         if (leader.Age(1))
-        { // Leader Mort (Trigger Elections / Selection Successeur)
+        { // Leader Dead (Trigger Elections / Selection Successeur)
             if (3 == Government_Form || Government_Form == 5)
-            { // Monarchie
+            { // Monarchy
                 SameFamilyLeader();
                 if (manager.player == this)
                 {
-                    events.DeathLeader_Monarchy(ID);
+                    events.DeathLeader_Monarchy();
                 }
             }
             else
-            { // Le Reste + Monarchie Elective
+            { // Otherwise
                 RandomizeLeader();
                 if (manager.player == this)
                 {
-                    events.DeathLeader_Normal(ID);
+                    events.DeathLeader_Normal();
                 }
             }
         }
@@ -493,7 +560,12 @@ public class Pays
         }
     }
 
-    public void Add_Popularity(int index, float nb)
+    /// <summary>
+    /// Add popularity to a party
+    /// </summary>
+    /// <param name="index">Party index</param>
+    /// <param name="nb">popularity to add</param>
+    public void AddPopularity(int index, float nb)
     {
         parties[index].popularity = Mathf.Clamp(parties[index].popularity + nb, 0, 100);
 
@@ -515,30 +587,33 @@ public class Pays
             }
         }
 
-        // Cas Gouvernement autoritaire
+        // Case governement change
 
         if (index == 1 && parties[index].popularity > parties[4].popularity + parties[3].popularity && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
         {
             RandomizeLeader();
-            Choix_Type(1); // Gauche Renverse le Pouvoir pour une république
+            ChoiceType(1); // Left-wing establish a republic
         }
         else if (index == 0 && parties[index].popularity > parties[4].popularity + parties[3].popularity && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
         {
             RandomizeLeader();
-            Choix_Type(3); // Extr. Gauche Renverse le Pouvoir pour un Soviet
+            ChoiceType(3); // Far-Left establish a soviet republic
         }
         else if (index == 3 && parties[index].popularity > parties[0].popularity + parties[1].popularity && (Government_Form == 6))
         {
             RandomizeLeader();
-            Choix_Type(1); // Droite Renverse le Pouvoir pour une Republique
+            ChoiceType(1); // Right-wing establish a republic
         }
         else if (index == 4 && parties[index].popularity > parties[0].popularity + parties[1].popularity && (Government_Form == 6))
         {
             RandomizeLeader();
-            Choix_Type(4); // Extr. Droite Renverse le Pouvoir pour un Fascisme
+            ChoiceType(4); // Far-right establish fascism
         }
     }
 
+    /// <summary>
+    /// Randomize the leader
+    /// </summary>
     public void RandomizeLeader()
     {
         leader.nom = culture.GetRandom_Nom();
@@ -548,6 +623,10 @@ public class Pays
         leader.ResetDeath();
     }
 
+
+    /// <summary>
+    /// Randomize the leader but keeps his family name
+    /// </summary>
     public void SameFamilyLeader()
     {
         leader.prenom = culture.GetRandom_Prenom();
@@ -556,6 +635,9 @@ public class Pays
         leader.ResetDeath();
     }
 
+    /// <summary>
+    /// Trigger new elections
+    /// </summary>
     public void TriggerElections()
     {
         int index = 0;
@@ -566,7 +648,7 @@ public class Pays
                 index = i;
             }
         }
-        Add_Popularity(index, 5);
+        AddPopularity(index, 5);
         currentParty = index;
 
         if (manager.player == this)
@@ -576,30 +658,30 @@ public class Pays
         else
         {
             if (index == 0 && Ideologie() != 2)
-            { // Cas -> Communiste
+            { // Case -> Communisme
                 Government_Form = GetRandomGov(3);
-                Reset_Flag();
+                ResetFlag();
                 RandomizeLeader();
             }
             else if (index == 4 && Ideologie() != 3)
-            { // Cas -> Fasciste
+            { // Case -> Fascism
                 Government_Form = GetRandomGov(4);
-                Reset_Flag();
+                ResetFlag();
                 RandomizeLeader();
             }
             else if ((index >= 2 && Ideologie() == 2) || (index <= 2 && Ideologie() == 3) || (index <= 1 && Ideologie() == 1))
-            { // Cas -> Republique
+            { // Case -> Republic
                 Government_Form = GetRandomGov(4);
-                Reset_Flag();
+                ResetFlag();
                 RandomizeLeader();
             }
             else if (reelected)
-            { // Cas -> monarchie
+            { // Case -> Monarchy
                 if (Random.Range(0, 100) < Random.Range(40, 60))
                 {
                     reelected = false;
                     Government_Form = GetRandomGov(2);
-                    Reset_Flag();
+                    ResetFlag();
                 }
                 else
                 {
@@ -608,7 +690,7 @@ public class Pays
                 reelected = false;
             }
             else
-            { // Autre
+            { // Other
                 if (Random.Range(0, 100) < Random.Range(30, 70))
                 {
                     reelected = true;
@@ -620,42 +702,48 @@ public class Pays
             }
         }
 
-        Reset_Elections();
+        ResetElections();
     }
 
-    public void Reset_Elections()
+
+    /// <summary>
+    /// Resets the elections
+    /// </summary>
+    public void ResetElections()
     {
-        if (Government_Form == 0)
-        { // Set Prochaines Elections
-            date_elections = manager.an + 4;
-        }
-        else if (Government_Form == 1)
+        switch (Government_Form)
         {
-            date_elections = manager.an + 5;
-        }
-        else if (Government_Form == 2)
-        {
-            date_elections = manager.an + 7;
-        }
-        else if (Government_Form == 5)
-        {
-            date_elections = manager.an + 8;
-        }
-        else if (Government_Form == 7)
-        {
-            date_elections = manager.an + 10;
-        }
-        else if (Government_Form == 8)
-        {
-            date_elections = manager.an + 20;
-        }
-        else
-        {
-            date_elections = -1;
+            case 0:
+                date_elections = manager.an + 4;
+                break;
+
+            case 1:
+                date_elections = manager.an + 5;
+                break;
+
+            case 2:
+                date_elections = manager.an + 7;
+                break;
+
+            case 5:
+                date_elections = manager.an + 8;
+                break;
+            case 7:
+                date_elections = manager.an + 10;
+                break;
+            case 8:
+                date_elections = manager.an + 20;
+                break;
+            default:
+                date_elections = -1;
+                break;
         }
     }
 
-    public void Reset_Flag()
+    /// <summary>
+    /// Resets the current flag index
+    /// </summary>
+    public void ResetFlag()
     {
         if (Government_Form <= 2)
         {
@@ -673,72 +761,87 @@ public class Pays
         {
             current_flag = 3;
         }
+
         foreach (Unit unit in units)
         {
             unit.UpdateFlag();
         }
     }
 
+    /// <summary>
+    /// Return a random governement subtype
+    /// </summary>
+    /// <param name="type">Governement type</param>
+    /// <returns>A random subtype</returns>
     int GetRandomGov(int type)
     {
-        if (type == 1)
+        switch (type)
         {
-            return Random.Range(0, 3);
+            case 1:
+                return Random.Range(0, 3);
+            case 2:
+                return Random.Range(3, 6);
+            case 3:
+                return Random.Range(6, 9);
+            default:
+                return Random.Range(9, 12);
         }
-        else if (type == 2)
-        {
-            return Random.Range(3, 6);
-        }
-        else if (type == 3)
-        {
-            return Random.Range(6, 9);
-        }
-        return Random.Range(9, 12);
     }
 
 
-    public void Choix_Type(int groupe)
+    /// <summary>
+    /// Shows subtype choice according to the new governement type
+    /// </summary>
+    /// <param name="groupe"></param>
+    public void ChoiceType(int groupe)
     {
 
         if (this == manager.player)
         {
             if (groupe == 1)
-            { // Republique
-                events.ChoixType_Rep(ID);
+            { // Republic
+                events.ChoixType_Rep();
 
             }
             else if (groupe == 2)
-            { // Monarchie
-                events.ChoixType_Mon(ID);
+            { // Monarchy
+                events.ChoixType_Mon();
 
             }
             else if (groupe == 3)
-            { // Communisme
-                events.ChoixType_Com(ID);
+            { // Communism
+                events.ChoixType_Com();
 
             }
             else
-            { // Fascisme
-                events.ChoixType_Fas(ID);
+            { // Fascism
+                events.ChoixType_Fas();
             }
         }
         else
         {
             Government_Form = GetRandomGov(groupe);
-            Reset_Elections();
-            Reset_Flag();
+            ResetElections();
+            ResetFlag();
         }
     }
 
-
+    /// <summary>
+    /// Removes a unit from the country's units
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RemoveUnit(Unit unit)
     {
         units.Remove(unit);
     }
 
+    /// <summary>
+    /// Creates a unit inside a province
+    /// </summary>
+    /// <param name="prov">The starting province</param>
     public void CreateUnit(Province prov)
     {
-        Unit obj = Manager.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
+        Unit obj = Object.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
         obj.Init(prov, this);
         units.Add(obj);
         CanvasWorker.instance.RefreshUtilityBar();
@@ -746,7 +849,10 @@ public class Pays
 
 
 
-
+    /// <summary>
+    /// Remove a province from owned provinces
+    /// </summary>
+    /// <param name="prov">The province</param>
     public void RemoveProvince(Province prov)
     {
         provinces.Remove(prov);
@@ -764,6 +870,11 @@ public class Pays
         CheckNeighboors();
     }
 
+    /// <summary>
+    /// Add a province to owned provinces
+    /// </summary>
+    /// <param name="prov">The province</param>
+    /// <param name="refresh">Should the province color be refreshed ?</param>
     public void AddProvince(Province prov, bool refresh = true)
     {
         provinces.Add(prov);
@@ -776,6 +887,9 @@ public class Pays
         CheckNeighboors();
     }
 
+    /// <summary>
+    /// Check the Country's neighbors (Only for AI)
+    /// </summary>
     public void CheckNeighboors()
     {
         AI_NEIGHBOORS.Clear();
@@ -791,21 +905,32 @@ public class Pays
         }
     }
 
-
+    /// <summary>
+    /// Copy a country's governement form
+    /// </summary>
+    /// <param name="c">The target country</param>
     public void CopyCat(Pays c)
     {
         Government_Form = c.Government_Form;
-        Reset_Elections();
-        Reset_Flag();
+        ResetElections();
+        ResetFlag();
         RandomizeLeader();
     }
 
+    /// <summary>
+    /// Copy a country's color
+    /// </summary>
+    /// <param name="c">The target country</param>
     public void MimicColor(Pays c)
     {
         color = Color32.Lerp(color, c.color, 0.6f);
         RefreshProvinces();
     }
 
+    /// <summary>
+    /// Return the country's Governement type
+    /// </summary>
+    /// <returns>The country's governement type</returns>
     public int Ideologie()
     {
         if (Government_Form <= 2)

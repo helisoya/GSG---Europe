@@ -5,6 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
+/// <summary>
+/// A graph used for the Djikstra Algorithm (Unit movements)
+/// </summary>
 public class Graph
 {
 
@@ -28,13 +31,21 @@ public class Graph
 		m_Nodes = new List<Province>();
 	}
 
+	/// <summary>
+	/// Find the shortest path between two provinces
+	/// </summary>
+	/// <param name="start">Start province</param>
+	/// <param name="end">End province</param>
+	/// <param name="canTraverse">Country that can be traversed</param>
+	/// <param name="canTraverseSea">Can traverse sea ?</param>
+	/// <returns>The path to take to get to the end point from the start point</returns>
 	public GraphPath GetShortestPath(Province start, Province end, List<Pays> canTraverse, bool canTraverseSea)
 	{
 
 		// We don't accept null arguments
 		if (start == null || end == null)
 		{
-			throw new ArgumentNullException();
+			return new GraphPath();
 		}
 
 		// The final path

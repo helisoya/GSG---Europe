@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A scriptable Object representing a unit type and its stats
+/// </summary>
 [CreateAssetMenu(fileName = "UnitTypeInfo", menuName = "GSG/UnitTypeInfo", order = 1)]
 public class UnitTypeInfo : ScriptableObject
 {

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// A tab that shows focus trees
+/// </summary>
 public class FocusTab : GUITab
 {
     [SerializeField] protected GameObject focusMenuRoot;
@@ -11,22 +14,25 @@ public class FocusTab : GUITab
     [SerializeField] protected Transform graphParent;
     [SerializeField] protected Transform lineParent;
     [SerializeField] protected GameObject prefabButton;
-
     [SerializeField] protected Scrollbar barX;
     [SerializeField] protected Scrollbar barY;
-
     [SerializeField] protected GameObject linePrefab;
-
     private Dictionary<string, GameObject> dic;
 
 
     private bool first = true;
 
+    /// <summary>
+    /// Resets if focus tree must be created
+    /// </summary>
     public void Reset()
     {
         first = true;
     }
 
+    /// <summary>
+    /// Opens focus tree tab
+    /// </summary>
     public override void OpenTab()
     {
         base.OpenTab();
@@ -35,6 +41,9 @@ public class FocusTab : GUITab
         ShowFocusMenu();
     }
 
+    /// <summary>
+    /// Closes focus tree tab
+    /// </summary>
     public override void CloseTab()
     {
         base.CloseTab();
@@ -42,7 +51,9 @@ public class FocusTab : GUITab
         CanvasWorker.instance.UpdateInfo();
     }
 
-
+    /// <summary>
+    /// Refresh the focus tree tab
+    /// </summary>
     public void ShowFocusMenu()
     {
         if (!isOpen) return;
@@ -76,7 +87,11 @@ public class FocusTab : GUITab
         }
     }
 
-
+    /// <summary>
+    /// Find the status index of the focus
+    /// </summary>
+    /// <param name="focus">The focus</param>
+    /// <returns>Return the status index</returns>
     int FocusCase(Focus focus)
     {
         if (Manager.instance.player.focusDone.Contains(focus.id)) return 0;
@@ -85,6 +100,10 @@ public class FocusTab : GUITab
         return 3;
     }
 
+    /// <summary>
+    /// Select a new focys
+    /// </summary>
+    /// <param name="focus">The focus ID</param>
     public void SelectFocus(string focus)
     {
         Manager manager = Manager.instance;
@@ -94,7 +113,9 @@ public class FocusTab : GUITab
         ShowFocusMenu();
     }
 
-
+    /// <summary>
+    /// Initialize the focus tree
+    /// </summary>
     void InitTree()
     {
         Pays country = Manager.instance.player;

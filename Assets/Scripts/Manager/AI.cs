@@ -162,7 +162,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        unit.SetNewTarget(GetRandomPosInsideCountry(p));
+                        unit.SetNewTarget(GetRandomPosInsideCountry(p), false);
                     }
 
                 }

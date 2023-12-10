@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
+/// <summary>
+/// The country picker is used to select to select the starting country at the start of the game
+/// </summary>
 public class CountryPicker : MonoBehaviour
 {
     public Pays current = null;
@@ -18,31 +22,43 @@ public class CountryPicker : MonoBehaviour
 
     public static CountryPicker instance;
 
+    void Awake()
+    {
+        instance = this;
+    }
 
+    /// <summary>
+    /// Event for selecting an interresting country
+    /// </summary>
+    /// <param name="ID">The country's ID</param>
     public void Click_SelectCountry(string ID)
     {
         ShowInterrestingCountriesTab(false);
         UpdateCountry(Manager.instance.GetCountry(ID));
     }
 
+    /// <summary>
+    /// Show interresting countries
+    /// </summary>
+    /// <param name="shown">Is shown ?</param>
     public void ShowInterrestingCountriesTab(bool shown)
     {
         interrestingCountiesTab.SetActive(shown);
         pickerTab.SetActive(!shown);
     }
 
-
-    void Awake()
-    {
-        instance = this;
-    }
-
+    /// <summary>
+    /// Initialize the country picker
+    /// </summary>
     public void Init()
     {
         UpdateCountry(Manager.instance.GetCountry("FRA"));
     }
 
-
+    /// <summary>
+    /// Selects a country and refresh the UI
+    /// </summary>
+    /// <param name="c">The target country</param>
     public void UpdateCountry(Pays c)
     {
         current = c;
@@ -50,6 +66,9 @@ public class CountryPicker : MonoBehaviour
         currentContryName.text = c.nom;
     }
 
+    /// <summary>
+    /// Launch the game and play as the currently selected country
+    /// </summary>
     public void LaunchGame()
     {
         Manager.instance.StartGame(current);

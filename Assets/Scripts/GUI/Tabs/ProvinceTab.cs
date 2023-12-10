@@ -4,7 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-
+/// <summary>
+/// Show informations about a province
+/// </summary>
 public class ProvinceTab : GUITab
 {
     [SerializeField] private TextMeshProUGUI provinceName;
@@ -18,6 +20,10 @@ public class ProvinceTab : GUITab
     [SerializeField] private Image ownerFlag;
     [SerializeField] private Image controllerFlag;
 
+    /// <summary>
+    /// Show a province's details
+    /// </summary>
+    /// <param name="prov">The province</param>
     public void ShowProvinceDetails(Province prov)
     {
 
@@ -51,16 +57,25 @@ public class ProvinceTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Show the informations on the current province's owner
+    /// </summary>
     public void ShowOwner()
     {
         CanvasWorker.instance.Show_CountryInfo(currentProvine.owner);
     }
 
+    /// <summary>
+    /// Show the informations on the current province's controller
+    /// </summary>
     public void ShowController()
     {
         CanvasWorker.instance.Show_CountryInfo(currentProvine.controller);
     }
 
+    /// <summary>
+    /// Seize the current province for the player
+    /// </summary>
     public void SeizeProvince()
     {
         showIfOwner.SetActive(true);
@@ -73,7 +88,9 @@ public class ProvinceTab : GUITab
         Manager.instance.player.AddProvince(currentProvine, true);
     }
 
-
+    /// <summary>
+    /// Release a country from the current province
+    /// </summary>
     public void ReleaseCountry()
     {
         if (current_cores.Count == 0)
@@ -100,7 +117,11 @@ public class ProvinceTab : GUITab
 
 
 
-
+    /// <summary>
+    /// Get a list of all countries who own this province as a core
+    /// </summary>
+    /// <param name="prov">The target province</param>
+    /// <returns>The list of countries</returns>
     List<string> GetAllCountriesProvince(Province prov)
     {
         Manager manager = Manager.instance;
@@ -119,6 +140,9 @@ public class ProvinceTab : GUITab
         return l;
     }
 
+    /// <summary>
+    /// Buy a unit inside the current province
+    /// </summary>
     public void BuyUnit()
     {
         Manager manager = Manager.instance;
@@ -132,6 +156,9 @@ public class ProvinceTab : GUITab
 
     }
 
+    /// <summary>
+    /// Add a railroad to the current province
+    /// </summary>
     public void AddRailroad()
     {
         if (!currentProvine.hasRailroad)

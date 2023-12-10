@@ -5,6 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles a Unit type GFX, inside a province
+/// </summary>
 public class ProvinceUnitGfx : MonoBehaviour
 {
     [Header("Components")]
@@ -22,6 +25,12 @@ public class ProvinceUnitGfx : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Initialize the ProvinceUnitGFX
+    /// </summary>
+    /// <param name="type">Unit type</param>
+    /// <param name="pays">Parent country</param>
     public void Init(UnitType type, Pays pays)
     {
         units = new List<Unit>();
@@ -31,9 +40,13 @@ public class ProvinceUnitGfx : MonoBehaviour
 
         unitTypeIcon.sprite = pays.currentFlag;
         hpFill.color = (pays == Manager.instance.player) ? Color.green : Color.red;
-        // Icon
+
     }
 
+    /// <summary>
+    /// Add a unit to the GFX
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void AddUnit(Unit unit)
     {
         _count++;
@@ -41,6 +54,10 @@ public class ProvinceUnitGfx : MonoBehaviour
         RefreshGFX();
     }
 
+    /// <summary>
+    /// Remove a unit from the GFX
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RemoveUnit(Unit unit)
     {
         _count--;
@@ -48,6 +65,10 @@ public class ProvinceUnitGfx : MonoBehaviour
         RefreshGFX();
     }
 
+
+    /// <summary>
+    /// Refresh the GFX informations
+    /// </summary>
     public void RefreshGFX()
     {
         unitCountText.text = units.Count.ToString();
@@ -64,13 +85,19 @@ public class ProvinceUnitGfx : MonoBehaviour
         hpFill.fillAmount = current / total;
     }
 
-
+    /// <summary>
+    /// Change the flag
+    /// </summary>
+    /// <param name="sprite">New flag</param>
     public void RefreshFlag(Sprite sprite)
     {
         unitTypeIcon.sprite = sprite;
     }
 
 
+    /// <summary>
+    /// Selects Units when clicked on
+    /// </summary>
     public void Click()
     {
         if (!Input.GetKey(KeyCode.LeftShift))

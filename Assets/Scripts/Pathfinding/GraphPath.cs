@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-
+/// <summary>
+/// A graphPath is the path that needs to be taken to go from a point A to a point B
+/// </summary>
 public class GraphPath
 {
 
@@ -34,6 +36,9 @@ public class GraphPath
 		m_Nodes = new List<Province>();
 	}
 
+	/// <summary>
+	/// Computes the path length
+	/// </summary>
 	public void Bake()
 	{
 		m_Length = nodes.Count;

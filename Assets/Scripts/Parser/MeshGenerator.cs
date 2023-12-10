@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using EarcutNet;
 
+
+/// <summary>
+/// Handles Province Mesh Generation
+/// </summary>
 public class MeshGenerator
 {
     private enum Facing { Up, Forward, Right };
 
-
+    /// <summary>
+    /// Generates a mesh
+    /// </summary>
+    /// <param name="vecs">The mesh vertices</param>
+    /// <returns>A mesh</returns>
     public static Mesh GenerateMesh(Vector3[] vecs)
     {
         Mesh mesh = new Mesh();

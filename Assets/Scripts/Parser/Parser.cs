@@ -252,8 +252,8 @@ public class Parser : MonoBehaviour
             {
                 pays.cores.Add(allProvinces[arrayProvinces.GetInt(j)]);
             }
-            pays.Reset_Flag();
-            pays.Reset_Elections();
+            pays.ResetFlag();
+            pays.ResetElections();
             pays.RefreshProvinces();
             pays.AddToTraversalOptions(pays);
         }

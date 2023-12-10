@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// A tab that shows informations about countries
+/// </summary>
 public class CountryInfoTab : GUITab
 {
     [SerializeField] private TextMeshProUGUI infoName;
@@ -41,7 +44,10 @@ public class CountryInfoTab : GUITab
 
 
 
-
+    /// <summary>
+    /// Show a country's informations
+    /// </summary>
+    /// <param name="NEW">The country</param>
     public void Show_CountryInfo(Pays NEW)
     {
         Manager manager = Manager.instance;
@@ -56,7 +62,7 @@ public class CountryInfoTab : GUITab
 
         diploRoot.SetActive(NEW != manager.player);
         if (NEW != manager.player)
-        { // Cas nation IA
+        { // Case AI nation
             buttonImproveRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
             buttonDecreaseRelations.SetActive(!NEW.relations[manager.player.ID].atWar);
 
@@ -99,11 +105,18 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Updates the informations of the current Country
+    /// </summary>
     public void UpdateInfo()
     {
         UpdateInfo(current_countryinfo);
     }
 
+    /// <summary>
+    /// Updates the informations of a country
+    /// </summary>
+    /// <param name="country">The country</param>
     public void UpdateInfo(Pays country)
     {
         infoName.text = country.nom;
@@ -132,11 +145,17 @@ public class CountryInfoTab : GUITab
 
     }
 
+    /// <summary>
+    /// Toggles the Leader tab
+    /// </summary>
     public void ToggleLeadeTab()
     {
         leaderTabRoot.SetActive(!leaderTabRoot.activeInHierarchy);
     }
 
+    /// <summary>
+    /// Increases relations with a country
+    /// </summary>
     public void Event_IncreaseRelation()
     {
         Pays player = Manager.instance.player;
@@ -150,6 +169,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Decreases relations with a country
+    /// </summary>
     public void Event_DecreaseRelation()
     {
         Pays player = Manager.instance.player;
@@ -163,6 +185,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Creates a wargoal with a country
+    /// </summary>
     public void Event_CreateWarGoal()
     {
         Pays player = Manager.instance.player;
@@ -176,6 +201,10 @@ public class CountryInfoTab : GUITab
         }
     }
 
+
+    /// <summary>
+    /// Declare war on a country
+    /// </summary>
     public void Event_DeclareWar()
     {
         CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
@@ -183,12 +212,20 @@ public class CountryInfoTab : GUITab
         Tooltip.instance.HideInfo();
     }
 
+
+    /// <summary>
+    /// Show the peace deal tab
+    /// </summary>
     public void Event_PeaceDeal()
     {
         CanvasWorker.instance.OpenPeaceDealTab(Manager.instance.player.ID, current_countryinfo.ID);
         Tooltip.instance.HideInfo();
     }
 
+
+    /// <summary>
+    /// Creates a federation with a country
+    /// </summary>
     public void Event_CreateFederation()
     {
         if (Manager.instance.player.DP < 15 || Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
@@ -210,6 +247,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Join a country's federation
+    /// </summary>
     public void Event_JoinFederation()
     {
         if (Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
@@ -222,6 +262,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Invite a country to the player's federation
+    /// </summary>
     public void Event_InviteFederation()
     {
         if (Manager.instance.player.relations[current_countryinfo.ID].relationScore < 50) return;
@@ -234,6 +277,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Kick a country for the player's federation
+    /// </summary>
     public void Event_KickFederation()
     {
         current_countryinfo.federation.RemoveMember(current_countryinfo);
@@ -245,6 +291,9 @@ public class CountryInfoTab : GUITab
         }
     }
 
+    /// <summary>
+    /// Declare independance from the country
+    /// </summary>
     public void Event_DeclareIndependance()
     {
         Manager.instance.player.lord = null;
@@ -253,6 +302,10 @@ public class CountryInfoTab : GUITab
         Tooltip.instance.HideInfo();
     }
 
+
+    /// <summary>
+    /// Play as the country
+    /// </summary>
     public void Event_PlayAs()
     {
         Pays old = Manager.instance.player;

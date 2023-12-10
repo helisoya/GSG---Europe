@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles relations between two countries
+/// </summary>
 public class Relation
 {
     public int relationScore;
@@ -26,6 +29,10 @@ public class Relation
         warScores.Add(p2.ID, 0);
     }
 
+    /// <summary>
+    /// Add warscore
+    /// </summary>
+    /// <param name="amount">warscore amount</param>
     public void AddScore(int amount)
     {
         relationScore = Mathf.Clamp(relationScore + amount, -100, 100);
@@ -36,6 +43,9 @@ public class Relation
         }
     }
 
+    /// <summary>
+    /// Reset war scores
+    /// </summary>
     public void ResetWarScores()
     {
         warScores[pays[0].ID] = 0;

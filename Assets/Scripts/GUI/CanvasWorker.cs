@@ -4,15 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Handles all the GUI
+/// </summary>
 public class CanvasWorker : MonoBehaviour
 {
     [HideInInspector] public Manager manager;
 
     public static CanvasWorker instance;
-
-
-
-
 
 
     [Space]
@@ -50,7 +49,9 @@ public class CanvasWorker : MonoBehaviour
     }
 
 
-
+    /// <summary>
+    /// Opens the settings menu
+    /// </summary>
     public void OpenSettingsMenu()
     {
         if (pauseTab.isOpen) return;
@@ -58,6 +59,11 @@ public class CanvasWorker : MonoBehaviour
         pauseTab.OpenTab();
     }
 
+    /// <summary>
+    /// Open the peace deal tab
+    /// </summary>
+    /// <param name="side1">Side 1 Country's ID</param>
+    /// <param name="side2">Side 2 Country's ID</param>
     public void OpenPeaceDealTab(string side1, string side2)
     {
         HideEverything();
@@ -78,11 +84,17 @@ public class CanvasWorker : MonoBehaviour
         manager.RefreshMap();
     }
 
+    /// <summary>
+    /// Refresh peace deal acceptance
+    /// </summary>
     public void PeaceDealRefreshAcceptance()
     {
         peaceDealAcceptance.text = PeaceDealAcceptanceScore().ToString();
     }
 
+    /// <summary>
+    /// Closes the peace deal tab
+    /// </summary>
     public void HidePeaceDeal()
     {
         HideEverything();
@@ -90,10 +102,15 @@ public class CanvasWorker : MonoBehaviour
 
         manager.inPeaceDeal = false;
         manager.RefreshMap();
-        CanvasWorker.instance.Show_CountryInfo(manager.player);
+        Show_CountryInfo(manager.player);
         Timer.instance.ResumeTime();
     }
 
+
+    /// <summary>
+    /// Computes the peace deal acceptance score
+    /// </summary>
+    /// <returns>The acceptance score</returns>
     int PeaceDealAcceptanceScore()
     {
         Relation relation = manager.peaceDealSide1.relations[manager.peaceDealSide2.ID];
@@ -101,6 +118,9 @@ public class CanvasWorker : MonoBehaviour
         return relation.warScores[manager.peaceDealSide1.ID] - manager.provincesToBeTakenInPeaceDeal.Count * 10 - vassalCost;
     }
 
+    /// <summary>
+    /// End the peace deal
+    /// </summary>
     public void EndPeaceDeal()
     {
         if (PeaceDealAcceptanceScore() < 0) return;
@@ -109,6 +129,10 @@ public class CanvasWorker : MonoBehaviour
         manager.EndPeaceDeal(peaceDealVassal.isOn);
     }
 
+    /// <summary>
+    /// Select a province for the peace deal
+    /// </summary>
+    /// <param name="prov">The province</param>
     public void PeaceDealProvinceSelection(Province prov)
     {
         if (!manager.provincesToBeTakenInPeaceDeal.Remove(prov))
@@ -119,29 +143,37 @@ public class CanvasWorker : MonoBehaviour
         prov.RefreshColor();
     }
 
+    /// <summary>
+    /// Shows the player's country informations
+    /// </summary>
     public void Show_CountryInfoPlayer()
     {
         countryInfoTab.Show_CountryInfo(manager.player);
     }
 
+    /// <summary>
+    /// Show a country's informations
+    /// </summary>
+    /// <param name="country">The target country</param>
     public void Show_CountryInfo(Pays country)
     {
         countryInfoTab.Show_CountryInfo(country);
     }
 
 
-
+    /// <summary>
+    /// Updates the current country informations
+    /// </summary>
     public void UpdateInfo()
     {
         countryInfoTab.UpdateInfo();
     }
 
 
-
-
-
-
-
+    /// <summary>
+    /// Shows an event
+    /// </summary>
+    /// <param name="eventId">The event ID</param>
     public void OpenEvent(string eventId)
     {
         GameEvent gameEvent = manager.events[eventId];
@@ -165,6 +197,10 @@ public class CanvasWorker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Select the event outcome
+    /// </summary>
+    /// <param name="index">outcome index</param>
     public void ChoseEventOutcome(int index)
     {
         if (currentEvent == null) return;
@@ -181,8 +217,8 @@ public class CanvasWorker : MonoBehaviour
                 case "CHANGE_GOVERNEMENT":
                     manager.player.reelected = false;
                     manager.player.Government_Form = int.Parse(split[1]);
-                    manager.player.Reset_Flag();
-                    manager.player.Reset_Elections();
+                    manager.player.ResetFlag();
+                    manager.player.ResetElections();
                     break;
                 case "EVENT":
                     hideEvent = false;
@@ -203,18 +239,26 @@ public class CanvasWorker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Hide the event
+    /// </summary>
     public void Hide_Event()
     {
         Timer.instance.ResumeTime();
 
-        manager.player.Reset_Flag();
+        manager.player.ResetFlag();
         countryInfoTab.Show_CountryInfo(manager.player);
         eventsRoot.SetActive(false);
         ShowDefault();
     }
 
 
-
+    /// <summary>
+    /// Updates relations between two countries
+    /// </summary>
+    /// <param name="A">Country A</param>
+    /// <param name="B">Country B</param>
+    /// <param name="st">Relation Index (0 = Peace, 1 = War, 2 = A vassalize B, 3 = B vassalize A)</param>
     public void UpdateRelations_ShortCut(Pays A, Pays B, int st)
     { //Met a jour A selon st, puis B en logique
 
@@ -265,7 +309,10 @@ public class CanvasWorker : MonoBehaviour
 
     }
 
-
+    /// <summary>
+    /// Show the province info tab
+    /// </summary>
+    /// <param name="c">The target province</param>
     public void ShowBuyUnit(Province c)
     {
         provinceTab.ShowProvinceDetails(c);
@@ -273,7 +320,9 @@ public class CanvasWorker : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Updates the focus tree tab if it's open
+    /// </summary>
     public void UpdateFocus()
     {
         if (focusMenu.isOpen)
@@ -282,16 +331,26 @@ public class CanvasWorker : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets the focus tree tab
+    /// </summary>
     public void ResetFocusTree()
     {
         focusMenu.Reset();
     }
 
+
+    /// <summary>
+    /// Open the focus tree tab
+    /// </summary>
     public void OpenFocusTab()
     {
         focusMenu.OpenTab();
     }
 
+    /// <summary>
+    /// Hide every tabs 
+    /// </summary>
     public void HideEverything()
     {
         if (countryInfoTab.isOpen) countryInfoTab.CloseTab();
@@ -306,12 +365,17 @@ public class CanvasWorker : MonoBehaviour
         peaceDealRoot.SetActive(false);
     }
 
+    /// <summary>
+    /// Show the default tabs
+    /// </summary>
     public void ShowDefault()
     {
         utilityTab.OpenTab();
     }
 
-
+    /// <summary>
+    /// Refresh the utility tab
+    /// </summary>
     public void RefreshUtilityBar()
     {
         utilityTab.RefreshBar();

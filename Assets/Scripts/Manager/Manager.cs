@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// The manager handles the game logic
+/// </summary>
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
@@ -69,6 +72,9 @@ public class Manager : MonoBehaviour
         instance = this;
     }
 
+    /// <summary>
+    /// Intialize the game
+    /// </summary>
     void Start()
     {
         loading = null;
@@ -97,7 +103,10 @@ public class Manager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Loads the JSON files
+    /// </summary>
+    /// <returns>IEnumerator</returns>
     IEnumerator LoadFiles()
     {
         loadingRoot.SetActive(true);
@@ -155,16 +164,28 @@ public class Manager : MonoBehaviour
         loading = null;
     }
 
+    /// <summary>
+    /// Register a unit
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void RegisterUnit(Unit unit)
     {
         allUnits.Add(unit);
     }
 
+    /// <summary>
+    /// Unregister a unit
+    /// </summary>
+    /// <param name="unit">The unit</param>
     public void UnRegisterUnit(Unit unit)
     {
         allUnits.Remove(unit);
     }
 
+    /// <summary>
+    /// Adds a railroad to a province (WIP)
+    /// </summary>
+    /// <param name="province">The province</param>
     public void AddRailRoadToProvince(Province province)
     {
         province.hasRailroad = true;
@@ -183,6 +204,10 @@ public class Manager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// End a peace deal
+    /// </summary>
+    /// <param name="vassalizeB">Is B vassalized ?</param>
     public void EndPeaceDeal(bool vassalizeB)
     {
         Pays A = peaceDealSide1;
@@ -235,7 +260,10 @@ public class Manager : MonoBehaviour
         Timer.instance.ResumeTime();
     }
 
-
+    /// <summary>
+    /// Refresh the map GFX
+    /// </summary>
+    /// <param name="value">Show map GFX</param>
     public void UpdateMapGFXSeen(bool value)
     {
         foreach (Unit unit in allUnits)
@@ -249,7 +277,10 @@ public class Manager : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Start the game
+    /// </summary>
+    /// <param name="chosenCountry">Chosen country</param>
     public void StartGame(Pays chosenCountry)
     {
         player = chosenCountry;
@@ -280,33 +311,55 @@ public class Manager : MonoBehaviour
             pays.Remove(del);
         }
 
-        Ajout_Mois();
+        AddMonth();
         CanvasWorker.instance.ShowDefault();
         CanvasWorker.instance.UpdateInfo();
     }
 
+    /// <summary>
+    /// Gets a country
+    /// </summary>
+    /// <param name="ID">Country's ID</param>
+    /// <returns>A country</returns>
     public Pays GetCountry(string ID)
     {
         return pays[ID];
     }
 
+    /// <summary>
+    /// Gets a province
+    /// </summary>
+    /// <param name="ID">Province's ID</param>
+    /// <returns>A province</returns>
     public Province GetProvince(int ID)
     {
         return provinces[ID];
     }
 
+    /// <summary>
+    /// Gets a governement type description
+    /// </summary>
+    /// <param name="ID">Governement type ID</param>
+    /// <returns>The governement type description</returns>
     public string GetGovernementDesc(int ID)
     {
         return gouvs_data.descs[ID];
     }
 
+    /// <summary>
+    /// Gets a governement type name
+    /// </summary>
+    /// <param name="ID">Governement type ID</param>
+    /// <returns>The governement type name</returns>
     public string GetGovernementName(int ID)
     {
         return gouvs_data.noms[ID];
     }
 
-
-    void Ajout_Mois()
+    /// <summary>
+    /// Increment the month
+    /// </summary>
+    void AddMonth()
     {
         mois += 1;
         if (mois > 12)
@@ -324,9 +377,12 @@ public class Manager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Handle next turn
+    /// </summary>
     public void NextTurn()
     {
-        Ajout_Mois();
+        AddMonth();
         foreach (Pays country in pays.Values)
         {
             if (country.provinces.Count > 0)
@@ -345,13 +401,19 @@ public class Manager : MonoBehaviour
         CanvasWorker.instance.UpdateInfo();
     }
 
+    /// <summary>
+    /// Get current date
+    /// </summary>
+    /// <returns>the current date</returns>
     public string GetDate()
     {
         string[] values = { "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" };
         return values[mois - 1] + " " + an.ToString();
     }
 
-
+    /// <summary>
+    /// Refresh the entire map
+    /// </summary>
     public void RefreshMap()
     {
         foreach (string key in pays.Keys)

@@ -3,17 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// A custom dropdown that handles formable nations
+/// </summary>
 public class Dropdown_Formable_Manager : MonoBehaviour
 {
-    public Manager manager;
-
-    public FormableWorker formables;
-
+    private Manager manager;
+    [SerializeField] private FormableWorker formables;
     private List<FormableNation> current;
+    [SerializeField] private PoliticalTab tab;
+    [SerializeField] private TMP_Dropdown dropdown;
 
-    public PoliticalTab tab;
-    public TMP_Dropdown dropdown;
 
+    void Start()
+    {
+        manager = Manager.instance;
+    }
+
+    /// <summary>
+    /// Refresh the dropdown options for a country
+    /// </summary>
+    /// <param name="country">Target country</param>
     public void RefreshDropdown(Pays country)
     {
         List<string> choices = new List<string>();
@@ -41,7 +51,9 @@ public class Dropdown_Formable_Manager : MonoBehaviour
         SelectNewFormable();
     }
 
-
+    /// <summary>
+    /// Select a new formable
+    /// </summary>
     public void SelectNewFormable()
     {
         manager.currentFormable = current[dropdown.value];
@@ -56,6 +68,9 @@ public class Dropdown_Formable_Manager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows the required provinces to form the formable
+    /// </summary>
     public void ShowMap()
     {
         MapModes.currentMapMode = MapModes.MAPMODE.FORMABLE;
@@ -66,6 +81,9 @@ public class Dropdown_Formable_Manager : MonoBehaviour
         tab.CloseTab();
     }
 
+    /// <summary>
+    /// Form the selected formable
+    /// </summary>
     public void FormShortcut()
     {
         manager.formables.FormNation(manager.player, manager.currentFormable);

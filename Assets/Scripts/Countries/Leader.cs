@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A leader of a country, purely cosmetic
+/// </summary>
 public class Leader
 {
     public string nom;
@@ -16,6 +19,11 @@ public class Leader
     public Color hairColor;
     public Color headColor;
 
+
+
+    /// <summary>
+    /// Generates a new Random Leader
+    /// </summary>
     public Leader()
     {
         age = Random.Range(40, 68);
@@ -23,9 +31,15 @@ public class Leader
         ResetDeath();
     }
 
-    public bool Age(int ADD)
+
+    /// <summary>
+    /// Age the leader
+    /// </summary>
+    /// <param name="years">The number of years to add</param>
+    /// <returns>Is the leader dead ?</returns>
+    public bool Age(int years)
     { // Fait veillir le dirigeant, si il est plus vieux que death -> renvoir True/KAPUT
-        age += ADD;
+        age += years;
         if (age >= death)
         {
             return true;
@@ -33,6 +47,10 @@ public class Leader
         return false;
     }
 
+
+    /// <summary>
+    /// Get random body parts and colors
+    /// </summary>
     public void RandomizeLeaderGFX()
     {
         bodyGFX = LeadersData.GetRandomBodyPart();
@@ -44,6 +62,10 @@ public class Leader
         hairColor = LeadersData.GetRandomHairColor();
     }
 
+
+    /// <summary>
+    /// Resets the leader's death
+    /// </summary>
     public void ResetDeath()
     {
         death = Random.Range(80, 97);

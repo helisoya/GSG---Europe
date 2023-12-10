@@ -4,6 +4,10 @@ using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
+/// <summary>
+/// Handles JSON saving
+/// </summary>
 public class FileManager : MonoBehaviour
 {
 	/// <summary>

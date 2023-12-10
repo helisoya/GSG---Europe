@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// An event shows flavor text to embelish and affect the gameplay
+/// </summary>
 public class GameEvent
 {
     public string id;

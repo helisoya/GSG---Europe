@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+/// <summary>
+/// A federation is a sort of alliance between multiple countries. It can be united
+/// </summary>
 public class Federation
 {
     public List<Pays> members;
@@ -17,6 +20,10 @@ public class Federation
 
     private int yearNextElection;
 
+
+    /// <summary>
+    /// Creates a new Federation
+    /// </summary>
     public Federation()
     {
         leaderFrozen = false;
@@ -27,6 +34,11 @@ public class Federation
         yearNextElection = Manager.instance.an + 8;
     }
 
+
+    /// <summary>
+    /// Add a member to the federation
+    /// </summary>
+    /// <param name="pays">The new member</param>
     public void AddMember(Pays pays)
     {
         if (members.Contains(pays))
@@ -43,6 +55,10 @@ public class Federation
         pays.federation = this;
     }
 
+    /// <summary>
+    /// Remove a country from the federation
+    /// </summary>
+    /// <param name="pays">The country</param>
     public void RemoveMember(Pays pays)
     {
         if (members.Contains(pays))
@@ -69,6 +85,10 @@ public class Federation
 
     }
 
+
+    /// <summary>
+    /// Unite the federation (Leader annexes all the members)
+    /// </summary>
     public void Unite()
     {
         List<Pays> membersCopy = new List<Pays>(members);
@@ -94,6 +114,10 @@ public class Federation
         Manager.instance.federations.Remove(this);
     }
 
+
+    /// <summary>
+    /// Vassalize every member to the leader. If the member has < 50 relation with the leader, it gets kicked out instead
+    /// </summary>
     public void EnableVassals()
     {
         vassalized = true;
@@ -124,6 +148,10 @@ public class Federation
         members = toKeep;
     }
 
+
+    /// <summary>
+    /// Find a new leader
+    /// </summary>
     public void GetNewLeader()
     {
         int indexMax = 0;
@@ -141,6 +169,12 @@ public class Federation
         leader = members[indexMax];
     }
 
+
+    /// <summary>
+    /// Get the total relation score of a country
+    /// </summary>
+    /// <param name="indexToExclude">The country's index</param>
+    /// <returns></returns>
     int GetTotalRelationScoreOfCountry(int indexToExclude)
     {
         Pays p = members[indexToExclude];
@@ -152,12 +186,19 @@ public class Federation
         return tot;
     }
 
+
+    /// <summary>
+    /// Sets the leader of the country
+    /// </summary>
+    /// <param name="pays">The new leader</param>
     public void SetLeader(Pays pays)
     {
         leader = pays;
     }
 
-
+    /// <summary>
+    /// Check if it's time for elections
+    /// </summary>
     public void CheckYearElection()
     {
         if (leaderFrozen) return;

@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Handles the different map modes
+/// </summary>
 public class MapModes : MonoBehaviour
 {
     [SerializeField] private Color32[] _colors_ideologie;
-
     [SerializeField] private Color32[] _colors_relations;
-
     [SerializeField] private Color32[] _colors_formable;
-
     [SerializeField] private Color32 _colors_grayed;
 
 
@@ -59,7 +60,9 @@ public class MapModes : MonoBehaviour
 
 
 
-
+    /// <summary>
+    /// Updates the mapmodes if needed
+    /// </summary>
     void Update()
     {
         if (!Manager.instance.picked) return;

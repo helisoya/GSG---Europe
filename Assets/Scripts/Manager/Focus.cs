@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A focus represents what can a country do to improve itself
+/// </summary>
 public class Focus
 {
     public string id;

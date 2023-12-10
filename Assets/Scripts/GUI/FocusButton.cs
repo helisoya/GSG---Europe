@@ -4,6 +4,10 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+
+/// <summary>
+/// Used in the focus tree to start focuses
+/// </summary>
 public class FocusButton : MonoBehaviour
 {
     private Focus focusName;
@@ -18,6 +22,12 @@ public class FocusButton : MonoBehaviour
 
     private int focusCase;
 
+    /// <summary>
+    /// Initiliaze the focus button
+    /// </summary>
+    /// <param name="focus">Assigned focus</param>
+    /// <param name="focusCase">The focus status</param>
+    /// <param name="focusMenu">The focus tab</param>
     public void Init(Focus focus, int focusCase, FocusTab focusMenu)
     {
         // Cases
@@ -55,6 +65,9 @@ public class FocusButton : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// OnClick event
+    /// </summary>
     public void OnClick()
     {
         if (focusCase == 2)

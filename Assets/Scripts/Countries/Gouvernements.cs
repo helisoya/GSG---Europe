@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class containing the different governements types of the game
+/// </summary>
 public class Gouvernements : MonoBehaviour
 {
     // Gouvernements 
@@ -38,8 +41,5 @@ public class Gouvernements : MonoBehaviour
 
 
     public string[] noms;
-
     public string[] descs;
-
-    
 }

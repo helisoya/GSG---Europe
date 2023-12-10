@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the game's events
+/// </summary>
 public class Events : MonoBehaviour
 {
     private Manager manager;
@@ -17,32 +20,54 @@ public class Events : MonoBehaviour
         manager = GetComponent<Manager>();
     }
 
-    public void ChoixType_Rep(string ID)
+    /// <summary>
+    /// Show an event
+    /// </summary>
+    /// <param name="ID">the event ID</param>
+    public void ShowEvent(string ID)
+    {
+        CanvasWorker.instance.OpenEvent(ID);
+    }
+
+    /// <summary>
+    /// Shows the Republic's subtypes events
+    /// </summary>
+    public void ChoixType_Rep()
     {
         CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_REPUBLIC");
     }
 
-
-    public void ChoixType_Mon(string ID)
+    /// <summary>
+    /// Shows the Monarchy's subtypes events
+    /// </summary>
+    public void ChoixType_Mon()
     {
         CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_MONARCHY");
     }
 
-
-    public void ChoixType_Com(string ID)
+    /// <summary>
+    /// Shows the Communist's subtypes events
+    /// </summary>
+    public void ChoixType_Com()
     {
         CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_COMMUNISM");
     }
 
-
-    public void ChoixType_Fas(string ID)
+    /// <summary>
+    /// Shows the Fascist's subtypes events
+    /// </summary>
+    public void ChoixType_Fas()
     {
         CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_FASCISM");
     }
 
 
 
-
+    /// <summary>
+    /// Show the election event
+    /// </summary>
+    /// <param name="ID">Target country's ID</param>
+    /// <param name="index">Election winner's index</param>
     public void Elections(string ID, int index)
     {
         Pays c = manager.GetCountry(ID);
@@ -113,16 +138,20 @@ public class Events : MonoBehaviour
 
     }
 
-
-    public void DeathLeader_Normal(string ID)
+    /// <summary>
+    /// Show leader's death event (normal)
+    /// </summary>
+    public void DeathLeader_Normal()
     {
-        Pays c = manager.GetCountry(ID);
         CanvasWorker.instance.OpenEvent("DEATH_LEADER_NORMAL");
     }
 
-    public void DeathLeader_Monarchy(string ID)
+
+    /// <summary>
+    /// Show leader's death event (monarchy)
+    /// </summary>
+    public void DeathLeader_Monarchy()
     {
-        Pays c = manager.GetCountry(ID);
         CanvasWorker.instance.OpenEvent("DEATH_LEADER_MONARCH");
     }
 

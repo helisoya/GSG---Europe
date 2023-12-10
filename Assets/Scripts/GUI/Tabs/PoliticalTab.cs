@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// A tab that shows political informations about a country, as well as it's formables
+/// </summary>
 public class PoliticalTab : GUITab
 {
     [SerializeField] private Transform politicalGraph;
@@ -18,6 +21,9 @@ public class PoliticalTab : GUITab
     [SerializeField] private Image piechart_prefab;
 
 
+    /// <summary>
+    /// Open the political tab
+    /// </summary>
     public override void OpenTab()
     {
         base.OpenTab();
@@ -27,6 +33,9 @@ public class PoliticalTab : GUITab
 
     }
 
+    /// <summary>
+    /// Closes the political tab
+    /// </summary>
     public override void CloseTab()
     {
         base.CloseTab();
@@ -35,7 +44,9 @@ public class PoliticalTab : GUITab
         CanvasWorker.instance.RefreshUtilityBar();
     }
 
-
+    /// <summary>
+    /// Initialize the tab
+    /// </summary>
     public void InitTab()
     {
         Manager manager = Manager.instance;
@@ -69,7 +80,10 @@ public class PoliticalTab : GUITab
     }
 
 
-
+    /// <summary>
+    /// Creates the parties pie chart
+    /// </summary>
+    /// <param name="values"></param>
     public void MakeGraph(Party[] values)
     {
         float total = 0f;
@@ -89,7 +103,10 @@ public class PoliticalTab : GUITab
         }
     }
 
-
+    /// <summary>
+    /// Add popularity to a party
+    /// </summary>
+    /// <param name="index">Party index</param>
     public void Add_Popularity_ShortCut(int index)
     {
         Manager manager = Manager.instance;
@@ -100,7 +117,7 @@ public class PoliticalTab : GUITab
         manager.player.AP -= 10;
         politicalAP.text = "Admin Power : " + manager.player.AP.ToString() + " <sprite=12>";
 
-        manager.player.Add_Popularity(index, 5);
+        manager.player.AddPopularity(index, 5);
 
         for (int i = 0; i < politicalGraph.childCount; i++)
         {

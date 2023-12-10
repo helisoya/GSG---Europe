@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public enum UnitType
     TANK
 }
 
+/// <summary>
+/// A unit is owned by a country and is used to conquer land
+/// </summary>
 public class Unit : MonoBehaviour
 {
     [Header("Stats")]
@@ -83,6 +87,11 @@ public class Unit : MonoBehaviour
     public Pays country = null;
     private Manager manager;
 
+    /// <summary>
+    /// Initialize a unit
+    /// </summary>
+    /// <param name="startProv">Starting province</param>
+    /// <param name="owner">Unit's owner</param>
     public void Init(Province startProv, Pays owner)
     {
         country = owner;
@@ -117,31 +126,58 @@ public class Unit : MonoBehaviour
         currentProvince.AddUnit(this);
     }
 
-    public void SetNewTarget(Province prov)
+    /// <summary>
+    /// Set new target using pathfinding
+    /// </summary>
+    /// <param name="prov">Target province</param>
+    /// <param name="additive">Add path to current path ?</param>
+    public void SetNewTarget(Province prov, bool additive)
     {
-        path = country.StartPathfinding(currentProvince, prov);
-        if (path == null) path = new GraphPath();
+        GraphPath newPath;
 
-        if (path.nodes.Count > 0)
+        if (additive && path.length > 0)
         {
-            transform.position = currentProvince.center;
-            currentPathIndex = 1;
-            travelStart = Time.time;
+            newPath = country.StartPathfinding(path.nodes[path.length - 1], prov);
+            if (newPath == null) newPath = new GraphPath();
+
+            foreach (Province node in newPath.nodes)
+            {
+                path.nodes.Add(node);
+            }
+            path.Bake();
         }
         else
         {
-            currentPathIndex = 0;
+            newPath = country.StartPathfinding(currentProvince, prov);
+            if (newPath == null) newPath = new GraphPath();
+
+            path = newPath;
+
+            if (path.length > 0)
+            {
+                transform.position = currentProvince.center;
+                currentPathIndex = 1;
+                travelStart = Time.time;
+            }
+            else
+            {
+                currentPathIndex = 0;
+            }
         }
-
         RedrawLinePath();
-
     }
 
+    /// <summary>
+    /// Refresh Unit GFX
+    /// </summary>
     public void RefreshGFX()
     {
         currentProvince.RefreshUnitGFX(this);
     }
 
+    /// <summary>
+    /// Redraws the line path of the unit
+    /// </summary>
     public void RedrawLinePath()
     {
 
@@ -165,30 +201,43 @@ public class Unit : MonoBehaviour
         linePath.SetPositions(pos);
     }
 
-    void UpdateAllRenderers(bool val)
+
+    /// <summary>
+    /// Refresh all renderers to show the unit or not
+    /// </summary>
+    /// <param name="value">Show the unit ?</param>
+    public void UpdateIsSeen(bool value)
     {
         foreach (MeshRenderer renderer in renderers)
         {
-            renderer.enabled = val;
+            renderer.enabled = value;
         }
     }
 
-    public void UpdateIsSeen(bool value)
-    {
-        UpdateAllRenderers(value);
-    }
-
+    /// <summary>
+    /// Gets the unit current damage
+    /// </summary>
+    /// <returns>The unit damage</returns>
     public float GetDmg()
     {
         if (currentProvince.type == ProvinceType.SEA) return navalDamage;
         return damage;
     }
 
+
+    /// <summary>
+    /// Gets if the unit is not moving
+    /// </summary>
+    /// <returns>Is the unit on standby ?</returns>
     public bool StandBy()
     {
         return path == null || path.length == 0 || currentPathIndex >= path.length;
     }
 
+    /// <summary>
+    /// Teleports a unit to a province
+    /// </summary>
+    /// <param name="prov">Target province</param>
     public void Teleport(Province prov)
     {
         ResetPath();
@@ -198,24 +247,39 @@ public class Unit : MonoBehaviour
         transform.position = currentProvince.center;
     }
 
+    /// <summary>
+    /// Checks if the unit is on a country's province
+    /// </summary>
+    /// <param name="id">Target country's ID</param>
+    /// <returns>Is the unit on the country's territory ?</returns>
     public bool IsOnCountryTerritory(string id)
     {
         if (currentProvince == null || currentProvince.type == ProvinceType.SEA) return false;
         return currentProvince.owner.ID.Equals(id);
     }
 
+    /// <summary>
+    /// Resets the path
+    /// </summary>
     public void ResetPath()
     {
         path = new GraphPath();
         currentPathIndex = 0;
     }
 
+    /// <summary>
+    /// Swap between sea and land graphics
+    /// </summary>
+    /// <param name="atSea">Is the unit at sea</param>
     void SwapParts(bool atSea)
     {
         sea_part.SetActive(atSea);
         land_part.SetActive(!atSea);
     }
 
+    /// <summary>
+    /// Unit logic
+    /// </summary>
     void Update()
     {
         if (country.provinces.Count <= 0)
@@ -295,7 +359,12 @@ public class Unit : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Takes damage
+    /// </summary>
+    /// <param name="dmg">Damage value</param>
+    /// <param name="dmgMult">Damage multiplier</param>
+    /// <returns>Is the unit dead ?</returns>
     public bool TakeDamage(float dmg, float dmgMult)
     {
         if (dmg > 0)
@@ -326,6 +395,9 @@ public class Unit : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Click Event
+    /// </summary>
     public void Click_Event()
     {
         if (country == manager.player && !selected)
@@ -336,6 +408,9 @@ public class Unit : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Unselect the unit
+    /// </summary>
     public void UnSelect()
     {
         if (selected_bar == null) return;
@@ -343,6 +418,9 @@ public class Unit : MonoBehaviour
         selected_bar.SetActive(false);
     }
 
+    /// <summary>
+    /// Updates the unit flag
+    /// </summary>
     public void UpdateFlag()
     {
         if (flag != null)
@@ -354,6 +432,11 @@ public class Unit : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Find ennemy units on a province
+    /// </summary>
+    /// <param name="province">The target province</param>
+    /// <returns>The list of ennemy units</returns>
     public List<Unit> GetEnnemiesInProvince(Province province)
     {
         List<Unit> units = new List<Unit>();

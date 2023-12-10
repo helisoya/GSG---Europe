@@ -3,14 +3,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles the main menu
+/// </summary>
 public class MainMenu : MonoBehaviour
 {
-    public Image loading_fill;
-    public Image loading_back;
+    [SerializeField] private Image loading_fill;
+    [SerializeField] private Image loading_back;
+    [SerializeField] private GameObject buttonsParent;
 
-    public GameObject buttonsParent;
-
-
+    /// <summary>
+    /// Handles loading the map
+    /// </summary>
+    /// <returns>IEnumerator</returns>
     IEnumerator Load()
     {
 
@@ -23,6 +28,9 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts loading the main map
+    /// </summary>
     public void StartGame()
     {
         buttonsParent.SetActive(false);
@@ -31,6 +39,9 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(Load());
     }
 
+    /// <summary>
+    /// Quit the game
+    /// </summary>
     public void Quit()
     {
         Application.Quit();

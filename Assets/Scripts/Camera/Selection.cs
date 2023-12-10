@@ -4,10 +4,11 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
+/// <summary>
+/// Handles unit selections
+/// </summary>
 public class Selection : MonoBehaviour
 {
-
-    [SerializeField] private LayerMask uiMask;
 
     RaycastHit hit;
 
@@ -17,7 +18,6 @@ public class Selection : MonoBehaviour
     //=======================================================//
 
     MeshCollider selectionBox;
-    Mesh selectionMesh;
 
     Vector3 p1;
     Vector3 p2;
@@ -25,20 +25,19 @@ public class Selection : MonoBehaviour
     //the corners of our 2d selection box
     Vector2[] corners;
 
-    //the vertices of our meshcollider
-    Vector3[] verts;
-    Vector3[] vecs;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         dragSelect = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!Manager.instance.picked) return;
+
+        bool leftShift = Input.GetKey(KeyCode.LeftShift);
+
         //1. when left mouse button clicked (but not released)
         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
@@ -100,14 +99,12 @@ public class Selection : MonoBehaviour
             }
             else //marquee select
             {
-                verts = new Vector3[4];
-                vecs = new Vector3[4];
                 p2 = Input.mousePosition;
                 corners = getBoundingBox(p1, p2);
 
 
 
-                if (!Input.GetKey(KeyCode.LeftShift))
+                if (!leftShift)
                 {
                     UnselectUnits();
                 }
@@ -130,8 +127,10 @@ public class Selection : MonoBehaviour
 
         }
 
+
+        // Unit Movements
         if (Input.GetMouseButtonDown(1))
-        { // Deplacement Unité
+        {
 
             if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
@@ -148,7 +147,7 @@ public class Selection : MonoBehaviour
                 {
                     foreach (Unit unit in Manager.instance.selected_unit)
                     {
-                        unit?.SetNewTarget(prov);
+                        unit?.SetNewTarget(prov, leftShift);
                     }
                 }
             }
@@ -156,6 +155,10 @@ public class Selection : MonoBehaviour
 
     }
 
+
+    /// <summary>
+    /// Unselects units
+    /// </summary>
     void UnselectUnits()
     {
         foreach (Unit unit in Manager.instance.selected_unit)
@@ -168,6 +171,8 @@ public class Selection : MonoBehaviour
 
     private void OnGUI()
     {
+        // Draw rectangle 
+
         if (dragSelect == true)
         {
             var rect = Utils.GetScreenRect(p1, Input.mousePosition);
@@ -246,14 +251,6 @@ public class Selection : MonoBehaviour
         selectionMesh.triangles = tris;
 
         return selectionMesh;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Unit")
-        {
-            other.gameObject.GetComponent<Unit>().Click_Event();
-        }
     }
 
 }

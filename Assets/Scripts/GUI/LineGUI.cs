@@ -3,19 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A line used in the focus tree
+/// </summary>
 public class LineGUI : MonoBehaviour
 {
     private RectTransform object1;
     private RectTransform object2;
     private Image image;
     private RectTransform rectTransform;
-    // Start is called before the first frame update
+
     void Awake()
     {
         image = GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
     }
 
+    /// <summary>
+    /// Sets the inforamtions of the line
+    /// </summary>
+    /// <param name="one">Start point</param>
+    /// <param name="two">End point</param>
+    /// <param name="col">Line color</param>
     public void SetObjects(GameObject one, GameObject two, Color col)
     {
         object1 = one.GetComponent<RectTransform>();
@@ -31,7 +40,10 @@ public class LineGUI : MonoBehaviour
         }
         Init();
     }
-    // Update is called once per frame
+
+    /// <summary>
+    /// Initiliaze the line
+    /// </summary>
     void Init()
     {
         if (object1.gameObject.activeSelf && object2.gameObject.activeSelf)

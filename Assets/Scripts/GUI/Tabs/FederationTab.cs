@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// A tab that shows informations about a federation
+/// </summary>
 public class FederationTab : GUITab
 {
     [SerializeField] private CountryPanel leaderPanel;
@@ -22,6 +25,9 @@ public class FederationTab : GUITab
     [SerializeField] private Button buttonLeader;
     [SerializeField] private TextMeshProUGUI textPlayerDP;
 
+    /// <summary>
+    /// Opens the federation tab
+    /// </summary>
     public override void OpenTab()
     {
         base.OpenTab();
@@ -30,6 +36,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
+    /// <summary>
+    /// Close the federation tab
+    /// </summary>
     public override void CloseTab()
     {
         base.CloseTab();
@@ -38,11 +47,18 @@ public class FederationTab : GUITab
         CanvasWorker.instance.RefreshUtilityBar();
     }
 
+    /// <summary>
+    /// Refresh the Diplomatic Power Text
+    /// </summary>
     void RefreshDPText()
     {
         textPlayerDP.text = "Diplomatic Power : " + Manager.instance.player.DP.ToString() + "<sprite=13>";
     }
 
+
+    /// <summary>
+    /// Add Administrative Power Bonus
+    /// </summary>
     public void AddAPBonus()
     {
         if (Manager.instance.player.DP < 10) return;
@@ -52,6 +68,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
+    /// <summary>
+    /// Add Diplomatic Power bonus
+    /// </summary>
     public void AddDPBonus()
     {
         if (Manager.instance.player.DP < 10) return;
@@ -61,7 +80,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
-
+    /// <summary>
+    /// Add Unit cap bonus
+    /// </summary>
     public void AddUCBonus()
     {
         if (Manager.instance.player.DP < 10) return;
@@ -71,6 +92,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
+    /// <summary>
+    /// Freeze the federation leader
+    /// </summary>
     public void SetLeaderFrozen()
     {
         if (Manager.instance.player.DP < 20) return;
@@ -80,6 +104,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
+    /// <summary>
+    /// Vassalize the members of a federation
+    /// </summary>
     public void SetMembersVassal()
     {
         if (Manager.instance.player.DP < 25) return;
@@ -89,6 +116,9 @@ public class FederationTab : GUITab
         UpdateFederationTab();
     }
 
+    /// <summary>
+    /// Unite a federation
+    /// </summary>
     public void Unite()
     {
         if (Manager.instance.player.DP < 30) return;
@@ -98,6 +128,9 @@ public class FederationTab : GUITab
         CloseTab();
     }
 
+    /// <summary>
+    /// Refresh the federation ta
+    /// </summary>
     void UpdateFederationTab()
     {
         Tooltip.instance.HideInfo();
