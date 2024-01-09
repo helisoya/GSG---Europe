@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Clouds are GFX that roam around the map
+/// </summary>
 public class Cloud : MonoBehaviour
 {
     private Vector3 target = new Vector3();

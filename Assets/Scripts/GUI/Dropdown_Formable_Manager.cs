@@ -13,12 +13,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     private List<FormableNation> current;
     [SerializeField] private PoliticalTab tab;
     [SerializeField] private TMP_Dropdown dropdown;
-
-
-    void Start()
-    {
-        manager = Manager.instance;
-    }
+    [SerializeField] private GameObject formButton;
 
     /// <summary>
     /// Refresh the dropdown options for a country
@@ -26,6 +21,8 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     /// <param name="country">Target country</param>
     public void RefreshDropdown(Pays country)
     {
+        manager = Manager.instance;
+
         List<string> choices = new List<string>();
         current = formables.GetFormableByCountry(country.ID);
 
@@ -60,11 +57,11 @@ public class Dropdown_Formable_Manager : MonoBehaviour
 
         if (manager.currentFormable.CountryHasAllRequirement(manager.player))
         {
-            transform.Find("Form").gameObject.SetActive(true);
+            formButton.SetActive(true);
         }
         else
         {
-            transform.Find("Form").gameObject.SetActive(false);
+            formButton.SetActive(false);
         }
     }
 

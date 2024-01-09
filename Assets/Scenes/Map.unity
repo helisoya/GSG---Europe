@@ -12343,10 +12343,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f313434b435061c4abca41c89f3d1f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 500958223}
   formables: {fileID: 500958228}
   tab: {fileID: 1674045811}
   dropdown: {fileID: 350302713}
+  formButton: {fileID: 1613549464}
 --- !u!1 &863305640
 GameObject:
   m_ObjectHideFlags: 0
