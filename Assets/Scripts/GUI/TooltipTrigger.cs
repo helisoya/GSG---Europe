@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// Trigger for the tooltip
 /// </summary>
-public class TooltipTrigger : MonoBehaviour
+public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private string text;
 
@@ -25,7 +25,7 @@ public class TooltipTrigger : MonoBehaviour
     /// On MouseEnter Event
     /// </summary>
     /// <param name="data">Event data</param>
-    public void OnMouseEnter(BaseEventData data)
+    public void OnPointerEnter(PointerEventData eventData)
     {
         if (!enabled) return;
         Tooltip.instance.ShowInfo(text);
@@ -35,7 +35,7 @@ public class TooltipTrigger : MonoBehaviour
     /// On MouseExit Event
     /// </summary>
     /// <param name="data">Event data</param>
-    public void OnMouseExit(BaseEventData data)
+    public void OnPointerExit(PointerEventData eventData)
     {
         Tooltip.instance.HideInfo();
     }
