@@ -48,7 +48,7 @@ public class FocusTab : GUITab
     {
         base.CloseTab();
         Timer.instance.ResumeTime();
-        CanvasWorker.instance.UpdateInfo();
+        GameGUI.instance.UpdateInfo();
     }
 
     /// <summary>

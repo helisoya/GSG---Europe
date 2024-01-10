@@ -163,7 +163,7 @@ public class CountryInfoTab : GUITab
         {
             player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(10);
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
             current_countryinfo.RefreshProvinces();
         }
@@ -179,7 +179,7 @@ public class CountryInfoTab : GUITab
         {
             player.DP -= 5;
             player.relations[current_countryinfo.ID].AddScore(-10);
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
             current_countryinfo.RefreshProvinces();
         }
@@ -195,7 +195,7 @@ public class CountryInfoTab : GUITab
         {
             player.DP -= 20;
             player.relations[current_countryinfo.ID].wargoals.Add(player.ID);
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
             Show_CountryInfo(current_countryinfo);
             Tooltip.instance.HideInfo();
         }
@@ -207,7 +207,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_DeclareWar()
     {
-        CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
+        GameGUI.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
         Show_CountryInfo(current_countryinfo);
         Tooltip.instance.HideInfo();
     }
@@ -218,7 +218,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_PeaceDeal()
     {
-        CanvasWorker.instance.OpenPeaceDealTab(Manager.instance.player.ID, current_countryinfo.ID);
+        GameGUI.instance.OpenPeaceDealTab(Manager.instance.player.ID, current_countryinfo.ID);
         Tooltip.instance.HideInfo();
     }
 
@@ -236,7 +236,7 @@ public class CountryInfoTab : GUITab
         federation.AddMember(current_countryinfo);
         federation.leader = Manager.instance.player;
         Manager.instance.federations.Add(federation);
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.RefreshUtilityBar();
         Show_CountryInfo(current_countryinfo);
         Tooltip.instance.HideInfo();
 
@@ -297,7 +297,7 @@ public class CountryInfoTab : GUITab
     public void Event_DeclareIndependance()
     {
         Manager.instance.player.lord = null;
-        CanvasWorker.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
+        GameGUI.instance.UpdateRelations_ShortCut(Manager.instance.player, current_countryinfo, 1);
         Show_CountryInfo(current_countryinfo);
         Tooltip.instance.HideInfo();
     }
@@ -314,7 +314,7 @@ public class CountryInfoTab : GUITab
         current_countryinfo.RefreshProvinces();
         Show_CountryInfo(current_countryinfo);
         Tooltip.instance.HideInfo();
-        CanvasWorker.instance.ResetFocusTree();
+        GameGUI.instance.ResetFocusTree();
     }
 
 }

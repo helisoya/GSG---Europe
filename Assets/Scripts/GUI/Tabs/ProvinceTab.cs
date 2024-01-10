@@ -62,7 +62,7 @@ public class ProvinceTab : GUITab
     /// </summary>
     public void ShowOwner()
     {
-        CanvasWorker.instance.Show_CountryInfo(currentProvine.owner);
+        GameGUI.instance.Show_CountryInfo(currentProvine.owner);
     }
 
     /// <summary>
@@ -70,7 +70,7 @@ public class ProvinceTab : GUITab
     /// </summary>
     public void ShowController()
     {
-        CanvasWorker.instance.Show_CountryInfo(currentProvine.controller);
+        GameGUI.instance.Show_CountryInfo(currentProvine.controller);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class ProvinceTab : GUITab
     {
         showIfOwner.SetActive(true);
         showIfOwnerIsVassal.SetActive(false);
-        if (currentProvine.owner.provinces.Count == 1) CanvasWorker.instance.Show_CountryInfoPlayer();
+        if (currentProvine.owner.provinces.Count == 1) GameGUI.instance.Show_CountryInfoPlayer();
 
         currentProvine.owner.relations[Manager.instance.player.ID].AddScore(-30);
         currentProvine.owner.RemoveProvince(currentProvine);
@@ -109,7 +109,7 @@ public class ProvinceTab : GUITab
 
         if (releasedP.provinces.Count == 1)
         {
-            CanvasWorker.instance.UpdateRelations_ShortCut(manager.player, releasedP, 2);
+            GameGUI.instance.UpdateRelations_ShortCut(manager.player, releasedP, 2);
         }
         CloseTab();
     }
@@ -151,7 +151,7 @@ public class ProvinceTab : GUITab
         {
             manager.player.AP -= 100;
             currentProvine.SpawnUnitAtCity();
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
         }
 
     }

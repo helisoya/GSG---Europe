@@ -44,7 +44,7 @@ public class FederationTab : GUITab
         base.CloseTab();
         Timer.instance.ResumeTime();
         Tooltip.instance.HideInfo();
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.RefreshUtilityBar();
     }
 
     /// <summary>

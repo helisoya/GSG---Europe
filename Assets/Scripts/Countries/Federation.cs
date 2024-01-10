@@ -134,7 +134,7 @@ public class Federation
             }
             else if (member.relations[leader.ID].relationScore >= 50)
             {
-                CanvasWorker.instance.UpdateRelations_ShortCut(member, leader, 3);
+                GameGUI.instance.UpdateRelations_ShortCut(member, leader, 3);
                 toKeep.Add(member);
             }
             else

@@ -7,11 +7,11 @@ using TMPro;
 /// <summary>
 /// Handles all the GUI
 /// </summary>
-public class CanvasWorker : MonoBehaviour
+public class GameGUI : MonoBehaviour
 {
     [HideInInspector] public Manager manager;
 
-    public static CanvasWorker instance;
+    public static GameGUI instance;
 
 
     [Space]

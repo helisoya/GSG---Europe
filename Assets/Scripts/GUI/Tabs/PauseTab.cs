@@ -105,7 +105,7 @@ public class PauseTab : GUITab
     public override void CloseTab()
     {
         base.CloseTab();
-        CanvasWorker.instance.ShowDefault();
+        GameGUI.instance.ShowDefault();
         Timer.instance.ResumeTime();
     }
 

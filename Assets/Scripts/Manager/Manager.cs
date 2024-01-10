@@ -151,7 +151,7 @@ public class Manager : MonoBehaviour
 
         Destroy(loadingRoot);
 
-        CanvasWorker.instance.manager = this;
+        GameGUI.instance.manager = this;
 
         CountryPicker.instance.Init();
 
@@ -246,11 +246,11 @@ public class Manager : MonoBehaviour
 
         if (vassalizeB)
         {
-            CanvasWorker.instance.UpdateRelations_ShortCut(A, B, 2);
+            GameGUI.instance.UpdateRelations_ShortCut(A, B, 2);
         }
 
         RefreshMap();
-        CanvasWorker.instance.Show_CountryInfo(player);
+        GameGUI.instance.Show_CountryInfo(player);
         Timer.instance.ResumeTime();
     }
 
@@ -279,7 +279,7 @@ public class Manager : MonoBehaviour
     {
         player = chosenCountry;
         picked = true;
-        CanvasWorker.instance.Show_CountryInfo(player);
+        GameGUI.instance.Show_CountryInfo(player);
 
         List<string> toDelete = new List<string>();
 
@@ -306,8 +306,8 @@ public class Manager : MonoBehaviour
         }
 
         AddMonth();
-        CanvasWorker.instance.ShowDefault();
-        CanvasWorker.instance.UpdateInfo();
+        GameGUI.instance.ShowDefault();
+        GameGUI.instance.UpdateInfo();
     }
 
     /// <summary>
@@ -391,8 +391,8 @@ public class Manager : MonoBehaviour
                 }
             }
         }
-        CanvasWorker.instance.RefreshUtilityBar();
-        CanvasWorker.instance.UpdateInfo();
+        GameGUI.instance.RefreshUtilityBar();
+        GameGUI.instance.UpdateInfo();
     }
 
     /// <summary>
@@ -426,7 +426,7 @@ public class Manager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CanvasWorker.instance.OpenSettingsMenu();
+            GameGUI.instance.OpenSettingsMenu();
         }
 
 #if UNITY_EDITOR

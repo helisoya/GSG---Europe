@@ -47,12 +47,12 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.KeypadPlus) || Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.P))
         {
             Time.timeScale = Mathf.Clamp(Time.timeScale + 1, 0, maxspeed);
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
         }
         else if (Input.GetKeyDown(KeyCode.KeypadMinus) || Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.M))
         {
             Time.timeScale = Mathf.Clamp(Time.timeScale - 1, 0, maxspeed);
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
         }
     }
 
@@ -64,7 +64,7 @@ public class Timer : MonoBehaviour
         lastspeed = Time.timeScale;
         Time.timeScale = 0;
         isStoped = true;
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.RefreshUtilityBar();
     }
 
     /// <summary>
@@ -74,6 +74,6 @@ public class Timer : MonoBehaviour
     {
         Time.timeScale = lastspeed;
         isStoped = false;
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.RefreshUtilityBar();
     }
 }

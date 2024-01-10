@@ -85,6 +85,6 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     {
         manager.formables.FormNation(manager.player, manager.currentFormable);
         tab.CloseTab();
-        CanvasWorker.instance.Show_CountryInfoPlayer();
+        GameGUI.instance.Show_CountryInfoPlayer();
     }
 }

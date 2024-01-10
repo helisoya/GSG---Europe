@@ -359,7 +359,7 @@ public class Province : MonoBehaviour
 
             if (Manager.instance.inPeaceDeal && Manager.instance.peaceDealSide2 == owner && Manager.instance.player == controller)
             {
-                CanvasWorker.instance.PeaceDealProvinceSelection(this);
+                GameGUI.instance.PeaceDealProvinceSelection(this);
                 return;
             }
             else if (Manager.instance.inPeaceDeal)
@@ -370,7 +370,7 @@ public class Province : MonoBehaviour
 
             if (Manager.instance.picked)
             {
-                CanvasWorker.instance.ShowBuyUnit(this);
+                GameGUI.instance.ShowBuyUnit(this);
             }
             else
             {

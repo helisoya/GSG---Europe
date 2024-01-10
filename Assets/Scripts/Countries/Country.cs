@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 /// <summary>
@@ -255,7 +256,7 @@ public class Country
                         break;
                     case "PUPPET":
                         Country p2 = manager.GetCountry(effect[1]);
-                        CanvasWorker.instance.UpdateRelations_ShortCut(p2, this, 3);
+                        GameGUI.instance.UpdateRelations_ShortCut(p2, this, 3);
                         break;
                     case "RANDOMFEDERATION":
                         List<Country> candidates = new List<Country>();
@@ -334,7 +335,7 @@ public class Country
             // Refresh Canvas if needed
             if (this == manager.player)
             {
-                CanvasWorker.instance.UpdateFocus();
+                GameGUI.instance.UpdateFocus();
             }
         }
     }
@@ -424,7 +425,8 @@ public class Country
     /// Declare war on a country
     /// </summary>
     /// <param name="country">The target country</param>
-    public void DeclareWarOnCountry(Country country)
+    /// /// <param name="ignoreFederation">Should the target country's federation be ignored ?</param>
+    public void DeclareWarOnCountry(Country country, bool ignoreFederation = false)
     {
         if (relations[country.ID].atWar)
         {
@@ -448,6 +450,17 @@ public class Country
 
         country.AddToTraversalOptions(this);
         AddToTraversalOptions(country);
+
+        if (country.federation != null && federation != country.federation)
+        {
+            foreach (Country member in country.federation.members)
+            {
+                if (member != country)
+                {
+                    DeclareWarOnCountry(member, true);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -482,7 +495,7 @@ public class Country
 
         if (this == manager.player)
         {
-            CanvasWorker.instance.RefreshUtilityBar();
+            GameGUI.instance.RefreshUtilityBar();
         }
 
         other.RemoveFromTraversalOptions(this);
@@ -850,7 +863,7 @@ public class Country
         Unit obj = Object.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
         obj.Init(prov, this);
         units.Add(obj);
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.RefreshUtilityBar();
     }
 
 

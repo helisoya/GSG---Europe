@@ -40,8 +40,8 @@ public class PoliticalTab : GUITab
     {
         base.CloseTab();
         Timer.instance.ResumeTime();
-        CanvasWorker.instance.UpdateInfo();
-        CanvasWorker.instance.RefreshUtilityBar();
+        GameGUI.instance.UpdateInfo();
+        GameGUI.instance.RefreshUtilityBar();
     }
 
     /// <summary>

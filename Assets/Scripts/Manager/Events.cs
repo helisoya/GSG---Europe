@@ -26,7 +26,7 @@ public class Events : MonoBehaviour
     /// <param name="ID">the event ID</param>
     public void ShowEvent(string ID)
     {
-        CanvasWorker.instance.OpenEvent(ID);
+        GameGUI.instance.OpenEvent(ID);
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void ChoixType_Rep()
     {
-        CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_REPUBLIC");
+        GameGUI.instance.OpenEvent("CHANGE_GOVERNEMENT_REPUBLIC");
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void ChoixType_Mon()
     {
-        CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_MONARCHY");
+        GameGUI.instance.OpenEvent("CHANGE_GOVERNEMENT_MONARCHY");
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void ChoixType_Com()
     {
-        CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_COMMUNISM");
+        GameGUI.instance.OpenEvent("CHANGE_GOVERNEMENT_COMMUNISM");
     }
 
     /// <summary>
@@ -58,7 +58,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void ChoixType_Fas()
     {
-        CanvasWorker.instance.OpenEvent("CHANGE_GOVERNEMENT_FASCISM");
+        GameGUI.instance.OpenEvent("CHANGE_GOVERNEMENT_FASCISM");
     }
 
 
@@ -87,15 +87,15 @@ public class Events : MonoBehaviour
 
             if (index == (int)PartyType.COMMUNIST)
             {
-                CanvasWorker.instance.OpenEvent("ELECTIONS_MONARCHY_COMMUNISM");
+                GameGUI.instance.OpenEvent("ELECTIONS_MONARCHY_COMMUNISM");
             }
             else if (index == (int)PartyType.SOCIALIST)
             {
-                CanvasWorker.instance.OpenEvent("ELECTIONS_MONARCHY_SOCIALISM");
+                GameGUI.instance.OpenEvent("ELECTIONS_MONARCHY_SOCIALISM");
             }
             else
             {
-                CanvasWorker.instance.OpenEvent("ELECTIONS_NORMAL");
+                GameGUI.instance.OpenEvent("ELECTIONS_NORMAL");
             }
         }
         else
@@ -104,34 +104,34 @@ public class Events : MonoBehaviour
             {
                 if (index == (int)PartyType.COMMUNIST)
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_COMMUNISM");
+                    GameGUI.instance.OpenEvent("ELECTIONS_REPUBLIC_COMMUNISM");
                 }
                 else if (index == (int)PartyType.FASCIST)
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_FASCISM");
+                    GameGUI.instance.OpenEvent("ELECTIONS_REPUBLIC_FASCISM");
                 }
                 else if (c.reelected)
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_REELECTED");
+                    GameGUI.instance.OpenEvent("ELECTIONS_REPUBLIC_REELECTED");
                 }
                 else
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_NORMAL");
+                    GameGUI.instance.OpenEvent("ELECTIONS_REPUBLIC_NORMAL");
                 }
             }
             else if (c.Government_Form <= 8)
             {
                 if (index == (int)PartyType.CONSERVATIVE)
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_COMMUNISM_REPUBLIC");
+                    GameGUI.instance.OpenEvent("ELECTIONS_COMMUNISM_REPUBLIC");
                 }
                 else if (index == (int)PartyType.FASCIST)
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_COMMUNISM_FASCISM");
+                    GameGUI.instance.OpenEvent("ELECTIONS_COMMUNISM_FASCISM");
                 }
                 else
                 {
-                    CanvasWorker.instance.OpenEvent("ELECTIONS_NORMAL");
+                    GameGUI.instance.OpenEvent("ELECTIONS_NORMAL");
                 }
             }
         }
@@ -143,7 +143,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void DeathLeader_Normal()
     {
-        CanvasWorker.instance.OpenEvent("DEATH_LEADER_NORMAL");
+        GameGUI.instance.OpenEvent("DEATH_LEADER_NORMAL");
     }
 
 
@@ -152,7 +152,7 @@ public class Events : MonoBehaviour
     /// </summary>
     public void DeathLeader_Monarchy()
     {
-        CanvasWorker.instance.OpenEvent("DEATH_LEADER_MONARCH");
+        GameGUI.instance.OpenEvent("DEATH_LEADER_MONARCH");
     }
 
 }

@@ -210,7 +210,7 @@ public class Unit : MonoBehaviour
     {
         foreach (MeshRenderer renderer in renderers)
         {
-            renderer.enabled = value;
+            if (renderer) renderer.enabled = value;
         }
     }
 
