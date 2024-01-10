@@ -18,7 +18,7 @@ public class CountryPanel : MonoBehaviour
     /// Updates the country info panel
     /// </summary>
     /// <param name="pays"></param>
-    public void UpdateInfo(Pays pays)
+    public void UpdateInfo(Country pays)
     {
         countryName.text = pays.nom;
         countryFlag.sprite = pays.currentFlag;

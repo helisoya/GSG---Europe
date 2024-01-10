@@ -19,7 +19,7 @@ public class FormableNation
     public bool alreadyFormed = false;
 
 
-    public bool CountryHasAllRequirement(Pays country)
+    public bool CountryHasAllRequirement(Country country)
     {
         foreach (Province prov in required)
         {

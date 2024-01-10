@@ -10,27 +10,23 @@ using UnityEngine.UI;
 public class Manager : MonoBehaviour
 {
     public static Manager instance;
-    public Pays player = null;
-
-    private Gouvernements gouvs_data;
-
-    public Dictionary<string, Pays> pays;
+    [HideInInspector] public Country player = null;
+    [SerializeField] private Governement[] governements;
+    public Dictionary<string, Country> pays;
 
     private int mois = 0;
     public int an = 2030;
 
     public List<Unit> selected_unit = new List<Unit>();
-
     public FormableWorker formables;
-
     public FormableNation currentFormable;
 
     public bool picked = false;
 
     public bool inPeaceDeal = false;
 
-    public Pays peaceDealSide1;
-    public Pays peaceDealSide2;
+    public Country peaceDealSide1;
+    public Country peaceDealSide2;
 
     public List<Federation> federations;
     public List<Province> provincesToBeTakenInPeaceDeal;
@@ -43,7 +39,6 @@ public class Manager : MonoBehaviour
     private Dictionary<string, Railroad> railroads;
 
     private List<Unit> allUnits;
-
     private Graph m_graph;
     public Graph movementGraph
     {
@@ -140,7 +135,6 @@ public class Manager : MonoBehaviour
         loadingImg.fillAmount = 4f / 7f;
         loadingText.text = "Loading Countries";
         yield return new WaitForEndOfFrame();
-        gouvs_data = GetComponent<Gouvernements>();
         pays = Parser.ParsePays(cultures);
 
         loadingImg.fillAmount = 5f / 7f;
@@ -210,8 +204,8 @@ public class Manager : MonoBehaviour
     /// <param name="vassalizeB">Is B vassalized ?</param>
     public void EndPeaceDeal(bool vassalizeB)
     {
-        Pays A = peaceDealSide1;
-        Pays B = peaceDealSide2;
+        Country A = peaceDealSide1;
+        Country B = peaceDealSide2;
         inPeaceDeal = false;
         foreach (Province province in provincesToBeTakenInPeaceDeal)
         {
@@ -281,7 +275,7 @@ public class Manager : MonoBehaviour
     /// Start the game
     /// </summary>
     /// <param name="chosenCountry">Chosen country</param>
-    public void StartGame(Pays chosenCountry)
+    public void StartGame(Country chosenCountry)
     {
         player = chosenCountry;
         picked = true;
@@ -289,7 +283,7 @@ public class Manager : MonoBehaviour
 
         List<string> toDelete = new List<string>();
 
-        foreach (Pays p in pays.Values)
+        foreach (Country p in pays.Values)
         {
             if (!p.DestroyIfNotSelected || p.ID == player.ID)
             {
@@ -321,7 +315,7 @@ public class Manager : MonoBehaviour
     /// </summary>
     /// <param name="ID">Country's ID</param>
     /// <returns>A country</returns>
-    public Pays GetCountry(string ID)
+    public Country GetCountry(string ID)
     {
         return pays[ID];
     }
@@ -343,7 +337,7 @@ public class Manager : MonoBehaviour
     /// <returns>The governement type description</returns>
     public string GetGovernementDesc(int ID)
     {
-        return gouvs_data.descs[ID];
+        return governements[ID].governementDescription;
     }
 
     /// <summary>
@@ -353,7 +347,7 @@ public class Manager : MonoBehaviour
     /// <returns>The governement type name</returns>
     public string GetGovernementName(int ID)
     {
-        return gouvs_data.noms[ID];
+        return governements[ID].governementName;
     }
 
     /// <summary>
@@ -366,7 +360,7 @@ public class Manager : MonoBehaviour
         {
             mois = 1;
             an += 1;
-            foreach (Pays key in pays.Values)
+            foreach (Country key in pays.Values)
             {
                 key.NewYear();
             }
@@ -383,7 +377,7 @@ public class Manager : MonoBehaviour
     public void NextTurn()
     {
         AddMonth();
-        foreach (Pays country in pays.Values)
+        foreach (Country country in pays.Values)
         {
             if (country.provinces.Count > 0)
             {
@@ -440,6 +434,10 @@ public class Manager : MonoBehaviour
         {
             player.DP += 99999;
             player.AP += 99999;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            player.TriggerElections();
         }
 #endif
     }

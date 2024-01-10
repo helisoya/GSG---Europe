@@ -22,8 +22,8 @@ public class Province : MonoBehaviour
     public int id;
     public string Province_Name;
     public ProvinceType type;
-    private Pays _controller = null;
-    private Pays _owner = null;
+    private Country _controller = null;
+    private Country _owner = null;
     public Vector3 center;
     public Province[] adjacencies;
     public bool hasRailroad;
@@ -34,7 +34,7 @@ public class Province : MonoBehaviour
     [SerializeField] private GameObject canvasRoot;
     [SerializeField] private GameObject prefabUnitGFX;
     [SerializeField] private Transform unitGfxRoot;
-    private Dictionary<Pays, ProvinceCountryUnitGFX> unitgfxs;
+    private Dictionary<Country, ProvinceCountryUnitGFX> unitgfxs;
 
     public List<Unit> units
     {
@@ -44,7 +44,7 @@ public class Province : MonoBehaviour
         }
     }
 
-    public Pays controller
+    public Country controller
     {
         get
         {
@@ -52,7 +52,7 @@ public class Province : MonoBehaviour
         }
     }
 
-    public Pays owner
+    public Country owner
     {
         get
         {
@@ -66,7 +66,7 @@ public class Province : MonoBehaviour
     /// Changes the province's owner
     /// </summary>
     /// <param name="pays">The new owner</param>
-    public void SetOwner(Pays pays)
+    public void SetOwner(Country pays)
     {
         if (type == ProvinceType.SEA) return;
         _owner = pays;
@@ -76,7 +76,7 @@ public class Province : MonoBehaviour
     /// Changes the province's controller
     /// </summary>
     /// <param name="pays">The new controller</param>
-    public void SetController(Pays pays)
+    public void SetController(Country pays)
     {
         if (type == ProvinceType.SEA) return;
         _controller = pays;
@@ -121,7 +121,7 @@ public class Province : MonoBehaviour
     /// Refresh the country's flag of a country's units
     /// </summary>
     /// <param name="pays">The target country</param>
-    public void RefreshCountryFlag(Pays pays)
+    public void RefreshCountryFlag(Country pays)
     {
         if (unitgfxs.ContainsKey(pays))
         {
@@ -202,7 +202,7 @@ public class Province : MonoBehaviour
 
         canvasRoot.transform.position = center + Vector3.up * 2;
         canvasRoot.GetComponent<Canvas>().worldCamera = Camera.main;
-        unitgfxs = new Dictionary<Pays, ProvinceCountryUnitGFX>();
+        unitgfxs = new Dictionary<Country, ProvinceCountryUnitGFX>();
     }
 
     /// <summary>
@@ -337,7 +337,7 @@ public class Province : MonoBehaviour
     /// </summary>
     /// <param name="p">The country</param>
     /// <returns>The relation index</returns>
-    int DetermineRelationToPlayer(Pays p)
+    int DetermineRelationToPlayer(Country p)
     {
         if (type == ProvinceType.SEA) return 0;
 

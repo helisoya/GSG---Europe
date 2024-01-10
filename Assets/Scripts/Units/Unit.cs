@@ -84,7 +84,7 @@ public class Unit : MonoBehaviour
     private GraphPath path;
     private int currentPathIndex;
 
-    public Pays country = null;
+    public Country country = null;
     private Manager manager;
 
     /// <summary>
@@ -92,7 +92,7 @@ public class Unit : MonoBehaviour
     /// </summary>
     /// <param name="startProv">Starting province</param>
     /// <param name="owner">Unit's owner</param>
-    public void Init(Province startProv, Pays owner)
+    public void Init(Province startProv, Country owner)
     {
         country = owner;
         currentProvince = startProv;

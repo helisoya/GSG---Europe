@@ -59,7 +59,7 @@ public class FocusTab : GUITab
         if (!isOpen) return;
 
         Manager manager = Manager.instance;
-        Pays country = manager.player;
+        Country country = manager.player;
 
         Dictionary<string, Focus> focusTree = country.focusTree;
 
@@ -107,7 +107,7 @@ public class FocusTab : GUITab
     public void SelectFocus(string focus)
     {
         Manager manager = Manager.instance;
-        Pays country = manager.player;
+        Country country = manager.player;
         country.ChangeFocus(focus);
         focusText.text = "Current : " + country.focusTree[country.currentFocus].focusName + " (" + (country.maxFocusTime - country.currentFocusTime) + "/" + country.maxFocusTime + ")";
         ShowFocusMenu();
@@ -118,7 +118,7 @@ public class FocusTab : GUITab
     /// </summary>
     void InitTree()
     {
-        Pays country = Manager.instance.player;
+        Country country = Manager.instance.player;
         Dictionary<string, Focus> focusTree = country.focusTree;
 
         barX.value = 0;

@@ -103,7 +103,7 @@ public class ProvinceTab : GUITab
 
         manager.player.RemoveProvince(currentProvine);
 
-        Pays releasedP = manager.GetCountry(released);
+        Country releasedP = manager.GetCountry(released);
 
         releasedP.AddProvince(currentProvine);
 

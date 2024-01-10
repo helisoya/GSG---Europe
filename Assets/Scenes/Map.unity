@@ -7339,7 +7339,6 @@ GameObject:
   m_Component:
   - component: {fileID: 500958221}
   - component: {fileID: 500958229}
-  - component: {fileID: 500958222}
   - component: {fileID: 500958230}
   - component: {fileID: 500958223}
   - component: {fileID: 500958225}
@@ -7370,45 +7369,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &500958222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 500958220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1892b43f36adefe43baa66e57fcf60fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noms:
-  - Parliamentary Republic
-  - Mixed Republic
-  - Presidential Republic
-  - Absolute Monarchy
-  - Elective Monarchy
-  - Parlimentary Monarchy
-  - Soviet Republic
-  - People's Republic
-  - Popular Union
-  - New Reich
-  - Social Republic
-  - Military Junta
-  descs:
-  - The parliamentary republic has a weak executive and a strong legislative power.
-  - The mixed republic has a balance of power between the executive and the legislative
-    branch.
-  - he presidential republic has a strong executive against a weak legislative.
-  - The absolute monarchy is ruled by a single hereditary autocrat.
-  - The elective monarchy has an elected monarch that is elected for life.
-  - The parliamentary monarchy has a weak monarch and a strong parliament.
-  - The soviet republic has a general secretary elected for life.
-  - The people's republic has a general secretary elected for 10 years.
-  - The popular union has a general secretary elected for 20 years.
-  - The new Reich follows the ideas of 20th century's nazism.
-  - 'The social republic wants to establish a nationalist ideology within its borders. '
-  - The military junta is composed of powerful generals who rule without opposition.
 --- !u!114 &500958223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7421,6 +7381,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38bf6107df79ca40a135555dfee5247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  governements:
+  - type: 0
+    governementName: Parliamentary Republic
+    governementDescription: The parliamentary republic has a weak executive and a
+      strong legislative power.
+  - type: 0
+    governementName: Mixed Republic
+    governementDescription: The mixed republic has a balance of power between the
+      executive and the legislative branch.
+  - type: 0
+    governementName: Presidential Republic
+    governementDescription: he presidential republic has a strong executive against
+      a weak legislative.
+  - type: 1
+    governementName: Absolute Monarchy
+    governementDescription: The absolute monarchy is ruled by a single hereditary
+      autocrat.
+  - type: 1
+    governementName: Elective Monarchy
+    governementDescription: The elective monarchy has an elected monarch that is
+      elected for life.
+  - type: 1
+    governementName: Parlimentary Monarchy
+    governementDescription: The parliamentary monarchy has a weak monarch and a strong
+      parliament.
+  - type: 2
+    governementName: Soviet Republic
+    governementDescription: The soviet republic has a general secretary elected for
+      life.
+  - type: 2
+    governementName: People's Republic
+    governementDescription: The people's republic has a general secretary elected
+      for 10 years.
+  - type: 2
+    governementName: Popular Union
+    governementDescription: The popular union has a general secretary elected for
+      20 years.
+  - type: 3
+    governementName: New Reich
+    governementDescription: The new Reich follows the ideas of 20th century's nazism.
+  - type: 3
+    governementName: Social Republic
+    governementDescription: 'The social republic wants to establish a nationalist
+      ideology within its borders. '
+  - type: 3
+    governementName: Military Junta
+    governementDescription: The military junta is composed of powerful generals who
+      rule without opposition.
   an: 2030
   selected_unit: []
   formables: {fileID: 500958228}

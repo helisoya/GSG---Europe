@@ -10,7 +10,7 @@ using TMPro;
 /// </summary>
 public class CountryPicker : MonoBehaviour
 {
-    public Pays current = null;
+    public Country current = null;
 
     [Header("Interresting Contries")]
     [SerializeField] private GameObject interrestingCountiesTab;
@@ -59,7 +59,7 @@ public class CountryPicker : MonoBehaviour
     /// Selects a country and refresh the UI
     /// </summary>
     /// <param name="c">The target country</param>
-    public void UpdateCountry(Pays c)
+    public void UpdateCountry(Country c)
     {
         current = c;
         currentCountryFlag.sprite = c.currentFlag;

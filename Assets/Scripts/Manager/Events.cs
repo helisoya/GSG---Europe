@@ -70,7 +70,7 @@ public class Events : MonoBehaviour
     /// <param name="index">Election winner's index</param>
     public void Elections(string ID, int index)
     {
-        Pays c = manager.GetCountry(ID);
+        Country c = manager.GetCountry(ID);
 
         // Si monarchie
         // Parti Gauche/Extr.Gauche peut renverser le gouvernement
@@ -85,11 +85,11 @@ public class Events : MonoBehaviour
         if (c.Government_Form == 5)
         { // Monarchie Parlementaire
 
-            if (index == 0)
+            if (index == (int)PartyType.COMMUNIST)
             {
                 CanvasWorker.instance.OpenEvent("ELECTIONS_MONARCHY_COMMUNISM");
             }
-            else if (index == 1)
+            else if (index == (int)PartyType.SOCIALIST)
             {
                 CanvasWorker.instance.OpenEvent("ELECTIONS_MONARCHY_SOCIALISM");
             }
@@ -102,11 +102,11 @@ public class Events : MonoBehaviour
         {
             if (c.Government_Form <= 2)
             {
-                if (index == 0)
+                if (index == (int)PartyType.COMMUNIST)
                 {
                     CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_COMMUNISM");
                 }
-                else if (index == 5)
+                else if (index == (int)PartyType.FASCIST)
                 {
                     CanvasWorker.instance.OpenEvent("ELECTIONS_REPUBLIC_FASCISM");
                 }
@@ -121,11 +121,11 @@ public class Events : MonoBehaviour
             }
             else if (c.Government_Form <= 8)
             {
-                if (index == 4)
+                if (index == (int)PartyType.CONSERVATIVE)
                 {
                     CanvasWorker.instance.OpenEvent("ELECTIONS_COMMUNISM_REPUBLIC");
                 }
-                else if (index == 5)
+                else if (index == (int)PartyType.FASCIST)
                 {
                     CanvasWorker.instance.OpenEvent("ELECTIONS_COMMUNISM_FASCISM");
                 }

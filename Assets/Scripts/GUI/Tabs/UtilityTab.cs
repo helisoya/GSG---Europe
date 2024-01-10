@@ -32,7 +32,7 @@ public class UtilityTab : GUITab
     {
         utilitySpeed.text = "Speed : " + ((int)(Time.timeScale)).ToString();
         utilityDate.text = Manager.instance.GetDate();
-        Pays player = Manager.instance.player;
+        Country player = Manager.instance.player;
 
         utilityAP.text = player.AP.ToString();
         utilityDP.text = player.DP.ToString();

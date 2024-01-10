@@ -40,7 +40,7 @@ public class CountryInfoTab : GUITab
 
 
 
-    private Pays current_countryinfo = null;
+    private Country current_countryinfo = null;
 
 
 
@@ -48,7 +48,7 @@ public class CountryInfoTab : GUITab
     /// Show a country's informations
     /// </summary>
     /// <param name="NEW">The country</param>
-    public void Show_CountryInfo(Pays NEW)
+    public void Show_CountryInfo(Country NEW)
     {
         Manager manager = Manager.instance;
 
@@ -117,7 +117,7 @@ public class CountryInfoTab : GUITab
     /// Updates the informations of a country
     /// </summary>
     /// <param name="country">The country</param>
-    public void UpdateInfo(Pays country)
+    public void UpdateInfo(Country country)
     {
         infoName.text = country.nom;
         infoGovernement.text = Manager.instance.GetGovernementName(country.Government_Form);
@@ -158,7 +158,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_IncreaseRelation()
     {
-        Pays player = Manager.instance.player;
+        Country player = Manager.instance.player;
         if (player.DP >= 5)
         {
             player.DP -= 5;
@@ -174,7 +174,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_DecreaseRelation()
     {
-        Pays player = Manager.instance.player;
+        Country player = Manager.instance.player;
         if (player.DP >= 5)
         {
             player.DP -= 5;
@@ -190,7 +190,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_CreateWarGoal()
     {
-        Pays player = Manager.instance.player;
+        Country player = Manager.instance.player;
         if (player.DP >= 20 && !player.relations[current_countryinfo.ID].wargoals.Contains(player.ID))
         {
             player.DP -= 20;
@@ -308,7 +308,7 @@ public class CountryInfoTab : GUITab
     /// </summary>
     public void Event_PlayAs()
     {
-        Pays old = Manager.instance.player;
+        Country old = Manager.instance.player;
         Manager.instance.player = current_countryinfo;
         old.RefreshProvinces();
         current_countryinfo.RefreshProvinces();

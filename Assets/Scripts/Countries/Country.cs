@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A country
 /// </summary>
-public class Pays
+public class Country
 {
 
     public string ID = "000";
@@ -65,7 +65,7 @@ public class Pays
     public bool hasTech_Naval = false;
 
 
-    public Pays lord;
+    public Country lord;
     public Federation federation;
     public Dictionary<string, Relation> relations;
     public List<Province> cores;
@@ -80,7 +80,7 @@ public class Pays
 
 
     public List<string> AI_MARKFORWAR;
-    public List<Pays> AI_NEIGHBOORS;
+    public List<Country> AI_NEIGHBOORS;
 
 
     public bool canBuyUnit
@@ -93,13 +93,13 @@ public class Pays
         get { return culture.focusTree; }
     }
 
-    private List<Pays> canTraverse;
+    private List<Country> canTraverse;
 
 
     /// <summary>
     /// Initialize a country
     /// </summary>
-    public Pays()
+    public Country()
     {
         maxFocusTime = 10;
         currentFocus = "NONE";
@@ -112,9 +112,9 @@ public class Pays
         events = manager.GetComponent<Events>();
 
         AI_MARKFORWAR = new List<string>();
-        AI_NEIGHBOORS = new List<Pays>();
+        AI_NEIGHBOORS = new List<Country>();
 
-        canTraverse = new List<Pays>();
+        canTraverse = new List<Country>();
 
         ResetElections();
         ResetFlag();
@@ -142,7 +142,7 @@ public class Pays
     /// Adds a country to traversal options
     /// </summary>
     /// <param name="pays">The country to add</param>
-    public void RemoveFromTraversalOptions(Pays pays)
+    public void RemoveFromTraversalOptions(Country pays)
     {
         canTraverse.Remove(pays);
 
@@ -153,7 +153,7 @@ public class Pays
     /// Removes a country from traversal options
     /// </summary>
     /// <param name="pays">The country to remove</param>
-    public void AddToTraversalOptions(Pays pays)
+    public void AddToTraversalOptions(Country pays)
     {
         if (!canTraverse.Contains(pays))
         {
@@ -233,7 +233,7 @@ public class Pays
                         AddPopularity(int.Parse(split[0], System.Globalization.NumberStyles.Any), int.Parse(split[1], System.Globalization.NumberStyles.Any));
                         break;
                     case "FREE":
-                        Pays p = manager.GetCountry(effect[1]);
+                        Country p = manager.GetCountry(effect[1]);
                         foreach (Province prov in p.cores)
                         {
                             if (provinces.Contains(prov))
@@ -245,7 +245,7 @@ public class Pays
                         break;
                     case "ANNEXPROVINCE":
                         string[] splited = effect[1].Split(",");
-                        Pays p1 = manager.GetCountry(splited[0]);
+                        Country p1 = manager.GetCountry(splited[0]);
                         Province prov1 = manager.GetProvince(int.Parse(splited[1]));
                         prov1.owner.RemoveProvince(prov1);
                         p1.AddProvince(prov1);
@@ -254,12 +254,12 @@ public class Pays
                         cosmeticID = effect[1];
                         break;
                     case "PUPPET":
-                        Pays p2 = manager.GetCountry(effect[1]);
+                        Country p2 = manager.GetCountry(effect[1]);
                         CanvasWorker.instance.UpdateRelations_ShortCut(p2, this, 3);
                         break;
                     case "RANDOMFEDERATION":
-                        List<Pays> candidates = new List<Pays>();
-                        foreach (Pays p3 in AI_NEIGHBOORS)
+                        List<Country> candidates = new List<Country>();
+                        foreach (Country p3 in AI_NEIGHBOORS)
                         {
                             if (p3.federation == null || p3.federation != federation)
                             {
@@ -268,7 +268,7 @@ public class Pays
                         }
                         if (candidates.Count != 0)
                         {
-                            Pays chosenCandidate = candidates[Random.Range(0, candidates.Count)];
+                            Country chosenCandidate = candidates[Random.Range(0, candidates.Count)];
                             if (chosenCandidate.federation != null)
                             {
                                 chosenCandidate.federation.RemoveMember(chosenCandidate);
@@ -290,7 +290,7 @@ public class Pays
                         break;
 
                     case "FEDERATION":
-                        Pays federateWith = manager.GetCountry(effect[1]);
+                        Country federateWith = manager.GetCountry(effect[1]);
                         if (federateWith.federation != null)
                         {
                             federateWith.federation.RemoveMember(federateWith);
@@ -310,7 +310,7 @@ public class Pays
                         break;
 
                     case "ANNEX":
-                        Pays toAnnex = manager.GetCountry(effect[1]);
+                        Country toAnnex = manager.GetCountry(effect[1]);
                         List<Province> provs = new List<Province>(toAnnex.provinces);
                         foreach (Province prov in provs)
                         {
@@ -424,7 +424,7 @@ public class Pays
     /// Declare war on a country
     /// </summary>
     /// <param name="country">The target country</param>
-    public void DeclareWarOnCountry(Pays country)
+    public void DeclareWarOnCountry(Country country)
     {
         if (relations[country.ID].atWar)
         {
@@ -454,7 +454,7 @@ public class Pays
     /// Makes peace with a country
     /// </summary>
     /// <param name="other">The target country</param>
-    public void MakePeaceWithCountry(Pays other)
+    public void MakePeaceWithCountry(Country other)
     {
         if (!relations[other.ID].atWar)
         {
@@ -589,22 +589,26 @@ public class Pays
 
         // Case governement change
 
-        if (index == 1 && parties[index].popularity > parties[4].popularity + parties[3].popularity && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
+        if (index == (int)PartyType.SOCIALIST && parties[index].popularity > parties[4].popularity + parties[3].popularity
+        && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
         {
             RandomizeLeader();
             ChoiceType(1); // Left-wing establish a republic
         }
-        else if (index == 0 && parties[index].popularity > parties[4].popularity + parties[3].popularity && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
+        else if (index == (int)PartyType.COMMUNIST && parties[index].popularity > parties[4].popularity + parties[3].popularity
+        && (Government_Form == 3 || Government_Form == 4 || Government_Form >= 9))
         {
             RandomizeLeader();
             ChoiceType(3); // Far-Left establish a soviet republic
         }
-        else if (index == 3 && parties[index].popularity > parties[0].popularity + parties[1].popularity && (Government_Form == 6))
+        else if (index == (int)PartyType.CONSERVATIVE && parties[index].popularity > parties[0].popularity + parties[1].popularity
+        && (Government_Form == 6))
         {
             RandomizeLeader();
             ChoiceType(1); // Right-wing establish a republic
         }
-        else if (index == 4 && parties[index].popularity > parties[0].popularity + parties[1].popularity && (Government_Form == 6))
+        else if (index == (int)PartyType.FASCIST && parties[index].popularity > parties[0].popularity + parties[1].popularity
+        && (Government_Form == 6))
         {
             RandomizeLeader();
             ChoiceType(4); // Far-right establish fascism
@@ -657,19 +661,21 @@ public class Pays
         }
         else
         {
-            if (index == 0 && Ideologie() != 2)
+            if (index == (int)PartyType.COMMUNIST && Ideologie() != 2)
             { // Case -> Communisme
                 Government_Form = GetRandomGov(3);
                 ResetFlag();
                 RandomizeLeader();
             }
-            else if (index == 4 && Ideologie() != 3)
+            else if (index == (int)PartyType.FASCIST && Ideologie() != 3)
             { // Case -> Fascism
                 Government_Form = GetRandomGov(4);
                 ResetFlag();
                 RandomizeLeader();
             }
-            else if ((index >= 2 && Ideologie() == 2) || (index <= 2 && Ideologie() == 3) || (index <= 1 && Ideologie() == 1))
+            else if ((index >= (int)PartyType.CENTRIST && Ideologie() == 2) ||
+            (index <= (int)PartyType.CENTRIST && Ideologie() == 3) ||
+            (index <= (int)PartyType.SOCIALIST && Ideologie() == 1))
             { // Case -> Republic
                 Government_Form = GetRandomGov(4);
                 ResetFlag();
@@ -909,7 +915,7 @@ public class Pays
     /// Copy a country's governement form
     /// </summary>
     /// <param name="c">The target country</param>
-    public void CopyCat(Pays c)
+    public void CopyCat(Country c)
     {
         Government_Form = c.Government_Form;
         ResetElections();
@@ -921,7 +927,7 @@ public class Pays
     /// Copy a country's color
     /// </summary>
     /// <param name="c">The target country</param>
-    public void MimicColor(Pays c)
+    public void MimicColor(Country c)
     {
         color = Color32.Lerp(color, c.color, 0.6f);
         RefreshProvinces();

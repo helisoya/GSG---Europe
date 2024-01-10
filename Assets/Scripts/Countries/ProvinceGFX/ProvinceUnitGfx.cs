@@ -31,7 +31,7 @@ public class ProvinceUnitGfx : MonoBehaviour
     /// </summary>
     /// <param name="type">Unit type</param>
     /// <param name="pays">Parent country</param>
-    public void Init(UnitType type, Pays pays)
+    public void Init(UnitType type, Country pays)
     {
         units = new List<Unit>();
         unitCountText.text = "0";

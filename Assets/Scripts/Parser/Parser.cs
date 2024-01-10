@@ -166,14 +166,14 @@ public class Parser : MonoBehaviour
         return list;
     }
 
-    public static Dictionary<string, Pays> ParsePays(Dictionary<string, Culture> cultures)
+    public static Dictionary<string, Country> ParsePays(Dictionary<string, Culture> cultures)
     {
 
         string json = Resources.Load<TextAsset>("JSON/pays").text;
 
         JSON obj = JSON.ParseString(json);
 
-        Dictionary<string, Pays> list = new Dictionary<string, Pays>();
+        Dictionary<string, Country> list = new Dictionary<string, Country>();
 
         JArray array = obj.GetJArray("pays");
         JSON jsonPays;
@@ -181,7 +181,7 @@ public class Parser : MonoBehaviour
         for (int i = 0; i < array.Length; i++)
         {
             jsonPays = array.GetJSON(i);
-            Pays pays = new Pays();
+            Country pays = new Country();
             pays.ID = jsonPays.GetString("id");
             pays.cosmeticID = jsonPays.GetString("id");
             pays.nom = jsonPays.GetString("name");
@@ -193,9 +193,9 @@ public class Parser : MonoBehaviour
         }
 
         int comparison;
-        foreach (Pays pays in list.Values)
+        foreach (Country pays in list.Values)
         {
-            foreach (Pays other in list.Values)
+            foreach (Country other in list.Values)
             {
                 comparison = pays.ID.CompareTo(other.ID);
                 if (comparison == 0) continue;
@@ -213,7 +213,7 @@ public class Parser : MonoBehaviour
         return list;
     }
 
-    public static void ParseHistory(Dictionary<int, Province> allProvinces, Dictionary<string, Pays> allCountries, string fileName)
+    public static void ParseHistory(Dictionary<int, Province> allProvinces, Dictionary<string, Country> allCountries, string fileName)
     {
 
         string json = Resources.Load<TextAsset>("JSON/" + fileName).text;
@@ -228,7 +228,7 @@ public class Parser : MonoBehaviour
         for (int i = 0; i < array.Length; i++)
         {
             jsonPays = array.GetJSON(i);
-            Pays pays = allCountries[jsonPays.GetString("id")];
+            Country pays = allCountries[jsonPays.GetString("id")];
             pays.Government_Form = jsonPays.GetInt("governement");
 
             arrayParties = jsonPays.GetJArray("parties");
@@ -236,7 +236,7 @@ public class Parser : MonoBehaviour
             for (int j = 0; j < arrayParties.Length; j++)
             {
                 party = arrayParties.GetJSON(j);
-                pays.parties[j] = new Party(party.GetString("name"), party.GetFloat("popularity"));
+                pays.parties[j] = new Party(party.GetString("name"), party.GetFloat("popularity"), j);
             }
 
             arrayProvinces = jsonPays.GetJArray("provinces");
@@ -257,7 +257,7 @@ public class Parser : MonoBehaviour
             pays.RefreshProvinces();
             pays.AddToTraversalOptions(pays);
         }
-        foreach (Pays pays in allCountries.Values)
+        foreach (Country pays in allCountries.Values)
         {
             pays.CheckNeighboors();
         }

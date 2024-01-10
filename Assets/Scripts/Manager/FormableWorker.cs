@@ -49,7 +49,7 @@ public class FormableWorker : MonoBehaviour
     /// </summary>
     /// <param name="country">Target country</param>
     /// <param name="formable">Target formable</param>
-    public void FormNation(Pays country, FormableNation formable)
+    public void FormNation(Country country, FormableNation formable)
     {
         formable.alreadyFormed = true;
         country.nom = formable.Name;

@@ -155,7 +155,7 @@ public class CanvasWorker : MonoBehaviour
     /// Show a country's informations
     /// </summary>
     /// <param name="country">The target country</param>
-    public void Show_CountryInfo(Pays country)
+    public void Show_CountryInfo(Country country)
     {
         countryInfoTab.Show_CountryInfo(country);
     }
@@ -182,7 +182,7 @@ public class CanvasWorker : MonoBehaviour
         eventsRoot.SetActive(true);
         eventsTitle.text = gameEvent.title;
 
-        Pays player = Manager.instance.player;
+        Country player = Manager.instance.player;
 
         eventsDesc.text = gameEvent.description.Replace("$currentRuler", player.leader.prenom + " " + player.leader.nom).Replace("$currentParty", player.parties[player.currentParty].partyName);
         currentEvent = gameEvent;
@@ -259,7 +259,7 @@ public class CanvasWorker : MonoBehaviour
     /// <param name="A">Country A</param>
     /// <param name="B">Country B</param>
     /// <param name="st">Relation Index (0 = Peace, 1 = War, 2 = A vassalize B, 3 = B vassalize A)</param>
-    public void UpdateRelations_ShortCut(Pays A, Pays B, int st)
+    public void UpdateRelations_ShortCut(Country A, Country B, int st)
     { //Met a jour A selon st, puis B en logique
 
         List<string> keys;

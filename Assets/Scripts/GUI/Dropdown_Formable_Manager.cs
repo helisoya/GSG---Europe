@@ -19,7 +19,7 @@ public class Dropdown_Formable_Manager : MonoBehaviour
     /// Refresh the dropdown options for a country
     /// </summary>
     /// <param name="country">Target country</param>
-    public void RefreshDropdown(Pays country)
+    public void RefreshDropdown(Country country)
     {
         manager = Manager.instance;
 

@@ -12,14 +12,14 @@ public class Relation
 
     public List<string> wargoals;
 
-    public Pays[] pays;
+    public Country[] pays;
     public Dictionary<string, int> warScores;
 
-    public Relation(Pays p1, Pays p2)
+    public Relation(Country p1, Country p2)
     {
         atWar = false;
         wargoals = new List<string>();
-        pays = new Pays[]{
+        pays = new Country[]{
             p1,
             p2
         };

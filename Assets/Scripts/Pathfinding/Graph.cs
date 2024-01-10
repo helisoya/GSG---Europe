@@ -39,7 +39,7 @@ public class Graph
 	/// <param name="canTraverse">Country that can be traversed</param>
 	/// <param name="canTraverseSea">Can traverse sea ?</param>
 	/// <returns>The path to take to get to the end point from the start point</returns>
-	public GraphPath GetShortestPath(Province start, Province end, List<Pays> canTraverse, bool canTraverseSea)
+	public GraphPath GetShortestPath(Province start, Province end, List<Country> canTraverse, bool canTraverseSea)
 	{
 
 		// We don't accept null arguments

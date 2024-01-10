@@ -150,7 +150,7 @@ public class FederationTab : GUITab
         float x = membersRoot.GetComponent<RectTransform>().sizeDelta.x;
         membersRoot.GetComponent<RectTransform>().sizeDelta = new Vector2(x, 35 * federation.members.Count);
 
-        foreach (Pays pays in federation.members)
+        foreach (Country pays in federation.members)
         {
             Instantiate(prefabMember, membersRoot).GetComponent<CountryPanel>().UpdateInfo(pays);
         }

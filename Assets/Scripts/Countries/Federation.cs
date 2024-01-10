@@ -8,8 +8,8 @@ using UnityEngine;
 /// </summary>
 public class Federation
 {
-    public List<Pays> members;
-    public Pays leader;
+    public List<Country> members;
+    public Country leader;
     public Color color;
     public int UCBonus;
     public int DPBonus;
@@ -28,7 +28,7 @@ public class Federation
     {
         leaderFrozen = false;
         vassalized = false;
-        members = new List<Pays>();
+        members = new List<Country>();
         leader = null;
         color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         yearNextElection = Manager.instance.an + 8;
@@ -39,14 +39,14 @@ public class Federation
     /// Add a member to the federation
     /// </summary>
     /// <param name="pays">The new member</param>
-    public void AddMember(Pays pays)
+    public void AddMember(Country pays)
     {
         if (members.Contains(pays))
         {
             return;
         }
 
-        foreach (Pays member in members)
+        foreach (Country member in members)
         {
             member.AddToTraversalOptions(pays);
         }
@@ -59,14 +59,14 @@ public class Federation
     /// Remove a country from the federation
     /// </summary>
     /// <param name="pays">The country</param>
-    public void RemoveMember(Pays pays)
+    public void RemoveMember(Country pays)
     {
         if (members.Contains(pays))
         {
             members.Remove(pays);
             pays.federation = null;
 
-            foreach (Pays member in members)
+            foreach (Country member in members)
             {
                 member.RemoveFromTraversalOptions(pays);
             }
@@ -91,8 +91,8 @@ public class Federation
     /// </summary>
     public void Unite()
     {
-        List<Pays> membersCopy = new List<Pays>(members);
-        foreach (Pays member in membersCopy)
+        List<Country> membersCopy = new List<Country>(members);
+        foreach (Country member in membersCopy)
         {
             if (member == leader) continue;
 
@@ -124,9 +124,9 @@ public class Federation
 
 
 
-        List<Pays> toKeep = new List<Pays>();
+        List<Country> toKeep = new List<Country>();
 
-        foreach (Pays member in members)
+        foreach (Country member in members)
         {
             if (member == leader || member.lord == leader)
             {
@@ -177,7 +177,7 @@ public class Federation
     /// <returns></returns>
     int GetTotalRelationScoreOfCountry(int indexToExclude)
     {
-        Pays p = members[indexToExclude];
+        Country p = members[indexToExclude];
         int tot = 0;
         for (int i = 0; i < members.Count; i++)
         {
@@ -191,7 +191,7 @@ public class Federation
     /// Sets the leader of the country
     /// </summary>
     /// <param name="pays">The new leader</param>
-    public void SetLeader(Pays pays)
+    public void SetLeader(Country pays)
     {
         leader = pays;
     }
