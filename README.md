@@ -9,20 +9,23 @@
 - C#
 
 ## Description
-This game is a sandbox in which you can expand your country by attacking or allying your neighbors.
-You can also customize your country by changing political ideology, and by completing "national focuses".
+This game is a sandbox in which you can expand your country by attacking or allying your neighbors. There are numerous things you can do :
+- Customize your country, by electing different political parties, or by changing your type of governement. (Republic, Monarchy, ...)
+- Engage in diplomatic relations with your neighbors, or invade them.
+- Form a federation with other countries, then unify it.
+- Form a long gone country by controlling all the required provinces, such as Rome, or the Soviet Union.
+- Go down your focus tree, to unlock new abilities and upgrades.
 
+The game is still being worked on, and new / revamped features are added from time to time. The first iteration of the game dates from 2020-2021.
 
 ## Screenshots
 
-<div>
-<img class="img-fluid" src="https://helisoya.github.io/Portfolio/assets/img/screenshots/gsgEurope/1.png" alt="logo" height=300 width=400>
-<img class="img-fluid" src="https://helisoya.github.io/Portfolio/assets/img/screenshots/gsgEurope/2.png" alt="logo" height=300 width=400>
-<img class="img-fluid" src="https://helisoya.github.io/Portfolio/assets/img/screenshots/gsgEurope/3.png" alt="logo" height=300 width=400>
-<img class="img-fluid" src="https://helisoya.github.io/Portfolio/assets/img/screenshots/gsgEurope/4.png" alt="logo" height=300 width=400>
-</div>
+![plot](./ImgReadme/1.png)
+![plot](./ImgReadme/2.png)
+![plot](./ImgReadme/3.png)
+![plot](./ImgReadme/4.png)
 
 
 ## Links
 
-<a href="https://helisoya.itch.io/gsg-europe">Télecharger sur Itch.io</a>
+<a href="https://helisoya.itch.io/gsg-europe">Itch.io page</a>
