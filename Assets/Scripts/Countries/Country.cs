@@ -96,6 +96,11 @@ public class Country
 
     private List<Country> canTraverse;
 
+    private List<UnitType> _unitTypesUnlocked;
+    public List<UnitType> unitTypesUnlocked
+    {
+        get { return _unitTypesUnlocked; }
+    }
 
     /// <summary>
     /// Initialize a country
@@ -126,6 +131,11 @@ public class Country
         bonusHP = 1f;
         bonusSpeed = 1f;
         bonusDefense = 1f;
+
+        _unitTypesUnlocked = new List<UnitType>(){
+            UnitType.INFANTRY,
+            UnitType.TANK
+        };
     }
 
     /// <summary>
@@ -633,8 +643,8 @@ public class Country
     /// </summary>
     public void RandomizeLeader()
     {
-        leader.nom = culture.GetRandom_Nom();
-        leader.prenom = culture.GetRandom_Prenom();
+        leader.nom = culture.GetRandom_Name();
+        leader.prenom = culture.GetRandom_Name();
         leader.age = Random.Range(30, 70);
         leader.RandomizeLeaderGFX();
         leader.ResetDeath();
@@ -646,7 +656,7 @@ public class Country
     /// </summary>
     public void SameFamilyLeader()
     {
-        leader.prenom = culture.GetRandom_Prenom();
+        leader.prenom = culture.GetRandom_Name();
         leader.age = Random.Range(30, 70);
         leader.RandomizeLeaderGFX();
         leader.ResetDeath();
@@ -858,9 +868,10 @@ public class Country
     /// Creates a unit inside a province
     /// </summary>
     /// <param name="prov">The starting province</param>
-    public void CreateUnit(Province prov)
+    /// <param name="type">The type of the unit</param>
+    public void CreateUnit(Province prov, UnitType type = UnitType.TANK)
     {
-        Unit obj = Object.Instantiate(culture.prefabTank, GameObject.Find("Units").transform).GetComponent<Unit>();
+        Unit obj = Object.Instantiate(culture.prefabUnits[type], GameObject.Find("Units").transform).GetComponent<Unit>();
         obj.Init(prov, this);
         units.Add(obj);
         GameGUI.instance.RefreshUtilityBar();

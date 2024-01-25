@@ -34,13 +34,14 @@ public class CamMove : MonoBehaviour
 
     void Update()
     {
+        if (!GameGUI.instance.canMoveCamera) return;
 
         // Camera Zoom
 
         if (Input.GetAxis("Mouse ScrollWheel") != 0)
         {
             float y = Mathf.Clamp(transform.position.y + (-Input.GetAxis("Mouse ScrollWheel")) * speed_zoom * Time.unscaledDeltaTime, min_fov, max_fov);
-            float angle = 0;
+            float angle;
             if (y >= middle)
             {
                 angle = 80;

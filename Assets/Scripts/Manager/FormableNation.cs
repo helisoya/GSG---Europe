@@ -9,13 +9,9 @@ using UnityEngine;
 public class FormableNation
 {
     public string Name;
-
     public string id;
-
     public List<string> contestants = new List<string>();
-
     public List<Province> required = new List<Province>();
-
     public bool alreadyFormed = false;
 
 

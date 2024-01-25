@@ -17,7 +17,7 @@ public class Unit : MonoBehaviour
 {
     [Header("Stats")]
     public UnitTypeInfo info;
-    [SerializeField] private float HP;
+    private float HP;
     [SerializeField] private float timeToRegen = 2;
     private float travelStart;
     private bool selected;
@@ -75,7 +75,6 @@ public class Unit : MonoBehaviour
     [SerializeField] private GameObject selected_bar;
     [SerializeField] private GameObject land_part;
     [SerializeField] private GameObject sea_part;
-    [SerializeField] private Renderer flag;
     [SerializeField] private LineRenderer linePath;
 
 
@@ -102,7 +101,7 @@ public class Unit : MonoBehaviour
         manager = Manager.instance;
         manager.RegisterUnit(this);
 
-        renderers = new List<Renderer>(GetComponents<Renderer>());
+        renderers = new List<Renderer>();
 
         foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
         {
@@ -168,7 +167,7 @@ public class Unit : MonoBehaviour
     }
 
     /// <summary>
-    /// Refresh Unit GFX
+    /// Refreshs Unit GFX
     /// </summary>
     public void RefreshGFX()
     {
@@ -208,10 +207,11 @@ public class Unit : MonoBehaviour
     /// <param name="value">Show the unit ?</param>
     public void UpdateIsSeen(bool value)
     {
-        foreach (MeshRenderer renderer in renderers)
+        foreach (Renderer renderer in renderers)
         {
             if (renderer) renderer.enabled = value;
         }
+        currentProvince.SetUnitsVisible(value);
     }
 
     /// <summary>
@@ -423,13 +423,7 @@ public class Unit : MonoBehaviour
     /// </summary>
     public void UpdateFlag()
     {
-        if (flag != null)
-        {
-            flag.material.mainTexture = country.currentFlag.texture;
-        }
-
         currentProvince.RefreshCountryFlag(country);
-
     }
 
     /// <summary>

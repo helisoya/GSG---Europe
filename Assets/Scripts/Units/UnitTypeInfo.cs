@@ -12,6 +12,7 @@ public class UnitTypeInfo : ScriptableObject
     public UnitType type;
     public string unitName;
     public Sprite unitSprite;
+    public float basePrice;
     public float baseHP;
     public float baseAttack;
     public float baseDefense;

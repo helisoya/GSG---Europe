@@ -8,11 +8,11 @@ using UnityEngine;
 public class Culture
 {
     public string id;
-    public string[] noms;
+    public string[] surnames;
 
-    public string[] prenoms;
+    public string[] names;
 
-    public GameObject prefabTank;
+    public Dictionary<UnitType, GameObject> prefabUnits;
     public Dictionary<string, Focus> focusTree;
 
 
@@ -20,19 +20,19 @@ public class Culture
     /// Return a random last name
     /// </summary>
     /// <returns>A random last name</returns>
-    public string GetRandom_Nom()
+    public string GetRandom_Surname()
     {
 
-        return noms[Random.Range(0, noms.Length)];
+        return surnames[Random.Range(0, surnames.Length)];
     }
 
     /// <summary>
     /// Return a random first name
     /// </summary>
     /// <returns>A random first name</returns>
-    public string GetRandom_Prenom()
+    public string GetRandom_Name()
     {
-        return prenoms[Random.Range(0, prenoms.Length)];
+        return names[Random.Range(0, names.Length)];
     }
 
 

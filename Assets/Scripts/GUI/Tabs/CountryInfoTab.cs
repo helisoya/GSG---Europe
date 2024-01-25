@@ -38,11 +38,21 @@ public class CountryInfoTab : GUITab
     [SerializeField] private GameObject buttonDeclareIndependance;
     [SerializeField] private GameObject buttonPlayAs;
 
+    [Header("Other Tabs")]
+    [SerializeField] private UnitsTab unitsTab;
+
 
 
     private Country current_countryinfo = null;
 
-
+    /// <summary>
+    /// Opens the Country Info Tab
+    /// </summary>
+    public override void OpenTab()
+    {
+        base.OpenTab();
+        unitsTab.CloseTab();
+    }
 
     /// <summary>
     /// Show a country's informations

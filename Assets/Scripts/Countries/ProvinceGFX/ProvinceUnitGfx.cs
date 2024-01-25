@@ -12,6 +12,7 @@ public class ProvinceUnitGfx : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Image hpFill;
+    [SerializeField] private Image countryFlag;
     [SerializeField] private Image unitTypeIcon;
     [SerializeField] private TextMeshProUGUI unitCountText;
     private List<Unit> units;
@@ -31,14 +32,15 @@ public class ProvinceUnitGfx : MonoBehaviour
     /// </summary>
     /// <param name="type">Unit type</param>
     /// <param name="pays">Parent country</param>
-    public void Init(UnitType type, Country pays)
+    public void Init(UnitTypeInfo type, Country pays)
     {
         units = new List<Unit>();
         unitCountText.text = "0";
         hpFill.fillAmount = 1;
         _count = 0;
 
-        unitTypeIcon.sprite = pays.currentFlag;
+        countryFlag.sprite = pays.currentFlag;
+        unitTypeIcon.sprite = type.unitSprite;
         hpFill.color = (pays == Manager.instance.player) ? Color.green : Color.red;
 
     }

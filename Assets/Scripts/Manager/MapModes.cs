@@ -20,7 +20,8 @@ public class MapModes : MonoBehaviour
         IDEOLOGICAL,
         DIPLOMATIC,
         FEDERATION,
-        FORMABLE
+        FORMABLE,
+        UNITPLACEMENT
     }
     private MAPMODE _currentMapMode = MAPMODE.POLITICAL;
 
@@ -65,7 +66,7 @@ public class MapModes : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (!Manager.instance.picked) return;
+        if (!Manager.instance.picked || !GameGUI.instance.canSwitchMapMode) return;
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -92,5 +93,15 @@ public class MapModes : MonoBehaviour
             _currentMapMode = MAPMODE.FORMABLE;
             Manager.instance.RefreshMap();
         }
+    }
+
+    /// <summary>
+    /// Changes the current map mode
+    /// </summary>
+    /// <param name="newMode">The new map mode</param>
+    public static void ChangeMapMode(MAPMODE newMode)
+    {
+        instance._currentMapMode = newMode;
+        Manager.instance.RefreshMap();
     }
 }

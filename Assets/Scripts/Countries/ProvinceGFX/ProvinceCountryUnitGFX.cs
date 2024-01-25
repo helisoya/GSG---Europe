@@ -35,7 +35,7 @@ public class ProvinceCountryUnitGFX
         if (!unitgfxs.ContainsKey(unit.info.type))
         {
             ProvinceUnitGfx gfx = Object.Instantiate(prefab, root).GetComponent<ProvinceUnitGfx>();
-            gfx.Init(unit.info.type, unit.country);
+            gfx.Init(unit.info, unit.country);
             gfx.AddUnit(unit);
             unitgfxs.Add(unit.info.type, gfx);
         }
@@ -82,6 +82,4 @@ public class ProvinceCountryUnitGFX
             unit.RefreshFlag(newSprite);
         }
     }
-
-
 }

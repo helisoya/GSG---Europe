@@ -35,6 +35,7 @@ public class Province : MonoBehaviour
     [SerializeField] private GameObject prefabUnitGFX;
     [SerializeField] private Transform unitGfxRoot;
     private Dictionary<Country, ProvinceCountryUnitGFX> unitgfxs;
+    private bool unitAreShown = true;
 
     public List<Unit> units
     {
@@ -115,6 +116,18 @@ public class Province : MonoBehaviour
     public void RefreshUnitGFX(Unit unit)
     {
         unitgfxs[unit.country].RefreshUnit(unit.info.type);
+    }
+
+    /// <summary>
+    /// Hides / Shows the units 
+    /// </summary>
+    /// <param name="value">Are the units visible ?</param>
+    public void SetUnitsVisible(bool value)
+    {
+        if (value == unitAreShown) return;
+        unitAreShown = value;
+
+        unitGfxRoot.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -275,6 +288,19 @@ public class Province : MonoBehaviour
             return;
         }
 
+        if (MapModes.currentMapMode == MapModes.MAPMODE.UNITPLACEMENT)
+        {
+            Country player = Manager.instance.player;
+            if (owner == controller && owner == player)
+            {
+                SetColor(new Color(0, 0.5f, 0), new Color(0, 0.5f, 0));
+            }
+            else
+            {
+                SetColor(Color.black, Color.black);
+            }
+        }
+
 
         int indexOwner = 0;
         int indexController = 0;
@@ -365,6 +391,12 @@ public class Province : MonoBehaviour
             else if (Manager.instance.inPeaceDeal)
             {
                 return;
+            }
+
+            if (MapModes.currentMapMode == MapModes.MAPMODE.UNITPLACEMENT &&
+            owner == controller && owner == Manager.instance.player)
+            {
+                GameGUI.instance.SpawnUnitAt(this);
             }
 
 

@@ -41,7 +41,23 @@ public class GameGUI : MonoBehaviour
     [SerializeField] private ProvinceTab provinceTab;
     [SerializeField] private UtilityTab utilityTab;
     [SerializeField] private FederationTab federationTab;
+    [SerializeField] private UnitsTab unitsTab;
 
+    public bool canMoveCamera
+    {
+        get
+        {
+            return !(pauseTab.isOpen || federationTab.isOpen || politicalTab.isOpen || focusMenu.isOpen);
+        }
+    }
+
+    public bool canSwitchMapMode
+    {
+        get
+        {
+            return !(unitsTab.isOpen);
+        }
+    }
 
     void Awake()
     {
@@ -349,6 +365,15 @@ public class GameGUI : MonoBehaviour
     }
 
     /// <summary>
+    /// Spawns a unit at a province
+    /// </summary>
+    /// <param name="province">The province</param>
+    public void SpawnUnitAt(Province province)
+    {
+        unitsTab.Select(province);
+    }
+
+    /// <summary>
     /// Hide every tabs 
     /// </summary>
     public void HideEverything()
@@ -362,6 +387,7 @@ public class GameGUI : MonoBehaviour
         if (focusMenu.isOpen) focusMenu.CloseTab();
         if (politicalTab.isOpen) politicalTab.CloseTab();
         if (federationTab.isOpen) federationTab.CloseTab();
+        if (unitsTab.isOpen) unitsTab.CloseTab();
         peaceDealRoot.SetActive(false);
     }
 

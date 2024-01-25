@@ -141,22 +141,6 @@ public class ProvinceTab : GUITab
     }
 
     /// <summary>
-    /// Buy a unit inside the current province
-    /// </summary>
-    public void BuyUnit()
-    {
-        Manager manager = Manager.instance;
-        if (manager.player.canBuyUnit && currentProvine.owner == manager.player
-         && currentProvine.controller == manager.player && manager.player.AP >= 100)
-        {
-            manager.player.AP -= 100;
-            currentProvine.SpawnUnitAtCity();
-            GameGUI.instance.RefreshUtilityBar();
-        }
-
-    }
-
-    /// <summary>
     /// Add a railroad to the current province
     /// </summary>
     public void AddRailroad()

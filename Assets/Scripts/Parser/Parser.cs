@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Leguar.TotalJSON;
+using System;
 
 public class Parser : MonoBehaviour
 {
@@ -143,22 +144,26 @@ public class Parser : MonoBehaviour
             Culture culture = new Culture();
             culture.id = jsonCulture.GetString("id");
 
-            culture.prefabTank = Resources.Load<GameObject>("Units/" + culture.id);
+            culture.prefabUnits = new Dictionary<UnitType, GameObject>();
+            foreach (UnitType type in Enum.GetValues(typeof(UnitType)))
+            {
+                culture.prefabUnits.Add(type, Resources.Load<GameObject>("Units/Cultures/" + culture.id + "/" + type.ToString()));
+            }
 
             culture.focusTree = focuses[jsonCulture.GetString("focus")];
 
             arrayIn = jsonCulture.GetJArray("names");
-            culture.prenoms = new string[arrayIn.Length];
+            culture.names = new string[arrayIn.Length];
             for (int j = 0; j < arrayIn.Length; j++)
             {
-                culture.prenoms[j] = arrayIn.GetString(j);
+                culture.names[j] = arrayIn.GetString(j);
             }
 
             arrayIn = jsonCulture.GetJArray("surnames");
-            culture.noms = new string[arrayIn.Length];
+            culture.surnames = new string[arrayIn.Length];
             for (int j = 0; j < arrayIn.Length; j++)
             {
-                culture.noms[j] = arrayIn.GetString(j);
+                culture.surnames[j] = arrayIn.GetString(j);
             }
 
             list.Add(culture.id, culture);
