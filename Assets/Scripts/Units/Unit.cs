@@ -179,7 +179,7 @@ public class Unit : MonoBehaviour
     /// </summary>
     public void RedrawLinePath()
     {
-
+        if (linePath == null) return;
         if (StandBy())
         {
             linePath.positionCount = 0;

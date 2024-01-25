@@ -78,6 +78,7 @@ public class CamMove : MonoBehaviour
             move.x = Input.GetAxisRaw("Horizontal");
             move.z = Input.GetAxisRaw("Vertical");
         }
+        /**
         else
         {
             // Movement via mouse
@@ -109,7 +110,7 @@ public class CamMove : MonoBehaviour
                 transform.position.y,
                 Mathf.Clamp(transform.position.z, border_down.transform.position.z + border_down.transform.localScale.z / 2, border_up.transform.position.z - border_up.transform.localScale.z / 2));
         }
-
+        **/
     }
 
 

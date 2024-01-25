@@ -20,4 +20,4 @@ MonoBehaviour:
   baseAttack: 5
   baseDefense: 2
   baseTravelSpeed: 2
-  baseNavelAttack: 2
+  baseNavelAttack: 2.5
