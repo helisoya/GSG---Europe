@@ -127,7 +127,7 @@ public class Province : MonoBehaviour
         if (value == unitAreShown) return;
         unitAreShown = value;
 
-        unitGfxRoot.gameObject.SetActive(false);
+        unitGfxRoot.gameObject.SetActive(value);
     }
 
     /// <summary>

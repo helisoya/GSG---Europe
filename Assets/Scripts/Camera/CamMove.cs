@@ -100,7 +100,7 @@ public class CamMove : MonoBehaviour
             {
                 move.z = 1;
             }
-        }
+        }**/
 
         if (move.x != 0 || move.z != 0)
         {
@@ -110,7 +110,7 @@ public class CamMove : MonoBehaviour
                 transform.position.y,
                 Mathf.Clamp(transform.position.z, border_down.transform.position.z + border_down.transform.localScale.z / 2, border_up.transform.position.z - border_up.transform.localScale.z / 2));
         }
-        **/
+
     }
 
 
