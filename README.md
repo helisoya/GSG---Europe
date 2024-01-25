@@ -16,6 +16,8 @@ This game is a sandbox in which you can expand your country by attacking or ally
 - Form a long gone country by controlling all the required provinces, such as Rome, or the Soviet Union.
 - Go down your focus tree, to unlock new abilities and upgrades.
 
+The map is generated from a .json file, created using a custom editor made in python. This tool allows to modify the map more easily, and to setup the different countries on the map.
+
 The game is still being worked on, and new / revamped features are added from time to time. The first iteration of the game dates from 2020-2021.
 
 ## Screenshots
